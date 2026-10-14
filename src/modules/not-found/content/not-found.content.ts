@@ -1,9 +1,11 @@
 import type {
   NotFoundAction,
   NotFoundLostSatellite,
+  NotFoundLostSatelliteDrift,
   NotFoundOrbitGeometry,
   NotFoundRing,
   NotFoundSatellite,
+  NotFoundSatelliteMotion,
 } from "../types/not-found.types";
 
 export const notFoundOrbitGeometry: NotFoundOrbitGeometry = {
@@ -37,10 +39,25 @@ export const notFoundSatellites: readonly NotFoundSatellite[] = [
   },
 ];
 
+export const notFoundSatelliteMotion: Record<
+  NotFoundSatellite["id"],
+  NotFoundSatelliteMotion
+> = {
+  home: { durationSeconds: 40, direction: 1 },
+  blog: { durationSeconds: 28, direction: -1 },
+};
+
 export const notFoundLostSatellite: NotFoundLostSatellite = {
   leftPercent: 80,
   topPercent: 8,
   rotationDegrees: 9,
+};
+
+export const notFoundLostSatelliteDrift: NotFoundLostSatelliteDrift = {
+  durationSeconds: 7,
+  xAmplitude: 1.5,
+  yAmplitude: -1.25,
+  rotationAmplitude: 2.5,
 };
 
 export const notFoundActions: readonly NotFoundAction[] = [

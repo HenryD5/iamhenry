@@ -26,6 +26,8 @@ Textos redactados solo en locales JSON; `content/` guarda estructura, nombres pr
 
 La órbita del Hero, sus tarjetas flotantes y el pulso de disponibilidad ya usan Motion en islas acotadas, con estado estático para móvil, JavaScript ausente y `prefers-reduced-motion`. No añadir otras animaciones, providers ni hooks fuera de tareas de `motion-builder`, ni crear animaciones CSS. Hasta que esas tareas se hagan, el resto del contenido permanece visible en estado final y solo admite transiciones simples de hover/foco. Los `data-motion-section` y `data-motion-item` de `docs/modules/home.md` son contrato estable.
 
+La órbita de la 404 (`src/modules/not-found/`) usa Motion en una isla acotada, con estado estático sin JavaScript y con `prefers-reduced-motion`; `data-motion-section="not-found"` y los valores `not-found-orbit`, `not-found-planet`, `not-found-satellite` y `not-found-lost` de `data-motion-item` son contrato estable.
+
 Instalados para animación: `motion` 14, `gsap` 3.15.0 (con ScrollTrigger y SplitText), `@gsap/react` 2.1.2 y `lenis` 1.3.26. Capas: CSS para hovers, foco y bucles simples; `motion` para microinteracciones y estado de componentes; GSAP para la secuencia del hero, las entradas de sección, el revelado de titulares y el scroll; Lenis para el scroll suave. GSAP se registra una vez en `src/shared/lib/gsap.ts` y solo se importa desde ahí; todo va dentro de `gsap.matchMedia()` con `(prefers-reduced-motion: no-preference)` y se limpia con `useGSAP`. Los estados iniciales los pone GSAP, nunca el CSS. Los videos de HyperFrames los produce el agente `my-motion-frames` en `public/media/`; `motion-builder` solo los integra.
 
 ## Dónde crear cada cosa

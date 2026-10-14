@@ -15,7 +15,7 @@ export interface NotFoundOrbitGeometry {
 }
 
 export interface NotFoundSatellite {
-  id: string;
+  id: "home" | "blog";
   href: string;
   labelKey: "home" | "blog";
   ring: NotFoundRingId;
@@ -24,10 +24,22 @@ export interface NotFoundSatellite {
   isHiddenOnMobile?: boolean;
 }
 
+export interface NotFoundSatelliteMotion {
+  durationSeconds: number;
+  direction: 1 | -1;
+}
+
 export interface NotFoundLostSatellite {
   leftPercent: number;
   topPercent: number;
   rotationDegrees: number;
+}
+
+export interface NotFoundLostSatelliteDrift {
+  durationSeconds: number;
+  xAmplitude: number;
+  yAmplitude: number;
+  rotationAmplitude: number;
 }
 
 export interface NotFoundAction {
