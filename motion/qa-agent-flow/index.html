@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1200, height=900" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Manrope"; src: url("assets/manrope.woff2") format("woff2"); font-weight: 200 800; }
+      @font-face { font-family: "Inter"; src: url("assets/inter-500.ttf") format("truetype"); font-weight: 500; }
+      @font-face { font-family: "Inter"; src: url("assets/inter-600.ttf") format("truetype"); font-weight: 600; }
+      @font-face { font-family: "JetBrains Mono"; src: url("assets/jbmono-500.ttf") format("truetype"); font-weight: 500; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1200px; height: 900px; overflow: hidden; background: #F6F5FB; }
+      #root { position: relative; width: 100%; height: 100%; background: #F6F5FB; overflow: hidden; }
+      svg { position: absolute; inset: 0; display: block; }
+      .h { font-family: "Manrope", sans-serif; font-weight: 800; }
+      .t { font-family: "Inter", sans-serif; font-weight: 600; }
+      .p { font-family: "Inter", sans-serif; font-weight: 500; }
+      .m { font-family: "JetBrains Mono", monospace; font-weight: 500; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="qa-agent-flow" data-start="0" data-width="1200" data-height="900" data-duration="10">
+      <svg id="art" width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="core-grad" cx="35%" cy="30%" r="85%">
+            <stop offset="0" stop-color="#96B6FE" />
+            <stop offset="0.35" stop-color="#1F4BFF" />
+            <stop offset="0.75" stop-color="#3B3FD6" />
+            <stop offset="1" stop-color="#E11D2E" />
+          </radialGradient>
+          <g id="ico-ok"><circle r="20" fill="#7FB800" /><path d="M-9 0 L-3 7 L9 -7" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /></g>
+          <g id="ico-no"><circle r="20" fill="#E5484D" /><path d="M-8 -8 L8 8 M8 -8 L-8 8" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" /></g>
+        </defs>
+
+        <!-- barra de fases -->
+        <line x1="165" y1="110" x2="1035" y2="110" stroke="#E2E0EE" stroke-width="6" stroke-linecap="round" />
+        <line id="prog" x1="165" y1="110" x2="165" y2="110" stroke="#1F4BFF" stroke-width="6" stroke-linecap="round" />
+        <g id="steps"></g>
+        <g id="core" transform="translate(165 110)">
+          <circle r="62" fill="none" stroke="#1F4BFF" stroke-width="3" opacity="0.18" />
+          <circle r="52" fill="none" stroke="#1F4BFF" stroke-width="3" opacity="0.38" />
+          <circle r="42" fill="url(#core-grad)" />
+          <text class="h" x="0" y="11" text-anchor="middle" font-size="30" fill="#FFFFFF">IA</text>
+        </g>
+        <g id="labels"></g>
+        <g id="subs"></g>
+
+        <!-- panel -->
+        <rect x="60" y="260" width="1080" height="580" rx="28" fill="#FFFFFF" stroke="#E2E0EE" stroke-width="2" />
+
+        <!-- escena 1 -->
+        <g id="s1">
+          <text class="p" x="110" y="330" font-size="26" fill="#767891">Tu cambio de código entra</text>
+          <rect x="110" y="400" width="980" height="150" rx="20" fill="#0E1022" />
+          <circle cx="150" cy="432" r="7" fill="#767891" /><circle cx="176" cy="432" r="7" fill="#767891" /><circle cx="202" cy="432" r="7" fill="#767891" />
+          <rect x="110" y="485" width="980" height="64" fill="#1F4BFF" fill-opacity="0.22" />
+          <text class="m" x="150" y="528" font-size="38" fill="#7FB800">+ next.config.ts</text>
+          <text class="p" x="110" y="640" font-size="26" fill="#4C4F66">El agente lo ve y se pone en marcha.</text>
+          <path d="M600 585 V610" stroke="#1F4BFF" stroke-width="0" />
+        </g>
+
+        <!-- escena 2 -->
+        <g id="s2">
+          <g transform="translate(110 360)">
+            <rect width="290" height="330" rx="20" fill="#EEF2FF" stroke="#1F4BFF" stroke-width="4" />
+            <rect x="24" y="24" width="242" height="20" rx="10" fill="#96B6FE" />
+            <rect x="24" y="64" width="242" height="110" rx="12" fill="#C9D8FF" />
+            <rect x="24" y="194" width="150" height="14" rx="7" fill="#96B6FE" /><rect x="24" y="222" width="190" height="14" rx="7" fill="#96B6FE" />
+            <text class="h" x="145" y="285" text-anchor="middle" font-size="32" fill="#0E1022">Portada</text>
+            <rect x="80" y="-22" width="130" height="44" rx="22" fill="#1F4BFF" /><text class="t" x="145" y="8" text-anchor="middle" font-size="22" fill="#fff">probar</text>
+          </g>
+          <g transform="translate(455 360)">
+            <rect width="290" height="330" rx="20" fill="#EEF2FF" stroke="#1F4BFF" stroke-width="4" />
+            <rect x="24" y="24" width="242" height="20" rx="10" fill="#96B6FE" />
+            <rect x="24" y="64" width="110" height="80" rx="12" fill="#C9D8FF" /><rect x="156" y="64" width="110" height="80" rx="12" fill="#C9D8FF" />
+            <rect x="24" y="164" width="110" height="80" rx="12" fill="#C9D8FF" /><rect x="156" y="164" width="110" height="80" rx="12" fill="#C9D8FF" />
+            <text class="h" x="145" y="285" text-anchor="middle" font-size="32" fill="#0E1022">Blog</text>
+            <rect x="80" y="-22" width="130" height="44" rx="22" fill="#1F4BFF" /><text class="t" x="145" y="8" text-anchor="middle" font-size="22" fill="#fff">probar</text>
+          </g>
+          <g transform="translate(800 360)" opacity="0.55">
+            <rect width="290" height="330" rx="20" fill="#F6F5FB" stroke="#B3B6C7" stroke-width="3" stroke-dasharray="10 10" />
+            <rect x="24" y="24" width="242" height="20" rx="10" fill="#E2E0EE" />
+            <rect x="24" y="64" width="242" height="110" rx="12" fill="#E2E0EE" />
+            <rect x="24" y="194" width="150" height="14" rx="7" fill="#E2E0EE" /><rect x="24" y="222" width="190" height="14" rx="7" fill="#E2E0EE" />
+            <text class="h" x="145" y="285" text-anchor="middle" font-size="32" fill="#767891">Contacto</text>
+            <rect x="65" y="-22" width="160" height="44" rx="22" fill="#E2E0EE" /><text class="t" x="145" y="8" text-anchor="middle" font-size="22" fill="#4C4F66">sin tocar</text>
+          </g>
+        </g>
+
+        <!-- escena 3 -->
+        <g id="s3"></g>
+
+        <!-- escena 4 -->
+        <g id="s4">
+          <g transform="translate(110 330)">
+            <rect width="640" height="430" rx="18" fill="#FFFFFF" stroke="#4C4F66" stroke-width="4" />
+            <path d="M2 60 V20 A16 16 0 0 1 18 4 H622 A16 16 0 0 1 638 20 V60 Z" fill="#E2E0EE" />
+            <circle cx="32" cy="32" r="8" fill="#E5484D" /><circle cx="58" cy="32" r="8" fill="#FFB020" /><circle cx="84" cy="32" r="8" fill="#7FB800" />
+            <rect x="120" y="14" width="400" height="36" rx="18" fill="#FFFFFF" /><text class="m" x="140" y="39" font-size="20" fill="#4C4F66">localhost:3000</text>
+            <rect x="30" y="90" width="580" height="90" rx="12" fill="#EEF2FF" />
+            <rect x="30" y="200" width="270" height="150" rx="12" fill="#C9D8FF" /><rect x="330" y="200" width="280" height="150" rx="12" fill="#C9D8FF" />
+            <rect x="30" y="372" width="400" height="14" rx="7" fill="#E2E0EE" />
+          </g>
+          <g transform="translate(830 330)">
+            <rect width="250" height="430" rx="34" fill="#FFFFFF" stroke="#4C4F66" stroke-width="4" />
+            <rect x="95" y="16" width="60" height="10" rx="5" fill="#E2E0EE" />
+            <rect x="24" y="52" width="202" height="60" rx="10" fill="#EEF2FF" />
+            <rect x="24" y="130" width="202" height="110" rx="10" fill="#C9D8FF" />
+            <rect x="24" y="258" width="202" height="14" rx="7" fill="#E2E0EE" /><rect x="24" y="286" width="140" height="14" rx="7" fill="#E2E0EE" />
+          </g>
+          <text class="t" x="430" y="805" text-anchor="middle" font-size="26" fill="#4C4F66">Ordenador</text>
+          <text class="t" x="955" y="805" text-anchor="middle" font-size="26" fill="#4C4F66">Móvil</text>
+          <g id="s4-checks"></g>
+        </g>
+
+        <!-- escena 5 -->
+        <g id="s5"></g>
+      </svg>
+    </div>
+
+    <script>
+      var NS = "http://www.w3.org/2000/svg";
+      function el(parent, html) { parent.insertAdjacentHTML("beforeend", html); }
+      function use(id, x, y) { return '<use href="#' + id + '" x="' + x + '" y="' + y + '"/>'; }
+
+      var NAMES = ["Alcance", "Plan", "Prueba en Chrome", "Informe"];
+      var SUBS = ["Un cambio de código entra", "El agente decide qué páginas probar", "Antes de abrir el navegador: qué debe pasar", "Abre Chrome y lo comprueba en dos tamaños", "Qué pasó, qué tan grave y qué archivo revisar"];
+      var XS = [165, 455, 745, 1035];
+
+      // nodos de fase: pendiente / hecha, y rótulos
+      var steps = document.getElementById("steps");
+      var labels = document.getElementById("labels");
+      XS.forEach(function (x, i) {
+        el(steps, '<g id="pend' + i + '"><circle cx="' + x + '" cy="110" r="26" fill="#FFFFFF" stroke="#B3B6C7" stroke-width="4"/><text class="h" x="' + x + '" y="121" text-anchor="middle" font-size="30" fill="#767891">' + (i + 1) + '</text></g>');
+        el(steps, '<g id="done' + i + '"><circle cx="' + x + '" cy="110" r="26" fill="#1F4BFF"/><path d="M' + (x - 11) + ' 110 L' + (x - 3) + ' 119 L' + (x + 12) + ' 101" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g>');
+        el(labels, '<text id="lab' + i + '" class="h" x="' + x + '" y="196" text-anchor="middle" font-size="30" fill="#0E1022">' + NAMES[i] + '</text>');
+      });
+
+      SUBS.forEach(function (t, k) { el(document.getElementById("subs"), '<text id="sub' + k + '" class="p" x="600" y="238" text-anchor="middle" font-size="26" fill="#4C4F66">' + t + '</text>'); });
+
+      // escena 3: plan
+      var CASES = [["Enlace Blog del menú", "Lleva a la página del blog"], ["Portada", "Carga sin errores escondidos"], ["Versión móvil", "Nada se sale de la pantalla"]];
+      var s3 = document.getElementById("s3");
+      CASES.forEach(function (c, i) {
+        var y = 320 + i * 170;
+        el(s3, '<g class="case" id="case' + i + '"><rect x="110" y="' + y + '" width="980" height="140" rx="20" fill="#F6F5FB"/>' +
+          '<rect x="140" y="' + (y + 46) + '" width="48" height="48" rx="12" fill="#fff" stroke="#1F4BFF" stroke-width="4"/>' +
+          '<text class="t" x="224" y="' + (y + 62) + '" font-size="32" fill="#0E1022">' + c[0] + '</text>' +
+          '<text class="p" x="224" y="' + (y + 106) + '" font-size="26" fill="#4C4F66">Esperado: ' + c[1] + '</text></g>');
+      });
+
+      // escena 4: comprobaciones
+      var s4c = document.getElementById("s4-checks");
+      el(s4c, '<g id="chk-d">' + use("ico-ok", 190, 440) + '<text class="t" x="224" y="450" font-size="26" fill="#0E1022">Carga bien</text>' + use("ico-ok", 190, 560) + '<text class="t" x="224" y="570" font-size="26" fill="#0E1022">Sin errores</text>' + '</g>');
+      el(s4c, '<g id="chk-m">' + use("ico-ok", 884, 520) + '<text class="t" x="918" y="530" font-size="24" fill="#0E1022">Cabe</text>' + '</g>');
+      el(s4c, '<g id="chk-d2">' + use("ico-ok", 450, 440) + '<text class="t" x="484" y="450" font-size="26" fill="#0E1022">Enlaces</text>' + '</g>');
+
+      // escena 5: informe
+      var s5 = document.getElementById("s5");
+      function row(y, ok, title, extra) {
+        var bg = ok ? "#F6F5FB" : "#FCD9DA";
+        var h = '<rect x="110" y="' + y + '" width="980" height="' + (ok ? 120 : 190) + '" rx="20" fill="' + bg + '"' + (ok ? '' : ' stroke="#E5484D" stroke-width="3"') + '/>' +
+          use(ok ? "ico-ok" : "ico-no", 166, y + 60) + '<text class="t" x="214" y="' + (y + 72) + '" font-size="32" fill="#0E1022">' + title + '</text>';
+        if (!ok) {
+          h += '<rect x="214" y="' + (y + 110) + '" width="170" height="46" rx="23" fill="#E5484D"/><text class="t" x="299" y="' + (y + 142) + '" text-anchor="middle" font-size="24" fill="#fff">bloqueante</text>' +
+            '<text class="m" x="410" y="' + (y + 142) + '" font-size="28" fill="#A82A2F">AppHeader.tsx</text>';
+        }
+        return h;
+      }
+      el(s5, '<g id="r0">' + row(320, true, "Enlace Blog del menú") + '</g>');
+      el(s5, '<g id="r1">' + row(465, true, "Portada") + '</g>');
+      el(s5, '<g id="r2">' + row(610, false, "Versión móvil: algo se sale de la pantalla") + '</g>');
+
+      // ---------- línea de tiempo (MAQUETA: poses clave con cortes secos) ----------
+      var tl = gsap.timeline({ paused: true });
+      var T = [0, 1.8, 3.6, 5.6, 7.8]; // inicio de cada escena
+      var SC = ["s1", "s2", "s3", "s4", "s5"];
+      var CORE_X = [165, 165, 455, 745, 1035];
+      var DONE = [0, 0, 1, 2, 3]; // fases hechas antes de la activa
+
+      T.forEach(function (t, k) {
+        tl.addLabel("escena-" + (k + 1), t);
+        SC.forEach(function (id, j) { tl.set("#" + id, { autoAlpha: j === k ? 1 : 0 }, t); });
+        tl.set("#core", { x: CORE_X[k] - 165 }, t);
+        SUBS.forEach(function (_, j) { tl.set("#sub" + j, { autoAlpha: j === k ? 1 : 0 }, t); });
+        for (var i = 0; i < 4; i++) {
+          var isDone = i < DONE[k];
+          var isActive = k >= 1 && i === k - 1;
+          tl.set("#done" + i, { autoAlpha: isDone ? 1 : 0 }, t);
+          tl.set("#pend" + i, { autoAlpha: isDone || isActive ? 0 : 1 }, t);
+          tl.set("#lab" + i, { fill: isDone || isActive ? "#0E1022" : "#767891" }, t);
+        }
+        tl.set("#prog", { attr: { x2: CORE_X[k] } }, t);
+      });
+      // escena 4: comprobaciones visibles en la pose clave
+      tl.set(["#chk-d", "#chk-m", "#chk-d2"], { autoAlpha: 1 }, 0);
+      tl.set({}, {}, 10);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["qa-agent-flow"] = tl;
+    </script>
+  </body>
+</html>

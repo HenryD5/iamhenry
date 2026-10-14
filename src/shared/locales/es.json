@@ -4,6 +4,9 @@
   "brand": "IamHenry",
   "contactCta": "Construyamos algo juntos",
   "floatingContact": "Hablemos",
+  "theme": {
+    "night": "Modo noche"
+  },
   "navigation": {
     "label": "Navegación principal",
     "stack": { "href": "/#stack", "label": "Stack" },

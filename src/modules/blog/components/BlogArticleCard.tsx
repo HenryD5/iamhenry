@@ -18,7 +18,7 @@ export function BlogArticleCard({
   return (
     <Link
       href={getArticlePath(article.slug)}
-      className="border-line bg-surface-raised focus-visible:outline-primary-500 flex h-full flex-col rounded-md border p-[.6rem] no-underline transition-[transform,box-shadow] duration-[var(--duration)] ease-[var(--ease)] hover:-translate-y-[3px] hover:shadow-[var(--card-shadow)] focus-visible:outline-2 focus-visible:outline-offset-[3px]"
+      className="border-line bg-surface-raised focus-visible:outline-(--focus-ring) flex h-full flex-col rounded-md border p-[.6rem] no-underline transition-[transform,box-shadow] duration-[var(--duration)] ease-[var(--ease)] hover:-translate-y-[3px] hover:shadow-[var(--card-shadow)] focus-visible:outline-2 focus-visible:outline-offset-[3px]"
     >
       <BlogArticleCover
         cover={article.cover}
@@ -27,7 +27,7 @@ export function BlogArticleCard({
       />
       <div className="flex flex-1 flex-col gap-[.55rem] px-[.9rem] pt-[1.1rem] pb-4">
         <time
-          className="font-mono text-caption text-neutral-500"
+          className="font-mono text-caption text-fg-muted"
           dateTime={article.publishedAt}
         >
           {formatArticleCardDate(article.publishedAt)}
@@ -39,7 +39,7 @@ export function BlogArticleCard({
           {article.description}
         </p>
         {showReadLink ? (
-          <span className="text-body-sm text-primary-500 mt-auto pt-[.4rem] font-semibold">
+          <span className="text-body-sm text-(--accent-text) mt-auto pt-[.4rem] font-semibold">
             {blogMessages.common.read}
           </span>
         ) : null}

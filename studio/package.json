@@ -12,6 +12,7 @@
     "deploy": "sanity deploy"
   },
   "dependencies": {
+    "@sanity/code-input": "7.3.12",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "sanity": "^6.19.0",

@@ -13,6 +13,7 @@ export const heroVisual: "video" | "orbit" = "video";
 
 export const heroVideo = {
   basePath: "/media/hero-orbita",
+  nightBasePath: "/media/hero-orbita-noche",
   width: 1920,
   height: 1080,
 } as const;

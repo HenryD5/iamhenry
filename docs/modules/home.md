@@ -64,4 +64,4 @@ Cada pieza está aislada de la estructura y el contenido de su sección. Un reem
 
 ## Pendientes de contenido
 
-Enlaces de proyectos, descripción de Agencia, cargo/fechas de BlueX, revisión de las cuatro respuestas provisionales del asistente, número de WhatsApp y dominio definitivo.
+Enlaces de proyectos, descripción de Agencia, cargo/fechas de BlueX, revisión de las cuatro respuestas provisionales del asistente y dominio definitivo.

@@ -21,7 +21,7 @@ export async function StackSection() {
       <AppContainer>
         <div className="mb-16 grid grid-cols-[6fr_5fr] items-center gap-20 max-md:mb-[2.6rem] max-md:grid-cols-1 max-md:gap-[2.4rem]">
           <div>
-            <p className="font-primary text-body-sm text-primary-300 before:bg-tertiary-500 mb-[1.3rem] inline-flex items-center gap-[.6rem] leading-[1.2] font-semibold before:size-[.55rem] before:rounded-full before:content-['']">
+            <p className="font-primary text-body-sm text-(--accent-text) before:bg-tertiary-500 mb-[1.3rem] inline-flex items-center gap-[.6rem] leading-[1.2] font-semibold before:size-[.55rem] before:rounded-full before:content-['']">
               {translate("stack.eyebrow")}
             </p>
             <h2 className="mb-[1.4rem] max-w-[16ch] max-md:max-w-none">

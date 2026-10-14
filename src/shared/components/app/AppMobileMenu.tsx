@@ -6,6 +6,7 @@ import { siteConfig } from "@/shared/config/site";
 import { UiDrawer } from "@/shared/components/ui/UiDrawer";
 import { AppBadge } from "./AppBadge";
 import { AppBrandLogo } from "./AppBrandLogo";
+import { AppThemeSwitch } from "./AppThemeSwitch";
 
 interface NavigationItem {
   href: string;
@@ -23,6 +24,7 @@ interface AppMobileMenuProps {
   availabilityLabel: string;
   linkedInLabel: string;
   contactLinksLabel: string;
+  themeLabel: string;
 }
 export function AppMobileMenu({
   items,
@@ -36,6 +38,7 @@ export function AppMobileMenu({
   availabilityLabel,
   linkedInLabel,
   contactLinksLabel,
+  themeLabel,
 }: AppMobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const handleClose = () => setIsOpen(false);
@@ -93,6 +96,7 @@ export function AppMobileMenu({
             ))}
           </ul>
         </nav>
+        <AppThemeSwitch label={themeLabel} />
         <div className="mt-auto grid gap-4">
           <AppBadge>
             <span

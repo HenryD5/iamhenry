@@ -3,8 +3,13 @@ import Link from "next/link";
 import { AppBrandLogo } from "./AppBrandLogo";
 import { AppContainer } from "./AppContainer";
 import { AppMobileMenu } from "./AppMobileMenu";
+import { AppThemeSwitch } from "./AppThemeSwitch";
 
-export async function AppHeader() {
+interface AppHeaderProps {
+  surface?: "light";
+}
+
+export async function AppHeader({ surface }: AppHeaderProps = {}) {
   const translate = await getTranslations("shared");
   const items = ["stack", "experience", "portfolio", "about", "blog"].map(
     (key) => ({
@@ -21,6 +26,7 @@ export async function AppHeader() {
     <nav
       className="border-line bg-surface/95 fixed inset-x-0 top-0 z-50 border-b py-4 backdrop-blur-[var(--surface-blur)] max-md:overflow-x-clip max-md:py-[.7rem]"
       aria-label={translate("navigation.label")}
+      data-surface={surface}
       data-motion-section="header"
     >
       <AppContainer className="flex items-center gap-[2.4rem] max-md:gap-[var(--space-xs)]">
@@ -34,8 +40,12 @@ export async function AppHeader() {
             {item.label}
           </Link>
         ))}
+        <AppThemeSwitch
+          className="ms-auto max-md:hidden"
+          label={translate("theme.night")}
+        />
         <Link
-          className="btn btn--md focus-visible:text-white max-md:shrink-0"
+          className="btn btn--md focus-visible:text-white max-md:ms-auto max-md:shrink-0"
           href="/#contacto"
         >
           {translate("contactCta")}
@@ -52,6 +62,7 @@ export async function AppHeader() {
           availabilityLabel={translate("footer.availability")}
           linkedInLabel={translate("footer.linkedIn")}
           contactLinksLabel={translate("menu.contactLinksLabel")}
+          themeLabel={translate("theme.night")}
         />
       </AppContainer>
     </nav>

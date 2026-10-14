@@ -226,6 +226,7 @@
   /* ---- Semánticos: superficie oscura (por defecto en la marca) ---- */
   --bg: var(--neutral-50);
   --bg-raised: #FFFFFF;
+  --bg-sunken: var(--neutral-100);
   --fg: var(--secondary-500);
   --fg-muted: var(--neutral-600);
   --border: var(--neutral-300);
@@ -242,6 +243,7 @@
 [data-surface="light"] {
   --bg: var(--secondary-500);
   --bg-raised: var(--secondary-400);
+  --bg-sunken: var(--secondary-600);
   --fg: var(--neutral-50);
   --fg-muted: var(--neutral-400);
   --border: var(--neutral-700);
@@ -255,6 +257,44 @@
   --button-hover-fg: #FFFFFF;
   --gradient-accent: linear-gradient(90deg, var(--primary-400) 0%, var(--primary-400) 30%, var(--tertiary-400) 85%);
   --color-scheme: dark;
+}
+
+[data-theme="night"] {
+  --bg: var(--secondary-500);
+  --bg-raised: var(--secondary-400);
+  --bg-sunken: var(--secondary-600);
+  --fg: var(--neutral-50);
+  --fg-muted: var(--neutral-400);
+  --border: var(--neutral-700);
+  --accent: var(--neutral-50);
+  --on-accent: var(--secondary-500);
+  --accent-text: var(--primary-300);
+  --serif-accent: var(--primary-300);
+  --heading-accent-color: var(--primary-300);
+  --focus-ring: var(--primary-300);
+  --button-hover-bg: var(--primary-500);
+  --button-hover-fg: #FFFFFF;
+  --gradient-accent: linear-gradient(90deg, var(--primary-400) 0%, var(--primary-400) 30%, var(--tertiary-400) 85%);
+  --color-scheme: dark;
+}
+
+[data-theme="night"] [data-surface="light"] {
+  --bg: var(--neutral-50);
+  --bg-raised: #FFFFFF;
+  --bg-sunken: var(--neutral-100);
+  --fg: var(--secondary-500);
+  --fg-muted: var(--neutral-600);
+  --border: var(--neutral-300);
+  --accent: var(--secondary-500);
+  --on-accent: var(--neutral-50);
+  --accent-text: var(--primary-500);
+  --serif-accent: var(--primary-500);
+  --heading-accent-color: var(--primary-500);
+  --focus-ring: var(--primary-500);
+  --button-hover-bg: var(--primary-500);
+  --button-hover-fg: #FFFFFF;
+  --gradient-accent: linear-gradient(90deg, var(--primary-500) 0%, var(--primary-500) 30%, var(--tertiary-500) 85%);
+  --color-scheme: light;
 }
 
 /* Móvil: reduce solo los tamaños grandes */
@@ -307,6 +347,7 @@
   --color-tertiary: var(--tertiary-500);
   --color-surface: var(--bg);
   --color-surface-raised: var(--bg-raised);
+  --color-surface-sunken: var(--bg-sunken);
   --color-fg: var(--fg);
   --color-fg-muted: var(--fg-muted);
   --color-line: var(--border);
@@ -362,7 +403,7 @@
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
   }
-  body, [data-surface] { background-color: var(--bg); background-image: var(--bg-texture); background-size: var(--bg-texture-size); color: var(--fg); color-scheme: var(--color-scheme); }
+  body, [data-surface] { background-color: var(--bg); background-image: var(--bg-texture); background-size: var(--bg-texture-size); color: var(--fg); color-scheme: var(--color-scheme); transition: background-color var(--duration) var(--ease), color var(--duration) var(--ease); }
   body {
     margin: 0;
     font-family: var(--font-primary);

@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1200, height=900" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Manrope";
+        src: url("assets/manrope.woff2") format("woff2");
+        font-weight: 200 800;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1200px; height: 900px; overflow: hidden; background: #f6f5fb; }
+      #root { position: relative; width: 100%; height: 100%; background: #f6f5fb; overflow: hidden; }
+      svg { position: absolute; inset: 0; display: block; }
+      .ia { font-family: "Manrope", sans-serif; font-weight: 800; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="stack-tres-cuerpos-noche" data-start="0" data-width="1200" data-height="900" data-duration="6">
+      <svg id="art" width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="core-grad" cx="35%" cy="30%" r="85%">
+            <stop offset="0" stop-color="#96B6FE" />
+            <stop offset="0.35" stop-color="#1F4BFF" />
+            <stop offset="0.75" stop-color="#3B3FD6" />
+            <stop offset="1" stop-color="#E11D2E" />
+          </radialGradient>
+        </defs>
+
+        <!-- anillos: centro (600,450) -->
+        <g id="rings" fill="none" stroke="#0E1022" stroke-width="3">
+          <ellipse id="ring-out" cx="600" cy="450" rx="520" ry="208" opacity="0.3" />
+          <ellipse id="ring-mid" cx="600" cy="450" rx="385" ry="154" stroke-dasharray="10 12" stroke-linecap="round" opacity="0.3" />
+          <ellipse id="ring-in" cx="600" cy="450" rx="250" ry="100" opacity="0.3" />
+        </g>
+
+        <!-- estelas -->
+        <g id="trails" data-layout-allow-overflow fill="none" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="0.1 14">
+          <path id="trail-win" stroke="#1F4BFF" />
+          <path id="trail-db" stroke="#6692FE" />
+          <path id="trail-bars" stroke="#E11D2E" />
+          <path id="arc-win" stroke="#1F4BFF" />
+          <path id="arc-db" stroke="#6692FE" />
+          <path id="arc-bars" stroke="#E11D2E" />
+        </g>
+
+        <!-- núcleo -->
+        <g id="core">
+          <circle id="halo-2" cx="600" cy="450" r="150" fill="none" stroke="#1F4BFF" stroke-width="3" opacity="0.18" />
+          <circle id="halo-1" cx="600" cy="450" r="125" fill="none" stroke="#1F4BFF" stroke-width="3" opacity="0.38" />
+          <g id="core-body">
+            <circle cx="600" cy="450" r="100" fill="url(#core-grad)" />
+            <text class="ia" x="600" y="474" text-anchor="middle" font-size="64" fill="#FFFFFF">IA</text>
+          </g>
+        </g>
+
+        <!-- objetos (dibujados centrados en 0,0) -->
+        <g id="obj-win" data-layout-allow-overflow>
+          <rect x="-70" y="-50" width="140" height="100" rx="14" fill="#1F4BFF" />
+          <path d="M-70 -20 H70" stroke="#0E1022" stroke-opacity="0.45" stroke-width="3" />
+          <circle cx="-50" cy="-35" r="4.5" fill="#FFFFFF" fill-opacity="0.85" />
+          <circle cx="-36" cy="-35" r="4.5" fill="#FFFFFF" fill-opacity="0.85" />
+          <circle cx="-22" cy="-35" r="4.5" fill="#FFFFFF" fill-opacity="0.85" />
+        </g>
+        <g id="obj-db" data-layout-allow-overflow fill="#0B1F5C" stroke="#0E1022" stroke-width="3" stroke-linejoin="round">
+          <path d="M-60 -34 V34 A60 22 0 0 0 60 34 V-34 Z" />
+          <path d="M-60 -2 A60 22 0 0 0 60 -2" fill="none" />
+          <path d="M-60 16 A60 22 0 0 0 60 16" fill="none" />
+          <ellipse cx="0" cy="-34" rx="60" ry="22" />
+        </g>
+        <g id="obj-bars" data-layout-allow-overflow fill="#E11D2E">
+          <rect x="-51" y="-10" width="28" height="60" rx="5" />
+          <rect x="-14" y="-50" width="28" height="100" rx="5" />
+          <rect x="23" y="-24" width="28" height="74" rx="5" />
+        </g>
+      </svg>
+    </div>
+
+    <script>
+      // ---- geometría precalculada (sin medir el DOM) ----
+      var CX = 600, CY = 450;
+      var RINGS = { win: [520, 208], db: [385, 154], bars: [250, 100] };
+      var ANG = { // grados, sentido horario en pantalla (y hacia abajo)
+        win: [205, 275], db: [320, 390], bars: [135, 205] // 390 = 30° una vuelta después: los tres giran en el mismo sentido
+      };
+      function onRing(k, deg) {
+        var r = deg * Math.PI / 180;
+        return { x: CX + RINGS[k][0] * Math.cos(r), y: CY + RINGS[k][1] * Math.sin(r) };
+      }
+      // trayectorias curvas (Bézier cuadrática) desde fuera del cuadro hasta el anillo
+      var TRAIL = {
+        win: { p0: { x: -60, y: -60 }, p1: { x: 60, y: 120 } },
+        db: { p0: { x: 1260, y: -60 }, p1: { x: 1090, y: 130 } },
+        bars: { p0: { x: 900, y: 960 }, p1: { x: 400, y: 800 } }
+      };
+      function bez(k, u) {
+        var a = TRAIL[k].p0, b = TRAIL[k].p1, c = onRing(k, ANG[k][0]);
+        var m = 1 - u;
+        return { x: m*m*a.x + 2*m*u*b.x + u*u*c.x, y: m*m*a.y + 2*m*u*b.y + u*u*c.y };
+      }
+      function trailD(k, u) { // subcurva [0,u] por De Casteljau
+        var a = TRAIL[k].p0, b = TRAIL[k].p1, c = onRing(k, ANG[k][0]);
+        var q1 = { x: a.x + (b.x - a.x) * u, y: a.y + (b.y - a.y) * u };
+        var q2 = { x: b.x + (c.x - b.x) * u, y: b.y + (c.y - b.y) * u };
+        var e = { x: q1.x + (q2.x - q1.x) * u, y: q1.y + (q2.y - q1.y) * u };
+        return "M" + a.x + " " + a.y + " Q" + q1.x + " " + q1.y + " " + e.x + " " + e.y;
+      }
+      function arcD(k, d0, d1) {
+        var s = onRing(k, d0), e = onRing(k, d1), r = RINGS[k];
+        return "M" + s.x + " " + s.y + " A" + r[0] + " " + r[1] + " 0 0 1 " + e.x + " " + e.y;
+      }
+
+      var KEYS = ["win", "db", "bars"];
+      var EL = {};
+      KEYS.forEach(function (k) {
+        EL[k] = {
+          obj: document.getElementById("obj-" + k),
+          trail: document.getElementById("trail-" + k),
+          arc: document.getElementById("arc-" + k)
+        };
+      });
+
+      // ---- curva de marca: --ease = cubic-bezier(0.22, 1, 0.36, 1) ----
+      function cubicBezier(x1, y1, x2, y2) {
+        function c(a, b, t) { var m = 1 - t; return 3 * m * m * t * a + 3 * m * t * t * b + t * t * t; }
+        return function (p) {
+          if (p <= 0) return 0;
+          if (p >= 1) return 1;
+          var lo = 0, hi = 1, t = p;
+          for (var i = 0; i < 40; i++) {
+            var x = c(x1, x2, t);
+            if (x < p) lo = t; else hi = t;
+            t = (lo + hi) / 2;
+          }
+          return c(y1, y2, t);
+        };
+      }
+      var EASE = cubicBezier(0.22, 1, 0.36, 1);
+
+      // ---- tiempos ----
+      var T_CAP = 3;      // instante en que cada objeto toca su anillo (pose aprobada de la escena 2)
+      var T_POSE1 = 1;    // pose aprobada de la escena 1
+      var T_POSE3 = 5;    // pose aprobada de la escena 3
+      var U1 = { win: 0.7, db: 0.65, bars: 0.6 };
+      var FADE_A = 5.3, FADE_B = 5.85; // salida para cerrar el bucle
+      var TAIL = 40, GAP = 7;          // estela orbital: de θ-40° a θ-7°
+      var PERIOD = 14.1;               // periodo del punteado (0.1 + 14)
+
+      // llegada: u(t) = 1 - (1 - t/3)^p  -> rápido al entrar, frena hasta velocidad 0 en el anillo.
+      // p se despeja para que u(1 s) sea exactamente la pose aprobada.
+      var POW = {};
+      KEYS.forEach(function (k) { POW[k] = Math.log(1 - U1[k]) / Math.log(1 - T_POSE1 / T_CAP); });
+      function arriveU(k, t) { return 1 - Math.pow(1 - t / T_CAP, POW[k]); }
+
+      // órbita: arranca desde reposo (3–4 s, velocidad con smoothstep) y sigue a velocidad angular constante.
+      function orbitG(s) { return s <= 1 ? s * s * s - 0.5 * s * s * s * s : 0.5 + (s - 1); }
+      var OMEGA = {};
+      KEYS.forEach(function (k) { OMEGA[k] = (ANG[k][1] - ANG[k][0]) / orbitG(T_POSE3 - T_CAP); });
+      function orbitDeg(k, t) { return ANG[k][0] + OMEGA[k] * orbitG(t - T_CAP); }
+
+      // longitud de arco de cada elipse (tabla cada 0,5°) para anclar los puntos de la estela al espacio
+      var STEP = 0.5, LEN = {};
+      KEYS.forEach(function (k) {
+        var tab = [0], prev = onRing(k, 0);
+        for (var d = STEP; d <= 720; d += STEP) {
+          var q = onRing(k, d);
+          tab.push(tab[tab.length - 1] + Math.sqrt((q.x - prev.x) * (q.x - prev.x) + (q.y - prev.y) * (q.y - prev.y)));
+          prev = q;
+        }
+        LEN[k] = tab;
+      });
+      function arcLen(k, deg) {
+        var f = deg / STEP, i = Math.floor(f), tab = LEN[k];
+        if (i >= tab.length - 1) return tab[tab.length - 1];
+        return tab[i] + (tab[i + 1] - tab[i]) * (f - i);
+      }
+
+      function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+      function smooth(v) { v = clamp01(v); return v * v * (3 - 2 * v); }
+      function r2(v) { return Math.round(v * 100) / 100; }
+
+      function render(t) {
+        var out = 1 - smooth((t - FADE_A) / (FADE_B - FADE_A));
+        KEYS.forEach(function (k) {
+          var el = EL[k], pos, trailOp, arcOp = 0, u = 1;
+          if (t < T_CAP) {
+            u = arriveU(k, t);
+            pos = bez(k, u);
+            trailOp = t <= 2 ? 0.9 : 0.9 - 0.4 * (t - 2);
+          } else {
+            var th = orbitDeg(k, t);
+            pos = onRing(k, th);
+            trailOp = 0.5 * (1 - smooth((t - T_CAP) / 0.8));
+            var head = th - GAP, tail = Math.max(ANG[k][0], th - TAIL);
+            if (head - tail > 0.5) {
+              var anchor = ANG[k][1] - TAIL; // en la pose de 5 s la fase coincide con la maqueta
+              var D = arcLen(k, anchor) - arcLen(k, tail);
+              var off = ((-D % PERIOD) + PERIOD) % PERIOD;
+              el.arc.setAttribute("d", arcD(k, tail, head));
+              el.arc.setAttribute("stroke-dashoffset", r2(off));
+              arcOp = 0.9 * smooth((t - 3.2) / 0.8) * out;
+            }
+          }
+          el.obj.setAttribute("transform", "translate(" + r2(pos.x) + " " + r2(pos.y) + ")");
+          el.obj.setAttribute("opacity", r2(out));
+          el.trail.setAttribute("d", trailD(k, u));
+          el.trail.setAttribute("opacity", r2(trailOp));
+          el.arc.setAttribute("opacity", r2(arcOp));
+        });
+      }
+
+      // reloj de la pieza: GSAP escribe clock.t en cada seek y el setter dibuja el fotograma
+      var clock = {};
+      var clockT = 0;
+      Object.defineProperty(clock, "t", {
+        get: function () { return clockT; },
+        set: function (v) { clockT = v; render(v); }
+      });
+
+      var ORIGIN = CX + " " + CY;
+      var tl = gsap.timeline({ paused: true });
+      tl.addLabel("escena-1", 0).addLabel("escena-2", 2).addLabel("escena-3", 4);
+
+      // objetos y estelas (0–6 s)
+      tl.fromTo(clock, { t: 0 }, { t: 6, duration: 6, ease: "none" }, 0);
+
+      // Escena 2 · el núcleo captura: los anillos se encienden y los halos se abren
+      tl.fromTo("#rings", { opacity: 0.35 }, { opacity: 1, duration: 0.7, ease: EASE }, "escena-2");
+      tl.fromTo("#halo-1", { opacity: 0.3, scale: 1, svgOrigin: ORIGIN }, { opacity: 0.55, scale: 1.06, svgOrigin: ORIGIN, duration: 0.7, ease: EASE }, "escena-2");
+      tl.fromTo("#halo-2", { opacity: 0.12, scale: 1, svgOrigin: ORIGIN }, { opacity: 0.3, scale: 1.06, svgOrigin: ORIGIN, duration: 0.7, ease: EASE }, "escena-2+=0.06");
+
+      // Escena 3 · un latido: el núcleo golpea a los 4,8 s y la onda llega a los halos a los 5 s
+      tl.fromTo("#core-body", { scale: 1, svgOrigin: ORIGIN }, { scale: 1.05, svgOrigin: ORIGIN, duration: 0.1, ease: "power2.out" }, 4.74);
+      tl.to("#core-body", { scale: 1, duration: 0.16, ease: "power2.inOut" }, 4.84);
+      tl.to("#halo-1", { opacity: 0.5, scale: 1.12, duration: 0.2, ease: "power2.out" }, 4.8);
+      tl.to("#halo-2", { opacity: 0.26, scale: 1.12, duration: 0.2, ease: "power2.out" }, 4.8);
+
+      // vuelta al estado inicial para cerrar el bucle
+      tl.to("#halo-1", { opacity: 0.3, scale: 1, duration: 0.7, ease: "power2.inOut" }, 5.0);
+      tl.to("#halo-2", { opacity: 0.12, scale: 1, duration: 0.7, ease: "power2.inOut" }, 5.06);
+      tl.to("#rings", { opacity: 0.35, duration: 0.55, ease: "power1.inOut" }, FADE_A);
+
+      render(0);
+
+      window.__timelines["stack-tres-cuerpos-noche"] = tl;
+    </script>
+  </body>
+</html>

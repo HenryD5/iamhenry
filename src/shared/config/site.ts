@@ -12,6 +12,6 @@ export const siteConfig = {
     jobTitle: "Software Engineer",
     email: "henrydavidyamunaque@gmail.com",
     linkedIn: "https://www.linkedin.com/in/henry-yamunaque-villegas",
-    whatsapp: null, // Formato esperado: solo dígitos con código de país, sin + ni espacios.
+    whatsapp: "51930724632", // Formato esperado: solo dígitos con código de país, sin + ni espacios.
   },
 } as const;

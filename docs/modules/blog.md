@@ -39,7 +39,7 @@ El esquema `article` vive en el repo, en `studio/schemaTypes/article.ts`:
 | `description` | text | requerido, máx. 160 |
 | `publishedAt` | datetime | requerido |
 | `cover` | image con `hotspot` | `alt` (string) requerido si hay imagen |
-| `body` | array Portable Text | bloques normal, h2 a h4, cita, listas, enlaces, código en línea, imagen con `alt` requerido |
+| `body` | array Portable Text | bloques normal, h2 a h4, cita, listas, enlaces, código en línea, imagen con `alt` requerido y bloque de código (`code` de `@sanity/code-input`: `language`, `filename?`, `code`; añadido 2026-10-14) |
 
 Sin autor (siempre Henry) ni taxonomía hasta unos 12 artículos (decisión del usuario).
 

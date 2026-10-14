@@ -44,7 +44,11 @@ describe("article service", () => {
     await expect(getArticles()).resolves.toEqual([
       expect.objectContaining({ slug: dto.slug }),
     ]);
-    expect(fetchMock).toHaveBeenCalledWith(ARTICLES_QUERY);
+    expect(fetchMock).toHaveBeenCalledWith(
+      ARTICLES_QUERY,
+      {},
+      { cache: "no-store" },
+    );
     expect(cacheLifeMock).toHaveBeenCalledWith("max");
   });
 
@@ -53,9 +57,11 @@ describe("article service", () => {
     await expect(getArticleBySlug(dto.slug)).resolves.toMatchObject({
       slug: dto.slug,
     });
-    expect(fetchMock).toHaveBeenCalledWith(ARTICLE_BY_SLUG_QUERY, {
-      slug: dto.slug,
-    });
+    expect(fetchMock).toHaveBeenCalledWith(
+      ARTICLE_BY_SLUG_QUERY,
+      { slug: dto.slug },
+      { cache: "no-store" },
+    );
   });
 
   it("returns null for a missing detail", async () => {
@@ -66,6 +72,10 @@ describe("article service", () => {
   it("maps the slug query to strings", async () => {
     fetchMock.mockResolvedValue([{ slug: "uno" }, { slug: "dos" }]);
     await expect(getArticleSlugs()).resolves.toEqual(["uno", "dos"]);
-    expect(fetchMock).toHaveBeenCalledWith(ARTICLE_SLUGS_QUERY);
+    expect(fetchMock).toHaveBeenCalledWith(
+      ARTICLE_SLUGS_QUERY,
+      {},
+      { cache: "no-store" },
+    );
   });
 });

@@ -25,7 +25,7 @@ export function AppSectionHeading({
         .join(" ")}
     >
       <div>
-        <p className="font-primary text-body-sm text-primary-500 before:bg-tertiary-500 mb-[1.3rem] inline-flex items-center gap-[.6rem] leading-[1.2] font-semibold before:size-[.55rem] before:rounded-full before:content-['']">
+        <p className="font-primary text-body-sm text-(--accent-text) before:bg-tertiary-500 mb-[1.3rem] inline-flex items-center gap-[.6rem] leading-[1.2] font-semibold before:size-[.55rem] before:rounded-full before:content-['']">
           {eyebrow}
         </p>
         <h2

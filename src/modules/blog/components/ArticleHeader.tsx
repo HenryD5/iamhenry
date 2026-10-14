@@ -14,20 +14,17 @@ interface ArticleHeaderProps {
 }
 
 export function ArticleHeader({ article }: ArticleHeaderProps) {
-  const isUpdated = wasArticleUpdated(
-    article.publishedAt,
-    article.updatedAt,
-  );
+  const isUpdated = wasArticleUpdated(article.publishedAt, article.updatedAt);
 
   return (
     <header className="mx-auto max-w-[52rem] pt-16 pb-10 max-md:pt-10 max-md:pb-7">
       <Link
         href={BLOG_PATH}
-        className="text-body-sm text-fg-muted hover:text-primary-500 focus-visible:text-primary-500 mb-9 flex w-fit font-semibold no-underline transition-colors duration-[var(--duration-fast)]"
+        className="text-body-sm text-fg-muted mb-9 flex w-fit font-semibold no-underline transition-colors duration-[var(--duration-fast)] hover:text-(--accent-text) focus-visible:text-(--accent-text)"
       >
         {blogMessages.article.back}
       </Link>
-      <p className="font-primary text-body-sm text-primary-500 before:bg-tertiary-500 mb-[1.3rem] inline-flex items-center gap-[.6rem] leading-[1.2] font-semibold before:size-[.55rem] before:rounded-full before:content-['']">
+      <p className="font-primary text-body-sm before:bg-tertiary-500 mb-[1.3rem] inline-flex items-center gap-[.6rem] leading-[1.2] font-semibold text-(--accent-text) before:size-[.55rem] before:rounded-full before:content-['']">
         {blogMessages.common.eyebrow}
       </p>
       <h1 className="text-h1 text-balance">{article.title}</h1>
@@ -36,17 +33,19 @@ export function ArticleHeader({ article }: ArticleHeaderProps) {
       </p>
       <div className="border-line text-body-sm text-fg-muted mt-8 flex flex-wrap items-center gap-x-[1.2rem] gap-y-[.6rem] border-t pt-[1.4rem]">
         <b className="text-fg font-semibold">{siteConfig.person.name}</b>
-        <span
-          className="bg-neutral-400 size-[.3rem] rounded-full"
-          aria-hidden="true"
-        />
-        <time dateTime={article.publishedAt}>
-          {formatArticleDetailDate(article.publishedAt)}
-        </time>
+        <span className="inline-flex items-center gap-x-[1.2rem] whitespace-nowrap">
+          <span
+            className="size-[.3rem] rounded-full bg-neutral-400 max-md:hidden"
+            aria-hidden="true"
+          />
+          <time dateTime={article.publishedAt}>
+            {formatArticleDetailDate(article.publishedAt)}
+          </time>
+        </span>
         {isUpdated ? (
-          <>
+          <span className="inline-flex items-center gap-x-[1.2rem] whitespace-nowrap">
             <span
-              className="bg-neutral-400 size-[.3rem] rounded-full"
+              className="size-[.3rem] rounded-full bg-neutral-400 max-md:hidden"
               aria-hidden="true"
             />
             <span>
@@ -55,7 +54,7 @@ export function ArticleHeader({ article }: ArticleHeaderProps) {
                 formatArticleDetailDate(article.updatedAt),
               )}
             </span>
-          </>
+          </span>
         ) : null}
       </div>
     </header>

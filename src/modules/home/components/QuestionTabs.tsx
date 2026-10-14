@@ -31,16 +31,16 @@ export function QuestionTabs({
     label: item.prompt,
     contentClassName: "grid gap-[1.1rem]",
     triggerClassName:
-      "!rounded-full !border !border-line !px-4 !py-[.65rem] !font-primary !text-body-sm !leading-none !font-medium !normal-case !text-secondary-100 !shadow-none hover:!bg-[color-mix(in_srgb,var(--fg)_9%,transparent)] hover:!text-white focus-visible:!text-white data-[selected]:!border-primary-400 data-[selected]:!text-white data-[selected]:hover:!text-white data-[selected]:focus-visible:!text-white data-[selected]:!shadow-[0_0_var(--glow-size)_color-mix(in_srgb,var(--primary-500)_var(--glow-strength),transparent)]",
+      "!rounded-full !border !border-line !px-4 !py-[.65rem] !font-primary !text-body-sm !leading-none !font-medium !normal-case !text-fg !shadow-none hover:!bg-[color-mix(in_srgb,var(--fg)_9%,transparent)] hover:!text-fg focus-visible:!text-fg data-[selected]:!border-primary-400 data-[selected]:!text-fg data-[selected]:hover:!text-fg data-[selected]:focus-visible:!text-fg data-[selected]:!shadow-[0_0_var(--glow-size)_color-mix(in_srgb,var(--primary-500)_var(--glow-strength),transparent)]",
     content: (
       <>
         <div className="bg-primary-500 font-primary text-body justify-self-end rounded-[1.2rem_1.2rem_.3rem_1.2rem] px-[1.2rem] py-[.85rem] leading-[1.3] font-medium text-white">
           {item.prompt}
         </div>
-        <div className="border-line bg-surface-raised text-body text-secondary-100 rounded-[.3rem_1.2rem_1.2rem_1.2rem] border px-6 py-[1.4rem] leading-[var(--leading-body)]">
+        <div className="border-line bg-surface-raised text-body text-fg rounded-[.3rem_1.2rem_1.2rem_1.2rem] border px-6 py-[1.4rem] leading-[var(--leading-body)]">
           {item.emphasis ? (
             <>
-              <b className="font-semibold text-white">{item.emphasis}</b>{" "}
+              <b className="text-fg font-semibold">{item.emphasis}</b>{" "}
             </>
           ) : null}
           {item.answer}
@@ -54,7 +54,7 @@ export function QuestionTabs({
                 <small className="text-caption text-fg-muted block">
                   {card.label}
                 </small>
-                <strong className="font-secondary text-[1.12rem] leading-[1.25] font-extrabold tracking-[-.01em] text-white">
+                <strong className="font-secondary text-fg text-[1.12rem] leading-[1.25] font-extrabold tracking-[-.01em]">
                   {card.value}
                 </strong>
               </div>

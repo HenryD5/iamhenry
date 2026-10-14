@@ -1,0 +1,241 @@
+{
+  "version": 1,
+  "historyId": "ca9d141a-1a4c-4e72-be97-87a8a19ec391",
+  "currentRevision": "187890f3-94ea-41ed-84a3-e4294d49e9d4",
+  "pendingChanges": false,
+  "files": {
+    "AGENTS.md": {
+      "hash": "1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5",
+      "content": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/1d/1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5"
+    },
+    "CLAUDE.md": {
+      "hash": "1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5",
+      "content": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/1d/1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5"
+    },
+    "assets/gsap.min.js": {
+      "hash": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+      "content": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/92/92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb"
+    },
+    "assets/manrope.woff2": {
+      "hash": "e310b55a7fd9677f5e3555e6c6c4d064fa1f1d24393f0ddbe217cea12a8c432f",
+      "content": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/e3/e310b55a7fd9677f5e3555e6c6c4d064fa1f1d24393f0ddbe217cea12a8c432f"
+    },
+    "hyperframes.json": {
+      "hash": "53dbce1e19aa713cbb12ee0bc4d206143b45ab15e6ffbfcaa8f69572d4d24d50",
+      "content": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/53/53dbce1e19aa713cbb12ee0bc4d206143b45ab15e6ffbfcaa8f69572d4d24d50"
+    },
+    "index.html": {
+      "hash": "20770d4af688630166c0cecc888a04718c1518af7e42b4db7db872ab18c264e0",
+      "content": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/20/20770d4af688630166c0cecc888a04718c1518af7e42b4db7db872ab18c264e0"
+    },
+    "meta.json": {
+      "hash": "f0f2e19e310077ab642f7a10b1dceb24118fd97d3546e4d34517256c3db6b6b9",
+      "content": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/f0/f0f2e19e310077ab642f7a10b1dceb24118fd97d3546e4d34517256c3db6b6b9"
+    },
+    "package.json": {
+      "hash": "bdd6a764c0d724b87f35cbcbc60580055b559731c78b8c49f0517f573113e725",
+      "content": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/bd/bdd6a764c0d724b87f35cbcbc60580055b559731c78b8c49f0517f573113e725"
+    },
+    "maqueta.html": {
+      "hash": "3e5d4b15c62debc1eede8f13c338cf0a96491ded17147d19db6c449f6640763a",
+      "content": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/3e/3e5d4b15c62debc1eede8f13c338cf0a96491ded17147d19db6c449f6640763a"
+    },
+    "maqueta/contact-sheet.jpg": {
+      "hash": "67099c0832897f79c06cbe22eb58537a04093e3df73e001fdbfec57e1c74278f",
+      "content": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/67/67099c0832897f79c06cbe22eb58537a04093e3df73e001fdbfec57e1c74278f"
+    },
+    "maqueta/frame-00-at-1s.png": {
+      "hash": "ca1d7aa273c1c5052e3b14949892f0b9776d02a30a182476c662a7a02f7da174",
+      "content": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/ca/ca1d7aa273c1c5052e3b14949892f0b9776d02a30a182476c662a7a02f7da174"
+    },
+    "maqueta/frame-01-at-3s.png": {
+      "hash": "ecfce6cf95cc67a0c0a47fae10f2f7671bd8e5d58564e0fde91dfd4d825cb765",
+      "content": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/ec/ecfce6cf95cc67a0c0a47fae10f2f7671bd8e5d58564e0fde91dfd4d825cb765"
+    },
+    "maqueta/frame-02-at-5s.png": {
+      "hash": "865e864be9b36a5f5df7f61e3440d29c92984e944cb0b314f4f89a02bf50f9f3",
+      "content": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/86/865e864be9b36a5f5df7f61e3440d29c92984e944cb0b314f4f89a02bf50f9f3"
+    },
+    "maqueta/frame-03-at-5.82s.png": {
+      "hash": "854f2a6d896ee8025233fff5eb6143688c59474bd6d16ca70cca217e5265cc93",
+      "content": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/85/854f2a6d896ee8025233fff5eb6143688c59474bd6d16ca70cca217e5265cc93"
+    }
+  },
+  "revisions": {
+    "187890f3-94ea-41ed-84a3-e4294d49e9d4": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1791960811203,
+      "endedAt": 1791960811214,
+      "files": {
+        "maqueta.html": {
+          "before": null,
+          "after": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/3e/3e5d4b15c62debc1eede8f13c338cf0a96491ded17147d19db6c449f6640763a"
+        },
+        "maqueta/contact-sheet.jpg": {
+          "before": null,
+          "after": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/67/67099c0832897f79c06cbe22eb58537a04093e3df73e001fdbfec57e1c74278f"
+        },
+        "maqueta/frame-00-at-1s.png": {
+          "before": null,
+          "after": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/ca/ca1d7aa273c1c5052e3b14949892f0b9776d02a30a182476c662a7a02f7da174"
+        },
+        "maqueta/frame-01-at-3s.png": {
+          "before": null,
+          "after": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/ec/ecfce6cf95cc67a0c0a47fae10f2f7671bd8e5d58564e0fde91dfd4d825cb765"
+        },
+        "maqueta/frame-02-at-5s.png": {
+          "before": null,
+          "after": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/86/865e864be9b36a5f5df7f61e3440d29c92984e944cb0b314f4f89a02bf50f9f3"
+        },
+        "maqueta/frame-03-at-5.82s.png": {
+          "before": null,
+          "after": "/Users/henryd5/.cache/hyperframes/history/ca9d141a-1a4c-4e72-be97-87a8a19ec391/blobs/85/854f2a6d896ee8025233fff5eb6143688c59474bd6d16ca70cca217e5265cc93"
+        }
+      }
+    }
+  },
+  "checks": {
+    "latest": {
+      "revision": "187890f3-94ea-41ed-84a3-e4294d49e9d4",
+      "id": "d8e692da-4265-4b7e-a198-f857ef033e57"
+    },
+    "revisions": {
+      "187890f3-94ea-41ed-84a3-e4294d49e9d4": [
+        {
+          "id": "d8e692da-4265-4b7e-a198-f857ef033e57",
+          "scope": "project",
+          "report": "/Users/henryd5/Documents/AI Projects/iamhenry/motion/stack-tres-cuerpos-noche/.hyperframes/artifacts/checks/d8e692da-4265-4b7e-a198-f857ef033e57.json",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 3000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1791960816973,
+          "contentHash": "d07a3e2c0241a841421a9d454ff1dd67f16535d5abe3cc48dfc2f98c206a1662",
+          "revision": "187890f3-94ea-41ed-84a3-e4294d49e9d4",
+          "inputFingerprint": "d1272082d8775d0beb0bfbbe98f3d69e003ce96a8d350573deec1d5fd3b58c53",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
+      ]
+    },
+    "unversioned": []
+  },
+  "snapshots": {
+    "latest": {
+      "revision": null,
+      "id": "5849f0ca-8496-4986-bcfa-74c99e86c787-3"
+    },
+    "revisions": {},
+    "unversioned": [
+      {
+        "scope": "full",
+        "id": "5849f0ca-8496-4986-bcfa-74c99e86c787-0",
+        "image": "/Users/henryd5/Documents/AI Projects/iamhenry/motion/stack-tres-cuerpos-noche/maqueta/frame-00-at-1s.png",
+        "time": 1,
+        "metadata": {
+          "width": 1200,
+          "height": 900,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791960687681,
+        "contentHash": "ca1d7aa273c1c5052e3b14949892f0b9776d02a30a182476c662a7a02f7da174",
+        "revision": null,
+        "inputFingerprint": "9a059145b0f99b266dd16a01e643417eaa99e3a766693149f31e17d6c997c400",
+        "inputScope": "local-project-files",
+        "attribution": "inputs-changed"
+      },
+      {
+        "scope": "full",
+        "id": "5849f0ca-8496-4986-bcfa-74c99e86c787-1",
+        "image": "/Users/henryd5/Documents/AI Projects/iamhenry/motion/stack-tres-cuerpos-noche/maqueta/frame-01-at-3s.png",
+        "time": 3,
+        "metadata": {
+          "width": 1200,
+          "height": 900,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791960687681,
+        "contentHash": "ecfce6cf95cc67a0c0a47fae10f2f7671bd8e5d58564e0fde91dfd4d825cb765",
+        "revision": null,
+        "inputFingerprint": "9a059145b0f99b266dd16a01e643417eaa99e3a766693149f31e17d6c997c400",
+        "inputScope": "local-project-files",
+        "attribution": "inputs-changed"
+      },
+      {
+        "scope": "full",
+        "id": "5849f0ca-8496-4986-bcfa-74c99e86c787-2",
+        "image": "/Users/henryd5/Documents/AI Projects/iamhenry/motion/stack-tres-cuerpos-noche/maqueta/frame-02-at-5s.png",
+        "time": 5,
+        "metadata": {
+          "width": 1200,
+          "height": 900,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791960687681,
+        "contentHash": "865e864be9b36a5f5df7f61e3440d29c92984e944cb0b314f4f89a02bf50f9f3",
+        "revision": null,
+        "inputFingerprint": "9a059145b0f99b266dd16a01e643417eaa99e3a766693149f31e17d6c997c400",
+        "inputScope": "local-project-files",
+        "attribution": "inputs-changed"
+      },
+      {
+        "scope": "full",
+        "id": "5849f0ca-8496-4986-bcfa-74c99e86c787-3",
+        "image": "/Users/henryd5/Documents/AI Projects/iamhenry/motion/stack-tres-cuerpos-noche/maqueta/frame-03-at-5.82s.png",
+        "time": 5.82,
+        "metadata": {
+          "width": 1200,
+          "height": 900,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791960687681,
+        "contentHash": "854f2a6d896ee8025233fff5eb6143688c59474bd6d16ca70cca217e5265cc93",
+        "revision": null,
+        "inputFingerprint": "9a059145b0f99b266dd16a01e643417eaa99e3a766693149f31e17d6c997c400",
+        "inputScope": "local-project-files",
+        "attribution": "inputs-changed"
+      }
+    ]
+  },
+  "renders": {
+    "latest": {
+      "id": "386267c0-0e0a-4b49-8f8b-de5744c8f71e",
+      "completedAt": 1791960882105,
+      "output": "/Users/henryd5/Documents/AI Projects/iamhenry/motion/renders-stack-tres-cuerpos-noche",
+      "status": "completed",
+      "revision": "187890f3-94ea-41ed-84a3-e4294d49e9d4"
+    },
+    "retainedRevisions": [
+      "187890f3-94ea-41ed-84a3-e4294d49e9d4"
+    ]
+  },
+  "pendingArtifactCleanup": []
+}

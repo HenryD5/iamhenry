@@ -63,7 +63,7 @@ export async function AppFooter() {
               {sections.map((item) => (
                 <li className="m-0" key={item.href}>
                   <Link
-                    className="text-fg hover:text-primary-300 focus-visible:text-primary-300 no-underline transition-colors duration-[var(--duration-fast)]"
+                    className="text-fg hover:text-(--accent-text) focus-visible:text-(--accent-text) no-underline transition-colors duration-[var(--duration-fast)]"
                     href={item.href}
                   >
                     {item.label}
@@ -80,7 +80,7 @@ export async function AppFooter() {
               <li className="m-0 flex items-center gap-[.7rem]">
                 <AppIcon name="email" />
                 <a
-                  className="text-fg hover:text-primary-300 focus-visible:text-primary-300 break-all no-underline transition-colors duration-[var(--duration-fast)]"
+                  className="text-fg hover:text-(--accent-text) focus-visible:text-(--accent-text) break-all no-underline transition-colors duration-[var(--duration-fast)]"
                   href={`mailto:${siteConfig.person.email}`}
                 >
                   {siteConfig.person.email}
@@ -89,7 +89,7 @@ export async function AppFooter() {
               <li className="m-0 flex items-center gap-[.7rem]">
                 <AppIcon name="linkedin" />
                 <a
-                  className="text-fg hover:text-primary-300 focus-visible:text-primary-300 no-underline transition-colors duration-[var(--duration-fast)]"
+                  className="text-fg hover:text-(--accent-text) focus-visible:text-(--accent-text) no-underline transition-colors duration-[var(--duration-fast)]"
                   href={siteConfig.person.linkedIn}
                 >
                   {translate("footer.linkedIn")}
@@ -107,7 +107,7 @@ export async function AppFooter() {
           aria-hidden="true"
         >
           {translate("footer.giantOutline")}{" "}
-          <b className="text-secondary-400 font-extrabold [-webkit-text-stroke:0]">
+          <b className="text-surface-raised font-extrabold [-webkit-text-stroke:0]">
             {translate("footer.giantSolid")}
           </b>
         </div>

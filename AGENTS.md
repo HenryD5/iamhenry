@@ -2,7 +2,7 @@
 
 ## Proyecto y stack
 
-Web SSG con Next.js 16.4 App Router, React 19.3, TypeScript 6 estricto, Tailwind CSS 4, Ark UI React 5.39, next-intl 4, Zod 4, Vitest 5 y Testing Library. El blog usa Sanity como fuente remota exclusivamente desde el servidor. pnpm 9 y Node 22. No hay API, auth, store, TanStack Query ni MSW.
+Web SSG con Next.js 16.4 App Router, React 19.3, TypeScript 6 estricto, Tailwind CSS 4, Ark UI React 5.39, next-intl 4, Zod 4, Vitest 5 y Testing Library. `@next/third-parties` se usa solo para GTM en el layout raíz. El blog usa Sanity como fuente remota exclusivamente desde el servidor. pnpm 9 y Node 22. No hay API, auth, store, TanStack Query ni MSW.
 
 ## Arquitectura
 

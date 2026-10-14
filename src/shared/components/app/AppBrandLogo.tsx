@@ -30,7 +30,7 @@ export function AppBrandLogo({
     </>
   );
   const className =
-    "mr-auto flex shrink-0 items-center gap-[.7rem] font-secondary text-h4 leading-none font-extrabold tracking-[-.03em] text-fg no-underline transition-colors duration-[var(--duration-fast)] hover:text-primary-500 focus-visible:text-primary-500 max-md:text-[1.4rem]";
+    "mr-auto flex shrink-0 items-center gap-[.7rem] font-secondary text-h4 leading-none font-extrabold tracking-[-.03em] text-fg no-underline transition-colors duration-[var(--duration-fast)] hover:text-(--accent-text) focus-visible:text-(--accent-text) max-md:text-[1.4rem]";
   return asLink ? (
     <Link className={className} href="/#inicio">
       {logo}

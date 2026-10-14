@@ -4,6 +4,8 @@
 |---|---|---|---|---|---|---|---|
 | stack-tres-cuerpos | 3 Stack | `public/media/stack-tres-cuerpos.webm`, `.mp4`, `.webp` (póster, fotograma de 5 s) | 1200x900 | 6 s, 30 fps | sí | webm 696 KB · mp4 770 KB · webp 21 KB | maqueta aprobada · entregada |
 | hero-orbita | 1 Hero | `public/media/hero-orbita.webm`, `.mp4`, `.webp` (póster, fotograma de 4,8 s: todos los planetas en órbita, sin nave) | 1920x1080 | 8 s, 30 fps | sí | webm 1138 KB · mp4 1155 KB · webp 55 KB | maqueta aprobada · entregada |
+| hero-orbita-noche | 1 Hero (noche) | `public/media/hero-orbita-noche.webm`, `.mp4`, `.webp` (póster, 4,8 s) | 1920x1080 | 8 s, 30 fps | sí | webm 1055 KB · mp4 1153 KB · webp 51 KB | maqueta aprobada · entregada |
+| stack-tres-cuerpos-noche | 3 Stack (noche) | `public/media/stack-tres-cuerpos-noche.webm`, `.mp4`, `.webp` (póster, 5 s) | 1200x900 | 6 s, 30 fps | sí | webm 353 KB · mp4 329 KB · webp 21 KB | maqueta aprobada · entregada |
 
 Notas de `stack-tres-cuerpos`:
 
@@ -20,6 +22,10 @@ Notas de `hero-orbita`:
 - Geometría para colocarlo: núcleo en el centro exacto (50 % / 50 %); anillo exterior del 9,375 % al 90,625 % del ancho (81,25 %) y del 16,2 % al 83,8 % del alto (67,6 %). El video sustituye al resplandor difuso de `HeroSection.tsx`.
 - Decorativa (`aria-hidden`): los nombres de las tecnologías deben seguir en el DOM de la sección.
 - Fuente de la composición: `motion/hero-orbita/index.html`. Lo aprobado: `maqueta.html` y `maqueta/`. Revisión del resultado: `final-check/contact-sheet.jpg`.
+
+Notas de las piezas `-noche`: misma composición, duración y bucle que las de día; codificadas igual (png-sequence + ffmpeg, BT.709, sin audio). `hero-orbita-noche` va opaca sobre #0E1022 (borde medido #0E1122 en los 240 fotogramas, el +1 es el redondeo YUV) y `stack-tres-cuerpos-noche` sobre #F6F5FB (medido #F6F5FC, igual que las de día). Primer y último fotograma idénticos en origen. Fuente: `motion/<nombre>/index.html`; aprobado: `maqueta.html`; revisión: `final-check/`.
+
+Integración en noche: el mismo componente de video recibe `MEDIA_BASE` según el tema. Se montan los dos `<video>` (día y noche) y se oculta uno con CSS, o se elige el `basePath` leyendo `data-theme` de `<html>`. Con CSS, sin cambiar el componente: el de día con `[[data-theme=night]_&]:hidden` y el de noche con `hidden [[data-theme=night]_&]:block`. Solo el visible carga fuentes (`preload="none"`); con `display:none` el IntersectionObserver no lo reproduce, y con movimiento reducido no hay `<source>`.
 
 ## Integración (Next.js, isla cliente)
 

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Manrope";
+        src: url("assets/manrope.woff2") format("woff2");
+        font-weight: 200 800;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #0e1022; }
+      #root { position: relative; width: 100%; height: 100%; background: #0e1022; overflow: hidden; }
+      #glow { position: absolute; inset: 0; background: #0e1022 url("assets/glow.png") 0 0 / 100% 100% no-repeat; }
+      svg { position: absolute; inset: 0; display: block; }
+      .mx { font-family: "Manrope", sans-serif; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="hero-orbita-noche" data-start="0" data-width="1920" data-height="1080" data-duration="8">
+      <div id="glow"></div>
+      <svg id="art" width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="core-grad" cx="30%" cy="24%" r="95%">
+            <stop offset="0" stop-color="#FFFFFF" />
+            <stop offset="0.16" stop-color="#96B6FE" />
+            <stop offset="0.46" stop-color="#1F4BFF" />
+            <stop offset="1" stop-color="#E11D2E" />
+          </radialGradient>
+          <radialGradient id="ia-grad" cx="30%" cy="26%" r="95%">
+            <stop offset="0" stop-color="#96B6FE" />
+            <stop offset="0.45" stop-color="#1F4BFF" />
+            <stop offset="1" stop-color="#E11D2E" />
+          </radialGradient>
+          <linearGradient id="trail-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#E11D2E" />
+            <stop offset="1" stop-color="#1F4BFF" />
+          </linearGradient>
+          <mask id="mid-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+            <ellipse id="ring-mid-reveal" cx="960" cy="540" rx="556" ry="262" fill="none" stroke="#FFFFFF" stroke-width="14" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" />
+          </mask>
+        </defs>
+
+        <!-- anillos: centro (960,540) -->
+        <g id="rings" fill="none" stroke="#F6F5FB" stroke-width="3">
+          <ellipse id="ring-out" cx="960" cy="540" rx="780" ry="365" stroke-opacity="0.34" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" />
+          <g id="ring-mid-wrap" mask="url(#mid-mask)">
+            <ellipse id="ring-mid" cx="960" cy="540" rx="556" ry="262" stroke-opacity="0.30" stroke-dasharray="6 14" stroke-linecap="round" />
+          </g>
+          <ellipse id="ring-in" cx="960" cy="540" rx="342" ry="158" stroke-opacity="0.24" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" />
+        </g>
+
+        <g id="back-layer"></g>
+
+        <!-- núcleo -->
+        <g id="core">
+          <circle id="halo-2" cx="960" cy="540" r="168" fill="none" stroke="#6692FE" stroke-width="3" stroke-opacity="0.22" />
+          <circle id="halo-1" cx="960" cy="540" r="146" fill="none" stroke="#6692FE" stroke-width="3" stroke-opacity="0.45" />
+          <g id="core-body">
+            <circle cx="960" cy="540" r="124" fill="url(#core-grad)" />
+            <text class="mx" x="960" y="566" text-anchor="middle" font-size="76" font-weight="800" fill="#FFFFFF">IA</text>
+          </g>
+        </g>
+
+        <g id="front-layer"></g>
+
+        <!-- estela y nave -->
+        <path id="trail" opacity="0" fill="none" stroke="url(#trail-grad)" stroke-width="12" stroke-linecap="round" />
+        <g id="ship" opacity="0">
+          <g transform="scale(2.7) translate(-32 -32)">
+            <path d="M32 3c9 7 13 17 13 28v11H19V31C19 20 23 10 32 3z" fill="#1F4BFF" />
+            <circle cx="32" cy="24" r="5.5" fill="#0E1022" />
+            <path d="M19 32 9 44v7l10-5zM45 32l10 12v7l-10-5z" fill="#F6F5FB" />
+            <path d="M25 45h14l-7 16z" fill="#E11D2E" />
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <script>
+      var CX = 960, CY = 540;
+      var RINGS = { outer: [780, 365], middle: [556, 262], inner: [342, 158] };
+      // datos de src/modules/home/content/hero.content.ts
+      var TECH = [
+        ["Vue", "V", "software", "front", "outer", 152.984761],
+        ["React", "R", "software", "front", "outer", 27.015239],
+        ["TypeScript", "TS", "software", "front", "middle", 115.988364],
+        ["Node.js", "No", "software", "front", "middle", 64.011636],
+        ["Nuxt", "Nu", "software", "middle", "outer", 200.005482],
+        ["JavaScript", "JS", "software", "middle", "outer", 339.994518],
+        ["Angular", "A", "software", "back", "outer", 248.004783],
+        ["Next.js", "Nx", "software", "back", "outer", 291.995217],
+        ["NestJS", "Ne", "software", "middle", "middle", 215.015069],
+        ["MongoDB", "Mo", "software", "middle", "middle", 324.984931],
+        ["Python", "Py", "automation", "back", "middle", 270],
+        ["n8n", "n8", "automation", "middle", "inner", 180],
+        ["Agentes IA", "IA", "automation", "middle", "inner", 0]
+      ];
+      var NS = "http://www.w3.org/2000/svg";
+      function el(tag, attrs, parent) {
+        var e = document.createElementNS(NS, tag);
+        for (var k in attrs) e.setAttribute(k, attrs[k]);
+        if (parent) parent.appendChild(e);
+        return e;
+      }
+      function depthScale(rad) { return 0.82 + ((Math.sin(rad) + 1) / 2) * 0.3; }
+
+      // planeta = píldora blanca con círculo de inicial, dibujada con el centro en (0,0)
+      var PL = TECH.map(function (t) {
+        var front = t[3] === "front";
+        var d = front ? 82 : 58;       // diámetro del círculo
+        var fs = front ? 38 : 28;      // tamaño del nombre
+        var isn = front ? 30 : 22;     // tamaño de la inicial
+        var pad = front ? 10 : 7;
+        var textW = t[0].length * fs * 0.6;
+        var w = pad + d + 16 + textW + (front ? 34 : 26);
+        var h = d + pad * 2;
+        var g = el("g", { "data-name": t[0] }, null);
+        if (front) el("rect", { x: -w / 2, y: -h / 2 + 8, width: w, height: h, rx: h / 2, fill: "#0B0D1C", "fill-opacity": 0.6 }, g);
+        el("rect", { x: -w / 2, y: -h / 2, width: w, height: h, rx: h / 2, fill: "#191C36", stroke: "#F6F5FB", "stroke-opacity": front ? 0.22 : 0.14, "stroke-width": 2 }, g);
+        var cx = -w / 2 + pad + d / 2;
+        var fill = t[0] === "Agentes IA" ? "url(#ia-grad)" : t[2] === "automation" ? "#0B1F5C" : "#1F4BFF";
+        var c = el("circle", { cx: cx, cy: 0, r: d / 2, fill: fill }, g);
+        if (t[2] === "automation" && t[0] !== "Agentes IA") { c.setAttribute("stroke", "#6692FE"); c.setAttribute("stroke-width", 2); }
+        var i = el("text", { class: "mx", x: cx, y: isn * 0.36, "text-anchor": "middle", "font-size": isn, "font-weight": 800, fill: "#FFFFFF" }, g);
+        i.textContent = t[1];
+        var n = el("text", { class: "mx", x: cx + d / 2 + 16, y: fs * 0.36, "font-size": fs, "font-weight": front ? 700 : 600, fill: "#F6F5FB" }, g);
+        n.textContent = t[0];
+        return { g: g, t: t };
+      });
+      var back = document.getElementById("back-layer"), frontL = document.getElementById("front-layer");
+      // trayectoria de la nave: Bézier cuadrática de izquierda a derecha, subiendo; pasa por debajo de las píldoras del frente
+      var P0 = { x: -120, y: 985 }, P1 = { x: 900, y: 1000 }, P2 = { x: 2040, y: 870 };
+      function bz(u) {
+        var m = 1 - u;
+        return { x: m * m * P0.x + 2 * m * u * P1.x + u * u * P2.x, y: m * m * P0.y + 2 * m * u * P1.y + u * u * P2.y };
+      }
+      function bzAngle(u) {
+        var dx = 2 * (1 - u) * (P1.x - P0.x) + 2 * u * (P2.x - P1.x);
+        var dy = 2 * (1 - u) * (P1.y - P0.y) + 2 * u * (P2.y - P1.y);
+        return Math.atan2(dx, -dy) * 180 / Math.PI;
+      }
+      function sub(u0, u1) { // trazo de la curva entre u0 y u1 (muestreado, 24 tramos)
+        var d = "";
+        for (var i = 0; i <= 24; i++) { var q = bz(u0 + (u1 - u0) * i / 24); d += (i ? "L" : "M") + q.x.toFixed(1) + " " + q.y.toFixed(1); }
+        return d;
+      }
+
+      // ---------- movimiento: todo es función pura del tiempo t (0–8 s) ----------
+      function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+      function prog(t, start, dur) { return clamp01((t - start) / dur); }
+      function bezierEase(x1, y1, x2, y2) { // cubic-bezier de CSS, resuelta por bisección
+        return function (p) {
+          if (p <= 0) return 0; if (p >= 1) return 1;
+          var lo = 0, hi = 1, u = 0.5;
+          for (var i = 0; i < 40; i++) {
+            u = (lo + hi) / 2;
+            var x = 3 * (1 - u) * (1 - u) * u * x1 + 3 * (1 - u) * u * u * x2 + u * u * u;
+            if (x < p) lo = u; else hi = u;
+          }
+          return 3 * (1 - u) * (1 - u) * u * y1 + 3 * (1 - u) * u * u * y2 + u * u * u;
+        };
+      }
+      var EASE = bezierEase(0.22, 1, 0.36, 1);                 // --ease del theme.css (interfaz: seco)
+      function inOut(p) { return p < 0.5 ? 2 * p * p : 1 - 2 * (1 - p) * (1 - p); } // trazos y fundidos
+      function settle(p) {                                      // llega con inercia, se pasa ~5 % y se asienta
+        if (p <= 0) return 0; if (p >= 1) return 1;
+        return 1 - Math.exp(-4.5 * p) * Math.cos(5 * p) * (1 - p);
+      }
+      function f3(v) { return (Math.round(v * 1000) / 1000).toString(); }
+
+      // orden de entrada: del anillo interior al exterior y, dentro de cada anillo, por ángulo
+      var RING_ORDER = { inner: 0, middle: 1, outer: 2 };
+      PL.slice().sort(function (a, b) {
+        return (RING_ORDER[a.t[4]] - RING_ORDER[b.t[4]]) || (a.t[5] - b.t[5]);
+      }).forEach(function (p, k) { p.k = k; });
+
+      var T = {
+        coreOn: [0.05, 0.6], halo1: [0.25, 0.5], halo2: [0.37, 0.5],
+        ringIn: [0.4, 0.7], ringMid: [0.75, 0.8], ringOut: [1.1, 0.85],
+        enter: 2.0, enterStagger: 0.1, enterDur: 1.2, enterSweep: 75,
+        ship: [5.0, 1.75], trailLag: 0.52, trailOut: [6.55, 0.4],
+        planetsOut: [7.5, 0.3], planetsOutStagger: 0, ringsOut: [7.55, 0.3], coreOff: [7.6, 0.3]
+      };
+      function turn(t) { return 4.5 * (t - 3.75); }            // giro continuo, 4,5°/s (0° en 3,75 s)
+
+      var $ = function (id) { return document.getElementById(id); };
+      var coreBody = $("core-body"), halo1 = $("halo-1"), halo2 = $("halo-2");
+      var ringIn = $("ring-in"), ringOut = $("ring-out"), ringMidWrap = $("ring-mid-wrap"), ringMidReveal = $("ring-mid-reveal");
+      var ship = $("ship"), trail = $("trail"), trailGrad = $("trail-grad");
+      function aboutCore(s) { return "translate(" + f3(CX * (1 - s)) + " " + f3(CY * (1 - s)) + ") scale(" + f3(s) + ")"; }
+
+      // nave: aparece dentro del lienzo, acelera y cruza a velocidad constante (no toca los bordes)
+      var U0 = 0.10, U1 = 0.90, ACC = 0.4;
+      function shipU(t) {
+        var q = prog(t, T.ship[0], T.ship[1]);
+        var g = q < ACC ? (q * q) / (2 * ACC) : q - ACC / 2;
+        return U0 + (U1 - U0) * g / (1 - ACC / 2);
+      }
+
+      var orderKey = "";
+      function render(t) {
+        // núcleo: atenuado en 0 s, se enciende; nunca desaparece
+        var off = inOut(prog(t, T.coreOff[0], T.coreOff[1]));
+        var on = EASE(prog(t, T.coreOn[0], T.coreOn[1])) * (1 - off);
+        coreBody.setAttribute("transform", aboutCore(0.84 + 0.16 * on));
+        coreBody.setAttribute("opacity", f3(0.55 + 0.45 * on));
+        var h1 = EASE(prog(t, T.halo1[0], T.halo1[1])) * (1 - off), h2 = EASE(prog(t, T.halo2[0], T.halo2[1])) * (1 - off);
+        halo1.setAttribute("transform", aboutCore(0.86 + 0.14 * h1)); halo1.setAttribute("opacity", f3(h1));
+        halo2.setAttribute("transform", aboutCore(0.86 + 0.14 * h2)); halo2.setAttribute("opacity", f3(h2));
+
+        // anillos: se dibujan por su trazo, del interior al exterior
+        var rf = 1 - inOut(prog(t, T.ringsOut[0], T.ringsOut[1]));
+        var dIn = inOut(prog(t, T.ringIn[0], T.ringIn[1])), dMid = inOut(prog(t, T.ringMid[0], T.ringMid[1])), dOut = inOut(prog(t, T.ringOut[0], T.ringOut[1]));
+        ringIn.setAttribute("stroke-dashoffset", f3(1 - dIn)); ringIn.setAttribute("opacity", dIn > 0 ? f3(rf) : "0");
+        ringMidReveal.setAttribute("stroke-dashoffset", f3(1 - dMid)); ringMidWrap.setAttribute("opacity", dMid > 0 ? f3(rf) : "0");
+        ringOut.setAttribute("stroke-dashoffset", f3(1 - dOut)); ringOut.setAttribute("opacity", dOut > 0 ? f3(rf) : "0");
+
+        // planetas: recorren la elipse de su anillo; escala y capa según la profundidad
+        var dd = turn(t), backs = [], fronts = [];
+        PL.forEach(function (p) {
+          var e = prog(t, T.enter + T.enterStagger * p.k, T.enterDur);
+          var out = 1 - inOut(prog(t, T.planetsOut[0] + T.planetsOutStagger * p.k, T.planetsOut[1]));
+          var r = RINGS[p.t[4]];
+          var rad = (p.t[5] + dd - T.enterSweep * (1 - settle(e))) * Math.PI / 180;
+          var depth = (Math.sin(rad) + 1) / 2;
+          var x = CX + r[0] * Math.cos(rad), y = CY + r[1] * Math.sin(rad);
+          var s = depthScale(rad) * (0.72 + 0.28 * EASE(prog(e, 0, 0.5)));
+          var o = (0.9 + depth * 0.1) * EASE(prog(e, 0, 0.3)) * out;
+          p.g.setAttribute("transform", "translate(" + f3(x) + " " + f3(y) + ") scale(" + f3(s) + ")");
+          p.g.setAttribute("opacity", f3(o));
+          p.y = y;
+          (Math.sin(rad) > 0 ? fronts : backs).push(p);
+        });
+        var byY = function (a, b) { return (a.y - b.y) || (a.k - b.k); };
+        backs.sort(byY); fronts.sort(byY);
+        var key = backs.map(function (p) { return p.k; }).join(",") + "|" + fronts.map(function (p) { return p.k; }).join(",");
+        if (key !== orderKey) {
+          orderKey = key;
+          backs.forEach(function (p) { back.appendChild(p.g); });
+          fronts.forEach(function (p) { frontL.appendChild(p.g); });
+        }
+
+        // nave y estela
+        var q = prog(t, T.ship[0], T.ship[1]);
+        if (q <= 0 || q >= 1) { ship.setAttribute("opacity", "0"); }
+        else {
+          var u = shipU(t), sp = bz(u);
+          var vin = EASE(prog(u, U0, 0.10)), vout = 1 - inOut(prog(u, U1 - 0.10, 0.10));
+          ship.setAttribute("transform", "translate(" + f3(sp.x) + " " + f3(sp.y) + ") rotate(" + f3(bzAngle(u)) + ") scale(" + f3((0.6 + 0.4 * vin) * (0.75 + 0.25 * vout)) + ")");
+          ship.setAttribute("opacity", f3(vin * vout));
+        }
+        var uh = Math.min(shipU(t) - 0.02, U1 - 0.05), ut = Math.max(shipU(t - T.trailLag), U0 + 0.04);
+        var to = prog(t, T.ship[0] + 0.25, 0.3) * (1 - inOut(prog(t, T.trailOut[0], T.trailOut[1])));
+        if (to <= 0 || uh - ut < 0.004) { trail.setAttribute("opacity", "0"); }
+        else {
+          var a = bz(ut), b = bz(uh);
+          trailGrad.setAttribute("x1", f3(a.x)); trailGrad.setAttribute("y1", f3(a.y));
+          trailGrad.setAttribute("x2", f3(b.x)); trailGrad.setAttribute("y2", f3(b.y));
+          trail.setAttribute("d", sub(ut, uh));
+          trail.setAttribute("opacity", f3(to));
+        }
+      }
+
+      var tl = gsap.timeline({ paused: true });
+      tl.addLabel("escena-1", 0).addLabel("escena-2", 2).addLabel("escena-3", 5).addLabel("escena-4", 7);
+      // un único conductor lineal: cada fotograma se obtiene solo de su tiempo
+      var clock = { t: 0 };
+      tl.to(clock, { t: 8, duration: 8, ease: "none", onUpdate: function () { render(clock.t); } }, 0);
+      render(0);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["hero-orbita-noche"] = tl;
+    </script>
+  </body>
+</html>

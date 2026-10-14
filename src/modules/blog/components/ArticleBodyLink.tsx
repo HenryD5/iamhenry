@@ -7,7 +7,7 @@ interface ArticleBodyLinkProps {
 }
 
 const LINK_CLASS_NAME =
-  "text-primary-500 underline decoration-1 underline-offset-[0.2em]";
+  "text-(--accent-text) underline decoration-1 underline-offset-[0.2em]";
 
 export function ArticleBodyLink({ href, children }: ArticleBodyLinkProps) {
   if (!href) {

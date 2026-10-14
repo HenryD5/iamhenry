@@ -10,7 +10,7 @@ export async function NotFoundSection() {
 
   return (
     <section
-      className="relative flex min-h-[calc(100svh-6.4rem)] items-center overflow-hidden py-16 max-md:min-h-[calc(100svh-5.6rem)] max-md:py-10"
+      className="relative flex min-h-svh items-center overflow-hidden pt-32 pb-16 max-md:pt-24 max-md:pb-10"
       data-surface="light"
       data-motion-section="not-found"
     >

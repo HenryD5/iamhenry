@@ -96,6 +96,23 @@ export const article = defineType({
           },
         }),
         defineArrayMember({
+          type: "code",
+          title: "Bloque de código",
+          options: {
+            withFilename: true,
+            languageAlternatives: [
+              { title: "Bash", value: "bash" },
+              { title: "Shell", value: "sh" },
+              { title: "JSON", value: "json" },
+              { title: "JavaScript", value: "javascript" },
+              { title: "TypeScript", value: "typescript" },
+              { title: "TSX", value: "tsx" },
+              { title: "Markdown", value: "markdown" },
+              { title: "Texto", value: "text" },
+            ],
+          },
+        }),
+        defineArrayMember({
           type: "image",
           title: "Imagen",
           options: { hotspot: true },

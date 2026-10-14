@@ -55,6 +55,8 @@ export async function getArticles(): Promise<readonly Article[]> {
 
   const articles = await sanityClient.fetch<readonly SanityArticleDto[]>(
     ARTICLES_QUERY,
+    {},
+    { cache: "no-store" },
   );
 
   return articles.map(adaptArticle);
@@ -67,6 +69,7 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
   const article = await sanityClient.fetch<SanityArticleDto | null>(
     ARTICLE_BY_SLUG_QUERY,
     { slug },
+    { cache: "no-store" },
   );
 
   return article ? adaptArticle(article) : null;
@@ -78,6 +81,8 @@ export async function getArticleSlugs(): Promise<readonly string[]> {
 
   const articles = await sanityClient.fetch<readonly SanityArticleSlugDto[]>(
     ARTICLE_SLUGS_QUERY,
+    {},
+    { cache: "no-store" },
   );
 
   return articles.map(({ slug }) => slug);

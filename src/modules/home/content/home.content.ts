@@ -12,6 +12,7 @@ export const stackVisual: "video" | "illustration" = "video";
 
 export const stackVideo = {
   basePath: "/media/stack-tres-cuerpos",
+  nightBasePath: "/media/stack-tres-cuerpos-noche",
   width: 1200,
   height: 900,
 } as const;

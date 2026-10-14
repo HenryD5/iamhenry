@@ -1,0 +1,281 @@
+{
+  "version": 1,
+  "historyId": "6084511b-d5f1-4fd0-8933-b2f2f30172e6",
+  "currentRevision": "3cbac9c1-4420-4049-a52d-59483b89735c",
+  "pendingChanges": false,
+  "files": {
+    "AGENTS.md": {
+      "hash": "1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/1d/1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5"
+    },
+    "CLAUDE.md": {
+      "hash": "1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/1d/1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5"
+    },
+    "assets/glow.png": {
+      "hash": "69afe3fa374fd47ea5c6974dab187f2437466a7fc0d36659da34a472441339a2",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/69/69afe3fa374fd47ea5c6974dab187f2437466a7fc0d36659da34a472441339a2"
+    },
+    "assets/gsap.min.js": {
+      "hash": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/92/92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb"
+    },
+    "assets/manrope.woff2": {
+      "hash": "e310b55a7fd9677f5e3555e6c6c4d064fa1f1d24393f0ddbe217cea12a8c432f",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/e3/e310b55a7fd9677f5e3555e6c6c4d064fa1f1d24393f0ddbe217cea12a8c432f"
+    },
+    "hyperframes.json": {
+      "hash": "53dbce1e19aa713cbb12ee0bc4d206143b45ab15e6ffbfcaa8f69572d4d24d50",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/53/53dbce1e19aa713cbb12ee0bc4d206143b45ab15e6ffbfcaa8f69572d4d24d50"
+    },
+    "index.html": {
+      "hash": "0a8110687e877179a8150863fbd071e5778db64e78d7d6b80b554b281f282485",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/0a/0a8110687e877179a8150863fbd071e5778db64e78d7d6b80b554b281f282485"
+    },
+    "meta.json": {
+      "hash": "6ceb77fbd6033562205b4a645b72de5ef5a8a63a63594f3dba70f4b89de100fa",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/6c/6ceb77fbd6033562205b4a645b72de5ef5a8a63a63594f3dba70f4b89de100fa"
+    },
+    "package.json": {
+      "hash": "f1d4dec668de32a68fa5b86edb8729b2d8fb92560497d447c9cc8e6fb59a305a",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/f1/f1d4dec668de32a68fa5b86edb8729b2d8fb92560497d447c9cc8e6fb59a305a"
+    },
+    "tools/edge-colors.mjs": {
+      "hash": "b2e8f2e1f950d4a10b89fb0c4b51fec599413a9f3891b36ec0922aebba6b9bc6",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/b2/b2e8f2e1f950d4a10b89fb0c4b51fec599413a9f3891b36ec0922aebba6b9bc6"
+    },
+    "tools/make-glow.mjs": {
+      "hash": "6a0600e2b106d7f4b3f7c8a9d22e4dd7db9c2591a26fb079dfc1e7f884eb2b14",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/6a/6a0600e2b106d7f4b3f7c8a9d22e4dd7db9c2591a26fb079dfc1e7f884eb2b14"
+    },
+    "maqueta.html": {
+      "hash": "be0037ac9a5d2a7aa2420a27d17e95ed9c6b3f5c51938854ac9aac0167a360c4",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/be/be0037ac9a5d2a7aa2420a27d17e95ed9c6b3f5c51938854ac9aac0167a360c4"
+    },
+    "maqueta/contact-sheet.jpg": {
+      "hash": "7aa36e53608c4715a1ccc0073dfeafe925ab1986531a874daadf78b17f70a45d",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/7a/7aa36e53608c4715a1ccc0073dfeafe925ab1986531a874daadf78b17f70a45d"
+    },
+    "maqueta/frame-00-at-1s.png": {
+      "hash": "a4641998911b1f712113d5f353ab9e78c6f4ccda0b89e788800b3f0dc01565b6",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/a4/a4641998911b1f712113d5f353ab9e78c6f4ccda0b89e788800b3f0dc01565b6"
+    },
+    "maqueta/frame-01-at-3.5s.png": {
+      "hash": "d85e1de1525b4f3be57f409e6e86321e1199a7854885a6c52f5631e18a1a5189",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/d8/d85e1de1525b4f3be57f409e6e86321e1199a7854885a6c52f5631e18a1a5189"
+    },
+    "maqueta/frame-02-at-6s.png": {
+      "hash": "e332a5f23470f8064d8ebf7b067b8d4ff671c751dca103d2133d0d24570831e4",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/e3/e332a5f23470f8064d8ebf7b067b8d4ff671c751dca103d2133d0d24570831e4"
+    },
+    "maqueta/frame-03-at-7.5s.png": {
+      "hash": "b3610e7b95b41f5bd5aa3cc87c0dae0b3feef4daa4f98abe565e9f7704e23b9d",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/b3/b3610e7b95b41f5bd5aa3cc87c0dae0b3feef4daa4f98abe565e9f7704e23b9d"
+    },
+    "maqueta/frame-04-at-7.76s.png": {
+      "hash": "b602f71f48e366f010acbc855d8b58a320578c12d20b9a2696af0dbaf0f4b8c7",
+      "content": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/b6/b602f71f48e366f010acbc855d8b58a320578c12d20b9a2696af0dbaf0f4b8c7"
+    }
+  },
+  "revisions": {
+    "3cbac9c1-4420-4049-a52d-59483b89735c": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1791960797056,
+      "endedAt": 1791960797077,
+      "files": {
+        "maqueta.html": {
+          "before": null,
+          "after": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/be/be0037ac9a5d2a7aa2420a27d17e95ed9c6b3f5c51938854ac9aac0167a360c4"
+        },
+        "maqueta/contact-sheet.jpg": {
+          "before": null,
+          "after": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/7a/7aa36e53608c4715a1ccc0073dfeafe925ab1986531a874daadf78b17f70a45d"
+        },
+        "maqueta/frame-00-at-1s.png": {
+          "before": null,
+          "after": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/a4/a4641998911b1f712113d5f353ab9e78c6f4ccda0b89e788800b3f0dc01565b6"
+        },
+        "maqueta/frame-01-at-3.5s.png": {
+          "before": null,
+          "after": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/d8/d85e1de1525b4f3be57f409e6e86321e1199a7854885a6c52f5631e18a1a5189"
+        },
+        "maqueta/frame-02-at-6s.png": {
+          "before": null,
+          "after": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/e3/e332a5f23470f8064d8ebf7b067b8d4ff671c751dca103d2133d0d24570831e4"
+        },
+        "maqueta/frame-03-at-7.5s.png": {
+          "before": null,
+          "after": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/b3/b3610e7b95b41f5bd5aa3cc87c0dae0b3feef4daa4f98abe565e9f7704e23b9d"
+        },
+        "maqueta/frame-04-at-7.76s.png": {
+          "before": null,
+          "after": "/Users/henryd5/.cache/hyperframes/history/6084511b-d5f1-4fd0-8933-b2f2f30172e6/blobs/b6/b602f71f48e366f010acbc855d8b58a320578c12d20b9a2696af0dbaf0f4b8c7"
+        }
+      }
+    }
+  },
+  "checks": {
+    "latest": {
+      "revision": "3cbac9c1-4420-4049-a52d-59483b89735c",
+      "id": "12ef1b67-9a0e-442f-8c22-c36bbdaf3dc0"
+    },
+    "revisions": {
+      "3cbac9c1-4420-4049-a52d-59483b89735c": [
+        {
+          "id": "12ef1b67-9a0e-442f-8c22-c36bbdaf3dc0",
+          "scope": "project",
+          "report": "/Users/henryd5/Documents/AI Projects/iamhenry/motion/hero-orbita-noche/.hyperframes/artifacts/checks/12ef1b67-9a0e-442f-8c22-c36bbdaf3dc0.json",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 3000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1791960804089,
+          "contentHash": "84e1fd5366122ae43c11e165372fbd6dda13a902cc48a6b2582eb419a42b90c8",
+          "revision": "3cbac9c1-4420-4049-a52d-59483b89735c",
+          "inputFingerprint": "e98e7166b2f4ef6d9f09956f36de7f15af689d541edf37932cfb0d71f4a66c77",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
+      ]
+    },
+    "unversioned": []
+  },
+  "snapshots": {
+    "latest": {
+      "revision": null,
+      "id": "dca8f223-f3ce-4106-a4da-c48faa1b9a92-4"
+    },
+    "revisions": {},
+    "unversioned": [
+      {
+        "scope": "full",
+        "id": "dca8f223-f3ce-4106-a4da-c48faa1b9a92-0",
+        "image": "/Users/henryd5/Documents/AI Projects/iamhenry/motion/hero-orbita-noche/maqueta/frame-00-at-1s.png",
+        "time": 1,
+        "metadata": {
+          "width": 1920,
+          "height": 1080,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791960674722,
+        "contentHash": "a4641998911b1f712113d5f353ab9e78c6f4ccda0b89e788800b3f0dc01565b6",
+        "revision": null,
+        "inputFingerprint": "ab833f3147e05025146209ce53a56ca5f0a7df6f5dcf20246306cc4af4be597a",
+        "inputScope": "local-project-files",
+        "attribution": "inputs-changed"
+      },
+      {
+        "scope": "full",
+        "id": "dca8f223-f3ce-4106-a4da-c48faa1b9a92-1",
+        "image": "/Users/henryd5/Documents/AI Projects/iamhenry/motion/hero-orbita-noche/maqueta/frame-01-at-3.5s.png",
+        "time": 3.5,
+        "metadata": {
+          "width": 1920,
+          "height": 1080,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791960674722,
+        "contentHash": "d85e1de1525b4f3be57f409e6e86321e1199a7854885a6c52f5631e18a1a5189",
+        "revision": null,
+        "inputFingerprint": "ab833f3147e05025146209ce53a56ca5f0a7df6f5dcf20246306cc4af4be597a",
+        "inputScope": "local-project-files",
+        "attribution": "inputs-changed"
+      },
+      {
+        "scope": "full",
+        "id": "dca8f223-f3ce-4106-a4da-c48faa1b9a92-2",
+        "image": "/Users/henryd5/Documents/AI Projects/iamhenry/motion/hero-orbita-noche/maqueta/frame-02-at-6s.png",
+        "time": 6,
+        "metadata": {
+          "width": 1920,
+          "height": 1080,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791960674722,
+        "contentHash": "e332a5f23470f8064d8ebf7b067b8d4ff671c751dca103d2133d0d24570831e4",
+        "revision": null,
+        "inputFingerprint": "ab833f3147e05025146209ce53a56ca5f0a7df6f5dcf20246306cc4af4be597a",
+        "inputScope": "local-project-files",
+        "attribution": "inputs-changed"
+      },
+      {
+        "scope": "full",
+        "id": "dca8f223-f3ce-4106-a4da-c48faa1b9a92-3",
+        "image": "/Users/henryd5/Documents/AI Projects/iamhenry/motion/hero-orbita-noche/maqueta/frame-03-at-7.5s.png",
+        "time": 7.5,
+        "metadata": {
+          "width": 1920,
+          "height": 1080,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791960674722,
+        "contentHash": "b3610e7b95b41f5bd5aa3cc87c0dae0b3feef4daa4f98abe565e9f7704e23b9d",
+        "revision": null,
+        "inputFingerprint": "ab833f3147e05025146209ce53a56ca5f0a7df6f5dcf20246306cc4af4be597a",
+        "inputScope": "local-project-files",
+        "attribution": "inputs-changed"
+      },
+      {
+        "scope": "full",
+        "id": "dca8f223-f3ce-4106-a4da-c48faa1b9a92-4",
+        "image": "/Users/henryd5/Documents/AI Projects/iamhenry/motion/hero-orbita-noche/maqueta/frame-04-at-7.76s.png",
+        "time": 7.76,
+        "metadata": {
+          "width": 1920,
+          "height": 1080,
+          "zoomScale": 1,
+          "browserGpuMode": "auto",
+          "warnings": [],
+          "partial": false
+        },
+        "createdAt": 1791960674722,
+        "contentHash": "b602f71f48e366f010acbc855d8b58a320578c12d20b9a2696af0dbaf0f4b8c7",
+        "revision": null,
+        "inputFingerprint": "ab833f3147e05025146209ce53a56ca5f0a7df6f5dcf20246306cc4af4be597a",
+        "inputScope": "local-project-files",
+        "attribution": "inputs-changed"
+      }
+    ]
+  },
+  "renders": {
+    "latest": {
+      "id": "bf914eb9-4f77-4de2-9873-7f481e7820ce",
+      "completedAt": 1791960867010,
+      "output": "/Users/henryd5/Documents/AI Projects/iamhenry/motion/renders-hero-orbita-noche",
+      "status": "completed",
+      "revision": "3cbac9c1-4420-4049-a52d-59483b89735c"
+    },
+    "retainedRevisions": [
+      "3cbac9c1-4420-4049-a52d-59483b89735c"
+    ]
+  },
+  "pendingArtifactCleanup": []
+}

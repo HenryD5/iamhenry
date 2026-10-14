@@ -28,13 +28,22 @@ export async function HeroSection() {
         className={`absolute top-[49.5rem] left-1/2 h-[46rem] w-[84rem] -translate-1/2 bg-[radial-gradient(circle_at_28%_50%,var(--primary-400)_0,transparent_45%),radial-gradient(circle_at_54%_44%,var(--primary-300)_0,transparent_42%),radial-gradient(circle_at_78%_60%,var(--tertiary-300)_0,transparent_36%)] opacity-50 blur-[4.5rem] max-md:top-[36rem] max-md:h-[40rem] max-md:w-[44rem] ${isVideoVisual ? "md:hidden" : ""}`}
       />
       {isVideoVisual ? (
-        <AppLoopVideo
-          basePath={heroVideo.basePath}
-          width={heroVideo.width}
-          height={heroVideo.height}
-          className="absolute top-[48rem] left-1/2 h-[55.38rem] w-[98.46rem] max-w-none -translate-1/2 mask-y-from-95% mask-x-from-95% max-md:hidden"
-          motionItem="hero-orbit"
-        />
+        <>
+          <AppLoopVideo
+            basePath={heroVideo.basePath}
+            width={heroVideo.width}
+            height={heroVideo.height}
+            className="absolute top-[48rem] left-1/2 h-[55.38rem] w-[98.46rem] max-w-none -translate-1/2 mask-y-from-95% mask-x-from-95% max-md:hidden [[data-theme=night]_&]:hidden"
+            motionItem="hero-orbit"
+          />
+          <AppLoopVideo
+            basePath={heroVideo.nightBasePath}
+            width={heroVideo.width}
+            height={heroVideo.height}
+            className="absolute top-[48rem] left-1/2 hidden h-[55.38rem] w-[98.46rem] max-w-none -translate-1/2 mask-y-from-95% mask-x-from-95% max-md:hidden [[data-theme=night]_&]:block"
+            motionItem="hero-orbit"
+          />
+        </>
       ) : null}
       <div
         className="absolute inset-x-0 top-[6.3rem] z-[2] text-center max-md:static max-md:px-5 max-md:pt-[6.3rem]"

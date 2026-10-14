@@ -37,12 +37,12 @@ const PORTABLE_TEXT_COMPONENTS: PortableTextComponents = {
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="marker:text-primary-500 mt-[1.35em] list-disc pl-[1.3em] first:mt-0">
+      <ul className="marker:text-(--accent-text) mt-[1.35em] list-disc pl-[1.3em] first:mt-0">
         {children}
       </ul>
     ),
     number: ({ children }) => (
-      <ol className="marker:text-primary-500 mt-[1.35em] list-decimal pl-[1.3em] first:mt-0">
+      <ol className="marker:text-(--accent-text) mt-[1.35em] list-decimal pl-[1.3em] first:mt-0">
         {children}
       </ol>
     ),
@@ -55,7 +55,7 @@ const PORTABLE_TEXT_COMPONENTS: PortableTextComponents = {
     strong: ({ children }) => <strong className="font-bold">{children}</strong>,
     em: ({ children }) => <em>{children}</em>,
     code: ({ children }) => (
-      <code className="rounded-[0.35rem] border border-neutral-200 bg-neutral-100 px-[0.35em] py-[0.1em] font-mono text-[0.85em]">
+      <code className="border-line bg-surface-sunken text-fg rounded-[0.35rem] border px-[0.35em] py-[0.1em] font-mono text-[0.85em]">
         {children}
       </code>
     ),
