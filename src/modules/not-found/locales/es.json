@@ -1,0 +1,15 @@
+{
+  "pill": "Error 404 · Señal perdida",
+  "titleLead": "Esta ruta se salió",
+  "titleAccent": "de órbita.",
+  "description": "La página que buscas no existe o cambió de dirección. Te dejo de vuelta en territorio conocido.",
+  "backHome": "Volver al inicio",
+  "readBlog": "Leer el blog",
+  "searched": "Buscaste",
+  "lostRoute": "Ruta perdida",
+  "planet": "IA",
+  "satellites": {
+    "home": "Inicio",
+    "blog": "Blog"
+  }
+}

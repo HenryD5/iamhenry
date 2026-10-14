@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boceto · Blog iamhenry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@600;700;800&display=swap">
+<style>
+/* Tokens copiados de src/app/theme.css (solo los que usa el boceto) */
+:root{
+  --primary-100:#DDE8FF;--primary-300:#96B6FE;--primary-500:#1F4BFF;--primary-800:#0B1F5C;
+  --secondary-400:#191C36;--secondary-500:#0E1022;
+  --tertiary-500:#E11D2E;
+  --neutral-50:#F6F5FB;--neutral-100:#ECEBF4;--neutral-200:#E2E0EE;--neutral-300:#DAD8E8;--neutral-400:#A6A9C8;--neutral-500:#767891;--neutral-600:#4C4F66;--neutral-700:#2C3160;
+  --font-primary:Inter,Arial,sans-serif;--font-heading:Manrope,Inter,sans-serif;--font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --text-h1:4.6rem;--text-h2:3.3rem;--text-h3:2.1rem;--text-h4:1.55rem;--text-h5:1.3rem;--text-body-lg:1.4rem;--text-body:1.15rem;--text-body-sm:1rem;--text-caption:.9rem;
+  --leading-heading:1.15;--leading-body:1.55;--heading-tracking:-.04em;
+  --radius-sm:.85rem;--radius-md:1.3rem;--radius-lg:1.7rem;--radius-xl:2.4rem;
+  --container-padding:2rem;
+  --card-shadow:0 1.7rem 3.4rem -2rem color-mix(in srgb,var(--primary-800) 55%,transparent);
+  --gradient-accent:linear-gradient(90deg,var(--primary-500) 0%,var(--primary-500) 30%,var(--tertiary-500) 85%);
+  --bg:var(--neutral-50);--bg-raised:#fff;--fg:var(--secondary-500);--fg-muted:var(--neutral-600);--border:var(--neutral-300);--accent-text:var(--primary-500);
+}
+[data-surface="light"]{--bg:var(--secondary-500);--bg-raised:var(--secondary-400);--fg:var(--neutral-50);--fg-muted:var(--neutral-400);--border:var(--neutral-700);--accent-text:var(--primary-300);}
+@media (max-width:767px){:root{--text-h1:2.9rem;--text-h2:2.2rem;--text-h3:1.6rem;--container-padding:1.25rem}}
+html{font-size:clamp(14px,1.03vw,17.8px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-primary);font-size:var(--text-body);line-height:var(--leading-body)}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-heading);font-weight:800;letter-spacing:var(--heading-tracking);line-height:var(--leading-heading);margin:0}
+h1 em,h2 em{font-style:normal;color:var(--primary-500)}
+.wrap{max-width:78rem;margin:0 auto;padding:0 var(--container-padding)}
+
+/* Notas del boceto (no forman parte del diseño) */
+.note{background:#FFF7D6;border-bottom:1px solid #EBD98A;color:#5C4B00;font-size:.9rem;padding:.8rem 0}
+.note b{font-weight:700}
+.screen-label{font-family:var(--font-mono);font-size:.8rem;color:var(--neutral-500);text-transform:uppercase;letter-spacing:.08em;padding:2.5rem 0 .6rem;border-top:2px dashed var(--neutral-300);margin-top:3rem}
+.screen-label:first-of-type{margin-top:0;border-top:0}
+
+/* Barra (la misma de home, sobre papel) */
+.bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--neutral-50) 82%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:4.2rem}
+.logo{display:flex;align-items:center;gap:.5rem;font-family:var(--font-heading);font-weight:800;font-size:1.15rem;text-decoration:none}
+.logo i{width:1.4rem;height:1.4rem;border-radius:50%;background:radial-gradient(circle at 35% 35%,#6692FE,var(--primary-500) 60%,var(--primary-800))}
+.nav{display:flex;gap:1.6rem;font-size:.95rem;font-weight:500}
+.nav a{text-decoration:none;color:var(--fg-muted)}
+.nav a[aria-current]{color:var(--fg);font-weight:600}
+.cta{background:var(--secondary-500);color:var(--neutral-50);border-radius:var(--radius-sm);padding:.7rem 1rem;font-size:.95rem;font-weight:600;text-decoration:none}
+.burger{display:none;width:2.6rem;height:2.6rem;border:1px solid var(--border);border-radius:var(--radius-sm);background:#fff}
+@media (max-width:767px){.nav{display:none}.cta{display:none}.burger{display:block}}
+
+/* Encabezado de sección (AppSectionHeading) */
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:var(--text-body-sm);font-weight:600;color:var(--primary-500);margin:0 0 1.3rem}
+.eyebrow::before{content:"";width:.55rem;height:.55rem;border-radius:50%;background:var(--tertiary-500)}
+.heading{display:grid;grid-template-columns:1fr auto;align-items:end;gap:3rem;padding:6rem 0 3.5rem}
+.heading h1{font-size:var(--text-h2);max-width:17ch}
+.heading p{font-size:var(--text-body-lg);color:var(--fg-muted);max-width:36ch;margin:0;line-height:1.45}
+@media (max-width:767px){.heading{grid-template-columns:1fr;gap:1.2rem;padding:3.5rem 0 2rem}}
+
+/* Tarjeta de artículo (AppCard + estilo de Portafolio) */
+.cover{aspect-ratio:16/9;border-radius:calc(var(--radius-md) - .35rem);background:
+  radial-gradient(28rem 16rem at 80% 10%,color-mix(in srgb,var(--tertiary-500) 22%,transparent),transparent 70%),
+  radial-gradient(30rem 18rem at 10% 90%,color-mix(in srgb,var(--primary-500) 45%,transparent),transparent 70%),var(--secondary-500);
+  display:grid;place-items:center;color:var(--neutral-400);font-family:var(--font-mono);font-size:.8rem}
+.card{background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-md);padding:.6rem;text-decoration:none;display:flex;flex-direction:column;transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--card-shadow)}
+.card:focus-visible{outline:2px solid var(--primary-500);outline-offset:3px}
+.card .body{padding:1.1rem .9rem 1rem;display:flex;flex-direction:column;gap:.55rem;flex:1}
+.meta{font-family:var(--font-mono);font-size:var(--text-caption);color:var(--neutral-500)}
+.card h2,.card h3{font-size:var(--text-h5);letter-spacing:-.02em}
+.card p{margin:0;color:var(--fg-muted);font-size:var(--text-body-sm);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.more{margin-top:auto;padding-top:.4rem;font-size:var(--text-body-sm);font-weight:600;color:var(--primary-500)}
+
+/* Destacado: el artículo más reciente */
+.featured{display:grid;grid-template-columns:1.35fr 1fr;gap:1.5rem;padding:.6rem}
+.featured .body{padding:1.6rem 1.4rem 1.4rem .4rem;justify-content:center}
+.featured h2{font-size:var(--text-h3)}
+.featured p{-webkit-line-clamp:3;font-size:var(--text-body)}
+.featured .cover{aspect-ratio:auto;min-height:20rem}
+@media (max-width:767px){.featured{grid-template-columns:1fr;gap:0}.featured .cover{min-height:0;aspect-ratio:16/9}.featured .body{padding:1.1rem .9rem 1rem}}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.25rem}
+@media (max-width:1023px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:767px){.grid{grid-template-columns:1fr}}
+
+/* Estado vacío */
+.empty{border:1px dashed var(--neutral-400);border-radius:var(--radius-lg);padding:4rem 2rem;text-align:center;display:grid;justify-items:center;gap:.8rem}
+.empty .orb{width:4rem;height:4rem;border-radius:50%;background:radial-gradient(circle at 35% 35%,#6692FE,var(--primary-500) 60%,var(--primary-800));box-shadow:0 0 28px color-mix(in srgb,var(--primary-500) 28%,transparent)}
+.empty h2{font-size:var(--text-h4)}
+.empty p{margin:0;color:var(--fg-muted);max-width:40ch}
+.btn{display:inline-flex;align-items:center;height:3rem;padding:0 1rem;border-radius:var(--radius-sm);background:var(--secondary-500);color:var(--neutral-50);font-weight:600;text-decoration:none;font-size:1.05rem}
+
+/* Detalle del artículo */
+.article-head{max-width:52rem;margin:0 auto;padding:4rem 0 2.5rem}
+.back{display:flex;width:fit-content;gap:.4rem;font-size:var(--text-body-sm);font-weight:600;color:var(--fg-muted);text-decoration:none;margin-bottom:2.2rem}
+.back:hover{color:var(--primary-500)}
+.article-head h1{font-size:var(--text-h1);text-wrap:balance}
+.lead{font-size:var(--text-body-lg);color:var(--fg-muted);margin:1.4rem 0 0;line-height:1.45;max-width:44ch}
+.byline{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem;margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--border);font-size:var(--text-body-sm);color:var(--fg-muted)}
+.byline b{color:var(--fg);font-weight:600}
+.dot{width:.3rem;height:.3rem;border-radius:50%;background:var(--neutral-400)}
+.hero-cover{max-width:64rem;margin:0 auto;aspect-ratio:2/1;border-radius:var(--radius-lg)}
+@media (max-width:767px){.article-head{padding:2.5rem 0 1.8rem}.hero-cover{aspect-ratio:16/10;border-radius:var(--radius-md)}}
+
+/* Cuerpo (Portable Text) */
+.prose{max-width:42rem;margin:0 auto;padding:3.5rem 0 1rem;font-size:1.2rem;line-height:1.7}
+.prose>*+*{margin-top:1.35em}
+.prose p{margin-bottom:0}
+.prose h2{font-size:var(--text-h4);margin-top:2.4em;letter-spacing:-.03em}
+.prose h3{font-size:var(--text-h5);margin-top:2em;letter-spacing:-.02em}
+.prose h4{font-family:var(--font-heading);font-size:1.15rem;margin:1.8em 0 0}
+.prose a{color:var(--primary-500);text-underline-offset:.2em;text-decoration-thickness:1px}
+.prose strong{font-weight:700}
+.prose code{font-family:var(--font-mono);font-size:.85em;background:var(--neutral-100);border:1px solid var(--neutral-200);border-radius:.35rem;padding:.1em .35em}
+.prose ul,.prose ol{padding-left:1.3em}
+.prose li+li{margin-top:.4em}
+.prose ul li::marker{color:var(--primary-500)}
+.prose blockquote{margin:2em 0;padding:.2em 0 .2em 1.4rem;border-left:3px solid;border-image:var(--gradient-accent) 1;font-family:var(--font-heading);font-weight:700;font-size:1.45rem;line-height:1.35;letter-spacing:-.02em}
+.prose figure{margin:2.4em -4rem}
+.prose figure .cover{aspect-ratio:16/9;border-radius:var(--radius-md)}
+.prose figcaption{font-size:var(--text-caption);color:var(--neutral-500);margin-top:.7rem;text-align:center}
+@media (max-width:1023px){.prose figure{margin:2em 0}}
+@media (max-width:767px){.prose{font-size:1.1rem;padding-top:2.2rem}}
+
+/* Siguiente: otros artículos */
+.related{padding:5rem 0 6rem}
+.related h2{font-size:var(--text-h4);margin-bottom:1.5rem}
+.footer-band{background:var(--bg);color:var(--fg);padding:3rem 0;font-size:.9rem}
+.footer-band .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.footer-band a{color:var(--fg-muted);text-decoration:none;margin-left:1.2rem}
+</style>
+</head>
+<body>
+
+<div class="note"><div class="wrap">
+  <b>Boceto del blog.</b> Sale de tu sistema de diseño: tokens, barra, encabezado de sección y tarjetas de Portafolio. Los textos marcados con «[propuesta]» son de interfaz y los apruebas tú. Los títulos y párrafos de los artículos son de relleno: el contenido real lo cargas en Sanity. Para ver la versión móvil, achica la ventana por debajo de 768 px.
+</div></div>
+
+<!-- ============ PANTALLA 1 · /blog ============ -->
+<div class="wrap"><p class="screen-label">Pantalla 1 · /blog · listado</p></div>
+
+<header class="bar"><div class="wrap">
+  <a class="logo" href="#"><i></i>IamHenry</a>
+  <nav class="nav" aria-label="Principal">
+    <a href="#">Stack</a><a href="#">Experiencia</a><a href="#">Portafolio</a><a href="#">Sobre mí</a><a href="#" aria-current="page">Blog</a>
+  </nav>
+  <a class="cta" href="#">Construyamos algo juntos</a>
+  <button class="burger" aria-label="Abrir menú"></button>
+</div></header>
+
+<main class="wrap">
+  <div class="heading">
+    <div>
+      <p class="eyebrow">Blog</p>
+      <h1>[propuesta] Notas sobre producto, código <em>e IA.</em></h1>
+    </div>
+    <p>[propuesta] Lo que aprendo construyendo productos digitales y agentes de IA, contado sin rodeos.</p>
+  </div>
+
+  <a class="card featured" href="#detalle">
+    <div class="cover">portada · 1200×675</div>
+    <div class="body">
+      <span class="meta">12 oct 2026 · Más reciente</span>
+      <h2>Título de ejemplo del artículo más reciente, que puede ocupar dos líneas</h2>
+      <p>Descripción de ejemplo de hasta 160 caracteres. Resume de qué trata el artículo y por qué vale la pena leerlo hasta el final.</p>
+      <span class="more">Leer artículo →</span>
+    </div>
+  </a>
+
+  <div class="grid">
+    <a class="card" href="#detalle"><div class="cover">portada</div><div class="body"><span class="meta">28 sep 2026</span><h3>Segundo artículo de ejemplo</h3><p>Descripción breve del artículo, recortada a dos líneas si es larga para que todas las tarjetas midan lo mismo.</p><span class="more">Leer →</span></div></a>
+    <a class="card" href="#detalle"><div class="cover">portada</div><div class="body"><span class="meta">10 sep 2026</span><h3>Tercer artículo con un título algo más largo de lo normal</h3><p>Descripción breve del artículo.</p><span class="more">Leer →</span></div></a>
+    <a class="card" href="#detalle"><div class="cover">sin portada → degradado de marca</div><div class="body"><span class="meta">22 ago 2026</span><h3>Cuarto artículo de ejemplo</h3><p>Si un artículo no tiene portada, se muestra el degradado de la marca en su lugar.</p><span class="more">Leer →</span></div></a>
+  </div>
+  <div style="height:6rem"></div>
+</main>
+
+<!-- ============ ESTADO VACÍO ============ -->
+<div class="wrap"><p class="screen-label">Pantalla 1b · /blog sin artículos publicados</p>
+  <div class="empty" style="margin:1rem 0 5rem">
+    <div class="orb" aria-hidden="true"></div>
+    <h2>[propuesta] Pronto habrá artículos aquí</h2>
+    <p>[propuesta] Estoy escribiendo los primeros. Mientras tanto, mira lo que he construido.</p>
+    <a class="btn" href="#">[propuesta] Ver portafolio</a>
+  </div>
+</div>
+
+<!-- ============ PANTALLA 2 · /blog/[slug] ============ -->
+<div class="wrap"><p class="screen-label" id="detalle">Pantalla 2 · /blog/[slug] · artículo</p></div>
+
+<header class="bar"><div class="wrap">
+  <a class="logo" href="#"><i></i>IamHenry</a>
+  <nav class="nav" aria-label="Principal">
+    <a href="#">Stack</a><a href="#">Experiencia</a><a href="#">Portafolio</a><a href="#">Sobre mí</a><a href="#" aria-current="page">Blog</a>
+  </nav>
+  <a class="cta" href="#">Construyamos algo juntos</a>
+  <button class="burger" aria-label="Abrir menú"></button>
+</div></header>
+
+<main id="main-content">
+  <article>
+    <div class="wrap"><div class="article-head">
+      <a class="back" href="#">← [propuesta] Todos los artículos</a>
+      <p class="eyebrow">Blog</p>
+      <h1>Título de ejemplo del artículo, el único h1 de la página</h1>
+      <p class="lead">Descripción de ejemplo de hasta 160 caracteres: la misma del listado y de los buscadores, usada aquí como entradilla.</p>
+      <div class="byline"><b>Henry Yamunaque</b><span class="dot"></span><time>12 de octubre de 2026</time><span class="dot"></span><span>[propuesta] Actualizado el 13 de octubre</span></div>
+    </div></div>
+    <div class="wrap"><div class="cover hero-cover">portada · se sirve por /blog/media/…</div></div>
+
+    <div class="wrap"><div class="prose">
+      <p>Párrafo de relleno para ver el ritmo del texto. El cuerpo va en una columna estrecha de unos 68 caracteres, con <strong>negrita</strong>, <em>cursiva</em>, <a href="#">enlaces</a> y <code>código en línea</code>.</p>
+      <p>Segundo párrafo de relleno: la letra del cuerpo es algo mayor que la de la home, porque es para leer de corrido.</p>
+      <h2>Un subtítulo h2 dentro del artículo</h2>
+      <p>Texto bajo el subtítulo. Los h2 y h3 usan Manrope, igual que los títulos de la home.</p>
+      <ul><li>Viñeta de ejemplo con el marcador en azul de marca</li><li>Segunda viñeta</li><li>Tercera viñeta algo más larga para ver cómo corta la línea</li></ul>
+      <blockquote>Una cita destacada usa el degradado de marca como filete lateral.</blockquote>
+      <h3>Un subtítulo h3</h3>
+      <ol><li>Lista numerada</li><li>Segundo paso</li></ol>
+      <figure><div class="cover">imagen del cuerpo · más ancha que el texto en escritorio</div><figcaption>Pie de imagen: el texto alternativo es obligatorio; el pie es opcional.</figcaption></figure>
+      <p>Párrafo de cierre del artículo de relleno.</p>
+    </div></div>
+  </article>
+
+  <section class="wrap related" aria-labelledby="mas">
+    <h2 id="mas">[propuesta] Sigue leyendo</h2>
+    <div class="grid" style="margin-top:0">
+      <a class="card" href="#"><div class="cover">portada</div><div class="body"><span class="meta">28 sep 2026</span><h3>Otro artículo de ejemplo</h3><p>Los dos o tres artículos más recientes, sin contar el actual.</p></div></a>
+      <a class="card" href="#"><div class="cover">portada</div><div class="body"><span class="meta">10 sep 2026</span><h3>Otro artículo más</h3><p>Descripción breve.</p></div></a>
+      <a class="card" href="#"><div class="cover">portada</div><div class="body"><span class="meta">22 ago 2026</span><h3>Y uno más</h3><p>Descripción breve.</p></div></a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer-band" data-surface="light"><div class="wrap">
+  <span>© Copyright Henry.io · El pie es el mismo de la home</span>
+  <span><a href="#">Stack</a><a href="#">Portafolio</a><a href="#">Blog</a></span>
+</div></footer>
+
+</body>
+</html>

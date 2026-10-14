@@ -1,0 +1,323 @@
+/* =====================================================================
+   ARK UI · IamHenry
+   ---------------------------------------------------------------------
+   Estilos para los componentes de https://ark-ui.com (React, Vue, Solid
+   y Svelte; también Next y Nuxt). Ark no trae estilos: marca cada pieza
+   con data-scope y data-part, y este archivo las estila con los tokens
+   de theme.css. No hace falta poner clases.
+
+   TIPO DE WEB: landing
+
+   USO
+   · Sin Tailwind   →  <link rel="stylesheet" href="theme.css">
+                       <link rel="stylesheet" href="ark.css">
+   · Con Tailwind 4 →  @import "tailwindcss";
+                       @import "./theme.css";
+                       @import "./ark.css";
+
+   CÓMO ESTÁ HECHO
+   · Todo va en @layer components: gana a los estilos base de theme.css
+     y pierde ante tus utilidades y clases propias.
+   · Especificidad baja (:where + un atributo): es fácil de sobrescribir.
+   · Usa CSS nesting (navegadores desde 2023; Tailwind 4 lo procesa).
+   · Los botones de Ark se dejan sin estilo de botón de marca. Si quieres
+     que un trigger se vea como botón, ponle class="btn" o "btn--outline".
+   · El contenido en portal (dialog, select, menu…) se monta en <body>:
+     si usas data-surface en una sección, ponlo también en ese contenido.
+   · El estilo (vidrio, brillo, bordes) sale de los tokens "Estilo visual"
+     de theme.css: --surface-alpha, --surface-blur, --glow-*, --border-width.
+
+   BLOQUES
+   Cada componente va entre marcas ">>> ark:nombre" y "<<< ark:nombre".
+   No las borres: scripts/ark_build.py las usa para agregar componentes
+   sin duplicarlos.
+   ===================================================================== */
+
+/* >>> ark:base */
+@layer components {
+  /* Variables internas: se calculan en cada pieza, así respetan la superficie */
+  :where([data-scope]) {
+    --ark-surface: color-mix(in srgb, var(--bg-raised) var(--surface-alpha), transparent);
+    --ark-hover: color-mix(in srgb, var(--fg) 9%, transparent);
+    --ark-line: var(--border-width) solid var(--border);
+    --ark-glow: 0 0 var(--glow-size) color-mix(in srgb, var(--accent) var(--glow-strength), transparent);
+    --ark-ring: 0 0 0 3px color-mix(in srgb, var(--focus-ring) 30%, transparent);
+  }
+  :where([data-scope] svg) { width: 1em; height: 1em; flex-shrink: 0; }
+
+  /* Botones de Ark: sin el estilo de botón de marca (salvo class="btn") */
+  :where(button[data-scope]:not([class*="btn"])) {
+    appearance: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    width: auto; height: auto; margin: 0; padding: 0;
+    font: inherit; letter-spacing: inherit; text-transform: none; white-space: normal;
+    color: inherit; background: transparent; border: 0; border-radius: 0; cursor: pointer;
+  }
+  :where([data-scope][data-disabled]) { opacity: 0.45; cursor: not-allowed; }
+  :where([data-scope][data-part="label"]) { display: block; margin-bottom: 0.4rem; font-size: var(--text-body-sm); font-weight: var(--weight-semibold); }
+
+  /* Paneles flotantes */
+  :where([data-scope]:is([data-scope="menu"], [data-scope="select"], [data-scope="combobox"], [data-scope="popover"], [data-scope="hover-card"], [data-scope="date-picker"], [data-scope="color-picker"], [data-scope="cascade-select"], [data-scope="tour"])[data-part="content"]) {
+    z-index: 50; min-width: 12rem; padding: 0.4rem;
+    color: var(--fg); background: var(--ark-surface);
+    -webkit-backdrop-filter: blur(var(--surface-blur)); backdrop-filter: blur(var(--surface-blur));
+    border: var(--ark-line); border-radius: var(--card-radius);
+    box-shadow: var(--shadow-strong);
+    font-size: var(--text-body-sm); outline: none;
+  }
+  :where([data-scope][data-part="content"][data-placement][data-state="open"]) { animation: ark-in var(--duration-fast) var(--ease); }
+  :where([data-scope][data-part="content"][data-placement][data-state="closed"]) { animation: ark-out var(--duration-fast) ease-in; }
+  :where([data-scope][data-part="arrow"]) { --arrow-size: 0.6rem; --arrow-background: var(--bg-raised); }
+  :where([data-scope][data-part="arrow-tip"]) { border-top: var(--ark-line); border-left: var(--ark-line); }
+
+  /* Filas de opciones (menu, select, combobox, listbox…) */
+  :where([data-scope]:is([data-scope="menu"], [data-scope="select"], [data-scope="combobox"], [data-scope="listbox"], [data-scope="cascade-select"]):is([data-part="item"], [data-part="trigger-item"])) {
+    display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+    padding: 0.55rem 0.7rem; border-radius: var(--radius-sm);
+    cursor: pointer; user-select: none; outline: none;
+    transition: background-color var(--duration-fast), color var(--duration-fast);
+  }
+  :where([data-scope]:is([data-scope="menu"], [data-scope="select"], [data-scope="combobox"], [data-scope="listbox"], [data-scope="cascade-select"]):is([data-part="item"], [data-part="trigger-item"])):is([data-highlighted], :hover) { background: var(--ark-hover); }
+  :where([data-scope]:is([data-scope="select"], [data-scope="combobox"], [data-scope="listbox"], [data-scope="cascade-select"])[data-part="item"]):is([data-state="checked"], [data-selected]) { color: var(--accent-text); font-weight: var(--weight-semibold); }
+  :where([data-scope][data-part="item-group-label"]) { padding: 0.5rem 0.7rem 0.25rem; font-size: var(--text-caption); font-weight: var(--weight-black); text-transform: var(--label-transform); color: var(--fg-muted); }
+  :where([data-scope][data-part="item-indicator"]) { display: inline-grid; color: var(--accent-text); }
+
+  /* Cajas tipo input (select, combobox, number-input, tags-input…) */
+  :where([data-scope="select"][data-part="trigger"], [data-scope="cascade-select"][data-part="trigger"], [data-scope="combobox"][data-part="control"], [data-scope="number-input"][data-part="control"], [data-scope="tags-input"][data-part="control"], [data-scope="password-input"][data-part="control"], [data-scope="date-input"][data-part="control"], [data-scope="clipboard"][data-part="control"]) {
+    display: flex; align-items: center; gap: 0.5rem;
+    width: 100%; min-height: var(--_h); padding: 0 var(--_px);
+    font-size: var(--_fs); color: var(--fg); background: var(--bg-raised);
+    border: var(--ark-line); border-radius: var(--input-radius);
+    transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
+  }
+  :where([data-scope="select"][data-part="trigger"], [data-scope="cascade-select"][data-part="trigger"], [data-scope="combobox"][data-part="control"], [data-scope="number-input"][data-part="control"], [data-scope="tags-input"][data-part="control"], [data-scope="password-input"][data-part="control"], [data-scope="date-input"][data-part="control"], [data-scope="clipboard"][data-part="control"]):is(:focus-within, :focus-visible, [data-focus], [data-state="open"]) { outline: none; border-color: var(--accent); box-shadow: var(--ark-ring), var(--ark-glow); }
+  :where([data-scope][data-invalid]:is([data-part="control"], [data-part="trigger"], [data-part="input"], [data-part="textarea"], [data-part="select"])) { border-color: var(--danger-500); }
+  :where([data-scope]:is([data-scope="combobox"], [data-scope="number-input"], [data-scope="tags-input"], [data-scope="password-input"], [data-scope="clipboard"])[data-part="input"]) {
+    flex: 1; min-width: 4rem; width: auto; height: auto; padding: 0;
+    color: inherit; background: transparent; border: 0; border-radius: 0; outline: none; box-shadow: none;
+  }
+
+  /* Botones pequeños de icono (cerrar, limpiar, anterior, siguiente…) */
+  :where([data-scope]:is([data-part="close-trigger"], [data-part="clear-trigger"], [data-part="prev-trigger"], [data-part="next-trigger"], [data-part="first-trigger"], [data-part="last-trigger"], [data-part="increment-trigger"], [data-part="decrement-trigger"], [data-part="item-delete-trigger"], [data-part="visibility-trigger"], [data-part="autoplay-trigger"]):not([class*="btn"])) {
+    flex-shrink: 0; width: 2rem; height: 2rem; border-radius: var(--radius-sm);
+    color: var(--fg-muted);
+    transition: background-color var(--duration-fast), color var(--duration-fast);
+  }
+  :where([data-scope]:is([data-part="close-trigger"], [data-part="clear-trigger"], [data-part="prev-trigger"], [data-part="next-trigger"], [data-part="first-trigger"], [data-part="last-trigger"], [data-part="increment-trigger"], [data-part="decrement-trigger"], [data-part="item-delete-trigger"], [data-part="visibility-trigger"], [data-part="autoplay-trigger"]):not([class*="btn"])):hover { background: var(--ark-hover); color: var(--fg); }
+
+  @media (prefers-reduced-motion: reduce) { [data-scope] { animation: none !important; transition: none !important; } }
+}
+@keyframes ark-in { from { opacity: 0; transform: translateY(calc(var(--motion-distance) * -1)) scale(0.98); } }
+@keyframes ark-out { to { opacity: 0; transform: translateY(calc(var(--motion-distance) * -1)) scale(0.98); } }
+@keyframes ark-fade-in { from { opacity: 0; } }
+@keyframes ark-fade-out { to { opacity: 0; } }
+@keyframes ark-pop-in { from { opacity: 0; transform: translateY(var(--motion-distance)) scale(0.97); } }
+@keyframes ark-expand { from { height: 0; opacity: 0; } to { height: var(--height); opacity: 1; } }
+@keyframes ark-collapse { from { height: var(--height); opacity: 1; } to { height: 0; opacity: 0; } }
+/* <<< ark:base */
+
+/* >>> ark:accordion */
+@layer components {
+  :where([data-scope="accordion"]) {
+    &[data-part="root"] { display: grid; border-top: var(--ark-line); }
+    &[data-part="item"] { border-bottom: var(--ark-line); }
+    &[data-part="item-trigger"] { width: 100%; justify-content: space-between; padding: 1.1rem 0; text-align: left; font-size: var(--text-h6); font-weight: var(--weight-bold); text-transform: var(--label-transform); transition: color var(--duration-fast); }
+    &[data-part="item-trigger"]:hover, &[data-part="item-trigger"][data-state="open"] { color: var(--accent-text); }
+    &[data-part="item-indicator"] { color: var(--fg-muted); transition: rotate var(--duration-fast) var(--ease), color var(--duration-fast); }
+    &[data-part="item-indicator"][data-state="open"] { rotate: 180deg; color: var(--accent-text); }
+    &[data-part="item-content"] { overflow: hidden; padding-bottom: 1.1rem; color: var(--fg-muted); }
+    &[data-part="item-content"][data-state="open"] { animation: ark-expand var(--duration-fast) var(--ease); }
+    &[data-part="item-content"][data-state="closed"] { animation: ark-collapse var(--duration-fast) var(--ease); }
+  }
+}
+/* <<< ark:accordion */
+
+/* >>> ark:avatar */
+@layer components {
+  :where([data-scope="avatar"]) {
+    &[data-part="root"] { display: inline-grid; place-items: center; flex-shrink: 0; width: var(--_h); height: var(--_h); overflow: hidden; border-radius: var(--radius-full); background: var(--bg-raised); border: var(--ark-line); }
+    &[data-part="image"] { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
+    &[data-part="fallback"] { font-size: calc(var(--_h) * 0.36); font-weight: var(--weight-bold); text-transform: uppercase; color: var(--accent-text); }
+  }
+}
+/* <<< ark:avatar */
+
+/* >>> ark:carousel */
+@layer components {
+  :where([data-scope="carousel"]) {
+    &[data-part="root"] { position: relative; display: grid; gap: 1rem; }
+    &[data-part="item-group"] { overflow: auto hidden; scrollbar-width: none; border-radius: var(--card-radius); }
+    &[data-part="item"] { min-width: 0; }
+    &[data-part="control"] { display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+    &[data-part="prev-trigger"], &[data-part="next-trigger"] { border: var(--ark-line); border-radius: var(--radius-full); width: 2.5rem; height: 2.5rem; }
+    &[data-part="indicator-group"] { display: flex; align-items: center; gap: 0.4rem; }
+    &[data-part="indicator"] { width: 0.5rem; height: 0.5rem; border-radius: var(--radius-full); background: var(--border); transition: width var(--duration-fast) var(--ease), background-color var(--duration-fast); }
+    &[data-part="indicator"][data-current] { width: 1.5rem; background: var(--accent); box-shadow: var(--ark-glow); }
+    &[data-part="progress-text"] { font-size: var(--text-body-sm); color: var(--fg-muted); font-variant-numeric: tabular-nums; }
+  }
+}
+/* <<< ark:carousel */
+
+/* >>> ark:checkbox */
+@layer components {
+  :where([data-scope="checkbox"]) {
+    &[data-part="root"] { display: inline-flex; align-items: center; gap: 0.6rem; margin: 0; cursor: pointer; font-weight: var(--weight-regular); }
+    &[data-part="control"] { display: inline-grid; place-items: center; flex-shrink: 0; width: 1.25rem; height: 1.25rem; color: transparent; background: var(--bg-raised); border: var(--ark-line); border-radius: min(var(--radius-sm), 0.35rem); transition: background-color var(--duration-fast), border-color var(--duration-fast), box-shadow var(--duration-fast); }
+    &[data-part="control"]:is([data-state="checked"], [data-state="indeterminate"]) { color: var(--on-accent); background: var(--accent); border-color: var(--accent); box-shadow: var(--ark-glow); }
+    &[data-part="control"]:is([data-focus-visible], [data-focus]) { box-shadow: var(--ark-ring); }
+    &[data-part="indicator"] { display: inline-grid; font-size: 0.85rem; }
+    &[data-part="label"] { display: inline; margin: 0; font-weight: var(--weight-regular); }
+  }
+}
+/* <<< ark:checkbox */
+
+/* >>> ark:collapsible */
+@layer components {
+  :where([data-scope="collapsible"]) {
+    &[data-part="trigger"] { width: 100%; justify-content: space-between; padding: 0.9rem 0; font-weight: var(--weight-bold); text-align: left; }
+    &[data-part="trigger"]:hover { color: var(--accent-text); }
+    &[data-part="indicator"] { color: var(--fg-muted); transition: rotate var(--duration-fast) var(--ease); }
+    &[data-part="indicator"][data-state="open"] { rotate: 180deg; }
+    &[data-part="content"] { overflow: hidden; color: var(--fg-muted); }
+    &[data-part="content"][data-state="open"] { animation: ark-expand var(--duration-fast) var(--ease); }
+    &[data-part="content"][data-state="closed"] { animation: ark-collapse var(--duration-fast) var(--ease); }
+  }
+}
+/* <<< ark:collapsible */
+
+/* >>> ark:dialog */
+@layer components {
+  :where([data-scope="dialog"]) {
+    &[data-part="backdrop"] { position: fixed; inset: 0; z-index: 50; background: var(--dark-80); -webkit-backdrop-filter: blur(var(--surface-blur)); backdrop-filter: blur(var(--surface-blur)); }
+    &[data-part="backdrop"][data-state="open"] { animation: ark-fade-in 0.3s ease-out; }
+    &[data-part="backdrop"][data-state="closed"] { animation: ark-fade-out 0.2s ease-in; }
+    &[data-part="positioner"] { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 1rem; overflow: auto; }
+    &[data-part="content"] { position: relative; display: grid; gap: 0.75rem; width: 100%; max-width: 32rem; padding: 1.5rem; color: var(--fg); background: var(--ark-surface); -webkit-backdrop-filter: blur(var(--surface-blur)); backdrop-filter: blur(var(--surface-blur)); border: var(--ark-line); border-radius: var(--card-radius); box-shadow: var(--shadow-strong), var(--ark-glow); outline: none; }
+    &[data-part="content"][data-state="open"] { animation: ark-pop-in var(--duration) var(--ease); }
+    &[data-part="content"][data-state="closed"] { animation: ark-fade-out 0.2s ease-in; }
+    &[data-part="title"] { margin: 0; padding-right: 2.5rem; font-size: var(--text-h5); }
+    &[data-part="description"] { margin: 0; color: var(--fg-muted); }
+    &[data-part="close-trigger"]:not([class*="btn"]) { position: absolute; top: 1rem; right: 1rem; }
+  }
+}
+/* <<< ark:dialog */
+
+/* >>> ark:drawer */
+@layer components {
+  :where([data-scope="drawer"]) {
+    &[data-part="backdrop"] { position: fixed; inset: 0; z-index: 50; background: var(--dark-80); }
+    &[data-part="backdrop"][data-state="open"] { animation: ark-fade-in 0.3s ease-out; }
+    &[data-part="positioner"] { position: fixed; inset: 0; z-index: 50; display: flex; align-items: flex-end; justify-content: center; }
+    &[data-part="content"] { position: relative; display: grid; gap: 0.75rem; width: 100%; max-width: 40rem; max-height: 85dvh; padding: 0.75rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom, 0px)); overflow-y: auto; color: var(--fg); background: var(--ark-surface); -webkit-backdrop-filter: blur(var(--surface-blur)); backdrop-filter: blur(var(--surface-blur)); border: var(--ark-line); border-bottom: 0; border-radius: var(--radius-lg) var(--radius-lg) 0 0; box-shadow: var(--shadow-strong); outline: none; }
+    &[data-part="content"][data-state="open"] { animation: ds-sheet 0.5s var(--ease); }
+    &[data-part="grabber"] { display: grid; place-items: center; padding: 0.25rem 0 0.5rem; cursor: grab; touch-action: none; }
+    &[data-part="grabber-indicator"] { width: 3rem; height: 0.3rem; border-radius: var(--radius-full); background: var(--border); }
+    &[data-part="title"] { margin: 0; font-size: var(--text-h5); }
+    &[data-part="description"] { margin: 0; color: var(--fg-muted); }
+    &[data-part="close-trigger"]:not([class*="btn"]) { position: absolute; top: 1rem; right: 1rem; }
+  }
+}
+/* <<< ark:drawer */
+
+/* >>> ark:field */
+@layer components {
+  :where([data-scope="field"]) {
+    &[data-part="root"] { display: grid; gap: 0.4rem; }
+    &[data-part="label"] { margin: 0; }
+    &[data-part="required-indicator"] { margin-left: 0.2rem; color: var(--danger-500); }
+    &:is([data-part="input"], [data-part="textarea"], [data-part="select"]):focus { border-color: var(--accent); box-shadow: var(--ark-ring), var(--ark-glow); }
+    &[data-part="helper-text"] { font-size: var(--text-body-sm); color: var(--fg-muted); }
+    &[data-part="error-text"] { font-size: var(--text-body-sm); color: var(--danger-500); }
+  }
+}
+/* <<< ark:field */
+
+/* >>> ark:fieldset */
+@layer components {
+  :where([data-scope="fieldset"]) {
+    &[data-part="root"] { display: grid; gap: 1rem; }
+    &[data-part="helper-text"] { font-size: var(--text-body-sm); color: var(--fg-muted); }
+    &[data-part="error-text"] { font-size: var(--text-body-sm); color: var(--danger-500); }
+  }
+}
+/* <<< ark:fieldset */
+
+/* >>> ark:marquee */
+@layer components {
+  :where([data-scope="marquee"]) {
+    &[data-part="root"] { position: relative; overflow: hidden; }
+    &[data-part="viewport"] { display: flex; gap: var(--space-md); }
+    &[data-part="content"] { display: flex; flex-shrink: 0; align-items: center; gap: var(--space-md); }
+    &[data-part="item"] { flex-shrink: 0; }
+    &[data-part="edge"] { position: absolute; top: 0; bottom: 0; z-index: 1; width: 15%; pointer-events: none; }
+    &[data-part="edge"][data-side="start"] { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+    &[data-part="edge"][data-side="end"] { right: 0; background: linear-gradient(270deg, var(--bg), transparent); }
+  }
+}
+/* <<< ark:marquee */
+
+/* >>> ark:switch */
+@layer components {
+  :where([data-scope="switch"]) {
+    &[data-part="root"] { display: inline-flex; align-items: center; gap: 0.6rem; margin: 0; cursor: pointer; }
+    &[data-part="control"] { display: inline-flex; align-items: center; flex-shrink: 0; width: 2.75rem; height: 1.5rem; padding: 0.15rem; background: var(--bg-raised); border: var(--ark-line); border-radius: var(--radius-full); transition: background-color var(--duration-fast), border-color var(--duration-fast), box-shadow var(--duration-fast); }
+    &[data-part="control"][data-state="checked"] { background: var(--accent); border-color: var(--accent); box-shadow: var(--ark-glow); }
+    &[data-part="control"]:is([data-focus-visible], [data-focus]) { box-shadow: var(--ark-ring); }
+    &[data-part="thumb"] { width: 1.1rem; height: 1.1rem; border-radius: var(--radius-full); background: var(--fg-muted); transition: translate var(--duration-fast) var(--ease), background-color var(--duration-fast); }
+    &[data-part="thumb"][data-state="checked"] { translate: 1.2rem 0; background: var(--on-accent); }
+    &[data-part="label"] { display: inline; margin: 0; font-weight: var(--weight-regular); }
+  }
+}
+/* <<< ark:switch */
+
+/* >>> ark:tabs */
+@layer components {
+  :where([data-scope="tabs"]) {
+    &[data-part="root"] { display: grid; gap: 1.25rem; }
+    &[data-part="root"][data-orientation="vertical"] { grid-template-columns: max-content 1fr; }
+    &[data-part="list"] { position: relative; display: flex; gap: 0.25rem; overflow-x: auto; scrollbar-width: none; border-bottom: var(--ark-line); }
+    &[data-part="list"][data-orientation="vertical"] { flex-direction: column; border-bottom: 0; border-right: var(--ark-line); }
+    &[data-part="trigger"] { padding: 0.8rem 1rem; font-size: var(--text-body-sm); font-weight: var(--weight-semibold); text-transform: var(--label-transform); white-space: nowrap; color: var(--fg-muted); transition: color var(--duration-fast), box-shadow var(--duration-fast); }
+    &[data-part="trigger"]:hover { color: var(--fg); }
+    &[data-part="trigger"][data-selected] { color: var(--fg); box-shadow: inset 0 -2px var(--accent); }
+    &[data-part="trigger"][data-orientation="vertical"][data-selected] { box-shadow: inset -2px 0 var(--accent); }
+    &[data-part="indicator"] { bottom: 0; left: var(--left); width: var(--width); height: 2px; background: var(--accent); box-shadow: var(--ark-glow); }
+    &[data-part="indicator"][data-orientation="vertical"] { top: var(--top); right: 0; bottom: auto; left: auto; width: 2px; height: var(--height); }
+    &[data-part="content"] { outline: none; }
+    &[data-part="content"]:not([hidden]) { animation: ark-fade-in var(--duration-fast) ease-out; }
+  }
+}
+/* <<< ark:tabs */
+
+/* >>> ark:toast */
+@layer components {
+  :where([data-scope="toast"]) {
+    &[data-part="root"] {
+      position: relative; display: grid; gap: 0.2rem; min-width: 18rem; max-width: min(24rem, calc(100vw - 2rem)); padding: 0.9rem 2.75rem 0.9rem 1.1rem;
+      color: var(--fg); background: var(--ark-surface); -webkit-backdrop-filter: blur(var(--surface-blur)); backdrop-filter: blur(var(--surface-blur));
+      border: var(--ark-line); border-left: 3px solid var(--accent); border-radius: var(--radius-md); box-shadow: var(--shadow-strong);
+      translate: var(--x, 0) var(--y, 0); scale: var(--scale, 1); z-index: var(--z-index, 60); height: var(--height, auto); opacity: var(--opacity, 1);
+      will-change: translate, opacity, scale;
+      transition: translate 0.4s, scale 0.4s, opacity 0.4s, height 0.4s;
+      transition-timing-function: cubic-bezier(0.21, 1.02, 0.73, 1);
+    }
+    &[data-part="root"][data-state="closed"] { transition: translate 0.4s, scale 0.4s, opacity 0.2s; transition-timing-function: cubic-bezier(0.06, 0.71, 0.55, 1); }
+    &[data-part="root"][data-type="success"] { border-left-color: var(--success-500); }
+    &[data-part="root"][data-type="error"] { border-left-color: var(--danger-500); }
+    &[data-part="root"][data-type="warning"] { border-left-color: var(--warning-500); }
+    &[data-part="title"] { margin: 0; font-size: var(--text-body-sm); font-weight: var(--weight-bold); }
+    &[data-part="description"] { margin: 0; font-size: var(--text-body-sm); color: var(--fg-muted); }
+    &[data-part="action-trigger"] { justify-self: start; margin-top: 0.4rem; font-size: var(--text-body-sm); font-weight: var(--weight-bold); color: var(--accent-text); text-decoration: underline; text-underline-offset: 0.2em; }
+    &[data-part="close-trigger"]:not([class*="btn"]) { position: absolute; top: 0.5rem; right: 0.5rem; }
+  }
+}
+/* <<< ark:toast */
+
+/* >>> ark:tooltip */
+@layer components {
+  :where([data-scope="tooltip"]) {
+    &[data-part="content"] { z-index: 60; max-width: 18rem; padding: 0.4rem 0.65rem; font-size: var(--text-body-sm); line-height: 1.3; color: var(--bg); background: var(--fg); border-radius: var(--radius-sm); box-shadow: var(--shadow-medium); }
+    &[data-part="arrow"] { --arrow-background: var(--fg); }
+    &[data-part="arrow-tip"] { border: 0; }
+  }
+}
+/* <<< ark:tooltip */

@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "title": "Blog de Henry Yamunaque",
+    "description": "Artículos sobre desarrollo de software, productos digitales, inteligencia artificial y automatización."
+  },
+  "common": {
+    "eyebrow": "Blog",
+    "read": "Leer →"
+  },
+  "list": {
+    "title": "Notas sobre producto, código",
+    "accent": "e IA.",
+    "description": "Lo que aprendo construyendo productos digitales y agentes de IA, contado sin rodeos.",
+    "latest": "Más reciente",
+    "readFeatured": "Leer artículo →",
+    "emptyTitle": "Pronto habrá artículos aquí",
+    "emptyDescription": "Estoy escribiendo los primeros. Mientras tanto, mira lo que he construido.",
+    "emptyAction": "Ver portafolio"
+  },
+  "article": {
+    "back": "← Todos los artículos",
+    "updated": "Actualizado el {fecha}",
+    "related": "Sigue leyendo"
+  }
+}

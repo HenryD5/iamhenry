@@ -1,0 +1,42 @@
+{
+  "skipToContent": "Saltar al contenido",
+  "backHome": "Volver al inicio",
+  "brand": "IamHenry",
+  "contactCta": "Construyamos algo juntos",
+  "floatingContact": "Hablemos",
+  "navigation": {
+    "label": "Navegación principal",
+    "stack": { "href": "/#stack", "label": "Stack" },
+    "experience": { "href": "/#experiencia", "label": "Experiencia" },
+    "portfolio": { "href": "/#portafolio", "label": "Portafolio" },
+    "about": { "href": "/#sobre-mi", "label": "Sobre mí" },
+    "blog": { "href": "/blog", "label": "Blog" }
+  },
+  "menu": {
+    "open": "Abrir menú",
+    "close": "Cerrar menú",
+    "title": "Menú",
+    "description": "Navega por las secciones de IamHenry",
+    "contactLinksLabel": "Contacto directo"
+  },
+  "footer": {
+    "role": "Software Engineer y AI enthusiast",
+    "roleWithSeparator": "· Software Engineer y AI enthusiast",
+    "phrase": "Construyamos algo juntos...",
+    "sectionsLabel": "Secciones",
+    "contactLabel": "Contacto",
+    "availability": "Disponible para proyectos",
+    "linkedIn": "LinkedIn",
+    "giantOutline": "I am",
+    "giantSolid": "Henry.",
+    "copyright": "© Copyright Henry.io. Todos los derechos reservados.",
+    "sections": {
+      "question": { "href": "/#pregunta", "label": "Pregúntale a Henry" },
+      "stack": { "href": "/#stack", "label": "Stack" },
+      "experience": { "href": "/#experiencia", "label": "Experiencia" },
+      "portfolio": { "href": "/#portafolio", "label": "Portafolio" },
+      "about": { "href": "/#sobre-mi", "label": "Sobre mí" },
+      "blog": { "href": "/blog", "label": "Blog" }
+    }
+  }
+}

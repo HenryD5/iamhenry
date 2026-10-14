@@ -1,0 +1,79 @@
+{
+  "name": "iamhenry",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "dotenv -e config/.env.dev -- next dev",
+    "dev:qas": "dotenv -e config/.env.qas -- next dev",
+    "build": "dotenv -e config/.env.prd -- next build",
+    "build:qas": "dotenv -e config/.env.qas -- next build",
+    "build:stg": "dotenv -e config/.env.stg -- next build",
+    "preview": "dotenv -e config/.env.prd -- next start",
+    "start": "dotenv -e config/.env.prd -- next start",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --write",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:changed": "vitest run --changed",
+    "test:related": "vitest related --run",
+    "test:coverage": "vitest run --coverage",
+    "verify": "pnpm typecheck && pnpm lint && pnpm build && pnpm test",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,json,md}": "prettier --write"
+  },
+  "dependencies": {
+    "@ark-ui/react": "^5.39.3",
+    "@gsap/react": "^2.1.2",
+    "@portabletext/react": "^8.0.1",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.26",
+    "lucide-react": "^1.52.0",
+    "motion": "^14.0.0",
+    "next": "16.4.0",
+    "next-intl": "^4.14.9",
+    "next-sanity": "^13.3.4",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "server-only": "^0.0.1",
+    "zod": "^4.6.5"
+  },
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=22.22.1 <23"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4.3.3",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/node": "22",
+    "@types/react": "19",
+    "@types/react-dom": "19",
+    "@vitejs/plugin-react": "^6.1.2",
+    "@vitest/coverage-v8": "^5.0.3",
+    "dotenv-cli": "^11.0.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "16.4.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-check-file": "^3.3.2",
+    "happy-dom": "^20.14.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
+    "prettier": "^3.9.9",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "6.0.3",
+    "typescript-eslint": "^8.71.1",
+    "vite": "^8.3.3",
+    "vitest": "^5.0.3"
+  }
+}

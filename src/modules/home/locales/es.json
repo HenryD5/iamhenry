@@ -1,0 +1,277 @@
+{
+  "hero": {
+    "availability": "Disponible para proyectos",
+    "titleLead": "I am",
+    "titleAccent": "Henry.",
+    "rolePrimary": "Software Engineer",
+    "roleSecondary": "y AI enthusiast",
+    "summary": "Construyo productos digitales de punta a punta y los potencio con IA y automatización.",
+    "core": "IA",
+    "cards": {
+      "current": {
+        "eyebrow": "Hoy",
+        "title": "Senior Frontend Engineer",
+        "detail": "Culqi"
+      },
+      "bluex": {
+        "eyebrow": "Mi emprendimiento",
+        "title": "BlueX",
+        "detail": "Agentes de IA para empresas"
+      }
+    },
+    "facets": {
+      "software": "Software Engineer · Backend y Frontend",
+      "ai": "IA",
+      "automation": "Automatización"
+    }
+  },
+  "question": {
+    "eyebrow": "Pregúntale a Henry",
+    "title": "Antes de escribirme,",
+    "accent": "pregúntale a mi versión IA.",
+    "lead": "Responde en segundos lo que suele preguntarse en una primera llamada.",
+    "benefits": {
+      "today": "Qué hago hoy y dónde",
+      "technologies": "Con qué tecnologías trabajo",
+      "ai": "Qué construyo con IA"
+    },
+    "assistant": "Henry, en versión asistente",
+    "availability": "Disponible para proyectos",
+    "input": "Elige una pregunta sobre Henry…",
+    "tabsLabel": "Preguntas sugeridas",
+    "items": {
+      "who": {
+        "prompt": "¿Quién es Henry?",
+        "emphasis": "Software Engineer",
+        "answer": "con más de 5 años creando productos digitales, del backend al frontend. Hoy trabajo en Culqi y construyo BlueX, mi emprendimiento de agentes de IA. Antes lideré el frontend de Manzana Verde",
+        "cards": {
+          "now": { "label": "Ahora", "value": "Senior Frontend Engineer" },
+          "company": { "label": "Empresa", "value": "Culqi" },
+          "experience": { "label": "Experiencia", "value": "+5 años" }
+        }
+      },
+      "technologies": {
+        "prompt": "¿Qué tecnologías usa?",
+        "answer": "Su experiencia documentada reúne Vue, Nuxt, React, TypeScript, Tailwind CSS y JavaScript en frontend; PHP y Laravel en full stack. Para datos ha trabajado con MySQL, Power BI y Looker Studio.",
+        "cards": {
+          "frontend": { "label": "Frontend", "value": "Vue · React" },
+          "backend": { "label": "Full stack", "value": "PHP · Laravel" },
+          "data": { "label": "Datos", "value": "Power BI" }
+        }
+      },
+      "work": {
+        "prompt": "¿Dónde ha trabajado?",
+        "answer": "Hoy soy Senior Frontend Engineer en Culqi con Metrica. Antes trabajé para Culqi con Joyit, automaticé procesos en Purrfect Hire, lideré frontend en Manzana Verde, desarrollé y analicé datos en Paes Perú, y trabajé como freelance.",
+        "cards": {
+          "now": { "label": "Ahora", "value": "Metrica · Culqi" },
+          "before": { "label": "Antes", "value": "Joyit · Culqi" },
+          "leadership": { "label": "Liderazgo", "value": "Manzana Verde" }
+        }
+      },
+      "projects": {
+        "prompt": "Muéstrame proyectos",
+        "answer": "He construido Shypper, Paes, Market Paes, un sitio para Spa y otro para Escuela, además de trabajos de agencia. En Manzana Verde participé en e-commerce, marketplace, cupones, puntos y métodos de pago; también hice MercadosYA.",
+        "cards": {
+          "imports": { "label": "Importación", "value": "Shypper" },
+          "commerce": { "label": "Comercio", "value": "E-commerce" },
+          "marketplace": { "label": "Marketplace", "value": "MercadosYA" }
+        }
+      },
+      "ai": {
+        "prompt": "¿Qué hace con IA?",
+        "answer": "Henry se presenta como AI enthusiast. Su experiencia documentada incluye automatización de procesos con webhooks y scripts, además de estructuración de datos y obtención de métricas para el negocio.",
+        "cards": {
+          "venture": { "label": "Perfil", "value": "AI enthusiast" },
+          "focus": { "label": "Experiencia", "value": "Automatización" },
+          "flows": { "label": "Recursos", "value": "Webhooks · scripts" }
+        }
+      }
+    }
+  },
+  "stack": {
+    "eyebrow": "Stack",
+    "title": "Desarrollo de producto,",
+    "accent": "potenciado con IA.",
+    "lead": "Construyo el producto completo y le sumo agentes y automatizaciones donde ahorran tiempo.",
+    "core": "IA",
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "ai": "IA",
+      "automation": "Automatización",
+      "tools": "Herramientas"
+    },
+    "facets": {
+      "software": {
+        "title": "Software Engineer",
+        "description": "Arquitectura, APIs e interfaces que escalan."
+      },
+      "ai": {
+        "title": "IA y automatización",
+        "description": "Agentes y flujos que trabajan dentro del proceso.",
+        "bluex": "Mi emprendimiento: agentes de IA para empresas."
+      },
+      "data": {
+        "title": "Data Analyst",
+        "description": "Dashboards que los equipos usan para decidir."
+      }
+    }
+  },
+  "experience": {
+    "eyebrow": "Experiencia",
+    "title": "Más de 5 años llevando productos",
+    "accent": "de la idea a producción.",
+    "description": "Lideré equipos de frontend y lancé e-commerce, marketplaces e integraciones de pago.",
+    "today": "Hoy",
+    "metrics": {
+      "years": "Años de experiencia",
+      "companies": "Empresas",
+      "venture": "Emprendimiento propio"
+    },
+    "journeyAction": "Ver trayectoria completa",
+    "journeyTitle": "Trayectoria",
+    "journeyDescription": "Recorrido profesional completo, del cargo actual a los primeros proyectos.",
+    "journeyClose": "Cerrar trayectoria",
+    "rolesLabel": "Roles desempeñados",
+    "ventureLabel": "Emprendimiento propio",
+    "education": "Educación",
+    "degree": "Ingeniería de Sistemas",
+    "degreePeriod": "2017 – 2022",
+    "university": "Universidad César Vallejo",
+    "courses": "Cursos en DevTalles",
+    "continuous": "Formación continua",
+    "tags": {
+      "frontend": "Frontend",
+      "fullStack": "Full stack",
+      "automation": "Automatización",
+      "data": "Datos",
+      "ai": "IA"
+    },
+    "stages": {
+      "freelance": {
+        "period": "Ago. 2018 – ene. 2020",
+        "title": "Full Stack Web Developer",
+        "description": "Aplicaciones web de cara al usuario y de gestión, landing pages optimizadas para SEO, maquetas e integración de servicios de métricas. Entre ellas, MercadosYA y Shypper."
+      },
+      "paes": {
+        "period": "Ago. 2019 – ago. 2020",
+        "title": "Full Stack Web Developer",
+        "progression": "Desempeñé 2 roles",
+        "description": "PHP y JavaScript en Paes Delivery y Paes Market: parte del equipo de arquitectura de backend y a cargo de todo el frontend. Como Data Analyst, extracción y limpieza de datos (MySQL, Google Analytics, Excel) e informes en Google Data Studio.",
+        "roles": {
+          "data": {
+            "title": "Data Analyst",
+            "period": "Ene. 2020 – ago. 2020"
+          },
+          "fullStack": {
+            "title": "Full Stack Web Developer",
+            "period": "Ago. 2019 – ago. 2020"
+          }
+        }
+      },
+      "manzana": {
+        "period": "Sept. 2020 – abr. 2023",
+        "title": "Lead Frontend Developer",
+        "progression": "Desempeñé 3 roles en 2 años y 8 meses",
+        "description": "Lideré el equipo de frontend y los squads: e-commerce, marketplace, cupones, puntos, métodos de pago, rediseño de la app, de la landing y del blog, migraciones y paquetes para medir eventos. Antes, landing pages y flujos de la aplicación (onboarding, compra, pedidos, referidos, recetas, ejercicios); en paralelo, dashboards para las áreas de la startup con MySQL, Power BI y Looker Studio.",
+        "roles": {
+          "lead": {
+            "title": "Lead Frontend Developer",
+            "period": "Sept. 2021 – abr. 2023"
+          },
+          "fullStack": {
+            "title": "Full Stack Developer",
+            "period": "Sept. 2020 – ago. 2021"
+          },
+          "data": {
+            "title": "Data Analyst – Support",
+            "period": "Sept. 2020 – abr. 2023"
+          }
+        }
+      },
+      "purrfect": {
+        "period": "May. 2023 – jul. 2023",
+        "title": "Business Process Automation Developer",
+        "description": "Automaticé procesos de la organización con webhooks, creé scripts, estructuré datos y obtuve métricas básicas para el negocio. Con TypeScript y React."
+      },
+      "joyit": {
+        "period": "Ago. 2023 – dic. 2025",
+        "title": "Mid Senior Frontend Developer",
+        "description": "Frontend para Culqi, con TypeScript y Tailwind CSS."
+      },
+      "metrica": {
+        "period": "Ene. 2026 – Actualidad",
+        "title": "Senior Frontend Engineer",
+        "description": "Frontend con Vue.js y TypeScript."
+      },
+      "bluex": {
+        "period": "Sin fechas",
+        "title": "BlueX",
+        "description": "Automatización de procesos con agentes de IA y software a medida para empresas: agentes que interpretan, preparan y ejecutan tareas dentro de los procesos, y consultan a una persona cuando algo no está claro. Con n8n, bots y diseño de prompts."
+      }
+    }
+  },
+  "portfolio": {
+    "eyebrow": "Portafolio",
+    "title": "Productos reales,",
+    "accent": "en manos de usuarios reales.",
+    "lead": "Una muestra de lo construido para clientes.",
+    "type": "Web",
+    "pending": "Descripción pendiente",
+    "also": "También construí",
+    "carouselLabel": "Otros productos construidos",
+    "projectsLabel": "Proyectos del portafolio",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "projects": {
+      "shypper": {
+        "alt": "Captura de Shypper",
+        "description": "Plataforma de importación."
+      },
+      "paes": { "alt": "Captura de Paes", "description": "Web de Paes Perú." },
+      "market": {
+        "alt": "Captura de Market Paes",
+        "description": "Proyecto de Paes Perú."
+      },
+      "spa": { "alt": "Captura de Spa", "description": "Cliente: Preciosa." },
+      "escuela": {
+        "alt": "Captura de Escuela",
+        "description": "Cliente: Preciosa."
+      },
+      "agencia": {
+        "alt": "Captura de Agencia",
+        "description": "Descripción pendiente"
+      }
+    },
+    "built": {
+      "rewards": "Cupones y puntos",
+      "commerce": "E-commerce y marketplace",
+      "payments": "Métodos de pago",
+      "mercadosya": "MercadosYA",
+      "bluex": "BlueX"
+    }
+  },
+  "about": {
+    "eyebrow": "Sobre mí",
+    "quote": "Trato cada producto como si llevara",
+    "quoteAccent": "mi nombre.",
+    "facets": {
+      "software": "Software Engineer · Backend y Frontend",
+      "ai": "AI enthusiast",
+      "automation": "Automatización"
+    },
+    "primary": "Desarrollo backend y frontend, y hoy también construyo BlueX, mi emprendimiento de agentes de IA.",
+    "secondary": "Entiendo el problema antes de escribir la primera línea, propongo alternativas y cuido el detalle hasta que funciona para el negocio y para quien lo usa.",
+    "email": "Email",
+    "projects": "Proyectos",
+    "available": "Disponible",
+    "linkedIn": "LinkedIn",
+    "linkedInValue": "henry-yamunaque-villegas"
+  },
+  "closing": {
+    "availability": "Disponible para proyectos",
+    "title": "¿Tienes un reto de producto o IA?",
+    "accent": "Hagámoslo realidad.",
+    "action": "Escríbeme"
+  }
+}
