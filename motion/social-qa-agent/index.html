@@ -2,9 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1920, height=1080" />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
     <style>
+      /* Fuentes de marca, locales. Rangos de peso para que cualquier grosor use su archivo. */
+      @font-face { font-family: "Manrope"; src: url("assets/fonts/manrope.woff2") format("woff2"); font-weight: 100 900; }
+      @font-face { font-family: "BrandInter"; src: url("assets/fonts/inter-500.ttf") format("truetype"); font-weight: 100 549; }
+      @font-face { font-family: "BrandInter"; src: url("assets/fonts/inter-600.ttf") format("truetype"); font-weight: 550 900; }
+      @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/jbmono-500.ttf") format("truetype"); font-weight: 100 900; }
       * {
         margin: 0;
         padding: 0;
@@ -12,44 +17,173 @@
       }
       html,
       body {
-        margin: 0;
-        width: 1920px;
-        height: 1080px;
+        width: 1080px;
+        height: 1920px;
         overflow: hidden;
-        background: #0a0a0a;
+        background: #000;
       }
       #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #F6F5FB;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-      }
-      #title {
-        color: #f4f4f5;
-        font-size: 72px;
-        font-weight: 600;
-        letter-spacing: -0.03em;
       }
     </style>
   </head>
   <body>
-    <div
+    <div data-hf-id="hf-cpol"
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="10"
-      data-width="1920"
-      data-height="1080"
+      data-duration="35.032"
+      data-width="1080"
+      data-height="1920"
     >
-      <h1 id="title" class="clip" data-start="0" data-duration="10" data-track-index="0">Title</h1>
+      <!-- Precarga de fuentes: usa cada familia y peso desde t=0 para que estén listas antes de que el render capture (Inter aparece tarde). Invisible y fuera del flujo. -->
+      <div id="font-preload" aria-hidden="true" data-layout-allow-overflow style="position:absolute;left:0;top:0;width:1px;height:1px;overflow:hidden;opacity:0.01;pointer-events:none">
+        <span style="font:500 10px BrandInter, sans-serif">Aa</span><span style="font:600 10px BrandInter, sans-serif">Aa</span><span style="font:400 10px BrandInter, sans-serif">Aa</span>
+        <span style="font:700 10px Manrope">Aa</span><span style="font:500 10px 'JetBrains Mono'">Aa</span>
+      </div>
+      <div data-hf-id="hf-jnb7"
+        id="el-01-hook"
+        class="scene"
+        data-composition-id="01-hook"
+        data-composition-src="compositions/frames/01-hook.html"
+        data-start="0"
+        data-duration="7.71"
+        data-track-index="0"
+      ></div>
+      <audio data-hf-id="hf-j0b9"
+        id="el-01-hook-voice"
+        src="assets/voice/01.wav"
+        data-start="0"
+        data-duration="7.21"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div data-hf-id="hf-dh65"
+        id="el-02-ingredients"
+        class="scene"
+        data-composition-id="02-ingredients"
+        data-composition-src="compositions/frames/02-ingredients.html"
+        data-start="7.21"
+        data-duration="7.658"
+        data-track-index="1"
+      ></div>
+      <audio data-hf-id="hf-dhe5"
+        id="el-02-ingredients-voice"
+        src="assets/voice/02.wav"
+        data-start="7.21"
+        data-duration="7.158"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div data-hf-id="hf-l9gj"
+        id="el-03-agent-steps"
+        class="scene"
+        data-composition-id="03-agent-steps"
+        data-composition-src="compositions/frames/03-agent-steps.html"
+        data-start="14.368"
+        data-duration="8.076"
+        data-track-index="0"
+      ></div>
+      <audio data-hf-id="hf-mt8o"
+        id="el-03-agent-steps-voice"
+        src="assets/voice/03.wav"
+        data-start="14.368"
+        data-duration="7.576"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div data-hf-id="hf-fgea"
+        id="el-04-script-trick"
+        class="scene"
+        data-composition-id="04-script-trick"
+        data-composition-src="compositions/frames/04-script-trick.html"
+        data-start="21.944"
+        data-duration="6.848"
+        data-track-index="1"
+      ></div>
+      <audio data-hf-id="hf-ck4e"
+        id="el-04-script-trick-voice"
+        src="assets/voice/04.wav"
+        data-start="21.944"
+        data-duration="6.348"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div data-hf-id="hf-1yq4"
+        id="el-05-takeaway"
+        class="scene"
+        data-composition-id="05-takeaway"
+        data-composition-src="compositions/frames/05-takeaway.html"
+        data-start="28.291999999999998"
+        data-duration="6.74"
+        data-track-index="0"
+      ></div>
+      <audio data-hf-id="hf-jgwz"
+        id="el-05-takeaway-voice"
+        src="assets/voice/05.wav"
+        data-start="28.291999999999998"
+        data-duration="6.74"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <!-- BGM -->
+      <audio data-hf-id="hf-i0gn"
+        id="el-bgm"
+        src="assets/bgm/track.mp3"
+        data-start="0"
+        data-duration="35.032"
+        data-track-index="11"
+        data-volume="0.12"
+      ></audio>
+
+      <!-- captions -->
+      <div data-hf-id="hf-nm3v"
+        id="el-captions"
+        data-track-kind="captions"
+        class="scene"
+        data-composition-id="captions"
+        data-composition-src="compositions/captions.html"
+        data-start="0"
+        data-duration="35.032"
+        data-track-index="2"
+      ></div>
+
     </div>
+
     <script>
-      const tl = gsap.timeline({ paused: true });
-      // Example: tl.fromTo("#title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6 }, 0);
-      window.__timelines["main"] = tl;
-      tl.seek(0);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+      // ── frame transitions (injected by transitions.mjs) ──
+      (function () { var tl = window.__timelines["main"];
+        tl.to("#el-01-hook", { y: -1920, duration: 0.5, ease: "power3.inOut" }, 7.21);
+        tl.fromTo("#el-02-ingredients", { y: 1920, opacity: 1 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 7.21);
+        tl.addLabel("hf:transition:01-hook:02-ingredients:push-slide", 7.21);
+        tl.to("#el-02-ingredients", { y: -1920, duration: 0.5, ease: "power3.inOut" }, 14.368);
+        tl.fromTo("#el-03-agent-steps", { y: 1920, opacity: 1 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 14.368);
+        tl.addLabel("hf:transition:02-ingredients:03-agent-steps:push-slide", 14.368);
+        tl.to("#el-03-agent-steps", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 21.944);
+        tl.fromTo("#el-04-script-trick", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 21.944);
+        tl.addLabel("hf:transition:03-agent-steps:04-script-trick:crossfade", 21.944);
+        tl.to("#el-04-script-trick", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 28.292);
+        tl.fromTo("#el-05-takeaway", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 28.292);
+        tl.addLabel("hf:transition:04-script-trick:05-takeaway:crossfade", 28.292);
+        tl.to({}, { duration: 35.032 }, 0); // full-span anchor — main.duration() == composition total (Studio master duration)
+      })();
     </script>
   </body>
 </html>

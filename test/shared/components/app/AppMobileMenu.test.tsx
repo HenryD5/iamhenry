@@ -2,20 +2,27 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { AppMobileMenu } from "@/shared/components/app/AppMobileMenu";
 
+vi.mock("next/navigation", () => ({
+  usePathname: vi.fn(() => "/blog/article"),
+}));
+
 vi.mock("@/shared/components/ui/UiDrawer", () => ({
-  ["UiDrawer"]: ({ children, trigger }: { children: React.ReactNode; trigger: React.ReactNode }) => (
-    <div>{trigger}{children}</div>
+  ["UiDrawer"]: ({
+    children,
+    trigger,
+  }: {
+    children: React.ReactNode;
+    trigger: React.ReactNode;
+  }) => (
+    <div>
+      {trigger}
+      {children}
+    </div>
   ),
 }));
 
 vi.mock("@/shared/components/app/AppBrandLogo", () => ({
   ["AppBrandLogo"]: () => <span>Brand</span>,
-}));
-
-vi.mock("@/shared/components/app/AppThemeSwitch", () => ({
-  ["AppThemeSwitch"]: ({ label }: { label: string }) => (
-    <button role="switch" aria-checked="false">{label}</button>
-  ),
 }));
 
 vi.mock("@/shared/config/site", () => ({
@@ -28,10 +35,13 @@ vi.mock("@/shared/config/site", () => ({
 }));
 
 describe("AppMobileMenu", () => {
-  it("contains the night mode switch", () => {
+  it("does not contain the theme switch and marks the active item", () => {
     render(
       <AppMobileMenu
-        items={[{ href: "/#stack", label: "Stack" }]}
+        items={[
+          { href: "/#stack", label: "Stack" },
+          { href: "/blog", label: "Blog" },
+        ]}
         menuLabel="Abrir menú"
         title="Menú"
         description="Navegación móvil"
@@ -42,10 +52,13 @@ describe("AppMobileMenu", () => {
         availabilityLabel="Disponible"
         linkedInLabel="LinkedIn"
         contactLinksLabel="Contacto y redes"
-        themeLabel="Modo noche"
       />,
     );
 
-    expect(screen.getByRole("switch", { name: "Modo noche" })).toBeInTheDocument();
+    expect(screen.queryByRole("switch")).not.toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Blog/ })).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
   });
 });

@@ -74,6 +74,27 @@ Residuales que no se pueden eliminar y se documentan como riesgo:
 - El Studio no sigue las convenciones de Ark/Tailwind: es una excepción documentada en `AGENTS.md`.
 - Inicio de sesión: **lo hace el usuario con `sanity login` en su navegador** (Claude no inicia sesión), igual que `sanity deploy`. **Los artículos de prueba los carga el usuario** en el Studio.
 
+## Video animado en el cuerpo (cambio 2026-10-14)
+
+Ficha: `docs/changes/2026-10-14-video-en-articulos.md`.
+
+- Bloque `motionVideo` («Video animado») en `body`: `video` (clave del catálogo), `caption` (opcional), `label` (obligatorio, descripción para lectores de pantalla).
+- Los videos no van a Sanity: viven en `public/media/<clave>.{webm,mp4,webp}`. Catálogo tipado en `src/modules/blog/content/motion-videos.ts` (clave, basePath, ancho, alto); Zod valida la clave y el adaptador descarta el bloque si no existe o falta `label`.
+- `ArticleBodyVideo` (`figure` + `figcaption`) reutiliza `AppLoopVideo`; mismo ancho y radio que `ArticleBodyImage`.
+- Límite v1: la pieza tiene fondo claro horneado; en modo noche se muestra en un marco con fondo claro propio (sin variante `-noche`).
+- Criterios: el bloque con clave válida reproduce en bucle, sin audio, con póster y sin movimiento si hay reduced-motion; con clave inválida no se renderiza y el build no falla; sin desbordes a 390 px. Verificación con datos reales pendiente de que el usuario añada el bloque en el Studio.
+
+## Bloque de código en el cuerpo (cambio 2026-10-14)
+
+Ficha: `docs/changes/2026-10-14-bloques-de-codigo.md`.
+
+- Bloque `code` (`@sanity/code-input`) en `body`: `language` (opcional), `filename` (opcional), `code` (obligatorio, no vacío). El adaptador lo valida con Zod y descarta el bloque si no es válido, sin romper el build.
+- Lenguajes en lista cerrada: `src/modules/blog/content/code-languages.ts` (`bash`, `sh`, `json`, `javascript`, `typescript`, `tsx`, `markdown`, `text`). Un lenguaje fuera de la lista se muestra como `text` (`utils/code-language.ts`).
+- `ArticleBodyCode` (servidor, async): `figure` con cabecera que muestra `filename` o, si no existe, la etiqueta del lenguaje; dentro, `pre > code` en `font-mono` sobre la superficie oscura de marca (tokens existentes, también en modo noche). Scroll horizontal dentro del bloque; mismo ancho y radio que `ArticleBodyImage`. El `pre` desplazable tiene `tabIndex={0}` y `aria-label`.
+- Resaltado con `shiki` (`codeToHtml`) en servidor, sin JavaScript de cliente. Se usa un tema oscuro de shiki y su fondo se sustituye por el de la marca. La dependencia la instala la sesión principal.
+- Botón «Copiar»: isla cliente mínima `ArticleCodeCopyButton` con `navigator.clipboard`; estado «Copiado» en región `aria-live`; textos en `locales/es.json`.
+- Criterios: el bloque muestra cabecera y resaltado; «Copiar» deja en el portapapeles el texto exacto y anuncia «Copiado»; a 390 px el scroll ocurre dentro del bloque y la página no se desplaza; lenguaje desconocido se muestra como `text`; bloque inválido no se renderiza y el build no falla; ningún cambio en `motionVideo` ni en imágenes.
+
 ## Pantallas
 
 Sin maqueta. Decisión del usuario: derivarlas del sistema actual (tokens, tipografía, componentes de home) con un **boceto que el usuario aprueba antes de construir**. Hasta esa aprobación, las vistas y rutas quedan bloqueadas.
@@ -134,7 +155,7 @@ Webhook de Sanity (filtro `_type == "article"`, crear, actualizar y borrar) que 
 - Escritorio (1440) y 390 px: sin desbordes, coincide con el boceto aprobado; un solo `h1` por página; jerarquía de encabezados correcta en el cuerpo.
 - Imágenes con `alt`, ancho y alto (sin CLS), carga diferida salvo la portada del detalle.
 - Navegación: desde `/blog` y `/blog/<slug>`, cada enlace de barra y pie lleva a la sección de home o a `/blog`.
-- Cuerpo: renderizan párrafos, h2 a h4, listas, cita, enlaces, código en línea e imagen; un bloque desconocido no rompe la página.
+- Cuerpo: renderizan párrafos, h2 a h4, listas, cita, enlaces, código en línea, bloque de código con resaltado y botón «Copiar» (cambio 2026-10-14), e imagen; un bloque desconocido no rompe la página.
 - Confidencialidad: tras `pnpm build`, la búsqueda de `cdn.sanity.io` y del projectId real en `src/`, `studio/` (salvo `studio/.env`) y `.next/static` y en el HTML generado no devuelve nada; no existe ninguna variable `NEXT_PUBLIC_SANITY_*`; `git status` no muestra archivos `.env` con valores.
 - Metadata, canónica y JSON-LD válidos por artículo; sitemap con las entradas del blog.
 - Movimiento reducido: sin animación nueva.

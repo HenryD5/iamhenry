@@ -65,3 +65,82 @@ describe("adaptArticle", () => {
     expect(adaptArticle(createDto(cover))).not.toHaveProperty("cover");
   });
 });
+
+describe("adaptArticle motionVideo", () => {
+  function withBlocks(blocks: unknown[]): SanityArticleDto {
+    return { ...createDto(null), body: blocks as SanityArticleDto["body"] };
+  }
+
+  it("keeps a valid motionVideo block", () => {
+    const article = adaptArticle(
+      withBlocks([
+        {
+          _type: "motionVideo",
+          _key: "v1",
+          video: "qa-agent-flow",
+          caption: "Flujo",
+          label: "Descripción",
+        },
+      ]),
+    );
+    expect(article.body).toEqual([
+      {
+        _type: "motionVideo",
+        _key: "v1",
+        video: "qa-agent-flow",
+        caption: "Flujo",
+        label: "Descripción",
+      },
+    ]);
+  });
+
+  it.each([
+    { video: "no-existe", label: "Texto" },
+    { video: "qa-agent-flow", label: "  " },
+    { video: "qa-agent-flow" },
+    { label: "Texto" },
+  ])("drops invalid motionVideo block %j", (fields) => {
+    const article = adaptArticle(
+      withBlocks([{ _type: "motionVideo", _key: "v1", ...fields }]),
+    );
+    expect(article.body).toEqual([]);
+  });
+});
+
+describe("adaptArticle code", () => {
+  function withBlocks(blocks: unknown[]): SanityArticleDto {
+    return { ...createDto(null), body: blocks as SanityArticleDto["body"] };
+  }
+
+  it("keeps a valid code block with its language and filename", () => {
+    const article = adaptArticle(
+      withBlocks([
+        {
+          _type: "code",
+          _key: "code-1",
+          code: "const greeting = 'Hola';",
+          language: "typescript",
+          filename: "greeting.ts",
+        },
+      ]),
+    );
+
+    expect(article.body).toEqual([
+      {
+        _type: "code",
+        _key: "code-1",
+        code: "const greeting = 'Hola';",
+        language: "typescript",
+        filename: "greeting.ts",
+      },
+    ]);
+  });
+
+  it("drops a code block with empty code", () => {
+    const article = adaptArticle(
+      withBlocks([{ _type: "code", _key: "code-1", code: "" }]),
+    );
+
+    expect(article.body).toEqual([]);
+  });
+});

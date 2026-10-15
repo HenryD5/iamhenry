@@ -45,6 +45,7 @@ Instalados para animación: `motion` 14, `gsap` 3.15.0 (con ScrollTrigger y Spli
 | Metadata/JSON-LD                | `src/shared/seo/`                                 |
 | Tipo o schema de blog           | `src/modules/blog/types/`                         |
 | Estructura estática de blog     | `src/modules/blog/content/`                       |
+| Video animado de artículo       | catálogo `src/modules/blog/content/motion-videos.ts` y `ArticleBodyVideo`; archivos en `public/media/` |
 | Acceso a Sanity                 | `src/modules/blog/services/`                      |
 | Adaptador de datos de blog      | `src/modules/blog/adapters/`                      |
 | Lógica pura de blog             | `src/modules/blog/utils/`                         |

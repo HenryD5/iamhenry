@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AppBrandLogo } from "./AppBrandLogo";
 import { AppContainer } from "./AppContainer";
 import { AppMobileMenu } from "./AppMobileMenu";
+import { AppNavLinks } from "./AppNavLinks";
 import { AppThemeSwitch } from "./AppThemeSwitch";
 
 interface AppHeaderProps {
@@ -29,41 +30,38 @@ export async function AppHeader({ surface }: AppHeaderProps = {}) {
       data-surface={surface}
       data-motion-section="header"
     >
-      <AppContainer className="flex items-center gap-[2.4rem] max-md:gap-[var(--space-xs)]">
+      <AppContainer className="grid grid-cols-[1fr_auto_1fr] items-center gap-[2.4rem] max-md:flex max-md:gap-1.5">
         <AppBrandLogo label={translate("brand")} />
-        {items.map((item) => (
+        <AppNavLinks items={items} />
+        <div className="flex items-center gap-3 justify-self-end max-md:ms-auto max-md:gap-1.5">
+          <AppThemeSwitch
+            className="max-md:order-2"
+            isCompact
+            label={translate("theme.night")}
+          />
           <Link
-            className="font-primary text-body-sm text-fg-muted hover:text-fg focus-visible:text-fg font-medium no-underline transition-colors duration-[var(--duration-fast)] max-md:hidden"
-            key={item.href}
-            href={item.href}
+            className="btn btn--md focus-visible:text-white max-md:order-1 max-md:shrink min-[768px]:order-2"
+            href="/#contacto"
           >
-            {item.label}
+            <span className="md:hidden">{translate("contactCtaShort")}</span>
+            <span className="max-md:hidden">{translate("contactCta")}</span>
           </Link>
-        ))}
-        <AppThemeSwitch
-          className="ms-auto max-md:hidden"
-          label={translate("theme.night")}
-        />
-        <Link
-          className="btn btn--md focus-visible:text-white max-md:ms-auto max-md:shrink-0"
-          href="/#contacto"
-        >
-          {translate("contactCta")}
-        </Link>
-        <AppMobileMenu
-          items={items}
-          menuLabel={translate("menu.open")}
-          title={translate("menu.title")}
-          description={translate("menu.description")}
-          closeLabel={translate("menu.close")}
-          contactLabel={translate("contactCta")}
-          contactHref="/#contacto"
-          brandLabel={translate("brand")}
-          availabilityLabel={translate("footer.availability")}
-          linkedInLabel={translate("footer.linkedIn")}
-          contactLinksLabel={translate("menu.contactLinksLabel")}
-          themeLabel={translate("theme.night")}
-        />
+          <div className="max-md:order-3 md:hidden">
+            <AppMobileMenu
+              items={items}
+              menuLabel={translate("menu.open")}
+              title={translate("menu.title")}
+              description={translate("menu.description")}
+              closeLabel={translate("menu.close")}
+              contactLabel={translate("contactCta")}
+              contactHref="/#contacto"
+              brandLabel={translate("brand")}
+              availabilityLabel={translate("footer.availability")}
+              linkedInLabel={translate("footer.linkedIn")}
+              contactLinksLabel={translate("menu.contactLinksLabel")}
+            />
+          </div>
+        </div>
       </AppContainer>
     </nav>
   );

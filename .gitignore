@@ -66,3 +66,9 @@ docs/qa-report*.md
 media/_candidatos/
 motion/*/renders
 motion/*/snapshots
+
+# Importación a Sanity generada por scripts/blog/markdown-to-sanity.mjs (lleva rutas locales)
+docs/blog/drafts/*.ndjson
+
+# Música de fondo de piezas HyperFrames: licencia sin confirmar para redistribuir (repo público)
+motion/*/assets/bgm/

@@ -35,6 +35,13 @@
         "social-qa-agent"
       ],
       "updated_at": "2026-10-14T15:44:24.492Z"
+    },
+    "style_preset.faceless-explainer": {
+      "value": "blue-professional",
+      "confirmed_in": [
+        "social-qa-agent"
+      ],
+      "updated_at": "2026-10-14T15:48:52.111Z"
     }
   },
   "sightings": {}

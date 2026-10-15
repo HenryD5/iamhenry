@@ -1,10 +1,12 @@
 // Convierte un borrador de docs/blog/drafts/*.md en un documento `article` de Sanity (NDJSON)
 // para `sanity dataset import`. Se importa como borrador (`drafts.`): se revisa y publica en el Studio.
-// Admite lo que permite el esquema: párrafos, ### → h2, #### → h3, listas, bloques de código,
+// Admite lo que permite el esquema (también ![alt](ruta) como imagen): párrafos, ### → h2, #### → h3, listas, bloques de código,
 // **negrita**, *cursiva*, `código` y [enlaces](url).
 // Uso: node scripts/blog/markdown-to-sanity.mjs docs/blog/drafts/<archivo>.md [publishedAt ISO]
 import { createHash } from "node:crypto";
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
 const [sourcePath, publishedAtArgument] = process.argv.slice(2);
 if (!sourcePath) {
@@ -160,6 +162,21 @@ for (const line of body.trim().split("\n")) {
       filename: opening[2],
       lines: [],
     };
+    continue;
+  }
+
+  // ![alt](ruta local) → bloque imagen; `sanity dataset import` sube el archivo como asset.
+  const image = line.match(/^!\[([^\]]+)\]\(([^)\s]+)\)$/);
+  if (image) {
+    flushParagraph();
+    const imagePath = resolve(dirname(sourcePath), image[2]);
+    if (!existsSync(imagePath)) throw new Error(`No existe la imagen: ${image[2]}`);
+    blocks.push({
+      _type: "image",
+      _key: createKey(),
+      _sanityAsset: `image@${pathToFileURL(imagePath).href}`,
+      alt: image[1],
+    });
     continue;
   }
 

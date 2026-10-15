@@ -21,5 +21,16 @@
     "back": "← Todos los artículos",
     "updated": "Actualizado el {fecha}",
     "related": "Sigue leyendo"
+  },
+  "code": {
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "copyLabel": "Copiar el código",
+    "blockLabel": "Código: {nombre}",
+    "example": "Ejemplo",
+    "show": "Ver código",
+    "hide": "Ocultar código",
+    "lines": "{n} líneas",
+    "line": "1 línea"
   }
 }

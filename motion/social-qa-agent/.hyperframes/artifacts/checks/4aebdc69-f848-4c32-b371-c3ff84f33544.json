@@ -1,0 +1,317 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 7
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 6,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 14.586,
+        "selector": "#f03-eye",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 64,
+          "top": 1748.72,
+          "right": 430.25,
+          "bottom": 1789.72,
+          "width": 366.25,
+          "height": 41
+        },
+        "containerSelector": "#caption-word-12-0",
+        "text": "DE CAMBIO A INFORME",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-kv35"
+        },
+        "sourceFile": "compositions/frames/03-agent-steps.html",
+        "bbox": {
+          "x": 64,
+          "y": 1748.72,
+          "width": 366.25,
+          "height": 41
+        },
+        "firstSeen": 14.586,
+        "lastSeen": 22.191,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          14.586,
+          22.191
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 17.516,
+        "selector": "#f03-s1 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 119.42,
+          "top": 710,
+          "right": 132.56,
+          "bottom": 751,
+          "width": 13.14,
+          "height": 41
+        },
+        "containerSelector": "#f03-core",
+        "text": "1",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-8hei"
+        },
+        "sourceFile": "compositions/frames/03-agent-steps.html",
+        "bbox": {
+          "x": 119.42,
+          "y": 710,
+          "width": 13.14,
+          "height": 41
+        },
+        "firstSeen": 17.516,
+        "lastSeen": 17.516,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          17.516
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 21.408,
+        "selector": "#f03-s4 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 116.86,
+          "top": 1218,
+          "right": 135.13,
+          "bottom": 1259,
+          "width": 18.27,
+          "height": 41
+        },
+        "containerSelector": "#f03-core",
+        "text": "4",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-hf-id": "hf-9obl"
+        },
+        "sourceFile": "compositions/frames/03-agent-steps.html",
+        "bbox": {
+          "x": 116.86,
+          "y": 1218,
+          "width": 18.27,
+          "height": 41
+        },
+        "firstSeen": 21.408,
+        "lastSeen": 21.408,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          21.408
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 22.191,
+        "selector": "#f03-h1",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 64,
+          "top": 258,
+          "right": 933.27,
+          "bottom": 490.75,
+          "width": 869.27,
+          "height": 232.75
+        },
+        "containerSelector": "#s04-h1",
+        "text": "Tu agente de QA, en 4 pasos",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-of3n"
+        },
+        "sourceFile": "compositions/frames/03-agent-steps.html",
+        "bbox": {
+          "x": 64,
+          "y": 258,
+          "width": 869.27,
+          "height": 232.75
+        },
+        "firstSeen": 22.191,
+        "lastSeen": 22.191,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          22.191
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 25.301,
+        "selector": "div.s04-lines",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 100,
+          "top": 451.75,
+          "right": 980,
+          "bottom": 731.75,
+          "width": 880,
+          "height": 280
+        },
+        "containerSelector": "#s04-page",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 64,
+          "top": 415.75,
+          "right": 1016,
+          "bottom": 685.75,
+          "width": 952,
+          "height": 270
+        },
+        "overflow": {
+          "bottom": 46
+        },
+        "dataAttributes": {
+          "data-hf-id": "hf-rmzl"
+        },
+        "sourceFile": "compositions/frames/04-script-trick.html",
+        "bbox": {
+          "x": 100,
+          "y": 451.75,
+          "width": 880,
+          "height": 280
+        },
+        "firstSeen": 25.301,
+        "lastSeen": 25.301,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          25.301
+        ]
+      },
+      {
+        "code": "panel_out_of_canvas",
+        "severity": "info",
+        "time": 29.193,
+        "selector": "div.ring.r3",
+        "message": "Painted panel extends outside the composition canvas.",
+        "rect": {
+          "left": -116.27,
+          "top": 23.73,
+          "right": 1196.27,
+          "bottom": 1336.27,
+          "width": 1312.53,
+          "height": 1312.53
+        },
+        "containerSelector": "#root",
+        "text": "",
+        "fixHint": "Move the panel inward, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 116.27,
+          "right": 116.27
+        },
+        "dataAttributes": {
+          "data-hf-id": "hf-mr73"
+        },
+        "sourceFile": "compositions/frames/05-takeaway.html",
+        "bbox": {
+          "x": -116.27,
+          "y": 23.73,
+          "width": 1312.53,
+          "height": 1312.53
+        },
+        "firstSeen": 29.193,
+        "lastSeen": 33.086,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          29.193,
+          33.086
+        ]
+      }
+    ],
+    "duration": 35.032,
+    "samples": [
+      1.946,
+      5.839,
+      9.731,
+      13.624,
+      17.516,
+      21.408,
+      25.301,
+      29.193,
+      33.086
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 6,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      1.946,
+      9.731,
+      17.516,
+      25.301,
+      33.086
+    ],
+    "checked": 56,
+    "passed": 56
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

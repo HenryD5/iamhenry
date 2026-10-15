@@ -38,4 +38,17 @@ describe("AppThemeSwitch", () => {
     expect(document.documentElement).not.toHaveAttribute("data-theme");
     expect(localStorage.getItem("theme")).toBe("day");
   });
+
+  it("passes the compact variant to the switch", async () => {
+    renderWithProviders(<AppThemeSwitch label="Modo noche" isCompact />);
+    const toggle = screen.getByRole("switch", { name: "Modo noche" });
+    await waitFor(() => expect(toggle).toBeEnabled());
+
+    expect(toggle.nextElementSibling).toHaveClass(
+      "h-[var(--control-h-md)]",
+      "w-19",
+      "md:h-8",
+      "md:w-14",
+    );
+  });
 });

@@ -1,0 +1,49 @@
+<template><style>
+@font-face{font-family:"Manrope";src:local("Manrope"),url("assets/fonts/manrope.woff2") format("woff2");font-weight:200 800}
+@font-face{font-family:"BrandInter";src:local(BrandInter),local("BrandInter Medium");font-weight:400 600}
+#root[data-composition-id="02-ingredients"]{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;color:#0E1022;font-family:BrandInter,sans-serif}
+.f02-bg{position:absolute;inset:0;background-color:#F6F5FB;background-image:linear-gradient(rgba(31,75,255,.06) 2px,transparent 2px),linear-gradient(90deg,rgba(31,75,255,.06) 2px,transparent 2px);background-size:90px 90px}
+#root .b{position:absolute;inset:0;padding:230px 64px}
+#root .eye{color:#1F4BFF;font:600 32px/1 Manrope,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+#root h1{margin:30px 0 70px;font:700 104px/1.06 Manrope,sans-serif;letter-spacing:-.025em;color:#0E1022}
+#root h1 .w{display:inline-block;margin-right:.26em}
+#root h1 .n{color:#1F4BFF}
+#root .cards{display:flex;flex-direction:column;gap:28px}
+#root article{min-height:270px;display:grid;grid-template-columns:112px 1fr;gap:30px;align-items:center;padding:44px;border:2px solid rgba(31,75,255,.2);border-radius:18px;background:rgba(246,245,251,.92)}
+#root .num{width:92px;height:92px;display:grid;place-items:center;border-radius:50%;background:#1F4BFF;color:#F6F5FB;font:700 42px/1 Manrope,sans-serif}
+#root .name{font:600 50px/1.15 Manrope,sans-serif}
+#root .desc{margin-top:16px;color:#767891;font:500 32px/1.35 BrandInter,sans-serif}
+#root .pill{display:inline-block;margin-top:20px;padding:14px 22px;border-radius:100px;background:rgba(31,75,255,.08);color:#1F4BFF;font:600 30px/1.25 BrandInter,sans-serif}
+#root .bar{position:absolute;left:0;bottom:0;width:40%;height:8px;background:#1F4BFF;transform-origin:0 50%}
+</style>
+<div data-hf-id="hf-4kli" id="root" data-composition-id="02-ingredients" data-width="1080" data-height="1920" data-duration="7.658">
+<div data-hf-id="hf-gj2g" id="f02-bgl" class="clip f02-bg" data-start="0" data-duration="7.658" data-track-index="0"></div>
+<section data-hf-id="hf-dxeh" id="f02-content" class="clip b" data-start="0" data-duration="7.658" data-track-index="1">
+<div data-hf-id="hf-fyuh" class="eye" id="f02-eye">El kit mínimo</div>
+<h1 data-hf-id="hf-7jmb" id="f02-h1"><span data-hf-id="hf-54e3" class="w">Necesitas</span><span data-hf-id="hf-43ef" class="w n">3</span><span data-hf-id="hf-4n7r" class="w">cosas</span></h1>
+<div data-hf-id="hf-gpab" class="cards" id="f02-cards">
+<article data-hf-id="hf-i4jv" id="f02-c1"><div data-hf-id="hf-1dhv" class="num">1</div><div data-hf-id="hf-yeow"><div data-hf-id="hf-flk0" class="name">Claude Code</div><div data-hf-id="hf-ukcp" class="desc">La IA que investiga y ejecuta el plan.</div></div></article>
+<article data-hf-id="hf-9go0" id="f02-c2"><div data-hf-id="hf-0z6u" class="num">2</div><div data-hf-id="hf-y7yw"><div data-hf-id="hf-zv7o" class="name">Chrome de pruebas</div><div data-hf-id="hf-xj3u" class="desc">Un navegador separado para verificar la web.</div></div></article>
+<article data-hf-id="hf-a8bt" id="f02-c3"><div data-hf-id="hf-0kvt" class="num">3</div><div data-hf-id="hf-x11t"><div data-hf-id="hf-i4fv" class="name">Chrome DevTools MCP</div><div data-hf-id="hf-usgu" class="pill" id="f02-pill">el enchufe entre la IA y Chrome</div></div></article>
+</div>
+<div data-hf-id="hf-rjfj" class="bar" id="f02-bar"></div>
+</section>
+</div>
+<script>
+window.__timelines=window.__timelines||{};
+var tl=gsap.timeline({paused:true});
+var S="#root ";
+tl.fromTo(S+".eye",{opacity:0,y:20},{opacity:1,y:0,duration:.4,ease:"power3.out"},0);
+tl.fromTo(S+"h1 .w:nth-child(1)",{opacity:0,y:50},{opacity:1,y:0,duration:.45,ease:"power3.out"},0.1);
+tl.fromTo(S+"h1 .w:nth-child(2)",{opacity:0,y:50,scale:.6},{opacity:1,y:0,scale:1,duration:.5,ease:"back.out(2)"},0.75);
+tl.fromTo(S+"h1 .w:nth-child(3)",{opacity:0,y:50},{opacity:1,y:0,duration:.45,ease:"power3.out"},1.05);
+var cards=[["#f02-c1",1.9],["#f02-c2",3.0],["#f02-c3",4.9]];
+cards.forEach(function(c){
+  tl.fromTo(c[0],{opacity:0,y:120},{opacity:1,y:0,duration:.55,ease:"power3.out"},c[1]);
+  tl.fromTo(c[0]+" .num",{scale:.4},{scale:1,duration:.5,ease:"back.out(2.4)"},c[1]+.12);
+});
+tl.fromTo("#f02-pill",{opacity:0,y:24,clipPath:"inset(0 100% 0 0 round 100px)"},{opacity:1,y:0,clipPath:"inset(0 0% 0 0 round 100px)",duration:.55,ease:"power3.out"},5.45);
+tl.fromTo("#f02-bar",{scaleX:.2},{scaleX:1,duration:7.158,ease:"none"},0);
+tl.fromTo("#f02-cards",{y:0},{y:-14,duration:2.2,ease:"sine.inOut"},4.95);
+window.__timelines["02-ingredients"]=tl;
+</script></template>

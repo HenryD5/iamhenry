@@ -26,11 +26,7 @@ Revisarlo todo a mano después de cada cambio lleva mucho tiempo. Revisar solo "
 
 ### Cómo funciona el agente
 
-```text
-Tu cambio  →  1. Alcance  →  2. Plan  →  3. Prueba en Chrome  →  4. Informe
-              qué probar     qué debe     ordenador y móvil      ✅ / ❌, gravedad
-                             pasar                               y archivo
-```
+![Animación del agente de QA: el núcleo IA recorre cuatro fases, Alcance, Plan, Prueba en Chrome e Informe, y termina con un informe que marca la portada con error 500 como bloqueante](../../../public/media/qa-agent-flow-animated.webp)
 
 1. **Alcance:** mira qué cambié desde el último commit (con `git diff`, aunque aún no lo haya guardado) y decide qué páginas probar. Si cambié una sección, esa sección. Si cambié algo que comparte toda la web, como el menú, la portada y otra página más.
 2. **Plan:** antes de abrir el navegador, escribe de tres a seis casos con lo que debería pasar. Por ejemplo: "el enlace Blog del menú lleva a la página del blog".

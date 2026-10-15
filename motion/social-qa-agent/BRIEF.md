@@ -7,7 +7,7 @@ destination: tiktok
 aspect: 1080x1920
 language: es
 audience: "Comunidad de desarrollo web y público curioso por la IA, sin dar por sabido MCP"
-length: 30s
+length: 35s
 angle: how-to
 ---
 

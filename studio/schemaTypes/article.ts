@@ -126,6 +126,48 @@ export const article = defineType({
             }),
           ],
         }),
+        defineArrayMember({
+          name: "motionVideo",
+          title: "Video animado",
+          type: "object",
+          fields: [
+            defineField({
+              name: "video",
+              title: "Video",
+              type: "string",
+              options: {
+                list: [
+                  { title: "Agente de QA (flujo)", value: "qa-agent-flow" },
+                ],
+              },
+              validation: (Rule) =>
+                Rule.required().error("El video es obligatorio"),
+            }),
+            defineField({
+              name: "caption",
+              title: "Pie",
+              type: "string",
+            }),
+            defineField({
+              name: "label",
+              title: "Descripción para lectores de pantalla",
+              type: "string",
+              validation: (Rule) =>
+                Rule.required().error(
+                  "La descripción para lectores de pantalla es obligatoria",
+                ),
+            }),
+          ],
+          preview: {
+            select: { video: "video", caption: "caption" },
+            prepare({ video, caption }) {
+              return {
+                title: caption || "Video animado",
+                subtitle: video || "Sin video seleccionado",
+              };
+            },
+          },
+        }),
       ],
     }),
   ],

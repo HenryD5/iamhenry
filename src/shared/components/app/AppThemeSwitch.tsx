@@ -7,11 +7,16 @@ import { useTheme } from "@/shared/hooks/use-theme";
 interface AppThemeSwitchProps {
   label: string;
   className?: string;
+  isCompact?: boolean;
 }
 
-export function AppThemeSwitch({ label, className }: AppThemeSwitchProps) {
+export function AppThemeSwitch({
+  label,
+  className,
+  isCompact = false,
+}: AppThemeSwitchProps) {
   const { isMounted, isNight, setTheme } = useTheme();
-  const iconClassName = "size-3.5";
+  const iconClassName = isCompact ? "size-4 md:size-3.5" : "size-3.5";
 
   return (
     <div
@@ -20,10 +25,9 @@ export function AppThemeSwitch({ label, className }: AppThemeSwitchProps) {
       <UiSwitch
         checked={isNight}
         disabled={!isMounted}
-        onCheckedChange={(isChecked) =>
-          setTheme(isChecked ? "night" : "day")
-        }
+        onCheckedChange={(isChecked) => setTheme(isChecked ? "night" : "day")}
         label={label}
+        isCompact={isCompact}
         uncheckedIcon={<Sun className={iconClassName} aria-hidden="true" />}
         checkedIcon={<Moon className={iconClassName} aria-hidden="true" />}
         thumbIcon={

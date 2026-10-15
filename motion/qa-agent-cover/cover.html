@@ -1,0 +1,49 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:"Manrope";src:url("assets/manrope.woff2") format("woff2");font-weight:200 800}
+@font-face{font-family:"Inter";src:url("assets/inter-500.ttf");font-weight:500}
+@font-face{font-family:"Inter";src:url("assets/inter-600.ttf");font-weight:600}
+@font-face{font-family:"JetBrains Mono";src:url("assets/jbmono-500.ttf");font-weight:500}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;background:#F6F5FB;font-family:Inter}
+#r{position:relative;width:1600px;height:900px;background:#F6F5FB}
+.abs{position:absolute}
+.win{left:80px;top:120px;width:860px;height:540px;background:#fff;border:3px solid #0E1022;border-radius:28px;overflow:hidden;box-shadow:0 30px 60px rgba(31,75,255,.12)}
+.bar{height:68px;background:#E9E7F5;display:flex;align-items:center;padding:0 24px;gap:12px;border-bottom:2px solid #E2E0EE}
+.dot{width:16px;height:16px;border-radius:50%}
+.url{margin-left:20px;background:#fff;border-radius:20px;padding:8px 22px;font:500 24px "JetBrains Mono";color:#767891;width:360px}
+.blk{position:absolute;border-radius:14px;background:#D6E0FF}
+.card{left:450px;top:290px;width:590px;height:390px;background:#fff;border:2px solid #E2E0EE;border-radius:28px;box-shadow:0 30px 70px rgba(14,16,34,.18);padding:28px}
+.row{height:78px;border-radius:18px;background:#F6F5FB;display:flex;align-items:center;gap:20px;padding:0 24px;margin-bottom:14px}
+.row i{width:40px;height:40px;border-radius:50%;background:#7FB800;color:#fff;font:800 24px Manrope;display:flex;align-items:center;justify-content:center;font-style:normal}
+.row b{height:14px;border-radius:7px;background:#CFCDE0}
+.bad{height:150px;border-radius:20px;background:#FCDADC;border:3px solid #E5484D;padding:22px 24px;display:flex;gap:20px}
+.bad i{width:46px;height:46px;flex:none;border-radius:50%;background:#E5484D;color:#fff;font:800 28px Manrope;display:flex;align-items:center;justify-content:center;font-style:normal}
+.chip{display:inline-block;vertical-align:middle;background:#E5484D;color:#fff;font:600 22px Inter;border-radius:20px;padding:6px 18px;margin-top:0}
+.mono{vertical-align:middle;font:500 28px "JetBrains Mono";color:#B3282D;margin-left:10px}
+.core{left:1080px;top:170px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#96B6FE 0%,#1F4BFF 42%,#3B3FD6 72%,#E11D2E 130%);display:flex;align-items:center;justify-content:center;color:#fff;font:800 110px Manrope;box-shadow:0 30px 70px rgba(31,75,255,.35)}
+.ring{border-radius:50%;border:3px solid rgba(31,75,255,.16)}
+.step{width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:800 52px Manrope;color:#fff;background:#1F4BFF}
+</style></head><body><div id="r">
+<div class="abs ring" style="left:1040px;top:130px;width:400px;height:400px"></div>
+<div class="abs ring" style="left:990px;top:80px;width:500px;height:500px;border-color:rgba(31,75,255,.09)"></div>
+<div class="abs win">
+ <div class="bar"><div class="dot" style="background:#E5484D"></div><div class="dot" style="background:#F5B400"></div><div class="dot" style="background:#7FB800"></div><div class="url">localhost:3000</div></div>
+ <div class="blk" style="left:40px;top:100px;width:420px;height:40px"></div>
+ <div class="blk" style="left:40px;top:160px;width:300px;height:30px;background:#E9E7F5"></div>
+ <div class="blk" style="left:40px;top:230px;width:260px;height:230px"></div>
+ <div class="blk" style="left:320px;top:230px;width:140px;height:110px;background:#E9E7F5"></div>
+</div>
+<div class="abs card">
+ <div class="row"><i>✓</i><b style="width:260px"></b></div>
+ <div class="row"><i>✓</i><b style="width:200px"></b></div>
+ <div class="bad"><i>✕</i><div><b style="display:block;height:16px;width:300px;border-radius:8px;background:#E8A0A4;margin-top:10px"></b><div style="margin-top:22px;white-space:nowrap"><span class="chip">bloqueante</span><span class="mono">AppHeader.tsx</span></div></div></div>
+</div>
+<svg class="abs" style="left:0;top:0" width="1600" height="900"><path d="M1030 480 C1100 560 1240 560 1240 530" stroke="#1F4BFF" stroke-width="4" fill="none" stroke-dasharray="2 12" stroke-linecap="round"/></svg>
+<div class="abs core">IA</div>
+<div class="abs" style="left:960px;top:690px;width:520px;height:96px">
+ <div class="abs" style="left:48px;top:46px;width:424px;height:5px;background:#E2E0EE"></div>
+ <div class="abs" style="left:48px;top:46px;width:318px;height:5px;background:#1F4BFF"></div>
+ <div class="abs step" style="left:0">✓</div><div class="abs step" style="left:141px">✓</div><div class="abs step" style="left:282px">✓</div>
+ <div class="abs step" style="left:424px;box-shadow:0 0 0 10px rgba(31,75,255,.18);background:radial-gradient(circle at 35% 30%,#96B6FE,#1F4BFF 50%,#3B3FD6)">4</div>
+</div>
+</div></body></html>

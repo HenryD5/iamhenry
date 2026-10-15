@@ -1,0 +1,42 @@
+<template><style>
+@font-face{font-family:Manrope;src:url("assets/fonts/manrope.woff2") format("woff2");font-weight:100 900}
+@font-face{font-family:"BrandInter";src:url("assets/fonts/inter-500.ttf") format("truetype");font-weight:500}
+@font-face{font-family:"BrandInter";src:url("assets/fonts/inter-600.ttf") format("truetype");font-weight:600}
+@font-face{font-family:"JetBrains Mono";src:url("assets/fonts/jbmono-500.ttf") format("truetype");font-weight:500}
+#root[data-composition-id="04-script-trick"]{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;color:#0E1022;font-family:BrandInter,sans-serif}
+.s04-bg{position:absolute;inset:0;background:#F6F5FB;background-image:linear-gradient(rgba(31,75,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(31,75,255,.05) 1px,transparent 1px);background-size:90px 90px}
+.s04-d{position:absolute;inset:0;padding:170px 64px 0}
+.s04-eye{color:#1F4BFF;font:600 30px/1 Manrope;letter-spacing:.08em;text-transform:uppercase}
+.s04-d h1{margin:24px 0 44px;font:700 96px/1.06 Manrope;letter-spacing:-.02em}
+.s04-compare{display:flex;flex-direction:column;gap:30px}
+.s04-label{margin-bottom:16px;color:#767891;font:600 30px/1 BrandInter, sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.s04-page{position:relative;height:270px;overflow:hidden;padding:34px;border:2px solid rgba(14,16,34,.12);border-radius:18px;background:rgba(14,16,34,.035)}
+.s04-lines{display:grid;gap:16px}
+.s04-lines span{height:21px;border-radius:11px;background:#9A9A9A}
+.s04-lines span:nth-child(2n){width:83%}.s04-lines span:nth-child(3n){width:68%}
+.s04-strike{position:absolute;left:70px;right:70px;top:128px;height:6px;border-radius:3px;background:#E5484D}
+.s04-code{overflow:hidden;border-radius:18px;background:#0E1022;color:#F6F5FB}
+.s04-codebar{padding:22px 30px;border-bottom:1px solid rgba(246,245,251,.14);color:#9A9A9A;font:500 30px/1 "JetBrains Mono"}
+.s04-d pre{margin:0;padding:26px 30px;white-space:pre-wrap;font:500 30px/1.55 "JetBrains Mono"}
+.s04-blue{color:#7f9bff}.s04-muted{color:#9A9A9A}
+.s04-result{display:flex;align-items:center;gap:18px;margin:0 30px 30px;padding:24px 26px;border-left:5px solid #E5484D;border-radius:14px;background:rgba(229,72,77,.12);font:500 34px/1.3 BrandInter, sans-serif}
+.s04-x{width:42px;height:42px;flex:none;color:#E5484D}
+.s04-progress{position:absolute;left:0;bottom:0;width:80%;height:8px;background:#1F4BFF}
+</style><div data-hf-id="hf-3rdp" id="root" data-composition-id="04-script-trick" data-width="1080" data-height="1920" data-duration="6.848"><div data-hf-id="hf-kqxs" id="s04-bg" class="clip s04-bg" data-start="0" data-duration="6.848" data-track-index="0"></div><section data-hf-id="hf-vgt8" id="s04-content" class="clip s04-d" data-start="0" data-duration="6.848" data-track-index="1"><div data-hf-id="hf-lt97" class="s04-eye" id="s04-eye">Menos contexto, más señal</div><h1 data-hf-id="hf-f6bs" id="s04-h1">El truco: un script</h1><div data-hf-id="hf-qait" class="s04-compare"><div data-hf-id="hf-wtfk" id="s04-before"><div data-hf-id="hf-sjnz" class="s04-label">Leer toda la página</div><div data-hf-id="hf-e32a" class="s04-page" id="s04-page"><div data-hf-id="hf-rmzl" class="s04-lines"><span data-hf-id="hf-uckh"></span><span data-hf-id="hf-l73p"></span><span data-hf-id="hf-me0s"></span><span data-hf-id="hf-lzpr"></span><span data-hf-id="hf-n6mu"></span><span data-hf-id="hf-msbt"></span><span data-hf-id="hf-nz8w"></span><span data-hf-id="hf-nkxv"></span></div><div data-hf-id="hf-esgi" class="s04-strike" id="s04-strike"></div></div></div><div data-hf-id="hf-cj85" id="s04-after"><div data-hf-id="hf-mzbt" class="s04-label">Recibir solo lo que falla</div><div data-hf-id="hf-aaau" class="s04-code" id="s04-code"><div data-hf-id="hf-gx7e" class="s04-codebar">page-checks.js</div><pre data-hf-id="hf-ru64"><span data-hf-id="hf-ofpf" class="s04-blue">return</span> checks.filter(
+  (check) =&gt; !check.ok
+); <span data-hf-id="hf-2q2c" class="s04-muted">// lista corta</span></pre><div data-hf-id="hf-4g9q" class="s04-result" id="s04-result"><svg data-hf-id="hf-nee0" class="s04-x" viewBox="0 0 32 32"><circle data-hf-id="hf-7s5a" cx="16" cy="16" r="15" fill="currentColor"/><path data-hf-id="hf-0rt9" d="m11 11 10 10m0-10L11 21" fill="none" stroke="#F6F5FB" stroke-width="3"/></svg>Portada: error 500</div></div></div></div><div data-hf-id="hf-plq9" class="s04-progress"></div></section></div><script>
+window.__timelines=window.__timelines||{};
+(function(){
+var tl=gsap.timeline({paused:true});
+tl.fromTo("#s04-eye",{opacity:0,y:-30},{opacity:1,y:0,duration:.5,ease:"power3.out"},0);
+tl.fromTo("#s04-h1",{opacity:0,y:-50},{opacity:1,y:0,duration:.6,ease:"power3.out"},.1);
+tl.fromTo("#s04-before",{opacity:0,y:50},{opacity:1,y:0,duration:.6,ease:"power3.out"},1.1);
+tl.fromTo("#s04-after",{opacity:0,y:60},{opacity:1,y:0,duration:.6,ease:"power3.out"},2.3);
+tl.set("#s04-strike",{rotation:-8,transformOrigin:"0% 50%"},0);
+tl.fromTo("#s04-strike",{scaleX:0},{scaleX:1,duration:.45,ease:"power2.out"},3.6);
+tl.to("#s04-page",{opacity:.3,duration:.6,ease:"power2.inOut"},3.8);
+tl.fromTo("#s04-result",{opacity:0,x:-40},{opacity:1,x:0,duration:.5,ease:"power3.out"},5.0);
+tl.fromTo("#s04-result",{backgroundColor:"rgba(229,72,77,.12)"},{backgroundColor:"rgba(229,72,77,.26)",duration:.4,ease:"power2.out"},5.3);
+window.__timelines["04-script-trick"]=tl;
+})();
+</script></template>

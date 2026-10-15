@@ -2,8 +2,10 @@ import { PortableText } from "@portabletext/react";
 import type { PortableTextComponents } from "@portabletext/react";
 
 import type { ArticleBodyBlock } from "../types/article.types";
+import { ArticleBodyCode } from "./ArticleBodyCode";
 import { ArticleBodyImage } from "./ArticleBodyImage";
 import { ArticleBodyLink } from "./ArticleBodyLink";
+import { ArticleBodyVideo } from "./ArticleBodyVideo";
 
 interface ArticleBodyProps {
   body: readonly ArticleBodyBlock[];
@@ -67,6 +69,8 @@ const PORTABLE_TEXT_COMPONENTS: PortableTextComponents = {
   },
   types: {
     image: ({ value }) => <ArticleBodyImage value={value} />,
+    motionVideo: ({ value }) => <ArticleBodyVideo value={value} />,
+    code: ({ value }) => <ArticleBodyCode value={value} />,
   },
 };
 

@@ -1,0 +1,226 @@
+<template id="captions-template" data-composition-id="captions" data-width="1080" data-height="1920">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
+
+<style data-brand-tokens>
+      @font-face { font-family: 'Manrope'; src: url('assets/fonts/manrope.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: block; }
+      @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-500.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: block; }
+      @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-600.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: block; }
+      :root {
+      --bg: #F6F5FB;
+      --primary: #1F4BFF;
+      --text: #0E1022;
+      --text-muted: #767891;
+      --text-light: #9A9A9A;
+      --accent-light: rgba(31, 75, 255, 0.08);
+      --accent-medium: rgba(31, 75, 255, 0.15);
+      --border: rgba(31, 75, 255, 0.2);
+      --card-bg: rgba(31, 75, 255, 0.04);
+      --positive: #7FB800;
+      --negative: #E5484D;
+      --cap-ink: #0E1022;
+      --cap-canvas: #F6F5FB;
+      --cap-accent: #1F4BFF;
+      --cap-accent-2: #767891;
+      --font-display: "Manrope", system-ui, serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --cap-band-top: 1600px;
+      --cap-band-height: 320px;
+      }
+    </style>
+
+<style>
+  #captions-root {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .caption-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+  }
+  /* the keep-out band, from captionBand(H) — frame content stays above it */
+  .caption-stage {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--cap-band-top, 900px);
+    height: var(--cap-band-height, 180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .caption-group {
+    /* every group is absolutely stacked over the SAME band — exactly one shown at a
+       time via opacity. Must be absolute: in-flow groups would lay out side-by-side. */
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+  }
+
+  /* THE tinted card — 4% cobalt fill, 1.5px 20%-cobalt border, soft 14px corners,
+     NO shadow (the tinted card does the lift; cast depth is forbidden) */
+  .caption-pill {
+    max-width: 78%;
+    padding: 20px 44px 24px;
+    background: color-mix(in srgb, var(--cap-accent, #1e2bfa) 4%, var(--cap-canvas, #fdfae7));
+    border: 1.5px solid color-mix(in srgb, var(--cap-accent, #1e2bfa) 20%, transparent);
+    border-radius: 14px;
+  }
+  .caption-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.1em 0.34em;
+    font-family: "Manrope", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(40px, 4.4vw, 58px);
+    line-height: 1.16;
+    letter-spacing: -0.02em;
+  }
+
+  /* upcoming — muted gray, no chip */
+  .caption-word {
+    display: inline-block;
+    padding: 0 0.18em;
+    border-radius: 0.32em;
+    color: color-mix(in srgb, var(--cap-ink, #111111) 52%, var(--cap-canvas, #fdfae7));
+  }
+  /* current word — THE solid cobalt chip (the single-accent gesture; pill-rounded
+     fill, NO shadow), cream reading on top */
+  .caption-word.is-active {
+    color: var(--cap-canvas, #fdfae7);
+    background: var(--cap-accent, #1e2bfa);
+    box-shadow: none;
+  }
+  /* already spoken — solid near-black ink, chip cleared */
+  .caption-word.is-spoken {
+    color: var(--cap-ink, #111111);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* optional per-word accents (dormant until a word-classer tags them) */
+  /* brand / key term — cobalt, the system's one accent on a key word */
+  .caption-word.cap-brand {
+    color: var(--cap-accent, #1e2bfa);
+  }
+  /* numerals / data — cobalt 700, the figure voice */
+  .caption-word.cap-num {
+    font-family: "Manrope", system-ui, sans-serif;
+    font-weight: 700;
+    color: var(--cap-accent, #1e2bfa);
+  }
+  /* emphasis — a directional-red hairline underline (inline only, never a fill) */
+  .caption-word.cap-cta {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--cap-accent-2, #dc2626);
+    text-underline-offset: 0.1em;
+  }
+
+  @media (max-aspect-ratio: 9/16) {
+    .caption-pill {
+      max-width: 92%;
+    }
+    .caption-line {
+      font-size: clamp(34px, 5.4vw, 48px);
+    }
+  }
+</style>
+
+<div data-hf-id="hf-jbqt"
+  id="captions-root"
+  data-composition-id="captions"
+  data-timeline-locked
+  data-start="0"
+  data-duration="35.032"
+  data-fps="30"
+  data-width="1080"
+  data-height="1920"
+>
+  <div data-hf-id="hf-9flp" class="caption-layer" aria-hidden="true">
+    <div data-hf-id="hf-ajrg" id="caption-stage" class="caption-stage"></div>
+  </div>
+</div>
+
+<script>
+  // captions.mjs injects the engine's scene-aware groups + real duration here.
+  var GROUPS = [{"id":"caption-group-0","frame":1,"start":0.299,"end":1.784,"text":"Mis tests pasaban…","words":[{"id":"caption-word-0-0","text":"Mis","start":0.299,"end":0.469},{"id":"caption-word-0-1","text":"tests","start":0.555,"end":0.811},{"id":"caption-word-0-2","text":"pasaban…","start":0.896,"end":1.664}]},{"id":"caption-group-1","frame":1,"start":1.92,"end":2.219,"text":"y mi","words":[{"id":"caption-word-1-0","text":"y","start":1.92,"end":2.048},{"id":"caption-word-1-1","text":"mi","start":2.091,"end":2.176}]},{"id":"caption-group-2","frame":1,"start":2.219,"end":3.363,"text":"portada daba error","words":[{"id":"caption-word-2-0","text":"portada","start":2.219,"end":2.56},{"id":"caption-word-2-1","text":"daba","start":2.688,"end":2.944},{"id":"caption-word-2-2","text":"error","start":2.987,"end":3.243}]},{"id":"caption-group-3","frame":1,"start":3.371,"end":4.301,"text":"500.","words":[{"id":"caption-word-3-0","text":"500.","start":3.371,"end":4.181}]},{"id":"caption-group-4","frame":1,"start":4.437,"end":5.12,"text":"Así creé","words":[{"id":"caption-word-4-0","text":"Así","start":4.437,"end":4.779},{"id":"caption-word-4-1","text":"creé","start":4.821,"end":5.077}]},{"id":"caption-group-5","frame":1,"start":5.12,"end":5.675,"text":"un agente","words":[{"id":"caption-word-5-0","text":"un","start":5.12,"end":5.205},{"id":"caption-word-5-1","text":"agente","start":5.248,"end":5.589}]},{"id":"caption-group-6","frame":1,"start":5.675,"end":6.264,"text":"de QA","words":[{"id":"caption-word-6-0","text":"de","start":5.675,"end":5.76},{"id":"caption-word-6-1","text":"QA","start":5.803,"end":6.144}]},{"id":"caption-group-7","frame":1,"start":6.272,"end":7.26,"text":"que lo detecta.","words":[{"id":"caption-word-7-0","text":"que","start":6.272,"end":6.357},{"id":"caption-word-7-1","text":"lo","start":6.4,"end":6.443},{"id":"caption-word-7-2","text":"detecta.","start":6.485,"end":7.14}]},{"id":"caption-group-8","frame":2,"start":7.509,"end":9.079,"text":"Necesitas tres cosas:","words":[{"id":"caption-word-8-0","text":"Necesitas","start":7.509,"end":8.063},{"id":"caption-word-8-1","text":"tres","start":8.106,"end":8.319},{"id":"caption-word-8-2","text":"cosas:","start":8.405,"end":8.959}]},{"id":"caption-group-9","frame":2,"start":9.215,"end":10.167,"text":"Claude Code,","words":[{"id":"caption-word-9-0","text":"Claude","start":9.215,"end":9.514},{"id":"caption-word-9-1","text":"Code,","start":9.599,"end":10.047}]},{"id":"caption-group-10","frame":2,"start":10.282,"end":10.879,"text":"un Chrome","words":[{"id":"caption-word-10-0","text":"un","start":10.282,"end":10.495},{"id":"caption-word-10-1","text":"Chrome","start":10.538,"end":10.794}]},{"id":"caption-group-11","frame":2,"start":10.879,"end":11.469,"text":"de pruebas","words":[{"id":"caption-word-11-0","text":"de","start":10.879,"end":10.965},{"id":"caption-word-11-1","text":"pruebas","start":11.007,"end":11.349}]},{"id":"caption-group-12","frame":2,"start":11.605,"end":14.441,"text":"y Chrome DevTools MCP.","words":[{"id":"caption-word-12-0","text":"y","start":11.605,"end":12.159},{"id":"caption-word-12-1","text":"Chrome","start":12.202,"end":12.543},{"id":"caption-word-12-2","text":"DevTools","start":12.671,"end":13.439},{"id":"caption-word-12-3","text":"MCP.","start":13.61,"end":14.321}]},{"id":"caption-group-13","frame":3,"start":14.624,"end":15.264,"text":"El agente","words":[{"id":"caption-word-13-0","text":"El","start":14.624,"end":14.795},{"id":"caption-word-13-1","text":"agente","start":14.837,"end":15.179}]},{"id":"caption-group-14","frame":3,"start":15.264,"end":16.621,"text":"hace cuatro cosas:","words":[{"id":"caption-word-14-0","text":"hace","start":15.264,"end":15.435},{"id":"caption-word-14-1","text":"cuatro","start":15.52,"end":15.819},{"id":"caption-word-14-2","text":"cosas:","start":15.861,"end":16.501}]},{"id":"caption-group-15","frame":3,"start":16.757,"end":18.072,"text":"mira qué cambiaste,","words":[{"id":"caption-word-15-0","text":"mira","start":16.757,"end":17.056},{"id":"caption-word-15-1","text":"qué","start":17.099,"end":17.184},{"id":"caption-word-15-2","text":"cambiaste,","start":17.227,"end":17.952}]},{"id":"caption-group-16","frame":3,"start":18.165,"end":19.416,"text":"decide qué probar,","words":[{"id":"caption-word-16-0","text":"decide","start":18.165,"end":18.464},{"id":"caption-word-16-1","text":"qué","start":18.592,"end":18.72},{"id":"caption-word-16-2","text":"probar,","start":18.763,"end":19.296}]},{"id":"caption-group-17","frame":3,"start":19.573,"end":20.128,"text":"lo prueba","words":[{"id":"caption-word-17-0","text":"lo","start":19.573,"end":19.744},{"id":"caption-word-17-1","text":"prueba","start":19.787,"end":20.085}]},{"id":"caption-group-18","frame":3,"start":20.128,"end":20.589,"text":"en Chrome","words":[{"id":"caption-word-18-0","text":"en","start":20.128,"end":20.171},{"id":"caption-word-18-1","text":"Chrome","start":20.213,"end":20.469}]},{"id":"caption-group-19","frame":3,"start":20.725,"end":21.109,"text":"y te","words":[{"id":"caption-word-19-0","text":"y","start":20.725,"end":20.896},{"id":"caption-word-19-1","text":"te","start":20.939,"end":21.067}]},{"id":"caption-group-20","frame":3,"start":21.109,"end":22.012,"text":"da un informe.","words":[{"id":"caption-word-20-0","text":"da","start":21.109,"end":21.195},{"id":"caption-word-20-1","text":"un","start":21.237,"end":21.28},{"id":"caption-word-20-2","text":"informe.","start":21.323,"end":21.892}]},{"id":"caption-group-21","frame":4,"start":22.157,"end":23.067,"text":"Un truco:","words":[{"id":"caption-word-21-0","text":"Un","start":22.157,"end":22.413},{"id":"caption-word-21-1","text":"truco:","start":22.456,"end":22.947}]},{"id":"caption-group-22","frame":4,"start":23.139,"end":24.504,"text":"pon las comprobaciones","words":[{"id":"caption-word-22-0","text":"pon","start":23.139,"end":23.437},{"id":"caption-word-22-1","text":"las","start":23.523,"end":23.608},{"id":"caption-word-22-2","text":"comprobaciones","start":23.693,"end":24.419}]},{"id":"caption-group-23","frame":4,"start":24.504,"end":25.477,"text":"en un script.","words":[{"id":"caption-word-23-0","text":"en","start":24.504,"end":24.547},{"id":"caption-word-23-1","text":"un","start":24.589,"end":24.675},{"id":"caption-word-23-2","text":"script.","start":24.803,"end":25.357}]},{"id":"caption-group-24","frame":4,"start":25.656,"end":26.757,"text":"Gastas menos","words":[{"id":"caption-word-24-0","text":"Gastas","start":25.656,"end":26.211},{"id":"caption-word-24-1","text":"menos","start":26.296,"end":26.637}]},{"id":"caption-group-25","frame":4,"start":26.851,"end":27.32,"text":"y solo","words":[{"id":"caption-word-25-0","text":"y","start":26.851,"end":27.021},{"id":"caption-word-25-1","text":"solo","start":27.064,"end":27.235}]},{"id":"caption-group-26","frame":4,"start":27.32,"end":27.619,"text":"ves lo","words":[{"id":"caption-word-26-0","text":"ves","start":27.32,"end":27.448},{"id":"caption-word-26-1","text":"lo","start":27.491,"end":27.576}]},{"id":"caption-group-27","frame":4,"start":27.619,"end":28.177,"text":"que falla.","words":[{"id":"caption-word-27-0","text":"que","start":27.619,"end":27.704},{"id":"caption-word-27-1","text":"falla.","start":27.747,"end":28.057}]},{"id":"caption-group-28","frame":5,"start":28.505,"end":29.948,"text":"Los archivos completos","words":[{"id":"caption-word-28-0","text":"Los","start":28.505,"end":28.719},{"id":"caption-word-28-1","text":"archivos","start":28.761,"end":29.231},{"id":"caption-word-28-2","text":"completos","start":29.316,"end":29.828}]},{"id":"caption-group-29","frame":5,"start":30.084,"end":30.767,"text":"están en","words":[{"id":"caption-word-29-0","text":"están","start":30.084,"end":30.596},{"id":"caption-word-29-1","text":"en","start":30.639,"end":30.724}]},{"id":"caption-group-30","frame":5,"start":30.767,"end":31.441,"text":"mi blog,","words":[{"id":"caption-word-30-0","text":"mi","start":30.767,"end":30.852},{"id":"caption-word-30-1","text":"blog,","start":30.895,"end":31.321}]},{"id":"caption-group-31","frame":5,"start":31.535,"end":32.444,"text":"gratis.","words":[{"id":"caption-word-31-0","text":"gratis.","start":31.535,"end":32.324}]},{"id":"caption-group-32","frame":5,"start":32.729,"end":34.351,"text":"Guárdalo para tu próximo","words":[{"id":"caption-word-32-0","text":"Guárdalo","start":32.729,"end":33.199},{"id":"caption-word-32-1","text":"para","start":33.369,"end":33.753},{"id":"caption-word-32-2","text":"tu","start":33.796,"end":33.924},{"id":"caption-word-32-3","text":"próximo","start":33.967,"end":34.308}]},{"id":"caption-group-33","frame":5,"start":34.351,"end":35.093,"text":"proyecto.","words":[{"id":"caption-word-33-0","text":"proyecto.","start":34.351,"end":34.973}]}];
+  var DURATION = 35.032;
+
+  (function () {
+    var stage = document.getElementById("caption-stage");
+
+    // build DOM: one .caption-group per group, .caption-word per word
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.createElement("div");
+      groupEl.className = "caption-group";
+      groupEl.id = "caption-group-" + g;
+      var pill = document.createElement("div");
+      pill.className = "caption-pill";
+      var line = document.createElement("div");
+      line.className = "caption-line";
+      (group.words || []).forEach(function (w, i) {
+        var span = document.createElement("span");
+        span.className = "caption-word";
+        span.id = "caption-word-" + g + "-" + i;
+        span.textContent = String(w.text);
+        line.appendChild(span);
+      });
+      pill.appendChild(line);
+      groupEl.appendChild(pill);
+      stage.appendChild(groupEl);
+    });
+
+    window.__timelines = window.__timelines || {};
+    var tl = gsap.timeline({ paused: true });
+
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.getElementById("caption-group-" + g);
+      var words = group.words || [];
+      var next = GROUPS[g + 1];
+      var isLast = g === GROUPS.length - 1;
+      var start = Math.max(0, Number(group.start));
+      var end = isLast ? DURATION : Math.min(Number(next.start), Number(group.end) + 0.3);
+      if (end <= start) end = start + 0.01;
+
+      // group on/off — exactly one group visible at a time
+      tl.set(groupEl, { opacity: 1 }, start);
+      tl.set(groupEl, { opacity: 0 }, end);
+
+      // 3-state karaoke via className SETS — seek-safe (gsap.set applies on the
+      // engine's frame-by-frame seek; .call callbacks would NOT fire).
+      words.forEach(function (w, i) {
+        var el = document.getElementById("caption-word-" + g + "-" + i);
+        var at = Math.max(start, Number(w.start));
+        tl.set(el, { className: "caption-word" }, start); // upcoming (also resets on reverse-seek)
+        tl.set(el, { className: "caption-word is-active" }, at); // current
+        tl.fromTo(el, { scale: 0.985 }, { scale: 1, duration: 0.18, ease: "power1.out" }, at);
+        if (i + 1 < words.length) {
+          var nextAt = Math.max(start, Number(words[i + 1].start));
+          tl.set(el, { className: "caption-word is-spoken" }, nextAt); // demote when next activates
+        }
+      });
+      if (words.length) {
+        var lastEl = document.getElementById("caption-word-" + g + "-" + (words.length - 1));
+        var lastSpoken = Math.min(end, Number(words[words.length - 1].end) + 0.1);
+        tl.set(lastEl, { className: "caption-word is-spoken" }, lastSpoken);
+      }
+    });
+
+    // full-span anchor so the sub-comp timeline spans the whole video
+    tl.to({}, { duration: DURATION }, 0);
+    window.__timelines["captions"] = tl;
+  })();
+</script>
+
+<style>
+  .caption-line { line-height: 1.1 !important; }
+</style>
+</template>

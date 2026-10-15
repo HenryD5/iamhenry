@@ -6,6 +6,7 @@
 | hero-orbita | 1 Hero | `public/media/hero-orbita.webm`, `.mp4`, `.webp` (póster, fotograma de 4,8 s: todos los planetas en órbita, sin nave) | 1920x1080 | 8 s, 30 fps | sí | webm 1138 KB · mp4 1155 KB · webp 55 KB | maqueta aprobada · entregada |
 | hero-orbita-noche | 1 Hero (noche) | `public/media/hero-orbita-noche.webm`, `.mp4`, `.webp` (póster, 4,8 s) | 1920x1080 | 8 s, 30 fps | sí | webm 1055 KB · mp4 1153 KB · webp 51 KB | maqueta aprobada · entregada |
 | stack-tres-cuerpos-noche | 3 Stack (noche) | `public/media/stack-tres-cuerpos-noche.webm`, `.mp4`, `.webp` (póster, 5 s) | 1200x900 | 6 s, 30 fps | sí | webm 353 KB · mp4 329 KB · webp 21 KB | maqueta aprobada · entregada |
+| qa-agent-flow | Blog · "Tu propio agente de QA en Chrome con IA" | `public/media/qa-agent-flow.webm`, `.mp4`, `.webp` (póster, 8,6 s: Informe), `qa-agent-flow-animated.webp` (WebP animado para Sanity y redes) | 1200x900 (animado 750x563, 15 fps) | 10 s, 30 fps | sí | webm 560 KB · mp4 543 KB · webp 28 KB · animado 391 KB | maqueta aprobada · entregada |
 
 Notas de `stack-tres-cuerpos`:
 
@@ -101,3 +102,5 @@ Sobre el snippet:
 - `autoPlay` solo actúa cuando hay `<source>` (es decir, sin movimiento reducido); el `IntersectionObserver` pausa el video fuera de pantalla y lo reanuda al volver.
 - No uses `next/image` para el póster ni para el video.
 - Para otra pieza, cambia `MEDIA_BASE`, `width`/`height` y quita `loop` si no va en bucle. Para `hero-orbita`: `MEDIA_BASE = '/media/hero-orbita'`, `width={1920}`, `height={1080}`, con `loop`.
+
+Notas de `qa-agent-flow`: sin audio; WebM VP9 (CRF 30) y MP4 H.264 (CRF 20) BT.709 desde png-sequence + ffmpeg, opacos sobre #F6F5FB. Bucle: el fotograma 0 y el 9,99 s son idénticos (PSNR ~100 dB); el recorrido acaba a los 9,2 s y la vuelta al inicio ocupa hasta los 10 s. Es explicativa, no decorativa: en el artículo lleva alt con las cuatro fases (Alcance, Plan, Prueba en Chrome, Informe). El WebP animado (150 fotogramas, `img2webp -lossy -q 65`) es la versión para subir como imagen a Sanity. Fuente: `motion/qa-agent-flow/index.html`; aprobado: `maqueta.html`; revisión: `final-check/contact-sheet.jpg`.

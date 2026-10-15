@@ -1,0 +1,33 @@
+{
+  "provider": "auto",
+  "speed": "1.0",
+  "lines": [
+    {
+      "id": "01",
+      "text": "Mis tests pasaban… y mi portada daba error 500. Así creé un agente de QA que lo detecta."
+    },
+    {
+      "id": "02",
+      "text": "Necesitas tres cosas: Claude Code, un Chrome de pruebas y Chrome DevTools MCP."
+    },
+    {
+      "id": "03",
+      "text": "El agente hace cuatro cosas: mira qué cambiaste, decide qué probar, lo prueba en Chrome y te da un informe."
+    },
+    {
+      "id": "04",
+      "text": "Un truco: pon las comprobaciones en un script. Gastas menos y solo ves lo que falla."
+    },
+    {
+      "id": "05",
+      "text": "Los archivos completos están en mi blog, gratis. Guárdalo para tu próximo proyecto."
+    }
+  ],
+  "bgm": {
+    "mode": "retrieve",
+    "query": "calm minimal tech underscore, low and warm, no drums in the intro",
+    "blob": "Tus tests pueden pasar y tu web estar rota; así creas un agente de QA en Chrome que lo detecta",
+    "arc": "Hook → Qué necesitas → Cómo trabaja → El truco → Llévatelo"
+  },
+  "voice": "050c403a43e047c796f8a6257ed2533e"
+}

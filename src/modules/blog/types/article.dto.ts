@@ -20,9 +20,27 @@ export interface SanityArticleBodyImageDto extends SanityImageDto {
   _key: string;
 }
 
+export interface SanityArticleBodyMotionVideoDto {
+  _type: "motionVideo";
+  _key: string;
+  video?: string | null;
+  caption?: string | null;
+  label?: string | null;
+}
+
+export interface SanityArticleBodyCodeDto {
+  _type: "code";
+  _key: string;
+  language?: string | null;
+  filename?: string | null;
+  code?: string | null;
+}
+
 export type SanityArticleBodyBlockDto =
   | PortableTextBlock
-  | SanityArticleBodyImageDto;
+  | SanityArticleBodyImageDto
+  | SanityArticleBodyMotionVideoDto
+  | SanityArticleBodyCodeDto;
 
 export interface SanityArticleDto {
   slug: string;
