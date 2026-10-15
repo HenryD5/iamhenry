@@ -37,10 +37,12 @@ describe("blog SEO", () => {
       `https://example.test/blog/${article.slug}`,
     );
     expect(metadata.openGraph).toMatchObject({
+      title: article.title,
       type: "article",
       publishedTime: article.publishedAt,
       modifiedTime: article.updatedAt,
     });
+    expect(metadata.title).toBe(`${article.title} · Persona ficticia`);
     expect(JSON.stringify(metadata)).not.toContain("cdn.sanity.io");
   });
 

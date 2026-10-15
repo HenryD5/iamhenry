@@ -8,7 +8,7 @@ export function PersonJsonLd() {
     jobTitle: siteConfig.person.jobTitle,
     email: `mailto:${siteConfig.person.email}`,
     url: siteConfig.url.toString(),
-    sameAs: [siteConfig.person.linkedIn],
+    sameAs: [siteConfig.person.linkedIn, siteConfig.person.github],
   };
   return (
     <script

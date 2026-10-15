@@ -26,8 +26,7 @@ export interface ArticlePageMetadataInput extends BasePageMetadataInput {
 }
 
 export type PageMetadataInput =
-  | WebsitePageMetadataInput
-  | ArticlePageMetadataInput;
+  WebsitePageMetadataInput | ArticlePageMetadataInput;
 
 export function createPageMetadata({
   title = siteConfig.title,
@@ -37,6 +36,14 @@ export function createPageMetadata({
   ...articleMetadata
 }: PageMetadataInput = {}): Metadata {
   const canonical = new URL(path, siteConfig.url);
+  const personShortName = siteConfig.person.name
+    .split(" ")
+    .slice(0, 2)
+    .join(" ");
+  const documentTitle =
+    articleMetadata.type === "article"
+      ? `${title} · ${personShortName}`
+      : title;
   const imageUrl = new URL(image.path, siteConfig.url);
   const openGraphImage = {
     url: imageUrl,
@@ -68,7 +75,7 @@ export function createPageMetadata({
         };
 
   return {
-    title,
+    title: documentTitle,
     description,
     alternates: { canonical },
     openGraph,
