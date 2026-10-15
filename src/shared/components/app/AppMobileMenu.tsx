@@ -79,12 +79,18 @@ export function AppMobileMenu({
                     aria-current={
                       isActive ? getNavigationAriaCurrent(item.href) : undefined
                     }
-                    className="group hover:bg-surface-raised focus-visible:bg-surface-raised active:bg-surface-raised flex min-h-[3.1rem] items-center gap-3 rounded-sm px-3 py-3 no-underline transition-colors duration-[var(--duration-fast)]"
+                    className={`group relative flex min-h-[3.1rem] items-center gap-3 rounded-sm px-3 py-3 no-underline transition-colors duration-[var(--duration-fast)] motion-reduce:transition-none ${isActive ? "bg-(--accent-text)/10" : "hover:bg-surface-raised focus-visible:bg-surface-raised active:bg-surface-raised"}`}
                     href={item.href}
                     onClick={handleClose}
                   >
+                    {isActive ? (
+                      <span
+                        className="absolute inset-y-2 start-0 w-[3px] rounded-full bg-(--accent-text)"
+                        aria-hidden="true"
+                      />
+                    ) : null}
                     <span
-                      className="text-fg-muted w-6 shrink-0 font-mono text-[.75rem] tabular-nums"
+                      className={`w-6 shrink-0 font-mono text-[.75rem] tabular-nums ${isActive ? "text-(--accent-text)" : "text-fg-muted"}`}
                       aria-hidden="true"
                     >
                       {String(index + 1).padStart(2, "0")}

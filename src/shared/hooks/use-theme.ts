@@ -8,8 +8,6 @@ import {
   type Theme,
 } from "@/shared/utils/theme";
 
-const SYSTEM_THEME_QUERY = "(prefers-color-scheme: dark)";
-
 function applyTheme(theme: Theme) {
   if (theme === "night") {
     document.documentElement.setAttribute("data-theme", "night");
@@ -33,16 +31,10 @@ export function useTheme() {
   const [isMounted, setIsMounted] = useState(false);
 
   useLayoutEffect(() => {
-    const mediaQuery = window.matchMedia(SYSTEM_THEME_QUERY);
     const syncTheme = () => {
-      const nextTheme = resolveTheme(readStoredTheme(), mediaQuery.matches);
+      const nextTheme = resolveTheme(readStoredTheme());
       applyTheme(nextTheme);
       setThemeState(nextTheme);
-    };
-    const handleSystemChange = () => {
-      if (readStoredTheme() === null) {
-        syncTheme();
-      }
     };
     const handleStorage = (event: StorageEvent) => {
       if (event.key === THEME_STORAGE_KEY) {
@@ -57,7 +49,6 @@ export function useTheme() {
 
     syncTheme();
     queueMicrotask(() => setIsMounted(true));
-    mediaQuery.addEventListener("change", handleSystemChange);
     window.addEventListener("storage", handleStorage);
     observer.observe(document.documentElement, {
       attributes: true,
@@ -65,7 +56,6 @@ export function useTheme() {
     });
 
     return () => {
-      mediaQuery.removeEventListener("change", handleSystemChange);
       window.removeEventListener("storage", handleStorage);
       observer.disconnect();
     };

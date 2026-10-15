@@ -7,11 +7,9 @@ import {
 
 function runInlineScript({
   storedTheme,
-  prefersNight,
   storageError,
 }: {
   storedTheme: string | null;
-  prefersNight: boolean;
   storageError?: Error;
 }) {
   const getItem = storageError
@@ -19,7 +17,7 @@ function runInlineScript({
         throw storageError;
       })
     : vi.fn().mockReturnValue(storedTheme);
-  const matchMedia = vi.fn().mockReturnValue({ matches: prefersNight });
+  const matchMedia = vi.fn().mockReturnValue({ matches: true });
   const executeScript = new Function(
     "localStorage",
     "window",
@@ -48,20 +46,19 @@ describe("theme utils", () => {
     expect(isTheme(value)).toBe(expected);
   });
 
-  it("prefers a valid stored value over the system preference", () => {
-    expect(resolveTheme("day", true)).toBe("day");
-    expect(resolveTheme("night", false)).toBe("night");
+  it("uses a valid stored value", () => {
+    expect(resolveTheme("day")).toBe("day");
+    expect(resolveTheme("night")).toBe("night");
   });
 
-  it("falls back to the system preference for missing or invalid storage", () => {
-    expect(resolveTheme(null, true)).toBe("night");
-    expect(resolveTheme("invalid", false)).toBe("day");
+  it("defaults to day for missing or invalid storage", () => {
+    expect(resolveTheme(null)).toBe("day");
+    expect(resolveTheme("invalid")).toBe("day");
   });
 
   it("sets night before paint when storage requests it", () => {
     const { getItem, matchMedia } = runInlineScript({
       storedTheme: "night",
-      prefersNight: false,
     });
 
     expect(document.documentElement).toHaveAttribute("data-theme", "night");
@@ -69,31 +66,29 @@ describe("theme utils", () => {
     expect(matchMedia).not.toHaveBeenCalled();
   });
 
-  it("uses the system preference when there is no stored choice", () => {
+  it("defaults to day when there is no stored choice", () => {
     const { matchMedia } = runInlineScript({
       storedTheme: null,
-      prefersNight: true,
     });
 
-    expect(matchMedia).toHaveBeenCalledWith("(prefers-color-scheme: dark)");
-    expect(document.documentElement).toHaveAttribute("data-theme", "night");
+    expect(matchMedia).not.toHaveBeenCalled();
+    expect(document.documentElement).not.toHaveAttribute("data-theme");
   });
 
-  it("uses the system preference when storage access is blocked", () => {
+  it("defaults to day when storage access is blocked", () => {
     const { getItem, matchMedia } = runInlineScript({
       storedTheme: null,
-      prefersNight: true,
       storageError: new Error("Storage access denied"),
     });
 
     expect(getItem).toHaveBeenCalledWith("theme");
-    expect(matchMedia).toHaveBeenCalledWith("(prefers-color-scheme: dark)");
-    expect(document.documentElement).toHaveAttribute("data-theme", "night");
+    expect(matchMedia).not.toHaveBeenCalled();
+    expect(document.documentElement).not.toHaveAttribute("data-theme");
   });
 
   it("removes a stale night attribute when day is resolved", () => {
     document.documentElement.setAttribute("data-theme", "night");
-    runInlineScript({ storedTheme: "day", prefersNight: true });
+    runInlineScript({ storedTheme: "day" });
 
     expect(document.documentElement).not.toHaveAttribute("data-theme");
   });

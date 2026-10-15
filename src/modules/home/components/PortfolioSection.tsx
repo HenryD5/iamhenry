@@ -23,6 +23,7 @@ function ProjectCard({
     >
       <AppBrowserFrame
         src={project.image}
+        placeholder={project.imagePlaceholder}
         alt={translate(project.altKey as Parameters<typeof translate>[0])}
       />
       <div className="grid content-center gap-2 px-[1.6rem] pt-[1.4rem] pb-[1.6rem]">

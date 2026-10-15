@@ -22,6 +22,8 @@ export interface StackFacet {
 export interface PortfolioProject {
   name: string;
   image: string;
+  /** Miniatura desenfocada (data URL) que se ve mientras carga la captura. */
+  imagePlaceholder: string;
   altKey: string;
   descriptionKey: string;
   isPending?: boolean;

@@ -8,15 +8,12 @@ export function isTheme(value: string | null): value is Theme {
   return value === "day" || value === "night";
 }
 
-export function resolveTheme(
-  storedTheme: string | null,
-  prefersNight: boolean,
-): Theme {
+export function resolveTheme(storedTheme: string | null): Theme {
   if (isTheme(storedTheme)) {
     return storedTheme;
   }
 
-  return prefersNight ? "night" : "day";
+  return "day";
 }
 
-export const THEME_INLINE_SCRIPT = `(function(){try{var t=null;try{t=localStorage.getItem("${THEME_STORAGE_KEY}")}catch(e){}var n=t==="night"||(t!=="day"&&window.matchMedia("(prefers-color-scheme: dark)").matches);if(n){document.documentElement.setAttribute("data-theme","night")}else{document.documentElement.removeAttribute("data-theme")}}catch(e){}})()`;
+export const THEME_INLINE_SCRIPT = `(function(){try{var t=null;try{t=localStorage.getItem("${THEME_STORAGE_KEY}")}catch(e){}if(t==="night"){document.documentElement.setAttribute("data-theme","night")}else{document.documentElement.removeAttribute("data-theme")}}catch(e){}})()`;

@@ -1,5 +1,7 @@
 # Decisiones de arquitectura
 
+- **2026-10-15 — Modo claro por defecto:** el modo oscuro solo se activa por elección del usuario; antes seguía la preferencia del sistema.
+
 ## Excepciones del blog
 
 - **Sin `shared/http-client`:** `next-sanity` es el cliente de acceso a la fuente editorial y evita una abstracción HTTP duplicada.

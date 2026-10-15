@@ -73,7 +73,10 @@ const eslintConfig = defineConfig([
     rules: {
       "check-file/filename-naming-convention": [
         "error",
-        { "src/app/**/*.tsx": "@(layout|page|not-found|opengraph-image)" },
+        {
+          "src/app/**/*.tsx":
+            "@(layout|page|loading|not-found|opengraph-image)",
+        },
       ],
     },
   },

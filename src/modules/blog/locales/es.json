@@ -22,6 +22,10 @@
     "updated": "Actualizado el {fecha}",
     "related": "Sigue leyendo"
   },
+  "loading": {
+    "list": "Cargando artículos…",
+    "article": "Cargando artículo…"
+  },
   "code": {
     "copied": "Copiado",
     "copyLabel": "Copiar el código",
