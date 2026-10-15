@@ -1,5 +1,8 @@
 # Borrador · Artículo 1 del blog
 
+> **Aviso (2026-10-15):** la versión publicada en Sanity se editó después de este borrador: portada (`motion/qa-agent-cover/cover.html`), animación como bloque `motionVideo` y diagrama de texto alineado. No reimportar este archivo con `--replace` sin sincronizarlo antes: se perderían esos cambios.
+
+
 Campos del esquema `article` (`studio/schemaTypes/article.ts`). Fuente del archivo de importación `qa-agent-chrome-mcp.ndjson` (se genera con `scripts/blog/markdown-to-sanity.mjs`). Los bloques de código copian los archivos reales del proyecto.
 
 - **title:** Tu propio agente de QA en Chrome con IA

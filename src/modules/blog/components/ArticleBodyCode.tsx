@@ -94,7 +94,6 @@ export async function ArticleBodyCode({ value }: ArticleBodyCodeProps) {
         <div className="flex justify-end px-5 pt-2">
           <ArticleCodeCopyButton
             code={code}
-            copyText={blogMessages.code.copy}
             copiedText={blogMessages.code.copied}
             label={blogMessages.code.copyLabel}
           />

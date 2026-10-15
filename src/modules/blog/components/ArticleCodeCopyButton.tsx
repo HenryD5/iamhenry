@@ -1,10 +1,10 @@
 "use client";
 
+import { Check, Copy } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 interface ArticleCodeCopyButtonProps {
   code: string;
-  copyText: string;
   copiedText: string;
   label: string;
 }
@@ -13,7 +13,6 @@ const COPIED_RESET_MS = 2000;
 
 export function ArticleCodeCopyButton({
   code,
-  copyText,
   copiedText,
   label,
 }: ArticleCodeCopyButtonProps) {
@@ -42,10 +41,25 @@ export function ArticleCodeCopyButton({
       <button
         type="button"
         onClick={handleCopy}
-        aria-label={label}
-        className="text-body-sm cursor-pointer rounded-[0.35rem] border border-solid border-(--light-20) bg-transparent px-3 py-1 font-semibold text-neutral-50 transition-colors duration-[var(--duration-fast)] hover:bg-(--light-10) focus-visible:bg-(--light-10)"
+        aria-label={isCopied ? copiedText : label}
+        title={isCopied ? copiedText : label}
+        className="inline-flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-[0.35rem] border border-solid border-(--light-20) bg-transparent p-0 text-neutral-50 transition-colors duration-[var(--duration-fast)] hover:bg-(--light-10) focus-visible:bg-(--light-10)"
       >
-        {isCopied ? copiedText : copyText}
+        {isCopied ? (
+          <Check
+            aria-hidden="true"
+            className="max-w-none shrink-0"
+            size={16}
+            strokeWidth={2}
+          />
+        ) : (
+          <Copy
+            aria-hidden="true"
+            className="max-w-none shrink-0"
+            size={16}
+            strokeWidth={1.75}
+          />
+        )}
       </button>
       <span role="status" aria-live="polite" className="sr-only">
         {isCopied ? copiedText : ""}

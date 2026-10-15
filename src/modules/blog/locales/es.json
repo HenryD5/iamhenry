@@ -23,7 +23,6 @@
     "related": "Sigue leyendo"
   },
   "code": {
-    "copy": "Copiar",
     "copied": "Copiado",
     "copyLabel": "Copiar el código",
     "blockLabel": "Código: {nombre}",
