@@ -6,6 +6,15 @@ vi.mock("next/navigation", () => ({
   usePathname: vi.fn(() => "/blog"),
 }));
 
+vi.mock("@/shared/config/site", () => ({
+  siteConfig: {
+    person: {
+      email: "henry@example.com",
+      whatsapp: "51930724632",
+    },
+  },
+}));
+
 vi.mock("next-intl/server", () => ({
   getTranslations: vi.fn().mockResolvedValue((key: string) => {
     const messages: Record<string, string> = {
@@ -24,6 +33,7 @@ vi.mock("next-intl/server", () => ({
       brand: "I am Henry",
       contactCta: "Construyamos algo juntos",
       contactCtaShort: "Escríbeme",
+      contactMessage: "¡Hola, Henry!",
     };
     return messages[key] ?? key;
   }),
@@ -80,6 +90,12 @@ describe("AppHeader", () => {
 
     const contactLink = screen.getByText("Escríbeme").closest("a");
     expect(contactLink).toHaveClass("btn--md");
+    expect(contactLink).toHaveAttribute(
+      "href",
+      "https://wa.me/51930724632?text=%C2%A1Hola%2C%20Henry!",
+    );
+    expect(contactLink).toHaveAttribute("target", "_blank");
+    expect(contactLink).toHaveAttribute("rel", "noopener noreferrer");
     expect(contactLink).not.toHaveClass("max-md:px-2", "max-md:text-[.7rem]");
     expect(screen.getByText("Escríbeme")).toHaveClass("md:hidden");
     expect(screen.getByText("Construyamos algo juntos")).toHaveClass(

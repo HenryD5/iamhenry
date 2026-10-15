@@ -6,6 +6,7 @@ import { siteConfig } from "@/shared/config/site";
 import { UiDrawer } from "@/shared/components/ui/UiDrawer";
 import { useActiveNavigation } from "@/shared/hooks/use-active-navigation";
 import { getNavigationAriaCurrent } from "@/shared/utils/navigation";
+import { isExternalContact } from "@/shared/utils/contact";
 import { AppBadge } from "./AppBadge";
 import { AppBrandLogo } from "./AppBrandLogo";
 
@@ -118,13 +119,16 @@ export function AppMobileMenu({
             />
             {availabilityLabel}
           </AppBadge>
-          <Link
+          <a
             className="btn btn--md btn--block focus-visible:text-white"
             href={contactHref}
             onClick={handleClose}
+            {...(isExternalContact()
+              ? { rel: "noopener noreferrer", target: "_blank" }
+              : {})}
           >
             {contactLabel}
-          </Link>
+          </a>
           <p
             className="text-fg-muted text-caption m-0 flex flex-wrap items-center gap-x-3 gap-y-1"
             aria-label={contactLinksLabel}

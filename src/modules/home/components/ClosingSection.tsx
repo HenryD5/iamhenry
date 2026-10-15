@@ -2,14 +2,13 @@ import { getTranslations } from "next-intl/server";
 import { ClosingOrbit } from "./ClosingOrbit";
 import { AppContainer } from "@/shared/components/app/AppContainer";
 import { AppWhatsAppIcon } from "@/shared/components/app/AppWhatsAppIcon";
-import { siteConfig } from "@/shared/config/site";
+import { getContactHref, isExternalContact } from "@/shared/utils/contact";
 
 export async function ClosingSection() {
   const translate = await getTranslations("home");
-  const hasWhatsapp = siteConfig.person.whatsapp !== null;
-  const contactHref = hasWhatsapp
-    ? `https://wa.me/${siteConfig.person.whatsapp}`
-    : `mailto:${siteConfig.person.email}`;
+  const translateShared = await getTranslations("shared");
+  const isContactExternal = isExternalContact();
+  const contactHref = getContactHref(translateShared("contactMessage"));
 
   return (
     <section
@@ -35,7 +34,7 @@ export async function ClosingSection() {
           <a
             className="btn btn--lg relative gap-[.8rem] focus-visible:text-white max-md:w-full max-md:justify-center"
             href={contactHref}
-            {...(hasWhatsapp
+            {...(isContactExternal
               ? { rel: "noopener noreferrer", target: "_blank" }
               : {})}
           >
