@@ -18,7 +18,10 @@ export async function getBlogSitemapEntries(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     ...articles.map(({ slug, updatedAt }) => ({
-      url: new URL(`/blog/${encodeURIComponent(slug)}`, siteConfig.url).toString(),
+      url: new URL(
+        `/blog/${encodeURIComponent(slug)}`,
+        siteConfig.url,
+      ).toString(),
       lastModified: updatedAt,
       changeFrequency: "monthly" as const,
       priority: 0.7,

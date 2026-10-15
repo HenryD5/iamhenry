@@ -6,9 +6,7 @@ import { createPageMetadata } from "@/shared/seo/metadata";
 
 const EMPTY_BLOG_SLUG = "__empty__";
 
-export async function getArticleStaticParams(): Promise<
-  { slug: string }[]
-> {
+export async function getArticleStaticParams(): Promise<{ slug: string }[]> {
   const slugs = await getArticleSlugs();
 
   return slugs.length > 0

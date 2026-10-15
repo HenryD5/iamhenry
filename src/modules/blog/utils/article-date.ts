@@ -28,5 +28,7 @@ export function wasArticleUpdated(
   publishedAt: string,
   updatedAt: string,
 ): boolean {
-  return parseIsoDate(updatedAt).getTime() > parseIsoDate(publishedAt).getTime();
+  return (
+    parseIsoDate(updatedAt).getTime() > parseIsoDate(publishedAt).getTime()
+  );
 }

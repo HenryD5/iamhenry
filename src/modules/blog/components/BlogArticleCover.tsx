@@ -41,10 +41,7 @@ export function BlogArticleCover({
         height={cover.height}
         sizes={sizes}
         preload={preload}
-        className={[
-          "absolute inset-0 size-full object-cover",
-          imageClassName,
-        ]
+        className={["absolute inset-0 size-full object-cover", imageClassName]
           .filter(Boolean)
           .join(" ")}
       />

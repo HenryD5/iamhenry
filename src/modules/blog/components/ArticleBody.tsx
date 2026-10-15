@@ -39,12 +39,12 @@ const PORTABLE_TEXT_COMPONENTS: PortableTextComponents = {
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="marker:text-(--accent-text) mt-[1.35em] list-disc pl-[1.3em] first:mt-0">
+      <ul className="mt-[1.35em] list-disc pl-[1.3em] marker:text-(--accent-text) first:mt-0">
         {children}
       </ul>
     ),
     number: ({ children }) => (
-      <ol className="marker:text-(--accent-text) mt-[1.35em] list-decimal pl-[1.3em] first:mt-0">
+      <ol className="mt-[1.35em] list-decimal pl-[1.3em] marker:text-(--accent-text) first:mt-0">
         {children}
       </ol>
     ),
