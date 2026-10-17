@@ -28,6 +28,8 @@ La órbita del Hero, sus tarjetas flotantes y el pulso de disponibilidad ya usan
 
 La órbita de la 404 (`src/modules/not-found/`) usa Motion en una isla acotada, con estado estático sin JavaScript y con `prefers-reduced-motion`; `data-motion-section="not-found"` y los valores `not-found-orbit`, `not-found-planet`, `not-found-satellite` y `not-found-lost` de `data-motion-item` son contrato estable.
 
+La galería del panel del caso Purafruit (`ProjectPanelShowcase` en `src/modules/projects/`) usa Motion en una isla acotada: autoplay de 6 s con pausa por hover, foco, visibilidad y `prefers-reduced-motion`; `data-motion-item="purafruit-panel-showcase"` es contrato estable.
+
 Instalados para animación: `motion` 14, `gsap` 3.15.0 (con ScrollTrigger y SplitText), `@gsap/react` 2.1.2 y `lenis` 1.3.26. Capas: CSS para hovers, foco y bucles simples; `motion` para microinteracciones y estado de componentes; GSAP para la secuencia del hero, las entradas de sección, el revelado de titulares y el scroll; Lenis para el scroll suave. GSAP se registra una vez en `src/shared/lib/gsap.ts` y solo se importa desde ahí; todo va dentro de `gsap.matchMedia()` con `(prefers-reduced-motion: no-preference)` y se limpia con `useGSAP`. Los estados iniciales los pone GSAP, nunca el CSS. Los videos de HyperFrames los produce el agente `my-motion-frames` en `public/media/`; `motion-builder` solo los integra.
 
 ## Dónde crear cada cosa
@@ -58,6 +60,8 @@ Instalados para animación: `motion` 14, `gsap` 3.15.0 (con ScrollTrigger y Spli
 | Texto español de la 404         | `src/modules/not-found/locales/es.json`           |
 | Componente o vista de la 404    | `src/modules/not-found/components/` y `views/`    |
 | Ruta de la 404                  | `src/app/not-found.tsx` (delgada, con `SiteLayout`) |
+| Caso de estudio del portafolio  | `src/modules/projects/` (content, locales, views); diagrama autónomo en `public/media/` incrustado con `ProjectDiagramFrame` |
+| Ruta de caso de estudio         | `src/app/(site)/portafolio/{slug}/page.tsx` y la constante en `src/modules/projects/routes.ts` |
 
 Wrappers disponibles: `UiTabs`, `UiCarousel`, `UiDrawer`. El módulo patrón es `src/modules/home/`, especialmente la cadena de Experiencia: types → content → utils → components. Orden para nuevos módulos: types → content → service/DTO/adapter si aplica → keys → hooks → store si aplica → components → view → ruta delgada.
 

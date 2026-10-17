@@ -48,7 +48,7 @@ export function HeroFloatingCard({
             className={`rounded-md px-6 py-[1.4rem] shadow-[var(--card-shadow)] max-md:rotate-0 ${isFirst ? "-rotate-4" : "rotate-[3.5deg]"}`}
             data-surface="light"
           >
-            <small className="font-primary text-caption text-(--accent-text) block leading-[1.2] font-semibold">
+            <small className="font-primary text-caption block leading-[1.2] font-semibold text-(--accent-text)">
               {eyebrow}
             </small>
             <strong className="font-secondary mt-2 mb-[.3rem] block text-[1.35rem] leading-[1.2] font-extrabold tracking-[-.02em]">

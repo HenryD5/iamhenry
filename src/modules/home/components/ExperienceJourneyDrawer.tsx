@@ -81,7 +81,7 @@ function ExperienceJourneyStage({
         }
       >
         <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-          <time className="text-caption text-(--accent-text) font-mono leading-none font-medium">
+          <time className="text-caption font-mono leading-none font-medium text-(--accent-text)">
             {stage.period}
           </time>
           {stage.isCurrent ? (
@@ -95,7 +95,7 @@ function ExperienceJourneyStage({
           {stage.company}
         </p>
         {stage.progression ? (
-          <p className="text-body-sm text-(--accent-text) mt-2 mb-0 font-medium">
+          <p className="text-body-sm mt-2 mb-0 font-medium text-(--accent-text)">
             {stage.progression}
           </p>
         ) : null}
@@ -147,7 +147,7 @@ export function ExperienceJourneyDrawer({
           ))}
         </ol>
         <article className="border-line bg-surface-raised mt-8 rounded-md border border-dashed p-6">
-          <span className="text-caption text-(--accent-text) font-primary font-semibold">
+          <span className="text-caption font-primary font-semibold text-(--accent-text)">
             {ventureLabel}
           </span>
           <time className="text-caption text-fg-muted mt-3 block font-mono">

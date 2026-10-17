@@ -24,7 +24,7 @@ export async function AboutSection() {
       data-motion-section="about"
     >
       <AppContainer>
-        <p className="font-primary text-body-sm text-(--accent-text) before:bg-tertiary-500 mb-[1.3rem] inline-flex items-center gap-[.6rem] leading-[1.2] font-semibold before:size-[.55rem] before:rounded-full before:content-['']">
+        <p className="font-primary text-body-sm before:bg-tertiary-500 mb-[1.3rem] inline-flex items-center gap-[.6rem] leading-[1.2] font-semibold text-(--accent-text) before:size-[.55rem] before:rounded-full before:content-['']">
           {translate("about.eyebrow")}
         </p>
         <h2
@@ -57,7 +57,7 @@ export async function AboutSection() {
                 key={item.id}
               >
                 <AppIcon
-                  className="stroke-(--accent-text) size-[1.3rem] shrink-0 fill-none stroke-[1.6] [stroke-linecap:round] [stroke-linejoin:round] max-md:row-span-2"
+                  className="size-[1.3rem] shrink-0 fill-none stroke-(--accent-text) stroke-[1.6] [stroke-linecap:round] [stroke-linejoin:round] max-md:row-span-2"
                   name={item.icon}
                 />
                 <dt className="text-body-sm text-fg-muted p-0 font-semibold normal-case max-md:col-start-2">

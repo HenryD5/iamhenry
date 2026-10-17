@@ -2,6 +2,8 @@ import type {
   BuiltItem,
   AboutContactItem,
   AboutFacet,
+  PortfolioAssistantShowcase,
+  PortfolioCaseStudy,
   PortfolioProject,
   QuestionItem,
   StackFacet,
@@ -237,6 +239,36 @@ export const portfolioProjects: readonly PortfolioProject[] = [
     isPending: true,
   },
 ] as const satisfies readonly PortfolioProject[];
+
+export const portfolioCaseStudy = {
+  name: "Purafruit",
+  href: "/portafolio/purafruit",
+  image: "/images/projects/biohuella-panel-resumen.webp",
+  imagePlaceholder:
+    "data:image/jpeg;base64,/9j/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAIABADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAdEAEAAgEFAQAAAAAAAAAAAAABAAIRBgcTIVJx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAWEQEBAQAAAAAAAAAAAAAAAAAAATH/2gAMAwEAAhEDEQA/AKDbzDpiqhnluufspkrbyB3ERdSP/9k=",
+  appImage: "/images/projects/biohuella-app.webp",
+  appImageWidth: 360,
+  appImageHeight: 784,
+  stack: [
+    "Google ADK",
+    "Gemini",
+    "FastAPI",
+    "PostGIS",
+    "Vue 3",
+    "Kotlin",
+    "Swift",
+  ],
+} as const satisfies PortfolioCaseStudy;
+
+export const portfolioAssistantShowcase = {
+  name: "Asistentes virtuales",
+  useCaseKeys: [
+    "portfolio.assistants.useCases.jewelry",
+    "portfolio.assistants.useCases.n8n",
+    "portfolio.assistants.useCases.alwaysOn",
+    "portfolio.assistants.useCases.brandVoice",
+  ],
+} as const satisfies PortfolioAssistantShowcase;
 
 export const builtItems: readonly BuiltItem[] = [
   {

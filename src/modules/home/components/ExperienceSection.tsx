@@ -31,7 +31,7 @@ function ExperienceCurrentCard({
           <span className="bg-primary-500 font-primary text-caption rounded-full px-3 py-2 leading-none font-semibold text-white">
             {todayLabel}
           </span>
-          <time className="text-caption text-(--accent-text) font-mono leading-none font-medium">
+          <time className="text-caption font-mono leading-none font-medium text-(--accent-text)">
             {stage.period}
           </time>
         </div>
@@ -97,7 +97,7 @@ export async function ExperienceSection() {
               data-motion-item="experience-stat"
               key={metric.id}
             >
-              <strong className="font-secondary text-h1 text-(--accent-text) max-md:text-h3 leading-none font-extrabold tracking-[var(--heading-tracking)]">
+              <strong className="font-secondary text-h1 max-md:text-h3 leading-none font-extrabold tracking-[var(--heading-tracking)] text-(--accent-text)">
                 {metricValues[metric.id]}
               </strong>
               <span className="text-body-sm text-fg-muted max-md:text-caption mt-3 leading-[1.25] font-medium break-words max-md:mt-2">
@@ -131,7 +131,7 @@ export async function ExperienceSection() {
             </strong>
           </div>
           <div>
-            <small className="text-caption text-(--accent-text) font-mono leading-[1.3] font-medium">
+            <small className="text-caption font-mono leading-[1.3] font-medium text-(--accent-text)">
               {translate("experience.degreePeriod")}
             </small>
             <strong className="font-secondary mt-[.3rem] mb-[.1rem] block text-[1.2rem] leading-[1.25] font-extrabold tracking-[-.01em]">

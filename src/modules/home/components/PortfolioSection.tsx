@@ -1,7 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import type { PortfolioProject } from "../types/home-content.types";
 import { builtItems, portfolioProjects } from "../content/home.content";
+import { PortfolioAiShowcase } from "./PortfolioAiShowcase";
 import { PortfolioBuiltIcon } from "./PortfolioBuiltIcon";
+import { PortfolioGroupHeading } from "./PortfolioGroupHeading";
 import { AppBrowserFrame } from "@/shared/components/app/AppBrowserFrame";
 import { AppContainer } from "@/shared/components/app/AppContainer";
 import { AppSectionHeading } from "@/shared/components/app/AppSectionHeading";
@@ -92,6 +94,11 @@ export async function PortfolioSection() {
           accent={translate("portfolio.accent")}
           description={translate("portfolio.lead")}
         />
+        <PortfolioAiShowcase />
+        <PortfolioGroupHeading
+          index="02"
+          title={translate("portfolio.groups.web")}
+        />
         <div className="grid grid-cols-3 gap-[1.4rem] max-md:hidden">
           {projectCards}
         </div>
@@ -108,7 +115,10 @@ export async function PortfolioSection() {
           slidesPerPage={1.2}
           triggerClassName="!size-[2.8rem] hover:!bg-[color-mix(in_srgb,var(--fg)_9%,transparent)] hover:!text-fg focus-visible:!text-fg"
         />
-        <div className="mt-[2.6rem]" data-motion-item="portfolio-carousel">
+        <div
+          className="mt-16 max-md:mt-12"
+          data-motion-item="portfolio-carousel"
+        >
           <UiCarousel
             {...carouselProps}
             className="!gap-0 max-md:hidden"
@@ -123,9 +133,11 @@ export async function PortfolioSection() {
             slidesPerPage={4.2}
             triggerClassName="!size-[2.8rem] hover:!bg-[color-mix(in_srgb,var(--fg)_9%,transparent)] hover:!text-fg focus-visible:!text-fg"
             title={
-              <h3 className="text-h5 m-0 leading-none">
-                {translate("portfolio.also")}
-              </h3>
+              <PortfolioGroupHeading
+                index="03"
+                title={translate("portfolio.also")}
+                className="mb-0 flex-1"
+              />
             }
           />
           <UiCarousel
@@ -142,9 +154,11 @@ export async function PortfolioSection() {
             slidesPerPage={1.15}
             triggerClassName="!size-[2.8rem] hover:!bg-[color-mix(in_srgb,var(--fg)_9%,transparent)] hover:!text-fg focus-visible:!text-fg"
             title={
-              <h3 className="text-h5 m-0 leading-none">
-                {translate("portfolio.also")}
-              </h3>
+              <PortfolioGroupHeading
+                index="03"
+                title={translate("portfolio.also")}
+                className="mb-0 flex-1"
+              />
             }
           />
         </div>

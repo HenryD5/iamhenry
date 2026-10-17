@@ -1,0 +1,107 @@
+{
+  "back": "Volver al portafolio",
+  "purafruit": {
+    "metadata": {
+      "title": "BioHuella para Purafruit: cada avistamiento cuenta",
+      "description": "Caso de estudio del Reto 2 de Piura Innova: una app de campo que funciona sin señal y un agente con Google ADK y Gemini que identifica flora y fauna, da un porcentaje de confianza al supervisor y responde por chat sobre los fundos de Purafruit."
+    },
+    "eyebrow": "Caso de estudio · Piura Innova · Reto 2 «Cada avistamiento cuenta»",
+    "title": "Cada avistamiento cuenta,",
+    "accent": "y ahora ninguno se pierde.",
+    "lead": "Purafruit monitorea la biodiversidad de sus fundos dos veces al año. Entre una evaluación y otra, lo que el personal de campo veía —aves, mamíferos, reptiles, flora— se quedaba sin registro. Para el hackatón construí BioHuella: una app que registra un avistamiento en pocos toques, incluso sin señal, y un panel donde un agente con Google ADK y Gemini identifica la especie y le dice al supervisor cuánta confianza tiene antes de aprobarla.",
+    "factsLabel": "Resumen del caso",
+    "facts": {
+      "challenge": {
+        "label": "El reto",
+        "text": "Sin registros centralizados entre monitoreos, la información sobre biodiversidad se perdía y no se podía analizar su evolución en el tiempo."
+      },
+      "solution": {
+        "label": "La solución",
+        "text": "Una app de campo para el trabajador con celular y señal limitada, y un panel para el equipo de Sostenibilidad con IA, mapas e indicadores."
+      },
+      "impact": {
+        "label": "El impacto",
+        "text": "Cada registro llega con foto, fecha y ubicación exacta; el panel muestra dónde se concentra la vida silvestre y ayuda a decidir dónde actuar."
+      }
+    },
+    "fieldApp": {
+      "eyebrow": "App de campo",
+      "title": "Registrar un avistamiento en pocos toques",
+      "lead": "Pensada para quien está en el fundo, no para un biólogo: una foto, la ubicación y, si quiere, una descripción. El resto lo hace la app.",
+      "videoCaption": "Demo de BioHuella: del primer ingreso al registro enviado a revisión.",
+      "highlights": {
+        "offline": {
+          "title": "Sin señal, sin problema",
+          "text": "Guarda todo en el teléfono y sincroniza solo cuando vuelve la conexión."
+        },
+        "guide": {
+          "title": "Kinti, el colibrí guía",
+          "text": "Un asistente que acompaña el primer uso y cada paso del registro."
+        },
+        "evidence": {
+          "title": "Foto y GPS en el mismo gesto",
+          "text": "La cámara o la galería, la ubicación capturada al momento y una nota opcional."
+        },
+        "rewards": {
+          "title": "Néctar por cada aporte",
+          "text": "Puntos y niveles que se acreditan cuando el supervisor aprueba el avistamiento."
+        }
+      }
+    },
+    "panel": {
+      "eyebrow": "Panel administrativo",
+      "title": "Del registro de campo a la decisión",
+      "lead": "El equipo de Sostenibilidad revisa, aprueba y analiza cada avistamiento en un solo lugar, con un agente de IA siempre a mano.",
+      "listLabel": "Pantallas del panel de BioHuella",
+      "screens": {
+        "summary": {
+          "title": "Resumen con asistente",
+          "text": "Pendientes, aprobados y rechazados del periodo, la curva diaria de avistamientos y un chat que responde por zona y fecha con lenguaje natural.",
+          "alt": "Resumen del panel de BioHuella con indicadores, gráfico de avistamientos por día y el asistente de IA abierto"
+        },
+        "map": {
+          "title": "Mapa de calor por fundo",
+          "text": "Polígonos de cada fundo, capas de calor y puntos, y la ubicación exacta de cada registro aprobado para ver dónde se concentra la vida silvestre.",
+          "alt": "Mapa del panel de BioHuella con el polígono del Fundo Sullana, mapa de calor y lista de avistamientos con coordenadas"
+        },
+        "aiReview": {
+          "title": "Análisis con IA antes de aprobar",
+          "text": "Gemini describe lo observado, propone el tipo y la especie con su confianza frente al umbral del 80 % y deja la decisión final al supervisor.",
+          "alt": "Detalle de un avistamiento con el análisis de IA: descripción de un cánido, tipo mamífero con 100 % de confianza y umbral del 80 %"
+        }
+      }
+    },
+    "capabilitiesTitle": "Qué hace el agente",
+    "capabilities": {
+      "species": {
+        "title": "Reconoce la especie",
+        "text": "Analiza la foto junto al catálogo de especies del fundo y responde con un formato validado: tipo, especie candidata y nivel de confianza."
+      },
+      "threshold": {
+        "title": "Decide con un umbral claro",
+        "text": "Si la confianza no llega al 80 % o encuentra contradicciones, envía el registro a revisión del supervisor. Nunca aprueba ni otorga puntos por su cuenta."
+      },
+      "chat": {
+        "title": "Conversa con datos reales",
+        "text": "En el chat consulta zonas, avistamientos y catálogo con los permisos de quien pregunta, y solo cita los registros que realmente recibió."
+      },
+      "location": {
+        "title": "Protege la ubicación",
+        "text": "La zona se calcula con PostGIS comparando el GPS del registro y el de la foto; las coordenadas nunca se envían al modelo."
+      }
+    },
+    "diagram": {
+      "title": "Cómo viaja un dato",
+      "lead": "Explora la arquitectura paso a paso: elige un escenario, reprodúcelo y toca cualquier componente para ver qué hace.",
+      "frameTitle": "Diagrama interactivo del flujo de datos de Purafruit"
+    },
+    "stackTitle": "Tecnologías",
+    "closing": {
+      "title": "¿Tienes un proceso que",
+      "accent": "un agente podría resolver?",
+      "lead": "Cuéntame cómo trabaja hoy tu equipo y te propongo dónde un agente de IA puede aportar más, del campo al panel de decisiones.",
+      "action": "Conversemos",
+      "contactMessage": "¡Hola, Henry! 👋 Vi el caso de Purafruit en tu web y tengo un proceso que un agente de IA podría resolver. ¿Cuándo podemos conversar?"
+    }
+  }
+}

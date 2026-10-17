@@ -29,6 +29,22 @@ export interface PortfolioProject {
   isPending?: boolean;
 }
 
+export interface PortfolioCaseStudy {
+  name: string;
+  href: string;
+  image: string;
+  imagePlaceholder: string;
+  appImage: string;
+  appImageWidth: number;
+  appImageHeight: number;
+  stack: readonly string[];
+}
+
+export interface PortfolioAssistantShowcase {
+  name: string;
+  useCaseKeys: readonly string[];
+}
+
 export interface BuiltItem {
   id: "rewards" | "commerce" | "payments" | "mercadosya" | "bluex";
   titleKey: string;

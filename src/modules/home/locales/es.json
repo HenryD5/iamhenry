@@ -216,6 +216,32 @@
     "title": "Productos reales,",
     "accent": "en manos de usuarios reales.",
     "lead": "Una muestra de lo construido para clientes.",
+    "groups": {
+      "ai": "Agentes de IA",
+      "web": "Webs para clientes"
+    },
+    "caseStudy": {
+      "badge": "Hackatón Piura Innova",
+      "type": "Agente IA",
+      "alt": "Panel de BioHuella con indicadores de avistamientos, gráfico diario y asistente de IA, junto a la app móvil con un registro guardado",
+      "description": "BioHuella: una app de campo que registra avistamientos incluso sin señal y un agente con Google ADK y Gemini que reconoce la especie y da al supervisor un porcentaje de confianza para aprobar. Con chat, mapa de calor y polígonos por fundo.",
+      "stackLabel": "Tecnologías del caso",
+      "cta": "Ver cómo viaja un dato"
+    },
+    "assistants": {
+      "badge": "Agentes conversacionales",
+      "title": "Asistentes virtuales a la medida de tu negocio",
+      "description": "Asistentes que conocen tu negocio: resuelven dudas, orientan la compra y convierten cada conversación en una oportunidad de venta.",
+      "useCasesLabel": "Qué aportan",
+      "useCases": {
+        "jewelry": "Joyerías y otros rubros",
+        "n8n": "Automatizados con n8n",
+        "alwaysOn": "Atención a toda hora",
+        "brandVoice": "Con el tono de tu marca"
+      },
+      "cta": "Quiero uno para mi negocio",
+      "contactMessage": "¡Hola, Henry! 👋 Vi tus asistentes virtuales en tu web y me gustaría uno para mi negocio. ¿Cuándo podemos conversar?"
+    },
     "type": "Web",
     "pending": "Descripción pendiente",
     "also": "También construí",

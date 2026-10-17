@@ -34,7 +34,7 @@ No hay endpoints, DTO, adapter, servicio ni store: el contenido es local y está
 - Pregunta: `assistant-panel`.
 - Stack: `stack-illustration`, una instancia `stack-card` por faceta y `stack-bars`.
 - Experiencia: `experience-stats`, una instancia `experience-stat` por cifra, `experience-current` y `experience-journey`.
-- Portafolio: una instancia `portfolio-project` por proyecto, `portfolio-carousel`, una instancia `portfolio-built` por logro y `portfolio-built-icon` por icono.
+- Portafolio: `portfolio-ai` para el bloque de agentes de IA, con `portfolio-case-study` (Purafruit) y `portfolio-assistants`; una instancia `portfolio-project` por proyecto, `portfolio-carousel`, una instancia `portfolio-built` por logro y `portfolio-built-icon` por icono.
 - Sobre mí: `about-quote` y `about-contact`.
 - Cierre: `closing-orbit`.
 - `motion-builder` no debe cambiar contenido ni semántica. Decide HyperFrames o Motion y debe respetar `prefers-reduced-motion`.
