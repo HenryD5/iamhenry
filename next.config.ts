@@ -7,6 +7,12 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  experimental: {
+    serverActions: {
+      // Única Server Action: el formulario de contacto (texto, sin archivos).
+      bodySizeLimit: "16kb",
+    },
+  },
   images: {
     localPatterns: [
       { pathname: "/images/**", search: "" },

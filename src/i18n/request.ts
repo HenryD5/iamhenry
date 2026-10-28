@@ -1,5 +1,6 @@
 import { getRequestConfig } from "next-intl/server";
 import blogMessages from "@/modules/blog/locales/es.json";
+import contactMessages from "@/modules/contact/locales/es.json";
 import homeMessages from "@/modules/home/locales/es.json";
 import notFoundMessages from "@/modules/not-found/locales/es.json";
 import projectsMessages from "@/modules/projects/locales/es.json";
@@ -10,6 +11,7 @@ export default getRequestConfig(async () => ({
   messages: {
     blog: blogMessages,
     home: homeMessages,
+    contact: contactMessages,
     notFound: notFoundMessages,
     projects: projectsMessages,
     shared: sharedMessages,
