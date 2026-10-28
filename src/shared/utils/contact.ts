@@ -1,13 +1,6 @@
-import { siteConfig } from "@/shared/config/site";
+const CONTACT_PATH = "/contacto";
 
-export function isExternalContact(): boolean {
-  return siteConfig.person.whatsapp !== null;
-}
-
-export function getContactHref(message: string): string {
-  const encodedMessage = encodeURIComponent(message);
-
-  return isExternalContact()
-    ? `https://wa.me/${siteConfig.person.whatsapp}?text=${encodedMessage}`
-    : `mailto:${siteConfig.person.email}?body=${encodedMessage}`;
+// Enlace de respaldo sin JavaScript: siempre la página de contacto, sin motivo.
+export function getContactHref(): string {
+  return CONTACT_PATH;
 }

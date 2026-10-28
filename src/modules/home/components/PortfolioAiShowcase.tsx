@@ -9,18 +9,22 @@ import { PortfolioGroupHeading } from "./PortfolioGroupHeading";
 import { AppBrowserFrame } from "@/shared/components/app/AppBrowserFrame";
 import { AppIcon } from "@/shared/components/app/AppIcon";
 import { AppIconHalo } from "@/shared/components/app/AppIconHalo";
-import { AppWhatsAppIcon } from "@/shared/components/app/AppWhatsAppIcon";
-import { getContactHref, isExternalContact } from "@/shared/utils/contact";
+import { AppContactIcon } from "@/shared/components/app/AppContactIcon";
+import { getContactHref } from "@/shared/utils/contact";
+import type { ContactTriggerRenderer } from "@/shared/types/contact-trigger.types";
 
 const BADGE_CLASS_NAME =
   "border-line bg-surface-raised font-primary text-caption text-fg-muted inline-flex w-fit items-center gap-2 rounded-full whitespace-nowrap border px-[.8rem] py-[.4rem] leading-none font-medium";
 
-export async function PortfolioAiShowcase() {
+interface PortfolioAiShowcaseProps {
+  renderContactTrigger?: ContactTriggerRenderer;
+}
+
+export async function PortfolioAiShowcase({
+  renderContactTrigger,
+}: PortfolioAiShowcaseProps) {
   const translate = await getTranslations("home");
-  const isContactExternal = isExternalContact();
-  const assistantsHref = getContactHref(
-    translate("portfolio.assistants.contactMessage"),
-  );
+  const contactHref = getContactHref();
 
   return (
     <div className="mb-16 max-md:mb-12" data-motion-item="portfolio-ai">
@@ -127,16 +131,24 @@ export async function PortfolioAiShowcase() {
               </li>
             ))}
           </ul>
-          <a
-            className="btn btn--outline btn--md relative mt-auto gap-[.6rem] self-start"
-            href={assistantsHref}
-            {...(isContactExternal
-              ? { rel: "noopener noreferrer", target: "_blank" }
-              : {})}
-          >
-            <AppWhatsAppIcon />
-            {translate("portfolio.assistants.cta")}
-          </a>
+          {renderContactTrigger?.({
+            className:
+              "btn btn--outline btn--md relative mt-auto gap-[.6rem] self-start",
+            children: (
+              <>
+                <AppContactIcon />
+                {translate("portfolio.assistants.cta")}
+              </>
+            ),
+          }) ?? (
+            <a
+              className="btn btn--outline btn--md relative mt-auto gap-[.6rem] self-start"
+              href={contactHref}
+            >
+              <AppContactIcon />
+              {translate("portfolio.assistants.cta")}
+            </a>
+          )}
         </article>
       </div>
     </div>

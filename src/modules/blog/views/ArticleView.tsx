@@ -9,12 +9,14 @@ import { getArticleJsonLdProps } from "../utils/article-seo";
 import { AppContainer } from "@/shared/components/app/AppContainer";
 import { AppHeader } from "@/shared/components/app/AppHeader";
 import { BlogPostingJsonLd } from "@/shared/seo/blog-posting-json-ld";
+import type { ReactNode } from "react";
 
 interface ArticleViewProps {
   params: Promise<{ slug: string }>;
+  header?: ReactNode;
 }
 
-export async function ArticleView({ params }: ArticleViewProps) {
+export async function ArticleView({ params, header }: ArticleViewProps) {
   const { slug } = await params;
   const [article, articles] = await Promise.all([
     getArticleBySlug(slug),
@@ -32,7 +34,7 @@ export async function ArticleView({ params }: ArticleViewProps) {
   return (
     <>
       <BlogPostingJsonLd {...getArticleJsonLdProps(article)} />
-      <AppHeader />
+      {header ?? <AppHeader />}
       <main id="main-content" className="overflow-x-clip pt-16 max-md:pt-14">
         <article>
           <AppContainer>

@@ -8,6 +8,7 @@ import { AppBrowserFrame } from "@/shared/components/app/AppBrowserFrame";
 import { AppContainer } from "@/shared/components/app/AppContainer";
 import { AppSectionHeading } from "@/shared/components/app/AppSectionHeading";
 import { UiCarousel } from "@/shared/components/ui/UiCarousel";
+import type { ContactTriggerRenderer } from "@/shared/types/contact-trigger.types";
 
 type Translate = Awaited<ReturnType<typeof getTranslations<"home">>>;
 
@@ -53,7 +54,13 @@ function ProjectCard({
   );
 }
 
-export async function PortfolioSection() {
+interface PortfolioSectionProps {
+  renderContactTrigger?: ContactTriggerRenderer;
+}
+
+export async function PortfolioSection({
+  renderContactTrigger,
+}: PortfolioSectionProps) {
   const translate = await getTranslations("home");
   const projectCards = portfolioProjects.map((project) => (
     <ProjectCard key={project.name} project={project} translate={translate} />
@@ -94,7 +101,7 @@ export async function PortfolioSection() {
           accent={translate("portfolio.accent")}
           description={translate("portfolio.lead")}
         />
-        <PortfolioAiShowcase />
+        <PortfolioAiShowcase renderContactTrigger={renderContactTrigger} />
         <PortfolioGroupHeading
           index="02"
           title={translate("portfolio.groups.web")}

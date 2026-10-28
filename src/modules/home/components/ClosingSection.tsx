@@ -1,14 +1,19 @@
 import { getTranslations } from "next-intl/server";
 import { ClosingOrbit } from "./ClosingOrbit";
 import { AppContainer } from "@/shared/components/app/AppContainer";
-import { AppWhatsAppIcon } from "@/shared/components/app/AppWhatsAppIcon";
-import { getContactHref, isExternalContact } from "@/shared/utils/contact";
+import { AppContactIcon } from "@/shared/components/app/AppContactIcon";
+import { getContactHref } from "@/shared/utils/contact";
+import type { ContactTriggerRenderer } from "@/shared/types/contact-trigger.types";
 
-export async function ClosingSection() {
+interface ClosingSectionProps {
+  renderContactTrigger?: ContactTriggerRenderer;
+}
+
+export async function ClosingSection({
+  renderContactTrigger,
+}: ClosingSectionProps) {
   const translate = await getTranslations("home");
-  const translateShared = await getTranslations("shared");
-  const isContactExternal = isExternalContact();
-  const contactHref = getContactHref(translateShared("contactMessage"));
+  const contactHref = getContactHref();
 
   return (
     <section
@@ -31,16 +36,24 @@ export async function ClosingSection() {
               {translate("closing.accent")}
             </span>
           </h2>
-          <a
-            className="btn btn--lg relative gap-[.8rem] focus-visible:text-white max-md:w-full max-md:justify-center"
-            href={contactHref}
-            {...(isContactExternal
-              ? { rel: "noopener noreferrer", target: "_blank" }
-              : {})}
-          >
-            <AppWhatsAppIcon />
-            {translate("closing.action")}
-          </a>
+          {renderContactTrigger?.({
+            className:
+              "btn btn--lg relative gap-[.8rem] focus-visible:text-white max-md:w-full max-md:justify-center",
+            children: (
+              <>
+                <AppContactIcon />
+                {translate("closing.action")}
+              </>
+            ),
+          }) ?? (
+            <a
+              className="btn btn--lg relative gap-[.8rem] focus-visible:text-white max-md:w-full max-md:justify-center"
+              href={contactHref}
+            >
+              <AppContactIcon />
+              {translate("closing.action")}
+            </a>
+          )}
         </div>
       </AppContainer>
     </section>

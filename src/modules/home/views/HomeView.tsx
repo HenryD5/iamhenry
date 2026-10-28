@@ -5,20 +5,26 @@ import { HeroSection } from "../components/HeroSection";
 import { PortfolioSection } from "../components/PortfolioSection";
 import { PreguntaSection } from "../components/PreguntaSection";
 import { StackSection } from "../components/StackSection";
-import { AppHeader } from "@/shared/components/app/AppHeader";
+import type { ReactNode } from "react";
+import type { ContactTriggerRenderer } from "@/shared/types/contact-trigger.types";
 
-export function HomeView() {
+interface HomeViewProps {
+  header: ReactNode;
+  renderContactTrigger?: ContactTriggerRenderer;
+}
+
+export function HomeView({ header, renderContactTrigger }: HomeViewProps) {
   return (
     <>
-      <AppHeader />
+      {header}
       <main className="overflow-x-clip" id="main-content">
         <HeroSection />
         <PreguntaSection />
         <StackSection />
         <ExperienceSection />
-        <PortfolioSection />
+        <PortfolioSection renderContactTrigger={renderContactTrigger} />
         <AboutSection />
-        <ClosingSection />
+        <ClosingSection renderContactTrigger={renderContactTrigger} />
       </main>
     </>
   );

@@ -1,27 +1,33 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import type { ReactNode } from "react";
 import { ProjectDiagramFrame } from "../components/ProjectDiagramFrame";
 import { ProjectPanelShowcase } from "../components/ProjectPanelShowcase";
 import { purafruitCaseStudy } from "../content/purafruit.content";
 import { PORTFOLIO_ANCHOR_PATH } from "../routes";
 import { AppContainer } from "@/shared/components/app/AppContainer";
-import { AppHeader } from "@/shared/components/app/AppHeader";
 import { AppIcon } from "@/shared/components/app/AppIcon";
 import { AppLoopVideo } from "@/shared/components/app/AppLoopVideo";
-import { AppWhatsAppIcon } from "@/shared/components/app/AppWhatsAppIcon";
-import { getContactHref, isExternalContact } from "@/shared/utils/contact";
+import { AppContactIcon } from "@/shared/components/app/AppContactIcon";
+import { getContactHref } from "@/shared/utils/contact";
+import type { ContactTriggerRenderer } from "@/shared/types/contact-trigger.types";
 
-export async function PurafruitView() {
+interface PurafruitViewProps {
+  header: ReactNode;
+  renderContactTrigger?: ContactTriggerRenderer;
+}
+
+export async function PurafruitView({
+  header,
+  renderContactTrigger,
+}: PurafruitViewProps) {
   const translate = await getTranslations("projects");
   const translateShared = await getTranslations("shared");
-  const isContactExternal = isExternalContact();
-  const contactHref = getContactHref(
-    translate("purafruit.closing.contactMessage"),
-  );
+  const contactHref = getContactHref();
 
   return (
     <>
-      <AppHeader />
+      {header}
       <main id="main-content" className="overflow-x-clip pt-16 max-md:pt-14">
         <article>
           <AppContainer className="pt-16 pb-14 max-md:pt-10 max-md:pb-10">
@@ -233,16 +239,24 @@ export async function PurafruitView() {
                   {translate("purafruit.closing.lead")}
                 </p>
               </div>
-              <a
-                className="btn btn--light btn--lg relative shrink-0 gap-[.8rem] max-md:w-full max-md:justify-center"
-                href={contactHref}
-                {...(isContactExternal
-                  ? { rel: "noopener noreferrer", target: "_blank" }
-                  : {})}
-              >
-                <AppWhatsAppIcon />
-                {translate("purafruit.closing.action")}
-              </a>
+              {renderContactTrigger?.({
+                className:
+                  "btn btn--light btn--lg relative shrink-0 gap-[.8rem] max-md:w-full max-md:justify-center",
+                children: (
+                  <>
+                    <AppContactIcon />
+                    {translate("purafruit.closing.action")}
+                  </>
+                ),
+              }) ?? (
+                <a
+                  className="btn btn--light btn--lg relative shrink-0 gap-[.8rem] max-md:w-full max-md:justify-center"
+                  href={contactHref}
+                >
+                  <AppContactIcon />
+                  {translate("purafruit.closing.action")}
+                </a>
+              )}
             </div>
           </AppContainer>
         </section>

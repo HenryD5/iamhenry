@@ -10,7 +10,6 @@ vi.mock("@/shared/config/site", () => ({
   siteConfig: {
     person: {
       email: "henry@example.com",
-      whatsapp: "51930724632",
     },
   },
 }));
@@ -33,7 +32,6 @@ vi.mock("next-intl/server", () => ({
       brand: "I am Henry",
       contactCta: "Construyamos algo juntos",
       contactCtaShort: "Escríbeme",
-      contactMessage: "¡Hola, Henry!",
     };
     return messages[key] ?? key;
   }),
@@ -80,9 +78,10 @@ describe("AppHeader", () => {
     expect(
       container.querySelector(".grid-cols-\\[1fr_auto_1fr\\]"),
     ).toBeInTheDocument();
-    expect(
-      screen.getByRole("link", { name: "Blog" }),
-    ).toHaveAttribute("aria-current", "page");
+    expect(screen.getByRole("link", { name: "Blog" })).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
   });
 
   it("renders responsive contact labels at the normal button size", async () => {
@@ -90,12 +89,8 @@ describe("AppHeader", () => {
 
     const contactLink = screen.getByText("Escríbeme").closest("a");
     expect(contactLink).toHaveClass("btn--md");
-    expect(contactLink).toHaveAttribute(
-      "href",
-      "https://wa.me/51930724632?text=%C2%A1Hola%2C%20Henry!",
-    );
-    expect(contactLink).toHaveAttribute("target", "_blank");
-    expect(contactLink).toHaveAttribute("rel", "noopener noreferrer");
+    expect(contactLink).toHaveAttribute("href", "/contacto");
+    expect(contactLink).not.toHaveAttribute("target");
     expect(contactLink).not.toHaveClass("max-md:px-2", "max-md:text-[.7rem]");
     expect(screen.getByText("Escríbeme")).toHaveClass("md:hidden");
     expect(screen.getByText("Construyamos algo juntos")).toHaveClass(

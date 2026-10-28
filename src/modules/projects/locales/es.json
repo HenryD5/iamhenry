@@ -100,8 +100,7 @@
       "title": "¿Tienes un proceso que",
       "accent": "un agente podría resolver?",
       "lead": "Cuéntame cómo trabaja hoy tu equipo y te propongo dónde un agente de IA puede aportar más, del campo al panel de decisiones.",
-      "action": "Conversemos",
-      "contactMessage": "¡Hola, Henry! 👋 Vi el caso de Purafruit en tu web y tengo un proceso que un agente de IA podría resolver. ¿Cuándo podemos conversar?"
+      "action": "Conversemos"
     }
   }
 }

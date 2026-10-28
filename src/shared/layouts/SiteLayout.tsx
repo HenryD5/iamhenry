@@ -4,7 +4,11 @@ import { AppFooter } from "@/shared/components/app/AppFooter";
 
 export async function SiteLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  floatingContactTrigger,
+}: Readonly<{
+  children: React.ReactNode;
+  floatingContactTrigger?: React.ReactNode;
+}>) {
   const translate = await getTranslations("shared");
   return (
     <>
@@ -16,7 +20,7 @@ export async function SiteLayout({
       </a>
       {children}
       <AppFooter />
-      <AppFloatingContact />
+      <AppFloatingContact contactTrigger={floatingContactTrigger} />
     </>
   );
 }

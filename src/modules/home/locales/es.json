@@ -239,8 +239,7 @@
         "alwaysOn": "Atención a toda hora",
         "brandVoice": "Con el tono de tu marca"
       },
-      "cta": "Quiero uno para mi negocio",
-      "contactMessage": "¡Hola, Henry! 👋 Vi tus asistentes virtuales en tu web y me gustaría uno para mi negocio. ¿Cuándo podemos conversar?"
+      "cta": "Quiero uno para mi negocio"
     },
     "type": "Web",
     "pending": "Descripción pendiente",

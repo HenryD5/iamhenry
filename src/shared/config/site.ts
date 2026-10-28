@@ -13,6 +13,5 @@ export const siteConfig = {
     email: "henrydavidyamunaque@gmail.com",
     linkedIn: "https://www.linkedin.com/in/henry-yamunaque-villegas",
     github: "https://github.com/HenryD5",
-    whatsapp: "51930724632", // Formato esperado: solo dígitos con código de país, sin + ni espacios.
   },
 } as const;

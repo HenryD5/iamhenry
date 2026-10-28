@@ -1,12 +1,12 @@
 "use client";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { useState } from "react";
 import { siteConfig } from "@/shared/config/site";
 import { UiDrawer } from "@/shared/components/ui/UiDrawer";
 import { useActiveNavigation } from "@/shared/hooks/use-active-navigation";
 import { getNavigationAriaCurrent } from "@/shared/utils/navigation";
-import { isExternalContact } from "@/shared/utils/contact";
 import { AppBadge } from "./AppBadge";
 import { AppBrandLogo } from "./AppBrandLogo";
 
@@ -22,6 +22,7 @@ interface AppMobileMenuProps {
   closeLabel: string;
   contactLabel: string;
   contactHref: string;
+  contactTrigger?: ReactNode;
   brandLabel: string;
   availabilityLabel: string;
   linkedInLabel: string;
@@ -35,6 +36,7 @@ export function AppMobileMenu({
   closeLabel,
   contactLabel,
   contactHref,
+  contactTrigger,
   brandLabel,
   availabilityLabel,
   linkedInLabel,
@@ -119,16 +121,15 @@ export function AppMobileMenu({
             />
             {availabilityLabel}
           </AppBadge>
-          <a
-            className="btn btn--md btn--block focus-visible:text-white"
-            href={contactHref}
-            onClick={handleClose}
-            {...(isExternalContact()
-              ? { rel: "noopener noreferrer", target: "_blank" }
-              : {})}
-          >
-            {contactLabel}
-          </a>
+          {contactTrigger ?? (
+            <a
+              className="btn btn--md btn--block focus-visible:text-white"
+              href={contactHref}
+              onClick={handleClose}
+            >
+              {contactLabel}
+            </a>
+          )}
           <p
             className="text-fg-muted text-caption m-0 flex flex-wrap items-center gap-x-3 gap-y-1"
             aria-label={contactLinksLabel}

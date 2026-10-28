@@ -7,8 +7,13 @@ import { getArticles } from "../services/article.service";
 import { AppContainer } from "@/shared/components/app/AppContainer";
 import { AppHeader } from "@/shared/components/app/AppHeader";
 import { BlogJsonLd } from "@/shared/seo/blog-json-ld";
+import type { ReactNode } from "react";
 
-export async function BlogListView() {
+interface BlogListViewProps {
+  header?: ReactNode;
+}
+
+export async function BlogListView({ header }: BlogListViewProps = {}) {
   const articles = await getArticles();
   const [featuredArticle, ...remainingArticles] = articles;
 
@@ -19,7 +24,7 @@ export async function BlogListView() {
         description={blogMessages.metadata.description}
         articles={articles}
       />
-      <AppHeader />
+      {header ?? <AppHeader />}
       <main id="main-content" className="overflow-x-clip pt-16 max-md:pt-14">
         <AppContainer>
           <BlogListHeader />

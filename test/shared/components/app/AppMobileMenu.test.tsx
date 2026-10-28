@@ -30,7 +30,6 @@ vi.mock("@/shared/config/site", () => ({
     person: {
       email: "henry@example.com",
       linkedIn: "https://www.linkedin.com/in/henry",
-      whatsapp: "51987654321",
     },
   },
 }));
@@ -48,7 +47,7 @@ describe("AppMobileMenu", () => {
         description="Navegación móvil"
         closeLabel="Cerrar"
         contactLabel="Contacto"
-        contactHref="https://wa.me/51987654321?text=Hola"
+        contactHref="/contacto"
         brandLabel="I am Henry"
         availabilityLabel="Disponible"
         linkedInLabel="LinkedIn"
@@ -61,9 +60,8 @@ describe("AppMobileMenu", () => {
       "aria-current",
       "page",
     );
-    expect(screen.getByRole("link", { name: "Contacto" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Contacto" })).not.toHaveAttribute(
       "target",
-      "_blank",
     );
   });
 });
