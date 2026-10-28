@@ -1,6 +1,8 @@
 # Decisiones de arquitectura
 
 - **2026-10-15 — Modo claro por defecto:** el modo oscuro solo se activa por elección del usuario; antes seguía la preferencia del sistema.
+- **2026-10-27 — Server Action de contacto (excepción a "No hay API"):** el formulario de contacto envía correo desde una Server Action con Resend, en versión simple y solo con planes gratuitos (Vercel Hobby, Resend free, Turnstile free). Sin dominio propio: remitente de pruebas de Resend y destino el correo de la cuenta de Resend (a verificar al crear la cuenta; no comprobado); se cambia con `CONTACT_FROM_EMAIL` cuando haya dominio. Claves solo en servidor. Anti-spam: Turnstile verificado en servidor, honeypot, tiempo mínimo, Zod, longitudes máximas, texto plano y saneado de cabeceras. El tope es el del plan gratuito de Resend (se recuerda 100 al día, a verificar). No se abre ninguna otra API. Spec: `docs/modules/contact.md`.
+- **2026-10-27 — Sin límite por IP (pendiente por si hay abuso):** se descartó Upstash para no sumar un servicio. Si aparece abuso, se añade un límite por IP (por ejemplo 3 envíos cada 10 minutos) en la acción, como cambio nuevo.
 
 ## Excepciones del blog
 
