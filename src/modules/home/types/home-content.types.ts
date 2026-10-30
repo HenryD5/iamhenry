@@ -40,6 +40,20 @@ export interface PortfolioCaseStudy {
   stack: readonly string[];
 }
 
+export interface PortfolioToolShowcaseContent {
+  name: string;
+  href: string;
+  image: string;
+  imagePlaceholder: string;
+  stack: readonly string[];
+  badgeKey: string;
+  typeKey: string;
+  altKey: string;
+  descriptionKey: string;
+  stackLabelKey: string;
+  actionKey: string;
+}
+
 export interface PortfolioAssistantShowcase {
   name: string;
   useCaseKeys: readonly string[];

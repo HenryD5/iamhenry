@@ -44,3 +44,67 @@ export interface CaseStudy {
   facts: readonly CaseStudyFact[];
   capabilities: readonly CaseStudyCapability[];
 }
+
+export interface KeelFact {
+  id: "problem" | "solution" | "result";
+  labelKey: string;
+  textKey: string;
+}
+
+export interface KeelStep {
+  id: "open" | "scan" | "review" | "select" | "verify";
+  textKey: string;
+}
+
+export interface KeelCheck {
+  id:
+    | "minimum"
+    | "quarantine"
+    | "secondSource"
+    | "malware"
+    | "scripts"
+    | "signatures"
+    | "approval";
+  titleKey: string;
+  textKey: string;
+}
+
+export interface KeelLimit {
+  id:
+    | "npm"
+    | "workspaces"
+    | "overrides"
+    | "changelog"
+    | "imports"
+    | "verification";
+  textKey: string;
+}
+
+export interface KeelLink {
+  id: "marketplace" | "github";
+  href: string;
+  labelKey: string;
+}
+
+export interface KeelScreen {
+  id: "results" | "detail" | "review";
+  image: string;
+  imagePlaceholder: string;
+  width: number;
+  height: number;
+  titleKey: string;
+  textKey: string;
+  altKey: string;
+}
+
+export interface KeelCaseStudy {
+  name: string;
+  coverImage: string;
+  links: readonly KeelLink[];
+  facts: readonly KeelFact[];
+  steps: readonly KeelStep[];
+  screens: readonly KeelScreen[];
+  checks: readonly KeelCheck[];
+  limits: readonly KeelLimit[];
+  stack: readonly string[];
+}

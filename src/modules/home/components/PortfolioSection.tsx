@@ -4,6 +4,7 @@ import { builtItems, portfolioProjects } from "../content/home.content";
 import { PortfolioAiShowcase } from "./PortfolioAiShowcase";
 import { PortfolioBuiltIcon } from "./PortfolioBuiltIcon";
 import { PortfolioGroupHeading } from "./PortfolioGroupHeading";
+import { PortfolioToolShowcase } from "./PortfolioToolShowcase";
 import { AppBrowserFrame } from "@/shared/components/app/AppBrowserFrame";
 import { AppContainer } from "@/shared/components/app/AppContainer";
 import { AppSectionHeading } from "@/shared/components/app/AppSectionHeading";
@@ -95,8 +96,9 @@ export async function PortfolioSection() {
           description={translate("portfolio.lead")}
         />
         <PortfolioAiShowcase />
+        <PortfolioToolShowcase />
         <PortfolioGroupHeading
-          index="02"
+          index="03"
           title={translate("portfolio.groups.web")}
         />
         <div className="grid grid-cols-3 gap-[1.4rem] max-md:hidden">
@@ -134,7 +136,7 @@ export async function PortfolioSection() {
             triggerClassName="!size-[2.8rem] hover:!bg-[color-mix(in_srgb,var(--fg)_9%,transparent)] hover:!text-fg focus-visible:!text-fg"
             title={
               <PortfolioGroupHeading
-                index="03"
+                index="04"
                 title={translate("portfolio.also")}
                 className="mb-0 flex-1"
               />
@@ -155,7 +157,7 @@ export async function PortfolioSection() {
             triggerClassName="!size-[2.8rem] hover:!bg-[color-mix(in_srgb,var(--fg)_9%,transparent)] hover:!text-fg focus-visible:!text-fg"
             title={
               <PortfolioGroupHeading
-                index="03"
+                index="04"
                 title={translate("portfolio.also")}
                 className="mb-0 flex-1"
               />

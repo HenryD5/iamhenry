@@ -218,7 +218,16 @@
     "lead": "Una muestra de lo construido para clientes.",
     "groups": {
       "ai": "Agentes de IA",
+      "tools": "Herramientas para desarrolladores",
       "web": "Webs para clientes"
+    },
+    "tool": {
+      "badge": "Código abierto · MIT",
+      "type": "Extensión VS Code",
+      "alt": "Resultados de Keel en VS Code con dependencias npm vulnerables, niveles de riesgo y versiones recomendadas",
+      "description": "Analiza vulnerabilidades de npm, calcula una versión mínima más segura y permite revisar riesgos, cambios y comandos antes de aprobar una actualización.",
+      "stackLabel": "Tecnologías de Keel",
+      "cta": "Ver cómo decide Keel"
     },
     "caseStudy": {
       "badge": "Hackatón Piura Innova",

@@ -5,6 +5,7 @@ import type {
   PortfolioAssistantShowcase,
   PortfolioCaseStudy,
   PortfolioProject,
+  PortfolioToolShowcaseContent,
   QuestionItem,
   StackFacet,
 } from "../types/home-content.types";
@@ -259,6 +260,21 @@ export const portfolioCaseStudy = {
     "Swift",
   ],
 } as const satisfies PortfolioCaseStudy;
+
+export const portfolioToolShowcase = {
+  name: "Keel",
+  href: "/portafolio/keel",
+  image: "/images/projects/keel-results.webp",
+  imagePlaceholder:
+    "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAEKADAAQAAAABAAAADAAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgADAAQAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMABwcHBwcHDAcHDBEMDAwRFxEREREXHhcXFxcXHiQeHh4eHh4kJCQkJCQkJCsrKysrKzIyMjIyODg4ODg4ODg4OP/bAEMBCQkJDg0OGQ0NGTsoISg7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O//dAAQAAf/aAAwDAQACEQMRAD8A8SYnYKbk4/GgjIxTgBtORn+lCVwbsf/Z",
+  stack: ["TypeScript", "VS Code API", "Vue 3", "Vite", "OSV"],
+  badgeKey: "portfolio.tool.badge",
+  typeKey: "portfolio.tool.type",
+  altKey: "portfolio.tool.alt",
+  descriptionKey: "portfolio.tool.description",
+  stackLabelKey: "portfolio.tool.stackLabel",
+  actionKey: "portfolio.tool.cta",
+} as const satisfies PortfolioToolShowcaseContent;
 
 export const portfolioAssistantShowcase = {
   name: "Asistentes virtuales",
