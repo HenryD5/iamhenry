@@ -34,36 +34,38 @@ Instalados para animación: `motion` 14, `gsap` 3.15.0 (con ScrollTrigger y Spli
 
 ## Dónde crear cada cosa
 
-| Necesitas                       | Ubicación                                         |
-| ------------------------------- | ------------------------------------------------- |
-| Tipo o schema de home           | `src/modules/home/types/`                         |
-| Estructura estática de sección  | `src/modules/home/content/`                       |
-| Texto español de home           | `src/modules/home/locales/es.json`                |
-| Lógica pura                     | `src/modules/home/utils/`                         |
-| Estado React local reutilizable | `src/modules/home/hooks/`                         |
-| Sección                         | `src/modules/home/components/{Nombre}Section.tsx` |
-| Primitiva Ark                   | `src/shared/components/ui/Ui*.tsx`                |
-| Componente global/reutilizable  | `src/shared/components/app/App*.tsx`              |
-| Metadata/JSON-LD                | `src/shared/seo/`                                 |
-| Tipo o schema de blog           | `src/modules/blog/types/`                         |
-| Estructura estática de blog     | `src/modules/blog/content/`                       |
-| Video animado de artículo       | catálogo `src/modules/blog/content/motion-videos.ts` y `ArticleBodyVideo`; archivos en `public/media/` |
-| Acceso a Sanity                 | `src/modules/blog/services/`                      |
-| Adaptador de datos de blog      | `src/modules/blog/adapters/`                      |
-| Lógica pura de blog             | `src/modules/blog/utils/`                         |
-| Texto español de blog           | `src/modules/blog/locales/es.json`                |
-| Componente de blog              | `src/modules/blog/components/`                    |
-| Vista de blog                   | `src/modules/blog/views/`                         |
-| Rutas internas de blog          | `src/modules/blog/routes.ts`                      |
-| Ruta pública de blog            | `src/app/(site)/blog/`                            |
-| Estructura y geometría de la 404 | `src/modules/not-found/content/`                 |
-| Texto español de la 404         | `src/modules/not-found/locales/es.json`           |
-| Componente o vista de la 404    | `src/modules/not-found/components/` y `views/`    |
-| Ruta de la 404                  | `src/app/not-found.tsx` (delgada, con `SiteLayout`) |
-| Caso de estudio del portafolio  | `src/modules/projects/` (content, locales, views); diagrama autónomo en `public/media/` incrustado con `ProjectDiagramFrame` |
-| Ruta de caso de estudio         | `src/app/(site)/portafolio/{slug}/page.tsx` y la constante en `src/modules/projects/routes.ts` |
+| Necesitas                        | Ubicación                                                                                                                    |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Tipo o schema de home            | `src/modules/home/types/`                                                                                                    |
+| Estructura estática de sección   | `src/modules/home/content/`                                                                                                  |
+| Texto español de home            | `src/modules/home/locales/es.json`                                                                                           |
+| Lógica pura                      | `src/modules/home/utils/`                                                                                                    |
+| Estado React local reutilizable  | `src/modules/home/hooks/`                                                                                                    |
+| Sección                          | `src/modules/home/components/{Nombre}Section.tsx`                                                                            |
+| Primitiva Ark                    | `src/shared/components/ui/Ui*.tsx`                                                                                           |
+| Componente global/reutilizable   | `src/shared/components/app/App*.tsx`                                                                                         |
+| Metadata/JSON-LD                 | `src/shared/seo/`                                                                                                            |
+| Tipo o schema de blog            | `src/modules/blog/types/`                                                                                                    |
+| Estructura estática de blog      | `src/modules/blog/content/`                                                                                                  |
+| Video animado de artículo        | catálogo `src/modules/blog/content/motion-videos.ts` y `ArticleBodyVideo`; archivos en `public/media/`                       |
+| Acceso a Sanity                  | `src/modules/blog/services/`                                                                                                 |
+| Adaptador de datos de blog       | `src/modules/blog/adapters/`                                                                                                 |
+| Lógica pura de blog              | `src/modules/blog/utils/`                                                                                                    |
+| Texto español de blog            | `src/modules/blog/locales/es.json`                                                                                           |
+| Componente de blog               | `src/modules/blog/components/`                                                                                               |
+| Vista de blog                    | `src/modules/blog/views/`                                                                                                    |
+| Rutas internas de blog           | `src/modules/blog/routes.ts`                                                                                                 |
+| Ruta pública de blog             | `src/app/(site)/blog/`                                                                                                       |
+| Estructura y geometría de la 404 | `src/modules/not-found/content/`                                                                                             |
+| Texto español de la 404          | `src/modules/not-found/locales/es.json`                                                                                      |
+| Componente o vista de la 404     | `src/modules/not-found/components/` y `views/`                                                                               |
+| Ruta de la 404                   | `src/app/not-found.tsx` (delgada, con `SiteLayout`)                                                                          |
+| Caso de estudio del portafolio   | `src/modules/projects/` (content, locales, views); diagrama autónomo en `public/media/` incrustado con `ProjectDiagramFrame` |
+| Ruta de caso de estudio          | `src/app/(site)/portafolio/{slug}/page.tsx` y la constante en `src/modules/projects/routes.ts`                               |
+| Cuestionario oculto de repaso    | preguntas en `src/modules/study/content/quiz-questions.ts` y textos en `src/modules/study/locales/es.json`                   |
+| Ruta del cuestionario de repaso  | `src/app/repaso-contable/page.tsx`, con `noindex`, sin sitemap ni enlaces                                                    |
 
-Wrappers disponibles: `UiTabs`, `UiCarousel`, `UiDrawer`. El módulo patrón es `src/modules/home/`, especialmente la cadena de Experiencia: types → content → utils → components. Orden para nuevos módulos: types → content → service/DTO/adapter si aplica → keys → hooks → store si aplica → components → view → ruta delgada.
+Wrappers disponibles: `UiTabs`, `UiCarousel`, `UiDrawer`, `UiField`, `UiRadioGroup`. El módulo patrón es `src/modules/home/`, especialmente la cadena de Experiencia: types → content → utils → components. Orden para nuevos módulos: types → content → service/DTO/adapter si aplica → keys → hooks → store si aplica → components → view → ruta delgada.
 
 ## Calidad y flujo
 
