@@ -102,5 +102,128 @@
       "lead": "Cuéntame cómo trabaja hoy tu equipo y te propongo dónde un agente de IA puede aportar más, del campo al panel de decisiones.",
       "action": "Conversemos"
     }
+  },
+  "keel": {
+    "metadata": {
+      "title": "Keel: actualizaciones npm más seguras desde VS Code",
+      "description": "Caso de estudio de Keel, una extensión de código abierto para VS Code que analiza vulnerabilidades npm, calcula una versión mínima sin la vulnerabilidad y permite revisar riesgos, cambios y comandos antes de aprobarlos.",
+      "imageAlt": "Keel, extensión para revisar actualizaciones de seguridad de npm desde VS Code"
+    },
+    "eyebrow": "Extensión para VS Code · Código abierto",
+    "title": "Corrige vulnerabilidades npm",
+    "accent": "sin actualizar a ciegas.",
+    "lead": "Las aplicaciones dependen de paquetes creados por terceros. Cuando uno tiene una vulnerabilidad, la solución rápida puede introducir cambios incompatibles. Keel analiza el proyecto dentro de VS Code, calcula una alternativa más prudente y muestra qué cambiará antes de tocar los archivos.",
+    "actions": {
+      "marketplace": "Instalar desde Marketplace",
+      "github": "Ver código en GitHub"
+    },
+    "factsLabel": "Resumen de Keel",
+    "facts": {
+      "problem": {
+        "label": "Problema",
+        "text": "npm audit fix --force puede saltar a una versión principal incompatible, mientras npm audit señala la vulnerabilidad pero no indica la versión mínima necesaria para salir de ella."
+      },
+      "solution": {
+        "label": "Solución",
+        "text": "Keel calcula una candidata mínima sin la vulnerabilidad y reúne señales de riesgo, referencias del paquete, cambios y comandos para revisarlos antes de aplicar nada."
+      },
+      "result": {
+        "label": "Resultado",
+        "text": "La actualización deja de ser un salto automático: se convierte en una decisión explícita, informada y trazable dentro del editor."
+      }
+    },
+    "steps": {
+      "eyebrow": "Flujo de uso",
+      "title": "De la alerta a una decisión revisada",
+      "lead": "El recorrido sigue los pasos documentados por Keel y deja la validación final en manos del equipo.",
+      "items": {
+        "open": "Abre un proyecto npm que tenga package-lock.json.",
+        "scan": "Ejecuta «Keel: Scan» desde la paleta de comandos de VS Code.",
+        "review": "Revisa las candidatas, el nivel de riesgo y el detalle de cada paquete.",
+        "select": "Elige los cambios, comprueba el diff y los comandos, y aprueba de forma explícita el método de aplicación.",
+        "verify": "Ejecuta después la compilación y las pruebas propias del proyecto. Keel no las ejecuta."
+      }
+    },
+    "screens": {
+      "eyebrow": "Dentro de VS Code",
+      "title": "Tres momentos para entender antes de cambiar",
+      "lead": "El análisis separa el panorama general, la evidencia de cada dependencia y la aprobación final.",
+      "listLabel": "Pantallas de la extensión Keel",
+      "items": {
+        "results": {
+          "title": "Resultados",
+          "text": "Agrupa los paquetes por riesgo y muestra la versión instalada, la recomendada, la severidad, la cuarentena y el contraste con otra fuente.",
+          "alt": "Pantalla de resultados de Keel en VS Code con paquetes vulnerables agrupados por riesgo y versiones recomendadas"
+        },
+        "detail": {
+          "title": "Detalle",
+          "text": "Explica la recomendación con advisories, compatibilidad de npm audit fix, notas de versiones y referencias de importación encontradas en el proyecto.",
+          "alt": "Detalle de un paquete en Keel con versión recomendada, riesgo, referencias de seguridad, notas de versiones e importaciones"
+        },
+        "review": {
+          "title": "Revisar",
+          "text": "Presenta los paquetes seleccionados, el diff de package.json y los comandos exactos antes de solicitar la aprobación.",
+          "alt": "Pantalla Revisar de Keel con selección de paquetes, cambios de package.json y comandos que se ejecutarán"
+        }
+      }
+    },
+    "checks": {
+      "title": "Qué comprueba antes de recomendar una versión",
+      "lead": "Keel combina la información de npm con controles de procedencia, publicación y aplicación para reducir decisiones apresuradas.",
+      "items": {
+        "minimum": {
+          "title": "Versión mínima sin la vulnerabilidad",
+          "text": "Lee npm audit, el lockfile y el registro para buscar la primera versión publicada que queda fuera de los rangos vulnerables."
+        },
+        "quarantine": {
+          "title": "Cuarentena de versiones nuevas",
+          "text": "Evita recomendar publicaciones demasiado recientes durante el periodo configurable; una vulnerabilidad crítica puede omitir esa espera y queda señalada."
+        },
+        "secondSource": {
+          "title": "Contraste con OSV o Snyk",
+          "text": "Usa OSV por defecto. Si hay un token y una organización de Snyk configurados, consulta también su API para comprobar la candidata."
+        },
+        "malware": {
+          "title": "Rechazo de avisos de malware",
+          "text": "Descarta versiones afectadas por avisos MAL- de OSV y, al usar Snyk, por señales de paquete malicioso como CWE-506."
+        },
+        "scripts": {
+          "title": "Scripts de instalación nuevos",
+          "text": "Compara los manifiestos y advierte si la versión candidata añade preinstall, install o postinstall."
+        },
+        "signatures": {
+          "title": "Firmas del registro tras instalar",
+          "text": "Después de npm install o npm audit fix ejecuta npm audit signatures; si falla, detiene el flujo."
+        },
+        "approval": {
+          "title": "Aprobación explícita, nunca --force",
+          "text": "Muestra el diff y los comandos antes de aplicar. Solo acepta comandos npm permitidos y rechaza cualquier argumento --force."
+        }
+      }
+    },
+    "privacy": {
+      "title": "Privacidad y límites claros",
+      "lead": "Keel no recopila telemetría. El panel funciona con una política de seguridad sin acceso de red y la extensión restringe sus solicitudes a destinos conocidos.",
+      "hosts": "Contacta únicamente registry.npmjs.org, api.osv.dev, api.snyk.io y api.github.com. El token opcional de Snyk se guarda en SecretStorage de VS Code.",
+      "ai": "Los resúmenes de notas de versión con IA son opcionales. Usan el modelo de lenguaje de VS Code proporcionado por Copilot y envían a ese modelo las notas de versión pertinentes.",
+      "limits": {
+        "title": "Lo que no pretende hacer",
+        "items": {
+          "npm": "Solo admite proyectos npm con package-lock.json.",
+          "workspaces": "No admite monorepos que declaran workspaces.",
+          "overrides": "Un override puede forzar una versión fuera del rango solicitado por un paquete padre.",
+          "changelog": "La información de cambios depende de que el repositorio publique GitHub Releases.",
+          "imports": "La detección de imports busca texto; no realiza un análisis completo del árbol sintáctico.",
+          "verification": "No ejecuta la compilación ni las pruebas del proyecto; deben correrse después de actualizar."
+        }
+      }
+    },
+    "stackTitle": "Tecnologías y servicios",
+    "closing": {
+      "title": "¿Tu herramienta también necesita",
+      "accent": "convertir riesgo en claridad?",
+      "lead": "Puedo ayudarte a diseñar una experiencia que haga visible la evidencia, los límites y la decisión importante antes de ejecutar un cambio.",
+      "action": "Conversemos"
+    }
   }
 }

@@ -3,12 +3,12 @@ import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 import { ProjectDiagramFrame } from "../components/ProjectDiagramFrame";
 import { ProjectPanelShowcase } from "../components/ProjectPanelShowcase";
+import { ProjectClosingSection } from "../components/ProjectClosingSection";
 import { purafruitCaseStudy } from "../content/purafruit.content";
 import { PORTFOLIO_ANCHOR_PATH } from "../routes";
 import { AppContainer } from "@/shared/components/app/AppContainer";
 import { AppIcon } from "@/shared/components/app/AppIcon";
 import { AppLoopVideo } from "@/shared/components/app/AppLoopVideo";
-import { AppContactIcon } from "@/shared/components/app/AppContactIcon";
 import { getContactHref } from "@/shared/utils/contact";
 import type { ContactTriggerRenderer } from "@/shared/types/contact-trigger.types";
 
@@ -219,47 +219,21 @@ export async function PurafruitView({
           </section>
         </article>
 
-        <section className="py-20 max-md:py-14">
-          <AppContainer>
-            <div
-              className="relative grid grid-cols-[minmax(0,1fr)_auto] items-end gap-10 overflow-hidden rounded-xl px-16 py-16 shadow-[0_3rem_6rem_-2.6rem_color-mix(in_srgb,var(--primary-800)_80%,transparent)] before:pointer-events-none before:absolute before:-top-40 before:-right-32 before:size-[30rem] before:rounded-full before:bg-[radial-gradient(circle,color-mix(in_srgb,var(--primary-500)_32%,transparent),transparent_68%)] before:content-[''] after:pointer-events-none after:absolute after:-bottom-48 after:-left-24 after:size-[26rem] after:rounded-full after:bg-[radial-gradient(circle,color-mix(in_srgb,var(--tertiary-500)_18%,transparent),transparent_68%)] after:content-[''] max-md:grid-cols-1 max-md:items-start max-md:gap-8 max-md:rounded-lg max-md:px-[1.6rem] max-md:py-12"
-              data-surface="light"
-            >
-              <div className="relative grid justify-items-start gap-6">
-                <span className="border-line bg-surface-raised font-primary text-body-sm before:bg-success-500 inline-flex items-center gap-[.6rem] rounded-full border px-[1.1rem] py-[.6rem] leading-none font-medium before:size-[.6rem] before:rounded-full before:content-['']">
-                  {translateShared("footer.availability")}
-                </span>
-                <h2 className="text-h2 m-0 max-w-[18ch] leading-[1.08] text-balance">
-                  {translate("purafruit.closing.title")}{" "}
-                  <span className="bg-[image:var(--gradient-accent)] bg-clip-text text-transparent">
-                    {translate("purafruit.closing.accent")}
-                  </span>
-                </h2>
-                <p className="text-body-lg text-fg-muted m-0 max-w-[44ch] leading-[1.45]">
-                  {translate("purafruit.closing.lead")}
-                </p>
-              </div>
-              {renderContactTrigger?.({
-                className:
-                  "btn btn--light btn--lg relative shrink-0 gap-[.8rem] max-md:w-full max-md:justify-center",
-                children: (
-                  <>
-                    <AppContactIcon />
-                    {translate("purafruit.closing.action")}
-                  </>
-                ),
-              }) ?? (
-                <a
-                  className="btn btn--light btn--lg relative shrink-0 gap-[.8rem] max-md:w-full max-md:justify-center"
-                  href={contactHref}
-                >
-                  <AppContactIcon />
-                  {translate("purafruit.closing.action")}
-                </a>
-              )}
-            </div>
-          </AppContainer>
-        </section>
+        <ProjectClosingSection
+          availability={translateShared("footer.availability")}
+          title={
+            <>
+              {translate("purafruit.closing.title")}{" "}
+              <span className="bg-[image:var(--gradient-accent)] bg-clip-text text-transparent">
+                {translate("purafruit.closing.accent")}
+              </span>
+            </>
+          }
+          lead={translate("purafruit.closing.lead")}
+          action={translate("purafruit.closing.action")}
+          contactHref={contactHref}
+          renderContactTrigger={renderContactTrigger}
+        />
       </main>
     </>
   );
