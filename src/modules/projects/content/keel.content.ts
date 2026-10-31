@@ -38,6 +38,7 @@ export const keelCaseStudy = {
     { id: "review", textKey: "keel.steps.items.review" },
     { id: "select", textKey: "keel.steps.items.select" },
     { id: "verify", textKey: "keel.steps.items.verify" },
+    { id: "share", textKey: "keel.steps.items.share" },
   ],
   screens: [
     {
@@ -110,6 +111,65 @@ export const keelCaseStudy = {
       titleKey: "keel.checks.items.approval.title",
       textKey: "keel.checks.items.approval.text",
     },
+    {
+      id: "registries",
+      titleKey: "keel.checks.items.registries.title",
+      textKey: "keel.checks.items.registries.text",
+    },
+    {
+      id: "installed",
+      titleKey: "keel.checks.items.installed.title",
+      textKey: "keel.checks.items.installed.text",
+    },
+  ],
+  afterApply: [
+    {
+      id: "validation",
+      titleKey: "keel.afterApply.items.validation.title",
+      textKey: "keel.afterApply.items.validation.text",
+    },
+    {
+      id: "rollback",
+      titleKey: "keel.afterApply.items.rollback.title",
+      textKey: "keel.afterApply.items.rollback.text",
+    },
+    {
+      id: "removal",
+      titleKey: "keel.afterApply.items.removal.title",
+      textKey: "keel.afterApply.items.removal.text",
+    },
+    {
+      id: "report",
+      titleKey: "keel.afterApply.items.report.title",
+      textKey: "keel.afterApply.items.report.text",
+    },
+    {
+      id: "pullRequest",
+      titleKey: "keel.afterApply.items.pullRequest.title",
+      textKey: "keel.afterApply.items.pullRequest.text",
+    },
+    {
+      id: "projects",
+      titleKey: "keel.afterApply.items.projects.title",
+      textKey: "keel.afterApply.items.projects.text",
+    },
+  ],
+  cli: [
+    {
+      id: "flow",
+      titleKey: "keel.cli.items.flow.title",
+      textKey: "keel.cli.items.flow.text",
+    },
+    {
+      id: "approval",
+      titleKey: "keel.cli.items.approval.title",
+      textKey: "keel.cli.items.approval.text",
+    },
+    {
+      id: "apply",
+      titleKey: "keel.cli.items.apply.title",
+      textKey: "keel.cli.items.apply.text",
+    },
   ],
   limits: [
     { id: "npm", textKey: "keel.privacy.limits.items.npm" },
@@ -129,5 +189,6 @@ export const keelCaseStudy = {
     "OSV",
     "Snyk API",
     "GitHub API",
+    "GitHub CLI",
   ],
 } as const satisfies KeelCaseStudy;

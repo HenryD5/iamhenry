@@ -136,13 +136,14 @@
     "steps": {
       "eyebrow": "Flujo de uso",
       "title": "De la alerta a una decisión revisada",
-      "lead": "El recorrido sigue los pasos documentados por Keel y deja la validación final en manos del equipo.",
+      "lead": "El recorrido permite validar el resultado de forma opcional; la decisión final sigue en manos del equipo.",
       "items": {
         "open": "Abre un proyecto npm que tenga package-lock.json.",
         "scan": "Ejecuta «Keel: Scan» desde la paleta de comandos de VS Code.",
         "review": "Revisa las candidatas, el nivel de riesgo y el detalle de cada paquete.",
         "select": "Elige los cambios, comprueba el diff y los comandos, y aprueba de forma explícita el método de aplicación.",
-        "verify": "Ejecuta después la compilación y las pruebas propias del proyecto. Keel no las ejecuta."
+        "verify": "Si está activada, Keel ejecuta las pruebas y la compilación del proyecto y omite los scripts que no existan.",
+        "share": "Copia el reporte Markdown o, tras confirmarlo, crea una rama keel/fix-… y abre un pull request."
       }
     },
     "screens": {
@@ -169,8 +170,8 @@
       }
     },
     "checks": {
-      "title": "Qué comprueba antes de recomendar una versión",
-      "lead": "Keel combina la información de npm con controles de procedencia, publicación y aplicación para reducir decisiones apresuradas.",
+      "title": "Qué comprueba antes y después de actualizar",
+      "lead": "Keel combina la información de npm con controles de procedencia, publicación, instalación y aplicación para reducir decisiones apresuradas.",
       "items": {
         "minimum": {
           "title": "Versión mínima sin la vulnerabilidad",
@@ -199,13 +200,70 @@
         "approval": {
           "title": "Aprobación explícita, nunca --force",
           "text": "Muestra el diff y los comandos antes de aplicar. Solo acepta comandos npm permitidos y rechaza cualquier argumento --force."
+        },
+        "registries": {
+          "title": "Origen de las descargas",
+          "text": "Al escanear y al aplicar, contrasta los hosts de descarga del lockfile con los registros configurados por npm y por el proyecto, sin exponer credenciales."
+        },
+        "installed": {
+          "title": "Versiones realmente instaladas",
+          "text": "Fija por defecto las versiones planificadas y, después de npm install, comprueba en el lockfile cuáles quedaron instaladas. El reporte usa esas versiones reales."
+        }
+      }
+    },
+    "afterApply": {
+      "title": "Después de aplicar",
+      "lead": "La revisión continúa después de modificar las dependencias: Keel valida, documenta y ofrece salidas controladas antes de dar el trabajo por terminado.",
+      "items": {
+        "validation": {
+          "title": "Validación opcional",
+          "text": "Puede ejecutar con CI=true los scripts del proyecto configurados para la validación; solo corre los que existen y, dentro de VS Code, exige un workspace de confianza."
+        },
+        "rollback": {
+          "title": "Reversión explícita",
+          "text": "Si falla la aplicación, la revisión de registros o la validación, permite restaurar el manifiesto y el lockfile; el panel muestra el final de la salida del comando o el detalle del control que falló."
+        },
+        "removal": {
+          "title": "Eliminación revisada",
+          "text": "Puede proponer quitar una dependencia directa vulnerable sin uso, pero la conserva si aparece en scripts o en archivos de configuración de la raíz."
+        },
+        "report": {
+          "title": "Reporte del resultado",
+          "text": "Resume lo actualizado o eliminado, lo que sigue pendiente, la validación ejecutada y los avisos sobre registros."
+        },
+        "pullRequest": {
+          "title": "Rama y pull request deterministas",
+          "text": "Genera una rama keel/fix-… estable para el conjunto de cambios, rechaza modificaciones ajenas en el árbol de trabajo y nunca sobrescribe una rama ni fuerza el push."
+        },
+        "projects": {
+          "title": "Proyectos anidados",
+          "text": "Descubre proyectos npm hasta tres niveles de profundidad y recuerda la carpeta elegida."
+        }
+      }
+    },
+    "cli": {
+      "title": "CLI y agentes",
+      "lead": "El repositorio también incluye una interfaz para terminal y una skill genérica para que los agentes sigan el mismo proceso con aprobación explícita.",
+      "availability": "keel-npm aún no está publicado en npm: hoy vive en el repositorio y requiere Node.js 20 o superior.",
+      "items": {
+        "flow": {
+          "title": "El mismo flujo desde terminal",
+          "text": "Los comandos keel-npm scan, keel-npm plan y keel-npm apply forman parte de un recorrido que también cubre aprobación, reversión y reporte."
+        },
+        "approval": {
+          "title": "Aprobación ligada al plan",
+          "text": "El planId vincula la selección, las opciones, el manifiesto y el lockfile; apply rechaza un plan si cualquiera de esas entradas quedó obsoleta."
+        },
+        "apply": {
+          "title": "Aplicación controlada",
+          "text": "apply escribe el plan aprobado en package.json, ejecuta npm install y nunca delega los cambios en npm audit fix."
         }
       }
     },
     "privacy": {
       "title": "Privacidad y límites claros",
       "lead": "Keel no recopila telemetría. El panel funciona con una política de seguridad sin acceso de red y la extensión restringe sus solicitudes a destinos conocidos.",
-      "hosts": "Contacta únicamente registry.npmjs.org, api.osv.dev, api.snyk.io y api.github.com. El token opcional de Snyk se guarda en SecretStorage de VS Code.",
+      "hosts": "Las consultas propias de Keel contactan únicamente registry.npmjs.org, api.osv.dev, api.snyk.io y api.github.com. El token opcional de Snyk se guarda en SecretStorage de VS Code. Solo tras confirmarlo, git y GitHub CLI crean la rama y el pull request.",
       "ai": "Los resúmenes de notas de versión con IA son opcionales. Usan el modelo de lenguaje de VS Code proporcionado por Copilot y envían a ese modelo las notas de versión pertinentes.",
       "limits": {
         "title": "Lo que no pretende hacer",
@@ -215,7 +273,7 @@
           "overrides": "Un override puede forzar una versión fuera del rango solicitado por un paquete padre.",
           "changelog": "La información de cambios depende de que el repositorio publique GitHub Releases.",
           "imports": "La detección de imports busca texto; no realiza un análisis completo del árbol sintáctico.",
-          "verification": "No ejecuta la compilación ni las pruebas del proyecto; deben correrse después de actualizar."
+          "verification": "Solo ejecuta los scripts de validación configurados que existan en package.json y, dentro de VS Code, necesita un workspace de confianza."
         }
       }
     },
