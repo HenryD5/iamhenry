@@ -52,7 +52,7 @@ export interface KeelFact {
 }
 
 export interface KeelStep {
-  id: "open" | "scan" | "review" | "select" | "verify";
+  id: "open" | "scan" | "review" | "select" | "verify" | "share";
   textKey: string;
 }
 
@@ -64,7 +64,27 @@ export interface KeelCheck {
     | "malware"
     | "scripts"
     | "signatures"
-    | "approval";
+    | "approval"
+    | "registries"
+    | "installed";
+  titleKey: string;
+  textKey: string;
+}
+
+export interface KeelAfterApplyCapability {
+  id:
+    | "validation"
+    | "rollback"
+    | "removal"
+    | "report"
+    | "pullRequest"
+    | "projects";
+  titleKey: string;
+  textKey: string;
+}
+
+export interface KeelCliCapability {
+  id: "flow" | "approval" | "apply";
   titleKey: string;
   textKey: string;
 }
@@ -105,6 +125,8 @@ export interface KeelCaseStudy {
   steps: readonly KeelStep[];
   screens: readonly KeelScreen[];
   checks: readonly KeelCheck[];
+  afterApply: readonly KeelAfterApplyCapability[];
+  cli: readonly KeelCliCapability[];
   limits: readonly KeelLimit[];
   stack: readonly string[];
 }

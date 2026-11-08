@@ -7,13 +7,12 @@ import { RelatedArticlesSection } from "../components/RelatedArticlesSection";
 import { getArticleBySlug, getArticles } from "../services/article.service";
 import { getArticleJsonLdProps } from "../utils/article-seo";
 import { AppContainer } from "@/shared/components/app/AppContainer";
-import { AppHeader } from "@/shared/components/app/AppHeader";
 import { BlogPostingJsonLd } from "@/shared/seo/blog-posting-json-ld";
 import type { ReactNode } from "react";
 
 interface ArticleViewProps {
   params: Promise<{ slug: string }>;
-  header?: ReactNode;
+  header: ReactNode;
 }
 
 export async function ArticleView({ params, header }: ArticleViewProps) {
@@ -34,7 +33,7 @@ export async function ArticleView({ params, header }: ArticleViewProps) {
   return (
     <>
       <BlogPostingJsonLd {...getArticleJsonLdProps(article)} />
-      {header ?? <AppHeader />}
+      {header}
       <main id="main-content" className="overflow-x-clip pt-16 max-md:pt-14">
         <article>
           <AppContainer>

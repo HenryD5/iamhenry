@@ -64,8 +64,16 @@ vi.mock("@/shared/components/app/AppMobileMenu", () => ({
 }));
 
 describe("AppHeader", () => {
+  const contactTrigger = (
+    <button type="button">
+      <span className="md:hidden">Escríbeme</span>
+      <span className="max-md:hidden">Construyamos algo juntos</span>
+    </button>
+  );
+  const mobileContactTrigger = <button type="button">Contacto</button>;
+
   it("renders the night switch", async () => {
-    render(await AppHeader());
+    render(await AppHeader({ contactTrigger, mobileContactTrigger }));
 
     const switches = screen.getAllByRole("switch", { name: "Modo noche" });
     expect(switches).toHaveLength(1);
@@ -73,7 +81,9 @@ describe("AppHeader", () => {
   });
 
   it("renders centered links and marks the blog page active", async () => {
-    const { container } = render(await AppHeader());
+    const { container } = render(
+      await AppHeader({ contactTrigger, mobileContactTrigger }),
+    );
 
     expect(
       container.querySelector(".grid-cols-\\[1fr_auto_1fr\\]"),
@@ -85,13 +95,24 @@ describe("AppHeader", () => {
   });
 
   it("renders responsive contact labels at the normal button size", async () => {
-    render(await AppHeader());
+    render(
+      await AppHeader({
+        contactTrigger: (
+          <button type="button" className="btn btn--md">
+            {contactTrigger.props.children}
+          </button>
+        ),
+        mobileContactTrigger,
+      }),
+    );
 
-    const contactLink = screen.getByText("Escríbeme").closest("a");
-    expect(contactLink).toHaveClass("btn--md");
-    expect(contactLink).toHaveAttribute("href", "/contacto");
-    expect(contactLink).not.toHaveAttribute("target");
-    expect(contactLink).not.toHaveClass("max-md:px-2", "max-md:text-[.7rem]");
+    const contactButton = screen.getByRole("button", {
+      name: "Escríbeme Construyamos algo juntos",
+    });
+    expect(contactButton).toHaveClass("btn--md");
+    expect(contactButton).not.toHaveAttribute("href");
+    expect(contactButton).not.toHaveAttribute("target");
+    expect(contactButton).not.toHaveClass("max-md:px-2", "max-md:text-[.7rem]");
     expect(screen.getByText("Escríbeme")).toHaveClass("md:hidden");
     expect(screen.getByText("Construyamos algo juntos")).toHaveClass(
       "max-md:hidden",
@@ -99,7 +120,13 @@ describe("AppHeader", () => {
   });
 
   it("marks a light surface on the navigation", async () => {
-    render(await AppHeader({ surface: "light" }));
+    render(
+      await AppHeader({
+        surface: "light",
+        contactTrigger,
+        mobileContactTrigger,
+      }),
+    );
 
     expect(
       screen.getByRole("navigation", { name: "Navegación principal" }),

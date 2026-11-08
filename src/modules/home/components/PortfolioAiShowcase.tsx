@@ -10,21 +10,19 @@ import { AppBrowserFrame } from "@/shared/components/app/AppBrowserFrame";
 import { AppIcon } from "@/shared/components/app/AppIcon";
 import { AppIconHalo } from "@/shared/components/app/AppIconHalo";
 import { AppContactIcon } from "@/shared/components/app/AppContactIcon";
-import { getContactHref } from "@/shared/utils/contact";
 import type { ContactTriggerRenderer } from "@/shared/types/contact-trigger.types";
 
 const BADGE_CLASS_NAME =
   "border-line bg-surface-raised font-primary text-caption text-fg-muted inline-flex w-fit items-center gap-2 rounded-full whitespace-nowrap border px-[.8rem] py-[.4rem] leading-none font-medium";
 
 interface PortfolioAiShowcaseProps {
-  renderContactTrigger?: ContactTriggerRenderer;
+  renderContactTrigger: ContactTriggerRenderer;
 }
 
 export async function PortfolioAiShowcase({
   renderContactTrigger,
 }: PortfolioAiShowcaseProps) {
   const translate = await getTranslations("home");
-  const contactHref = getContactHref();
 
   return (
     <div className="mb-16 max-md:mb-12" data-motion-item="portfolio-ai">
@@ -131,7 +129,7 @@ export async function PortfolioAiShowcase({
               </li>
             ))}
           </ul>
-          {renderContactTrigger?.({
+          {renderContactTrigger({
             className:
               "btn btn--outline btn--md relative mt-auto gap-[.6rem] self-start",
             children: (
@@ -140,15 +138,7 @@ export async function PortfolioAiShowcase({
                 {translate("portfolio.assistants.cta")}
               </>
             ),
-          }) ?? (
-            <a
-              className="btn btn--outline btn--md relative mt-auto gap-[.6rem] self-start"
-              href={contactHref}
-            >
-              <AppContactIcon />
-              {translate("portfolio.assistants.cta")}
-            </a>
-          )}
+          })}
         </article>
       </div>
     </div>

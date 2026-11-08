@@ -10,7 +10,7 @@ import type { ContactTriggerRenderer } from "@/shared/types/contact-trigger.type
 
 interface HomeViewProps {
   header: ReactNode;
-  renderContactTrigger?: ContactTriggerRenderer;
+  renderContactTrigger: ContactTriggerRenderer;
 }
 
 export function HomeView({ header, renderContactTrigger }: HomeViewProps) {

@@ -4,13 +4,6 @@
     "description": "Déjame tus datos y el motivo de tu consulta. Te responderé por correo electrónico.",
     "closeLabel": "Cerrar formulario de contacto"
   },
-  "page": {
-    "title": "Conversemos sobre tu proyecto",
-    "description": "Déjame tus datos y el motivo de tu consulta. Te responderé por correo electrónico.",
-    "noScript": "Para enviar el mensaje es necesario activar JavaScript. Mientras tanto, puedes escribirme por correo electrónico.",
-    "metadataTitle": "Contacto",
-    "metadataDescription": "Escríbeme para consultar sobre tu proyecto, asistentes virtuales con IA o el caso Purafruit. Te responderé por correo electrónico."
-  },
   "form": {
     "title": "Contacto",
     "description": "Déjame tus datos y el motivo de tu consulta. Te responderé por correo electrónico.",
@@ -30,20 +23,20 @@
     },
     "errors": {
       "name": {
-        "required": "Ingresa tu nombre.",
-        "tooShort": "El nombre es demasiado corto.",
+        "required": "Falta el nombre: ingresa tu nombre y apellido.",
+        "tooShort": "El nombre es demasiado corto: escribe al menos 2 caracteres.",
         "tooLong": "El nombre es demasiado largo.",
         "invalid": "Revisa el nombre ingresado."
       },
       "email": {
-        "required": "Ingresa tu correo electrónico.",
+        "required": "Falta el correo electrónico: ingresa una dirección donde responderte.",
         "tooShort": "El correo electrónico es demasiado corto.",
         "tooLong": "El correo electrónico es demasiado largo.",
-        "invalid": "Ingresa un correo electrónico válido."
+        "invalid": "El correo no es válido: usa el formato nombre@empresa.com."
       },
       "message": {
-        "required": "Ingresa tu mensaje.",
-        "tooShort": "El mensaje debe tener al menos 10 caracteres.",
+        "required": "Falta el mensaje: cuéntame tu consulta o proyecto.",
+        "tooShort": "El mensaje es muy corto: debe tener al menos 10 caracteres.",
         "tooLong": "El mensaje no puede superar los 2000 caracteres.",
         "invalid": "Revisa el mensaje ingresado."
       }
@@ -51,11 +44,23 @@
     "honeypotLabel": "Deja este campo vacío",
     "submit": "Enviar mensaje",
     "sending": "Enviando…",
-    "status": {
-      "sent": "Mensaje enviado. Te responderé por correo electrónico en breve.",
-      "invalid": "Revisa los campos marcados e inténtalo nuevamente.",
-      "challengeFailed": "No fue posible verificar la solicitud. Inténtalo nuevamente.",
-      "unavailable": "El envío no está disponible en este momento. Inténtalo más tarde."
+    "toast": {
+      "sent": {
+        "title": "Mensaje enviado",
+        "description": "Te responderé por correo electrónico en breve."
+      },
+      "invalid": {
+        "title": "Revisa los campos",
+        "description": "Hay campos con errores. Corrígelos y vuelve a enviar el mensaje."
+      },
+      "challengeFailed": {
+        "title": "No se pudo verificar la solicitud",
+        "description": "La verificación de seguridad falló. Inténtalo nuevamente."
+      },
+      "unavailable": {
+        "title": "Envío no disponible",
+        "description": "El envío no está disponible en este momento. Inténtalo más tarde o escríbeme por correo electrónico."
+      }
     }
   }
 }

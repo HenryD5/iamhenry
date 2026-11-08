@@ -1,14 +1,18 @@
 import { BlogSkeletonBlock } from "../components/BlogSkeletonBlock";
 import blogMessages from "../locales/es.json";
 import { AppContainer } from "@/shared/components/app/AppContainer";
-import { AppHeader } from "@/shared/components/app/AppHeader";
+import type { ReactNode } from "react";
 
 const SKELETON_CARD_KEYS = ["first", "second", "third"] as const;
 
-export function BlogListLoadingView() {
+interface BlogListLoadingViewProps {
+  header: ReactNode;
+}
+
+export function BlogListLoadingView({ header }: BlogListLoadingViewProps) {
   return (
     <>
-      <AppHeader />
+      {header}
       <main
         id="main-content"
         className="overflow-x-clip pt-16 max-md:pt-14"

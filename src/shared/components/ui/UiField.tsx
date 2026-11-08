@@ -1,6 +1,7 @@
 "use client";
 
 import { Field } from "@ark-ui/react/field";
+import { CircleAlert } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
 
 type UiFieldControlProps = Omit<
@@ -65,7 +66,10 @@ export function UiField({
       )}
       {helperText ? <Field.HelperText>{helperText}</Field.HelperText> : null}
       {isInvalid && errorText ? (
-        <Field.ErrorText>{errorText}</Field.ErrorText>
+        <Field.ErrorText className="text-danger-500 flex items-start gap-2">
+          <CircleAlert aria-hidden="true" className="size-4 shrink-0" />
+          {errorText}
+        </Field.ErrorText>
       ) : null}
     </Field.Root>
   );

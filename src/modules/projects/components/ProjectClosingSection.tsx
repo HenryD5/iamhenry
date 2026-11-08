@@ -8,8 +8,7 @@ interface ProjectClosingSectionProps {
   title: ReactNode;
   lead: string;
   action: string;
-  contactHref: string;
-  renderContactTrigger?: ContactTriggerRenderer;
+  renderContactTrigger: ContactTriggerRenderer;
 }
 
 export function ProjectClosingSection({
@@ -17,7 +16,6 @@ export function ProjectClosingSection({
   title,
   lead,
   action,
-  contactHref,
   renderContactTrigger,
 }: ProjectClosingSectionProps) {
   const actionClassName =
@@ -41,7 +39,7 @@ export function ProjectClosingSection({
               {lead}
             </p>
           </div>
-          {renderContactTrigger?.({
+          {renderContactTrigger({
             className: actionClassName,
             children: (
               <>
@@ -49,12 +47,7 @@ export function ProjectClosingSection({
                 {action}
               </>
             ),
-          }) ?? (
-            <a className={actionClassName} href={contactHref}>
-              <AppContactIcon />
-              {action}
-            </a>
-          )}
+          })}
         </div>
       </AppContainer>
     </section>

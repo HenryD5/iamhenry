@@ -2,18 +2,16 @@ import { getTranslations } from "next-intl/server";
 import { ClosingOrbit } from "./ClosingOrbit";
 import { AppContainer } from "@/shared/components/app/AppContainer";
 import { AppContactIcon } from "@/shared/components/app/AppContactIcon";
-import { getContactHref } from "@/shared/utils/contact";
 import type { ContactTriggerRenderer } from "@/shared/types/contact-trigger.types";
 
 interface ClosingSectionProps {
-  renderContactTrigger?: ContactTriggerRenderer;
+  renderContactTrigger: ContactTriggerRenderer;
 }
 
 export async function ClosingSection({
   renderContactTrigger,
 }: ClosingSectionProps) {
   const translate = await getTranslations("home");
-  const contactHref = getContactHref();
 
   return (
     <section
@@ -36,7 +34,7 @@ export async function ClosingSection({
               {translate("closing.accent")}
             </span>
           </h2>
-          {renderContactTrigger?.({
+          {renderContactTrigger({
             className:
               "btn btn--lg relative gap-[.8rem] focus-visible:text-white max-md:w-full max-md:justify-center",
             children: (
@@ -45,15 +43,7 @@ export async function ClosingSection({
                 {translate("closing.action")}
               </>
             ),
-          }) ?? (
-            <a
-              className="btn btn--lg relative gap-[.8rem] focus-visible:text-white max-md:w-full max-md:justify-center"
-              href={contactHref}
-            >
-              <AppContactIcon />
-              {translate("closing.action")}
-            </a>
-          )}
+          })}
         </div>
       </AppContainer>
     </section>

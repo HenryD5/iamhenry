@@ -18,16 +18,13 @@ import type {
   ContactFieldName,
 } from "../types/contact.types";
 
-const STATUS_MESSAGES = {
-  sent: messages.form.status.sent,
-  invalid: messages.form.status.invalid,
-  challenge_failed: messages.form.status.challengeFailed,
-  unavailable: messages.form.status.unavailable,
-} as const;
+interface ContactFormProps {
+  onSent?: () => void;
+  onSendingChange?: (isSending: boolean) => void;
+}
 
-export function ContactForm() {
+export function ContactForm({ onSent, onSendingChange }: ContactFormProps) {
   const {
-    status,
     isSending,
     isUnavailable,
     fieldErrors,
@@ -35,21 +32,16 @@ export function ContactForm() {
     formAction,
     turnstileContainerRef,
     renderTurnstile,
-  } = useContactForm({ siteKey: env.NEXT_PUBLIC_TURNSTILE_SITE_KEY });
+  } = useContactForm({
+    siteKey: env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+    onSent,
+    onSendingChange,
+  });
 
   const getError = (field: ContactFieldName) => {
     const key: ContactFieldErrorKey | undefined = fieldErrors[field];
     return key ? messages.form.errors[field][key] : undefined;
   };
-
-  const feedback =
-    status === "idle"
-      ? ""
-      : status === "sending"
-        ? messages.form.sending
-        : STATUS_MESSAGES[status];
-  const isFeedbackAlert =
-    status !== "idle" && status !== "sending" && status !== "sent";
 
   return (
     <form
@@ -124,24 +116,6 @@ export function ContactForm() {
           />
         </>
       )}
-
-      {/* Regiones vivas siempre montadas: solo cambia su contenido. */}
-      <div
-        role="status"
-        aria-live="polite"
-        aria-atomic="true"
-        className="text-body"
-      >
-        {isFeedbackAlert ? "" : feedback}
-      </div>
-      <div
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-        className="text-body"
-      >
-        {isFeedbackAlert ? feedback : ""}
-      </div>
 
       <button
         type="submit"

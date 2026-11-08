@@ -56,7 +56,7 @@ function ProjectCard({
 }
 
 interface PortfolioSectionProps {
-  renderContactTrigger?: ContactTriggerRenderer;
+  renderContactTrigger: ContactTriggerRenderer;
 }
 
 export async function PortfolioSection({

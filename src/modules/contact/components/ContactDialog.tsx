@@ -1,6 +1,6 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useState } from "react";
 
 import { UiDialog } from "@/shared/components/ui/UiDialog";
 
@@ -14,11 +14,19 @@ interface ContactDialogProps {
 
 export function ContactDialog({ isOpen, onOpenChange }: ContactDialogProps) {
   const formId = useId();
+  const [isSending, setIsSending] = useState(false);
+
+  const handleOpenChange = (nextIsOpen: boolean) => {
+    if (!nextIsOpen && isSending) return;
+    onOpenChange(nextIsOpen);
+  };
+
+  const handleSent = () => onOpenChange(false);
 
   return (
     <UiDialog
       open={isOpen}
-      onOpenChange={onOpenChange}
+      onOpenChange={handleOpenChange}
       initialFocusEl={() =>
         document.querySelector<HTMLInputElement>(
           `#${CSS.escape(formId)} input[name="name"]`,
@@ -32,7 +40,7 @@ export function ContactDialog({ isOpen, onOpenChange }: ContactDialogProps) {
       contentClassName="relative pt-10 bg-(--bg-raised) backdrop-blur-none [&_[data-part=close-trigger]]:absolute [&_[data-part=close-trigger]]:top-6 [&_[data-part=close-trigger]]:right-4"
     >
       <div id={formId}>
-        <ContactForm />
+        <ContactForm onSent={handleSent} onSendingChange={setIsSending} />
       </div>
     </UiDialog>
   );

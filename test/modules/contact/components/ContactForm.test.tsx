@@ -42,11 +42,11 @@ describe("ContactForm", () => {
     useContactFormMock.mockReturnValue(baseHookResult);
   });
 
-  it("renders the idle form, accessible honeypot safeguards and live regions", () => {
+  it("renders the idle form and accessible honeypot safeguards without live feedback regions", () => {
     const { container } = render(<ContactForm />);
 
-    expect(screen.getByRole("status")).toBeEmptyDOMElement();
-    expect(screen.getByRole("alert")).toBeEmptyDOMElement();
+    expect(screen.queryByRole("status")).not.toBeInTheDocument();
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
     expect(screen.getByTestId("script")).toBeInTheDocument();
 
     const honeypot = container.querySelector<HTMLInputElement>(
@@ -56,21 +56,68 @@ describe("ContactForm", () => {
     expect(honeypot?.parentElement).toHaveAttribute("aria-hidden", "true");
   });
 
-  it.each([
-    ["sent", "status", messages.form.status.sent],
-    ["invalid", "alert", messages.form.status.invalid],
-    ["challenge_failed", "alert", messages.form.status.challengeFailed],
-  ] as const)(
-    "shows the %s feedback in the expected live region",
-    (status, role, message) => {
+  it.each(["sent", "invalid", "challenge_failed", "unavailable"] as const)(
+    "does not render the %s result inline (it goes to the toast)",
+    (status) => {
       useContactFormMock.mockReturnValue({ ...baseHookResult, status });
       render(<ContactForm />);
 
-      expect(screen.getByRole(role)).toHaveTextContent(message);
+      expect(screen.queryByRole("status")).not.toBeInTheDocument();
+      expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+      Object.values(messages.form.toast).forEach(({ title, description }) => {
+        expect(screen.queryByText(title)).not.toBeInTheDocument();
+        expect(screen.queryByText(description)).not.toBeInTheDocument();
+      });
     },
   );
 
-  it("announces sending and disables submission", () => {
+  it("forwards the sent and sending callbacks to the form hook", () => {
+    const onSent = vi.fn();
+    const onSendingChange = vi.fn();
+    render(<ContactForm onSent={onSent} onSendingChange={onSendingChange} />);
+
+    expect(useContactFormMock).toHaveBeenCalledWith(
+      expect.objectContaining({ onSent, onSendingChange }),
+    );
+  });
+
+  it("shows field errors with their specific message and marks the field invalid", () => {
+    useContactFormMock.mockReturnValue({
+      ...baseHookResult,
+      status: "invalid",
+      fieldErrors: { name: "required" },
+    });
+    render(<ContactForm />);
+
+    expect(screen.getByRole("textbox", { name: /^nombre/i })).toBeInvalid();
+    expect(
+      screen.getByText(messages.form.errors.name.required),
+    ).toBeInTheDocument();
+  });
+
+  it("keeps the typed values after a failed attempt and clears them after success", () => {
+    const values = { name: "Ana", email: "ana@example.com", message: "Hola" };
+    useContactFormMock.mockReturnValue({
+      ...baseHookResult,
+      status: "challenge_failed",
+      values,
+    });
+    const { unmount } = render(<ContactForm />);
+    expect(screen.getByRole("textbox", { name: /^nombre/i })).toHaveValue(
+      "Ana",
+    );
+    unmount();
+
+    useContactFormMock.mockReturnValue({
+      ...baseHookResult,
+      status: "sent",
+      values: undefined,
+    });
+    render(<ContactForm />);
+    expect(screen.getByRole("textbox", { name: /^nombre/i })).toHaveValue("");
+  });
+
+  it("disables submission while sending", () => {
     useContactFormMock.mockReturnValue({
       ...baseHookResult,
       status: "sending",
@@ -78,13 +125,12 @@ describe("ContactForm", () => {
     });
     render(<ContactForm />);
 
-    expect(screen.getByRole("status")).toHaveTextContent(messages.form.sending);
     expect(
       screen.getByRole("button", { name: messages.form.sending }),
     ).toBeDisabled();
   });
 
-  it("disables submission without a site key, skips the widget and shows no unavailable message", () => {
+  it("disables submission without a site key and skips the widget", () => {
     useContactFormMock.mockReturnValue({
       ...baseHookResult,
       status: "idle",
@@ -96,24 +142,6 @@ describe("ContactForm", () => {
     expect(
       screen.getByRole("button", { name: messages.form.submit }),
     ).toBeDisabled();
-    expect(screen.getByRole("status")).toBeEmptyDOMElement();
-    expect(screen.getByRole("alert")).toBeEmptyDOMElement();
-    expect(
-      screen.queryByText(messages.form.status.unavailable),
-    ).not.toBeInTheDocument();
-  });
-
-  it("shows the unavailable message when the action reports unavailable", () => {
-    useContactFormMock.mockReturnValue({
-      ...baseHookResult,
-      status: "unavailable",
-      isUnavailable: false,
-    });
-    render(<ContactForm />);
-
-    expect(screen.getByRole("alert")).toHaveTextContent(
-      messages.form.status.unavailable,
-    );
   });
 
   it("has no topic select and leaves the message empty", () => {

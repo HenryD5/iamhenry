@@ -49,7 +49,7 @@ describe("blog views", () => {
 
   it("renders the first listing article as featured and the rest as cards", async () => {
     getArticlesMock.mockResolvedValue(articleFixtures);
-    render(await BlogListView());
+    render(await BlogListView({ header: <header>Cabecera</header> }));
 
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(
@@ -63,7 +63,7 @@ describe("blog views", () => {
 
   it("renders the approved empty state", async () => {
     getArticlesMock.mockResolvedValue([]);
-    render(await BlogListView());
+    render(await BlogListView({ header: <header>Cabecera</header> }));
     expect(
       screen.getByRole("heading", { name: "Pronto habrá artículos aquí" }),
     ).toBeInTheDocument();
@@ -78,7 +78,10 @@ describe("blog views", () => {
     getArticleBySlugMock.mockResolvedValue(current);
     getArticlesMock.mockResolvedValue([current, ...related]);
     render(
-      await ArticleView({ params: Promise.resolve({ slug: current.slug }) }),
+      await ArticleView({
+        params: Promise.resolve({ slug: current.slug }),
+        header: <header>Cabecera</header>,
+      }),
     );
 
     const section = screen.getByRole("region", { name: "Sigue leyendo" });

@@ -9,12 +9,11 @@ import { PORTFOLIO_ANCHOR_PATH } from "../routes";
 import { AppContainer } from "@/shared/components/app/AppContainer";
 import { AppIcon } from "@/shared/components/app/AppIcon";
 import { AppLoopVideo } from "@/shared/components/app/AppLoopVideo";
-import { getContactHref } from "@/shared/utils/contact";
 import type { ContactTriggerRenderer } from "@/shared/types/contact-trigger.types";
 
 interface PurafruitViewProps {
   header: ReactNode;
-  renderContactTrigger?: ContactTriggerRenderer;
+  renderContactTrigger: ContactTriggerRenderer;
 }
 
 export async function PurafruitView({
@@ -23,7 +22,6 @@ export async function PurafruitView({
 }: PurafruitViewProps) {
   const translate = await getTranslations("projects");
   const translateShared = await getTranslations("shared");
-  const contactHref = getContactHref();
 
   return (
     <>
@@ -231,7 +229,6 @@ export async function PurafruitView({
           }
           lead={translate("purafruit.closing.lead")}
           action={translate("purafruit.closing.action")}
-          contactHref={contactHref}
           renderContactTrigger={renderContactTrigger}
         />
       </main>

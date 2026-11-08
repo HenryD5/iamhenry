@@ -4,7 +4,7 @@
 
 ## Decisiones del usuario (2026-10-27)
 
-- Formulario en diálogo (`UiDialog`) para todos los CTA y el botón flotante, más página `/contacto` con el mismo `ContactForm` como respaldo sin JS.
+- Formulario en diálogo (`UiDialog`) para todos los CTA y el botón flotante. `/contacto` ya no tiene página con formulario: desde el cambio 2026-11-07 abre el mismo modal sobre la home (ver su sección).
 - Envío con Server Action y Resend; la clave solo en servidor. Excepción a "No hay API" aprobada y registrada en `docs/decisions.md`.
 - **Versión 2 (2026-10-27, sustituye a la primera elección del usuario):** más sencilla y toda en planes gratuitos (Vercel Hobby, Resend free, Turnstile free).
 - Resend **sin dominio propio**: remitente de pruebas de Resend (`onboarding@resend.dev`) y envío al correo de la cuenta de Resend del usuario. **A verificar al crear la cuenta de Resend:** que ese remitente solo pueda enviar a ese correo y cuál es el tope diario del plan gratuito (se recuerda 100 al día, no comprobado). El dominio ya no es requisito ni bloqueante; puede añadirse después cambiando `CONTACT_FROM_EMAIL`.
@@ -67,7 +67,7 @@ Flujo en servidor, en este orden y cortando en el primer fallo:
 ## Pantallas (bloqueadas por diseño)
 
 - **Diálogo de contacto** (`ContactDialog`, `UiDialog`): se abre desde `AppHeader`, `AppMobileMenu`, `AppFloatingContact`, `ClosingSection`, `PortfolioAiShowcase`, `PurafruitView`. Contiene `ContactForm`.
-- **Página `/contacto`** (`ContactView`): el mismo `ContactForm` en una página; sin JavaScript avisa de que el envío necesita JavaScript por Turnstile.
+- **Ruta `/contacto`**: sin vista propia desde el cambio 2026-11-07; renderiza `HomeView` más `ContactRouteDialog` (modal abierto). Sin JavaScript se ve la home con el aviso `<noscript>` (ver cambio).
 - **`ContactForm`**: campos nombre, correo y mensaje (sin motivo); widget Turnstile; honeypot oculto con `aria-hidden` y `tabIndex={-1}`; estados `idle`, `sending`, `sent`, `invalid`, `challenge_failed`, `unavailable`.
 - **Imágenes de referencia:** ninguna todavía. El agente de diseño debe aportar: formulario en 1440 y 390 px, estados éxito/error/enviando/no disponible, vista de diálogo y vista de página. Hasta entonces las tareas de componentes visuales quedan bloqueadas.
 
@@ -79,7 +79,7 @@ Flujo en servidor, en este orden y cortando en el primer fallo:
 
 ## Rutas y permisos
 
-- `src/app/(site)/contacto/page.tsx` delgada, pública, estática (la acción es lo dinámico); metadata propia; se añade al sitemap. Constante de ruta en `src/modules/contact/routes.ts`.
+- `src/app/(site)/contacto/page.tsx` delgada: `HomeView` más `ContactRouteDialog`; metadata `noindex` con canonical a `/`; fuera del sitemap (cambio 2026-11-07). Constante de ruta en `src/modules/contact/routes.ts`.
 - `src/shared/utils/contact.ts`: `getContactHref()` devuelve siempre `/contacto` como enlace de respaldo (sin parámetros); con JS el CTA abre el diálogo (`ContactDialogTrigger`). Se elimina `isExternalContact` y todo `wa.me` y `mailto` con mensaje.
 - `siteConfig.person.whatsapp` se elimina; el número no debe aparecer en el bundle ni en el HTML (`rg 51930724632 .next src test` sin resultados al cerrar).
 
@@ -113,6 +113,7 @@ Solo en `src/modules/contact/locales/es.json`. **Copy definitivo pendiente del u
 4. Envío válido: estado de éxito; llega un correo de texto plano a `CONTACT_TO_EMAIL` con `replyTo` del visitante.
 5. Si Resend rechaza el envío (por ejemplo, tope gratuito agotado): `unavailable`, sin detalle del proveedor.
    5b. **Prueba con envío real (al crear la cuenta de Resend):** con `CONTACT_FROM_EMAIL` de pruebas, un envío al correo de la cuenta de Resend llega; un envío a otro destinatario se rechaza o se confirma que está permitido. El resultado se anota en esta spec y en `docs/decisions.md`; si el supuesto es falso, se ajusta `CONTACT_TO_EMAIL` o se pide el dominio.
+   **Resultado (2026-11-07, local):** cumplida. Con `CONTACT_FROM_EMAIL=onboarding@resend.dev` y `CONTACT_TO_EMAIL` igual al correo de la cuenta de Resend, el mensaje llegó tras pasar Turnstile en Chrome. No se probó el envío a otro destinatario: queda fuera mientras se use el remitente de pruebas. Notas: las claves de Turnstile cruzadas dan el error 400020 en el navegador; una `RESEND_API_KEY` inválida devuelve `validation_error` y la acción responde `unavailable`; el navegador automatizado de pruebas no supera Turnstile (error 600010).
 6. Honeypot lleno, envío en menos de 3 s, token Turnstile inválido o ausente: no se envía correo (honeypot/tiempo responden éxito simulado; Turnstile responde `challenge_failed`).
 7. Nombre o correo con `\r` o `\n`, mensaje de más de 2000 caracteres o campo vacío: `invalid` desde el servidor aunque se salte la validación del cliente.
    7b. Sin motivo: el formulario no tiene select; `/contacto` y todos los enlaces de respaldo no llevan parámetros; un `topic` enviado a mano se ignora.
@@ -125,9 +126,41 @@ Solo en `src/modules/contact/locales/es.json`. **Copy definitivo pendiente del u
 
 ## Preguntas abiertas
 
-1. Cuentas de Resend y Turnstile (pendiente del usuario; bloquea las pruebas de envío real, no el código). El dominio ya no es necesario.
+1. ~~Cuentas de Resend y Turnstile~~: creadas y probadas en local el 2026-11-07 (criterio 5b). Falta cargar las variables en Vercel. El paso a remitente del dominio `iamhenry.tech` queda para después: verificar el dominio en Resend (DNS en Cloudflare) y cambiar `CONTACT_FROM_EMAIL`.
 2. Diseño del formulario y de sus estados (bloquea componentes visuales).
 3. Copy definitivo del formulario (marcadores hasta entonces).
 4. ~~El motivo solo preselecciona `topic`~~: sustituida el 2026-10-28; el motivo ya no existe (tarea 79).
 5. Aviso corto de privacidad bajo el formulario (texto con marcador, del usuario). Confirmado por el usuario (2026-10-27).
-6. A verificar al crear la cuenta de Resend: restricción del remitente de pruebas al correo de la cuenta y tope diario del plan gratuito.
+6. ~~Restricción del remitente de pruebas~~: el envío al correo de la cuenta funciona (2026-11-07); el envío a otros destinatarios y el tope diario gratuito siguen sin comprobar.
+
+## Cambio 2026-11-07 · errores explícitos, snackbars y formulario solo en modal
+
+Ficha: `docs/changes/2026-11-07-contacto-errores-snackbar-modal.md`. Sustituye lo que contradiga en «Pantallas», «Rutas y permisos», «Inventario», criterios 3, 11, 17 y 18 y en cualquier mención a `/contacto` del resto de la spec (cambio de alcance 2026-11-07).
+
+- **Decisiones del usuario:** el formulario siempre en modal; resultado con snackbars; tras éxito se cierra el modal, se limpia el formulario y aparece el snackbar; en error el modal queda abierto con los datos y aparece snackbar de error; errores por campo con causa explícita, en rojo, con prefijo e icono de error; éxito 4 s, error 6 s.
+- **No debe existir `/contacto` (cambio de alcance 2026-11-07, sustituye la opción B):** literal del usuario: "no debe existir /contacto". No hay ruta, página ni redirección. `/contacto` responde 404 con `src/app/not-found.tsx`. Ningún enlace del sitio, sitemap ni JSON-LD apunta a `/contacto`.
+- **Errores por campo (UiField):** `errorText` con icono (de `AppIcon` si existe uno de error; si no, prefijo de texto "Error:" en el locale) y color `danger`; `aria-invalid` y `aria-describedby` al texto. Un texto por causa (`required`, `tooShort`, `tooLong`, `invalid`) por clave; se revisan para que digan qué corregir (p. ej. "Escribe tu nombre para continuar.", "Usa un formato como nombre@dominio.com"; redacción final en `es.json`). Sin cambios en el schema.
+- **Snackbars:** `UiToast` (`src/shared/components/ui/UiToast.tsx`, único que importa `Toast` de Ark) y `<UiToaster />` montado una vez en `SiteLayout`, portal con `data-surface="light"`. Aspecto y transición de `ark.css` (`data-type` success/error), sin CSS ni animación nuevos. Estados: `sent` → success (4 s); `invalid`, `challenge_failed`, `unavailable` → error (6 s); cada uno con título y descripción en `es.json` (`toast.*`). `status.*` y las regiones vivas de `ContactForm` desaparecen. Accesibilidad: error con `role="alert"`, éxito con `role="status"`; el toast no roba el foco; al cerrar el modal el foco vuelve al disparador.
+- **Hook y modal:** `use-contact-form` expone un callback de resultado; `ContactForm` dispara el toast y, en `sent`, cierra el modal y limpia el formulario (reinicio de `values`, `startedAt` y Turnstile). Mientras `isSending` el modal no se cierra.
+- **Disparadores (decisión de construcción, cambio de alcance 2026-11-07):** todo CTA de contacto es un `<button type="button">` (`ContactDialogTrigger`, con las clases de `btn`, que `theme.css` aplica también a `button`). Un botón no tiene destino: no hay `href` de contacto en el sitio y `getContactHref()` desaparece. Los `<a href>` de respaldo de `AppHeader`, `AppMobileMenu`, `AppFloatingContact`, `ClosingSection`, `PortfolioAiShowcase`, `ProjectClosingSection`, `KeelView` y `PurafruitView` se eliminan. Los disparadores son obligatorios donde se usan; sin disparador no hay CTA y el typecheck lo marca.
+- **Botón flotante de la 404:** `src/app/not-found.tsx` pasa `floatingContactTrigger={<ContactFloatingTriggerView />}` a `SiteLayout`; hoy la 404 usa el enlace de respaldo.
+- **Sin JavaScript:** los CTA no abren nada. Un `<noscript>` en `SiteLayout`, antes del pie y en todas las páginas (también la 404), indica que el envío necesita JavaScript y remite al correo visible en el pie (`siteConfig.person.email`). El texto (clave `noScript` en `src/shared/locales/es.json`) pasa desde `src/modules/contact/locales/es.json`. WhatsApp ya no existe (tarea 72).
+- **Retirada:** `src/app/(site)/contacto/`, `ContactRouteDialog` y su test, `src/modules/contact/routes.ts` (sin uso), `src/shared/utils/contact.ts` (`getContactHref`) y su test. `ContactAppHeader*` se conserva: lo usan home, blog y portafolio.
+- **Inventario Ark:** nuevo `UiToast`; `UiField` y `UiDialog` se reutilizan. Sin estado global: el toaster de Ark mantiene su propia cola.
+- **Pantallas de referencia:** ninguna maqueta del snackbar; manda `ark.css`.
+
+### Criterios de aceptación (cambio 2026-11-07)
+
+13. Campo vacío o inválido: texto de error rojo (token `danger`), con icono o prefijo de error, distinto de texto de cuerpo, específico de la causa; `aria-invalid="true"` y `aria-describedby` apuntan al texto.
+14. Envío correcto: el modal se cierra, el formulario queda vacío y aparece un snackbar de éxito que se cierra solo a los 4 s y con el botón cerrar; el foco vuelve al disparador.
+15. `invalid`, `challenge_failed` y `unavailable`: snackbar de error (6 s) con título y descripción propios; el modal sigue abierto con los datos escritos.
+16. No queda texto de estado de envío con `text-body` dentro del formulario; los snackbars se anuncian por lector de pantalla sin mover el foco.
+17. `/contacto` devuelve 404; ningún enlace del sitio, sitemap ni JSON-LD apunta a `/contacto`.
+18. Sin JavaScript, los CTA son botones sin acción (ningún `href` de contacto) y el aviso `<noscript>` con el correo del pie aparece en la home, en un caso de portafolio y en la 404.
+19. Snackbars con `data-surface` correcto y legibles a 1440 y 390 px; con movimiento reducido no añaden desplazamiento propio (si `ark.css` no lo cubre, se reporta, no se parchea).
+20. `pnpm typecheck`, `pnpm lint`, `pnpm build` y `pnpm test` en verde; el resto de rutas siguen estáticas.
+
+### Preguntas abiertas (cambio 2026-11-07)
+
+- Redacción final de los textos de error y de los toasts (se propone en la tarea 83; el usuario ajusta).
+- Icono de error: confirmar si existe en `AppIcon`; si no, se usa solo el prefijo de texto.

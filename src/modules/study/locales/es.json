@@ -1,0 +1,747 @@
+{
+  "page": {
+    "metadataTitle": "Repaso contable",
+    "metadataDescription": "Cuestionario personal de repaso.",
+    "eyebrow": "Repaso · Febrero 2027",
+    "title": "Repaso contable",
+    "description": "Preguntas al azar de tus apuntes: moneda funcional, tipo de cambio, NIC 21, NIIF 11 y NIIF 3. Cada intento trae preguntas que aún no te han salido, hasta completar el banco, y cambia el orden de las opciones.",
+    "noScript": "Este cuestionario necesita JavaScript."
+  },
+  "intro": {
+    "start": "Empezar",
+    "choiceSummary": "{count} preguntas de marcar",
+    "openSummary": "{count} preguntas abiertas",
+    "review": "Al terminar verás cuál es lo correcto"
+  },
+  "blocks": {
+    "choice": "Bloque 1 · Marca la respuesta",
+    "open": "Bloque 2 · Responde con tus palabras"
+  },
+  "topics": {
+    "nic21": "NIC 21",
+    "niif11": "NIIF 11",
+    "niif3": "NIIF 3"
+  },
+  "quiz": {
+    "progress": "{answered} de {total} respondidas",
+    "questionNumber": "Pregunta {number}",
+    "answerLabel": "Tu respuesta",
+    "answerPlaceholder": "Escribe tu respuesta",
+    "submit": "Revisar respuestas",
+    "confirmSubmit": "Revisar igual",
+    "unanswered": "Preguntas sin responder: {count}. Están marcadas arriba; puedes completarlas o revisar igual."
+  },
+  "results": {
+    "title": "Resultado",
+    "score": "{score} de {total}",
+    "summary": "Correctas: {correct} · Parciales: {partial} · Incorrectas: {incorrect} · Sin responder: {unanswered}",
+    "correct": "Correcta",
+    "partial": "Parcial",
+    "incorrect": "Incorrecta",
+    "correctAnswer": "Respuesta correcta",
+    "yourAnswer": "Tu respuesta",
+    "noAnswer": "Sin responder",
+    "explanation": "Explicación",
+    "modelAnswer": "Respuesta modelo",
+    "concepts": "Conceptos clave",
+    "conceptFound": "Encontrado",
+    "conceptMissing": "Faltó",
+    "openNotice": "Las abiertas se revisan buscando conceptos clave. Si dijiste lo mismo con otras palabras, márcala como correcta.",
+    "markCorrect": "Mi respuesta era correcta",
+    "unmarkCorrect": "Quitar marca",
+    "restart": "Nuevas preguntas"
+  },
+  "questions": {
+    "functional-definition": {
+      "prompt": "¿Qué es la moneda funcional?",
+      "options": {
+        "a": "La moneda en la que la entidad presenta sus estados financieros a usuarios externos.",
+        "b": "La moneda del entorno económico principal en el que la entidad opera.",
+        "c": "La moneda del país donde está registrada la matriz del grupo.",
+        "d": "La moneda con el tipo de cambio más estable del mercado."
+      },
+      "explanation": "Es la moneda del entorno económico principal: en la que la entidad genera y gasta principalmente su efectivo, y la que refleja su realidad económica."
+    },
+    "presentation-definition": {
+      "prompt": "¿Qué es la moneda de presentación?",
+      "options": {
+        "a": "La moneda en la que se pagan los impuestos.",
+        "b": "La moneda en la que se realizan la mayoría de las ventas.",
+        "c": "La moneda en la que la entidad presenta sus estados financieros ante sus usuarios externos.",
+        "d": "La moneda en la que se liquidan las deudas con bancos."
+      },
+      "explanation": "La moneda de presentación es aquella en la que la entidad muestra sus estados financieros a los usuarios externos."
+    },
+    "different-currencies": {
+      "prompt": "¿Una entidad puede tener una moneda funcional distinta de su moneda de presentación?",
+      "options": {
+        "a": "Sí, en especial si forma parte de un grupo multinacional o debe cumplir normas locales.",
+        "b": "No, la NIC 21 exige que siempre sean la misma.",
+        "c": "Solo si la entidad cotiza en bolsa.",
+        "d": "Solo durante el primer año de operaciones."
+      },
+      "explanation": "Pueden ser distintas, sobre todo cuando la entidad forma parte de un grupo multinacional o debe cumplir con normas locales."
+    },
+    "chile-subsidiary": {
+      "prompt": "Una filial en Chile vende, compra y se financia en pesos chilenos, y su matriz en Perú consolida en soles. ¿Cuál es la moneda funcional de la filial?",
+      "options": {
+        "a": "El sol peruano, porque es la moneda de la matriz.",
+        "b": "El peso chileno, porque refleja su entorno económico principal.",
+        "c": "El dólar, porque es una moneda de referencia.",
+        "d": "No tiene moneda funcional hasta que se consolide."
+      },
+      "explanation": "Sus ventas, costos y financiamiento están en pesos chilenos. El sol solo se usa para preparar los estados financieros consolidados."
+    },
+    "exchange-rate-definition": {
+      "prompt": "¿Qué es el tipo de cambio?",
+      "options": {
+        "a": "El impuesto que se paga al comprar moneda extranjera.",
+        "b": "La diferencia entre el precio de compra y venta de un banco.",
+        "c": "La tasa de interés de un préstamo en moneda extranjera.",
+        "d": "La relación entre dos monedas: las unidades de una que se necesitan para obtener una unidad de otra."
+      },
+      "explanation": "Es el número de unidades de una moneda (funcional o local) que se necesita para obtener una unidad de otra (moneda extranjera)."
+    },
+    "exchange-rate-uses": {
+      "prompt": "¿Para qué se utiliza el tipo de cambio según la NIC 21?",
+      "options": {
+        "a": "Para registrar transacciones en moneda extranjera y convertir estados financieros de una entidad extranjera a la moneda funcional.",
+        "b": "Para calcular únicamente el impuesto a la renta.",
+        "c": "Para fijar los precios de venta de la empresa.",
+        "d": "Para determinar el capital social mínimo."
+      },
+      "explanation": "Se usa para registrar transacciones en moneda extranjera y para convertir los estados financieros de una entidad extranjera."
+    },
+    "closing-rate-definition": {
+      "prompt": "¿Qué es la tasa de cambio de cierre?",
+      "options": {
+        "a": "El promedio de las tasas de todo el ejercicio.",
+        "b": "La tasa de la fecha en que se hizo cada transacción.",
+        "c": "La tasa vigente en la fecha del balance general, es decir, al cierre del ejercicio contable.",
+        "d": "La tasa de la fecha en que se constituyó la empresa."
+      },
+      "explanation": "Según la NIC 21, es la tasa de cambio vigente en la fecha del balance general."
+    },
+    "closing-rate-use": {
+      "prompt": "¿Para qué se aplica la tasa de cierre al final del periodo?",
+      "options": {
+        "a": "Para convertir los ingresos y gastos del periodo.",
+        "b": "Para convertir los activos y pasivos monetarios en moneda extranjera y reflejarlos a su valor actualizado.",
+        "c": "Para recalcular el capital social de la empresa.",
+        "d": "Para eliminar las diferencias de cambio del periodo."
+      },
+      "explanation": "Convierte activos y pasivos monetarios en moneda extranjera a la moneda funcional. Las diferencias de cambio se reconocen en resultados."
+    },
+    "closing-cash-calculation": {
+      "prompt": "Al cierre del 31/12 la empresa tiene USD 10 000 en caja y 1 USD = S/ 3.85. ¿Qué monto presenta en su balance?",
+      "options": {
+        "a": "S/ 10 000",
+        "b": "S/ 38 000",
+        "c": "S/ 38 500",
+        "d": "S/ 3 850"
+      },
+      "explanation": "10 000 × 3.85 = S/ 38 500, el valor actualizado de los dólares al tipo de cambio de cierre."
+    },
+    "difference-definition": {
+      "prompt": "¿Qué es la diferencia de cambio?",
+      "options": {
+        "a": "La ganancia o pérdida al convertir partidas monetarias en moneda extranjera cuando la tasa varía entre el reconocimiento inicial y el pago o cobro.",
+        "b": "La comisión que cobra un banco por cambiar moneda.",
+        "c": "El ajuste que se hace al capital cada año.",
+        "d": "La diferencia entre el precio pagado y el valor razonable de una adquisición."
+      },
+      "explanation": "Es el efecto financiero (ganancia o pérdida) que surge por la variación de la tasa entre la fecha del reconocimiento inicial y la de pago o cobro."
+    },
+    "debt-loss-calculation": {
+      "prompt": "Una deuda de USD 5 000 se reconoció a S/ 3.80 y se canceló cuando el dólar subió a S/ 3.85. ¿Cuál es el efecto?",
+      "options": {
+        "a": "Ganancia por diferencia de cambio de S/ 250",
+        "b": "Pérdida por diferencia de cambio de S/ 50",
+        "c": "Ganancia por diferencia de cambio de S/ 50",
+        "d": "Pérdida por diferencia de cambio de S/ 250"
+      },
+      "explanation": "Se reconoció en S/ 19 000 y se pagó con S/ 19 250. Pagar S/ 250 más es una pérdida por diferencia de cambio."
+    },
+    "difference-recognition": {
+      "prompt": "¿Dónde se reconoce la diferencia de cambio de una partida monetaria?",
+      "options": {
+        "a": "Directamente en el capital social.",
+        "b": "En los resultados del periodo, como ingreso o gasto financiero.",
+        "c": "Como mayor valor del activo.",
+        "d": "Solo en las notas a los estados financieros."
+      },
+      "explanation": "Se reconoce en los resultados del periodo como ingreso o gasto financiero."
+    },
+    "functional-factors": {
+      "prompt": "¿Cuál de estos factores se considera para determinar la moneda funcional?",
+      "options": {
+        "a": "La nacionalidad de los accionistas.",
+        "b": "La moneda en que se pagan los dividendos.",
+        "c": "El idioma de los contratos de la empresa.",
+        "d": "La moneda que influye en los precios de venta de bienes o servicios."
+      },
+      "explanation": "Se miran la moneda que influye en los precios de venta, la del país cuya fuerza competitiva y regulaciones influyen en ellos, y la que influye en los costos."
+    },
+    "unclear-factors": {
+      "prompt": "¿Qué se hace si los factores no conducen a una respuesta clara sobre la moneda funcional?",
+      "options": {
+        "a": "Se usa siempre el dólar estadounidense.",
+        "b": "Se usa la moneda del país de la matriz.",
+        "c": "La gerencia debe aplicar juicio profesional.",
+        "d": "Se elige la moneda con menor inflación."
+      },
+      "explanation": "Cuando los factores no dan una respuesta clara, la gerencia debe aplicar juicio profesional."
+    },
+    "translation-assets": {
+      "prompt": "Al convertir a la moneda de presentación, ¿a qué tipo de cambio se convierten los activos y pasivos?",
+      "options": {
+        "a": "Al tipo de cambio de cierre, en la fecha del balance.",
+        "b": "Al tipo de cambio histórico.",
+        "c": "Al tipo de cambio promedio del periodo.",
+        "d": "Al tipo de cambio del primer día del ejercicio."
+      },
+      "explanation": "Activos y pasivos se convierten al tipo de cambio de cierre."
+    },
+    "translation-income": {
+      "prompt": "Al convertir a la moneda de presentación, ¿a qué tipo de cambio se convierten los ingresos y gastos?",
+      "options": {
+        "a": "Siempre al tipo de cambio de cierre.",
+        "b": "Al tipo de cambio de la fecha de la transacción o, de forma práctica, al promedio del periodo.",
+        "c": "Al tipo de cambio de la constitución de la empresa.",
+        "d": "No se convierten."
+      },
+      "explanation": "Se usa la tasa de la fecha de transacción o, de forma práctica, el promedio del periodo."
+    },
+    "translation-equity": {
+      "prompt": "Al convertir a la moneda de presentación, ¿a qué tipo de cambio se mantiene el patrimonio neto?",
+      "options": {
+        "a": "Al tipo de cambio de cierre.",
+        "b": "Al tipo de cambio promedio del periodo.",
+        "c": "Al tipo de cambio futuro estimado.",
+        "d": "Al tipo de cambio histórico, de la fecha en que se originó cada partida."
+      },
+      "explanation": "El patrimonio neto se mantiene al tipo de cambio histórico de la fecha en que se originó cada partida."
+    },
+    "translation-differences": {
+      "prompt": "¿Cómo se presentan las diferencias de conversión?",
+      "options": {
+        "a": "Como utilidad o pérdida del periodo.",
+        "b": "Como un pasivo corriente.",
+        "c": "En una cuenta separada del patrimonio llamada ajuste por diferencias de conversión, sin afectar la utilidad del periodo.",
+        "d": "Como menor valor del goodwill."
+      },
+      "explanation": "No afectan la utilidad o pérdida del periodo: van en una cuenta separada del patrimonio, el ajuste por diferencias de conversión."
+    },
+    "preparation-definition": {
+      "prompt": "¿Qué es la moneda de preparación?",
+      "options": {
+        "a": "La moneda en la que la entidad lleva su contabilidad y elabora inicialmente sus estados financieros, antes de convertirlos a la de presentación.",
+        "b": "La moneda en la que se publican los estados financieros consolidados.",
+        "c": "La moneda en la que se calculan los tributos.",
+        "d": "La moneda en la que se presupuesta el año siguiente."
+      },
+      "explanation": "Es en la que se lleva la contabilidad y se elaboran inicialmente los estados financieros, antes de convertirlos."
+    },
+    "joint-arrangement-definition": {
+      "prompt": "Según la NIIF 11, ¿qué es un acuerdo conjunto?",
+      "options": {
+        "a": "Una fusión en la que una empresa absorbe a otra.",
+        "b": "Un acuerdo contractual mediante el cual dos o más partes emprenden una actividad económica y comparten el control sobre ella.",
+        "c": "Un préstamo compartido entre varios bancos.",
+        "d": "La compra del 80 % de las acciones de otra empresa."
+      },
+      "explanation": "Es un acuerdo contractual por el que dos o más partes emprenden una actividad económica y comparten su control."
+    },
+    "joint-control-meaning": {
+      "prompt": "¿Qué significa control conjunto?",
+      "options": {
+        "a": "Que una de las partes decide y las demás solo reciben información.",
+        "b": "Que cada parte controla una empresa distinta.",
+        "c": "Que las decisiones sobre las actividades relevantes del acuerdo requieren el consentimiento unánime de las partes.",
+        "d": "Que las decisiones se toman por mayoría simple de votos."
+      },
+      "explanation": "Las decisiones sobre las actividades relevantes requieren el consentimiento unánime de quienes comparten el control."
+    },
+    "joint-arrangement-types": {
+      "prompt": "¿Qué dos tipos de acuerdo conjunto reconoce la NIIF 11?",
+      "options": {
+        "a": "Operación conjunta (joint operation) y negocio conjunto (joint venture).",
+        "b": "Fusión y escisión.",
+        "c": "Matriz y subsidiaria.",
+        "d": "Consorcio y franquicia."
+      },
+      "explanation": "La NIIF 11 distingue la operación conjunta (joint operation) y el negocio conjunto (joint venture)."
+    },
+    "joint-arrangement-origin": {
+      "prompt": "¿De dónde surge un acuerdo conjunto?",
+      "options": {
+        "a": "De una decisión unilateral de la parte mayoritaria.",
+        "b": "De una resolución de la autoridad tributaria.",
+        "c": "De la compra de acciones en bolsa.",
+        "d": "De un contrato formal entre las partes."
+      },
+      "explanation": "El acuerdo conjunto surge de un contrato formal entre las partes."
+    },
+    "combination-definition": {
+      "prompt": "Según la NIIF 3, ¿cuándo ocurre una combinación de negocios?",
+      "options": {
+        "a": "Cuando dos empresas firman un contrato de suministro.",
+        "b": "Cuando una empresa compra maquinaria a otra.",
+        "c": "Cuando una adquirente obtiene el control de uno o más negocios.",
+        "d": "Cuando dos empresas comparten una oficina."
+      },
+      "explanation": "Es una transacción u otro suceso por el que una adquirente obtiene el control de uno o más negocios."
+    },
+    "control-example": {
+      "prompt": "La empresa A (Perú) compra el 80 % de las acciones con voto de la empresa B (Chile). ¿Qué ocurre?",
+      "options": {
+        "a": "A obtiene el control de B, porque tiene la mayoría y puede tomar decisiones sobre ella.",
+        "b": "A y B pasan a tener control conjunto.",
+        "c": "B obtiene el control de A.",
+        "d": "No hay combinación, porque no compró el 100 %."
+      },
+      "explanation": "Con el 80 % de las acciones con voto, A tiene la mayoría, puede decidir sobre B y por eso tiene el control."
+    },
+    "acquisition-first-step": {
+      "prompt": "¿Cuál es el primer paso del método de adquisición de la NIIF 3?",
+      "options": {
+        "a": "Reconocer el goodwill.",
+        "b": "Identificar al adquirente.",
+        "c": "Medir los pasivos asumidos.",
+        "d": "Determinar la fecha de adquisición."
+      },
+      "explanation": "Orden: identificar al adquirente, determinar la fecha de adquisición, reconocer y medir activos y pasivos, y reconocer el goodwill o la ganancia."
+    },
+    "acquisition-date": {
+      "prompt": "¿Qué es la fecha de adquisición?",
+      "options": {
+        "a": "El día en que se firmó la primera carta de intención.",
+        "b": "El último día del ejercicio contable.",
+        "c": "El día en que se anuncia la compra a la prensa.",
+        "d": "El momento exacto en que la empresa adquirente obtiene el control real de la otra."
+      },
+      "explanation": "Es el momento exacto en que la adquirente obtiene el control real de la otra empresa."
+    },
+    "assets-measurement": {
+      "prompt": "En el método de adquisición, ¿cómo se miden los activos identificables adquiridos y los pasivos asumidos?",
+      "options": {
+        "a": "A su valor en libros.",
+        "b": "A su costo histórico.",
+        "c": "A valor razonable.",
+        "d": "A su valor tributario."
+      },
+      "explanation": "Se reconocen y miden a valor razonable."
+    },
+    "goodwill-case": {
+      "prompt": "Se paga S/ 500 000 por un negocio cuyos activos netos a valor razonable son S/ 420 000. ¿Qué se reconoce?",
+      "options": {
+        "a": "Goodwill de S/ 80 000",
+        "b": "Ganancia por compra ventajosa de S/ 80 000",
+        "c": "Goodwill de S/ 500 000",
+        "d": "No se reconoce nada"
+      },
+      "explanation": "El precio pagado es mayor que el valor razonable de los activos netos: 500 000 − 420 000 = S/ 80 000 de goodwill."
+    },
+    "bargain-case": {
+      "prompt": "Se paga S/ 300 000 por un negocio cuyos activos netos a valor razonable son S/ 350 000. ¿Qué se reconoce?",
+      "options": {
+        "a": "Goodwill de S/ 50 000",
+        "b": "Ganancia por compra en condiciones ventajosas de S/ 50 000",
+        "c": "Pérdida de S/ 50 000",
+        "d": "Goodwill de S/ 350 000"
+      },
+      "explanation": "El precio pagado es menor que el valor razonable: la diferencia de S/ 50 000 es una ganancia por compra ventajosa."
+    },
+    "open-functional-vs-presentation": {
+      "prompt": "Explica la diferencia entre moneda funcional y moneda de presentación.",
+      "explanation": "La moneda funcional es la del entorno económico principal en el que la entidad opera, en la que genera y gasta su efectivo. La moneda de presentación es aquella en la que presenta sus estados financieros a los usuarios externos.",
+      "concepts": [
+        {
+          "label": "Entorno económico principal",
+          "terms": [
+            "entorno economico",
+            "economico principal",
+            "genera y gasta",
+            "opera"
+          ]
+        },
+        {
+          "label": "Presenta estados financieros",
+          "terms": [
+            "presenta",
+            "presentan",
+            "estados financieros",
+            "eeff",
+            "ee.ff"
+          ]
+        },
+        {
+          "label": "Usuarios externos",
+          "terms": ["usuarios", "externos", "terceros"]
+        }
+      ]
+    },
+    "open-exchange-rate": {
+      "prompt": "Define el tipo de cambio y da un ejemplo con dólares y soles.",
+      "explanation": "Es la relación entre dos monedas: las unidades de una moneda que se necesitan para obtener una unidad de otra. Ejemplo: si 1 USD equivale a 3.80 soles, el tipo de cambio es 3.80 PEN por USD.",
+      "concepts": [
+        {
+          "label": "Relación entre dos monedas",
+          "terms": ["relacion", "dos monedas", "entre monedas"]
+        },
+        {
+          "label": "Unidades para obtener otra",
+          "terms": ["unidades", "unidad", "se necesita", "obtener"]
+        },
+        {
+          "label": "Ejemplo USD / PEN",
+          "terms": ["usd", "dolar", "pen", "soles", "s/"]
+        }
+      ]
+    },
+    "open-closing-cash": {
+      "prompt": "Al cierre, una empresa tiene USD 4 000 en caja y el tipo de cambio es S/ 3.75. ¿Cuánto presenta en su balance en soles?",
+      "explanation": "4 000 × 3.75 = S/ 15 000.",
+      "concepts": [
+        {
+          "label": "S/ 15 000",
+          "terms": ["15000"]
+        }
+      ]
+    },
+    "open-debt-difference": {
+      "prompt": "Una deuda de USD 2 000 se reconoció a S/ 3.70 y se pagó a S/ 3.80. Calcula la diferencia de cambio e indica si es ganancia o pérdida.",
+      "explanation": "Reconocida: 2 000 × 3.70 = S/ 7 400. Pagada: 2 000 × 3.80 = S/ 7 600. Se pagan S/ 200 más: pérdida por diferencia de cambio.",
+      "concepts": [
+        {
+          "label": "S/ 200",
+          "terms": ["200"]
+        },
+        {
+          "label": "Es una pérdida",
+          "terms": ["perdida"]
+        }
+      ]
+    },
+    "open-difference-definition": {
+      "prompt": "¿Qué es la diferencia de cambio y dónde se reconoce?",
+      "explanation": "Es la ganancia o pérdida al convertir partidas monetarias en moneda extranjera cuando la tasa varía entre el reconocimiento inicial y el pago o cobro. Se reconoce en los resultados del periodo como ingreso o gasto financiero.",
+      "concepts": [
+        {
+          "label": "Ganancia o pérdida",
+          "terms": ["ganancia", "perdida", "efecto financiero"]
+        },
+        {
+          "label": "Variación de la tasa entre fechas",
+          "terms": [
+            "variacion",
+            "varia",
+            "cambia",
+            "entre la fecha",
+            "reconocimiento inicial"
+          ]
+        },
+        {
+          "label": "Se reconoce en resultados",
+          "terms": [
+            "resultado",
+            "ingreso o gasto",
+            "gasto financiero",
+            "ingreso financiero"
+          ]
+        }
+      ]
+    },
+    "open-functional-factors": {
+      "prompt": "Menciona los factores para determinar la moneda funcional. ¿Qué pasa si no dan una respuesta clara?",
+      "explanation": "La moneda que influye en los precios de venta; la del país cuya fuerza competitiva y regulaciones influyen en esos precios; y la que influye en los costos. Si no hay respuesta clara, la gerencia aplica juicio profesional.",
+      "concepts": [
+        {
+          "label": "Precios de venta",
+          "terms": ["precio"]
+        },
+        {
+          "label": "Fuerza competitiva y regulaciones",
+          "terms": ["competitiva", "competencia", "regulacion"]
+        },
+        {
+          "label": "Costos",
+          "terms": ["costo"]
+        },
+        {
+          "label": "Juicio profesional",
+          "terms": ["juicio"]
+        }
+      ]
+    },
+    "open-translation-rules": {
+      "prompt": "Explica a qué tipo de cambio se convierten activos y pasivos, ingresos y gastos, y patrimonio neto.",
+      "explanation": "Activos y pasivos: tipo de cambio de cierre. Ingresos y gastos: tipo de la fecha de transacción o, de forma práctica, promedio del periodo. Patrimonio neto: tipo de cambio histórico.",
+      "concepts": [
+        {
+          "label": "Activos y pasivos: cierre",
+          "terms": ["cierre"]
+        },
+        {
+          "label": "Ingresos y gastos: transacción o promedio",
+          "terms": ["promedio", "transaccion"]
+        },
+        {
+          "label": "Patrimonio: histórico",
+          "terms": ["historico"]
+        }
+      ]
+    },
+    "open-translation-differences": {
+      "prompt": "¿Las diferencias de conversión afectan la utilidad del periodo? ¿Dónde se presentan?",
+      "explanation": "No afectan la utilidad o pérdida del periodo. Se presentan en una cuenta separada del patrimonio: ajuste por diferencias de conversión.",
+      "concepts": [
+        {
+          "label": "No afectan la utilidad",
+          "terms": [
+            "no afecta",
+            "no impacta",
+            "no va a resultados",
+            "no pasa por resultados"
+          ]
+        },
+        {
+          "label": "Cuenta separada del patrimonio",
+          "terms": ["patrimonio"]
+        },
+        {
+          "label": "Ajuste por diferencias de conversión",
+          "terms": ["ajuste", "diferencias de conversion"]
+        }
+      ]
+    },
+    "open-joint-arrangement": {
+      "prompt": "Según la NIIF 11, ¿qué es un acuerdo conjunto y qué significa control conjunto?",
+      "explanation": "Es un acuerdo contractual mediante el cual dos o más partes emprenden una actividad económica y comparten su control. Control conjunto significa que las decisiones sobre las actividades relevantes requieren el consentimiento unánime de las partes.",
+      "concepts": [
+        {
+          "label": "Acuerdo contractual",
+          "terms": ["contract", "contrato"]
+        },
+        {
+          "label": "Dos o más partes",
+          "terms": ["dos o mas", "partes"]
+        },
+        {
+          "label": "Actividades relevantes",
+          "terms": ["actividad"]
+        },
+        {
+          "label": "Consentimiento unánime",
+          "terms": ["unanim", "consentimiento"]
+        }
+      ]
+    },
+    "open-joint-types": {
+      "prompt": "¿Cuáles son los dos tipos de acuerdo conjunto según la NIIF 11?",
+      "explanation": "Operación conjunta (joint operation) y negocio conjunto (joint venture).",
+      "concepts": [
+        {
+          "label": "Operación conjunta",
+          "terms": ["operacion conjunta", "joint operation"]
+        },
+        {
+          "label": "Negocio conjunto",
+          "terms": ["negocio conjunto", "joint venture"]
+        }
+      ]
+    },
+    "open-combination": {
+      "prompt": "Define combinación de negocios según la NIIF 3 y da un ejemplo.",
+      "explanation": "Es una transacción por la que una adquirente obtiene el control de uno o más negocios. Ejemplo: la empresa A (Perú) compra el 80 % de las acciones con voto de la empresa B (Chile) y puede decidir sobre ella.",
+      "concepts": [
+        {
+          "label": "Adquirente",
+          "terms": ["adquirente", "una empresa adquiere", "adquiere"]
+        },
+        {
+          "label": "Obtiene el control",
+          "terms": ["control"]
+        },
+        {
+          "label": "Uno o más negocios",
+          "terms": ["negocio", "empresa"]
+        }
+      ]
+    },
+    "open-acquisition-steps": {
+      "prompt": "Enumera los pasos del método de adquisición de la NIIF 3.",
+      "explanation": "1) Identificar al adquirente. 2) Determinar la fecha de adquisición. 3) Reconocer y medir los activos identificables adquiridos y los pasivos asumidos a valor razonable. 4) Reconocer y medir el goodwill o la ganancia por compra en condiciones ventajosas.",
+      "concepts": [
+        {
+          "label": "Identificar al adquirente",
+          "terms": ["adquirente"]
+        },
+        {
+          "label": "Fecha de adquisición",
+          "terms": ["fecha"]
+        },
+        {
+          "label": "Activos y pasivos a valor razonable",
+          "terms": ["valor razonable", "activos"]
+        },
+        {
+          "label": "Goodwill o ganancia",
+          "terms": ["goodwill", "plusvalia", "ganancia"]
+        }
+      ]
+    },
+    "open-goodwill": {
+      "prompt": "¿Cómo se calcula el goodwill y cuándo hay ganancia por compra ventajosa?",
+      "explanation": "Se compara el precio pagado con el valor razonable de los activos netos adquiridos. Si el precio es mayor, hay goodwill. Si es menor, se reconoce una ganancia por compra ventajosa.",
+      "concepts": [
+        {
+          "label": "Precio pagado",
+          "terms": ["precio", "pagado", "contraprestacion"]
+        },
+        {
+          "label": "Valor razonable de activos netos",
+          "terms": ["valor razonable", "activos netos"]
+        },
+        {
+          "label": "Precio mayor: goodwill",
+          "terms": ["mayor", "supera", "excede"]
+        },
+        {
+          "label": "Precio menor: ganancia",
+          "terms": ["menor", "inferior"]
+        }
+      ]
+    },
+    "functional-cash": {
+      "prompt": "Además de ser la del entorno económico principal, ¿qué caracteriza a la moneda funcional?",
+      "options": {
+        "a": "Es la moneda que fija el banco central para todas las empresas.",
+        "b": "Es la moneda en la que se pagan los dividendos.",
+        "c": "Es la moneda en la que la entidad genera y gasta principalmente su efectivo, y refleja su realidad económica.",
+        "d": "Es la moneda que elige libremente el contador."
+      },
+      "explanation": "Es la moneda en la que la entidad genera y gasta principalmente su efectivo; por eso refleja su realidad económica."
+    },
+    "chile-consolidation": {
+      "prompt": "Una filial en Chile tiene el peso chileno como moneda funcional. ¿En qué moneda prepara su matriz en Perú los estados financieros consolidados?",
+      "options": {
+        "a": "En pesos chilenos.",
+        "b": "En soles, según la NIC 21.",
+        "c": "En dólares, por ser moneda de referencia.",
+        "d": "En ambas monedas, sin convertir."
+      },
+      "explanation": "La filial conserva su moneda funcional, y la matriz en Perú prepara los consolidados en soles según la NIC 21."
+    },
+    "exchange-rate-example": {
+      "prompt": "Si 1 dólar estadounidense equivale a 3.80 soles, ¿cómo se expresa el tipo de cambio?",
+      "options": {
+        "a": "1 PEN = 3.80 USD",
+        "b": "3.80 USD = 1 PEN",
+        "c": "1 USD = 3.80 PEN",
+        "d": "1 USD = 0.38 PEN"
+      },
+      "explanation": "Se expresa como 1 USD = 3.80 PEN: 3.80 soles por cada dólar."
+    },
+    "closing-rate-moment": {
+      "prompt": "¿Cuándo se aplica la tasa de cambio de cierre?",
+      "options": {
+        "a": "En cada venta del periodo.",
+        "b": "Al inicio del periodo contable.",
+        "c": "Solo cuando se paga una deuda.",
+        "d": "Al final del periodo contable."
+      },
+      "explanation": "Se aplica al final del periodo contable, para reflejar los saldos en moneda extranjera a su valor actualizado en moneda local."
+    },
+    "joint-parties-rights": {
+      "prompt": "En un acuerdo conjunto, ¿qué tienen las partes?",
+      "options": {
+        "a": "Solo beneficios, sin responsabilidades.",
+        "b": "Ningún compromiso hasta liquidar el acuerdo.",
+        "c": "Derechos y obligaciones.",
+        "d": "Control individual sobre todas las decisiones."
+      },
+      "explanation": "El acuerdo surge de un contrato formal y las partes tienen derechos y obligaciones."
+    },
+    "acquirer-identification": {
+      "prompt": "Si la empresa A (Perú) compra el 80 % de la empresa B (Chile), ¿quién es el adquirente?",
+      "options": {
+        "a": "B, porque es la empresa comprada.",
+        "b": "A, porque obtiene el control y puede tomar decisiones sobre B.",
+        "c": "Ambas, porque comparten el negocio.",
+        "d": "Ninguna, hasta el cierre del ejercicio."
+      },
+      "explanation": "El adquirente es la empresa que obtiene el control de la otra y puede tomar decisiones: en este caso, A."
+    },
+    "goodwill-comparison": {
+      "prompt": "¿Cómo se calcula el goodwill o la ganancia por compra ventajosa?",
+      "options": {
+        "a": "Comparando el precio pagado con el valor razonable de los activos netos adquiridos.",
+        "b": "Comparando los activos con los pasivos en libros de la adquirente.",
+        "c": "Multiplicando las ventas anuales por el tipo de cambio.",
+        "d": "Sumando el capital social de ambas empresas."
+      },
+      "explanation": "Se compara el precio pagado con el valor razonable de los activos netos adquiridos."
+    },
+    "open-closing-rate": {
+      "prompt": "¿Qué es la tasa de cambio de cierre y para qué se utiliza?",
+      "explanation": "Es la tasa vigente en la fecha del balance general, al cierre del ejercicio contable. Se utiliza para convertir los activos y pasivos monetarios en moneda extranjera a la moneda funcional.",
+      "concepts": [
+        {
+          "label": "Vigente en la fecha del balance",
+          "terms": [
+            "vigente",
+            "fecha del balance",
+            "balance general",
+            "fecha de cierre",
+            "cierre del ejercicio"
+          ]
+        },
+        {
+          "label": "Activos y pasivos monetarios",
+          "terms": ["activos", "pasivos", "monetari"]
+        },
+        {
+          "label": "A la moneda funcional",
+          "terms": ["moneda funcional"]
+        }
+      ]
+    },
+    "open-preparation": {
+      "prompt": "¿Qué es la moneda de preparación?",
+      "explanation": "Es la moneda en la cual la entidad lleva su contabilidad y elabora inicialmente sus estados financieros, antes de convertirlos a la moneda de presentación.",
+      "concepts": [
+        {
+          "label": "Lleva su contabilidad",
+          "terms": ["contabilidad"]
+        },
+        {
+          "label": "Elabora los estados financieros",
+          "terms": ["estados financieros", "eeff", "ee.ff", "elabora"]
+        },
+        {
+          "label": "Antes de convertir a presentación",
+          "terms": ["antes", "presentacion"]
+        }
+      ]
+    },
+    "open-chile-case": {
+      "prompt": "Una filial en Chile tiene ventas, costos y financiamiento en pesos chilenos, y su matriz en Perú consolida en soles. Indica su moneda funcional, la moneda de los consolidados y por qué.",
+      "explanation": "La moneda funcional de la filial es el peso chileno, porque sus ventas, costos y financiamiento están en esa moneda. La matriz prepara los consolidados en soles según la NIC 21.",
+      "concepts": [
+        {
+          "label": "Funcional: peso chileno",
+          "terms": ["peso chileno", "pesos chilenos", "clp"]
+        },
+        {
+          "label": "Consolidados en soles",
+          "terms": ["soles", "sol peruano"]
+        },
+        {
+          "label": "Ventas, costos y financiamiento",
+          "terms": ["ventas", "costos", "financiamiento", "entorno"]
+        }
+      ]
+    }
+  }
+}

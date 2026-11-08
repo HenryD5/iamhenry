@@ -46,8 +46,7 @@ describe("AppMobileMenu", () => {
         title="Menú"
         description="Navegación móvil"
         closeLabel="Cerrar"
-        contactLabel="Contacto"
-        contactHref="/contacto"
+        contactTrigger={<button type="button">Contacto</button>}
         brandLabel="I am Henry"
         availabilityLabel="Disponible"
         linkedInLabel="LinkedIn"
@@ -60,8 +59,8 @@ describe("AppMobileMenu", () => {
       "aria-current",
       "page",
     );
-    expect(screen.getByRole("link", { name: "Contacto" })).not.toHaveAttribute(
-      "target",
-    );
+    expect(
+      screen.getByRole("button", { name: "Contacto" }),
+    ).not.toHaveAttribute("href");
   });
 });

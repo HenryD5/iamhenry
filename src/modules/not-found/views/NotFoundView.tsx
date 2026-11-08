@@ -1,10 +1,14 @@
 import { NotFoundSection } from "../components/NotFoundSection";
-import { AppHeader } from "@/shared/components/app/AppHeader";
+import type { ReactNode } from "react";
 
-export function NotFoundView() {
+interface NotFoundViewProps {
+  header: ReactNode;
+}
+
+export function NotFoundView({ header }: NotFoundViewProps) {
   return (
     <>
-      <AppHeader surface="light" />
+      {header}
       <main id="main-content" data-surface="light">
         <NotFoundSection />
       </main>

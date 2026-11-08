@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
 import { getBlogSitemapEntries } from "@/modules/blog/utils/sitemap";
-import { CONTACT_PATH } from "@/modules/contact/routes";
 import { KEEL_PATH, PURAFRUIT_PATH } from "@/modules/projects/routes";
 import { siteConfig } from "@/shared/config/site";
 
@@ -20,11 +19,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: latestDate,
       changeFrequency: "monthly",
       priority: 1,
-    },
-    {
-      url: new URL(CONTACT_PATH, siteConfig.url).toString(),
-      changeFrequency: "yearly",
-      priority: 0.7,
     },
     {
       url: new URL(PURAFRUIT_PATH, siteConfig.url).toString(),

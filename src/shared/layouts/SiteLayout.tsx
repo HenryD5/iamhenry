@@ -1,13 +1,15 @@
 import { getTranslations } from "next-intl/server";
 import { AppFloatingContact } from "@/shared/components/app/AppFloatingContact";
 import { AppFooter } from "@/shared/components/app/AppFooter";
+import { UiToaster } from "@/shared/components/ui/UiToast";
+import { siteConfig } from "@/shared/config/site";
 
 export async function SiteLayout({
   children,
   floatingContactTrigger,
 }: Readonly<{
   children: React.ReactNode;
-  floatingContactTrigger?: React.ReactNode;
+  floatingContactTrigger: React.ReactNode;
 }>) {
   const translate = await getTranslations("shared");
   return (
@@ -19,8 +21,17 @@ export async function SiteLayout({
         {translate("skipToContent")}
       </a>
       {children}
+      <noscript>
+        <p className="text-fg-muted text-body mx-auto max-w-3xl px-5 py-6 text-center">
+          {translate("noScript", { email: siteConfig.person.email })}
+        </p>
+      </noscript>
       <AppFooter />
       <AppFloatingContact contactTrigger={floatingContactTrigger} />
+      <UiToaster
+        label={translate("toast.label")}
+        closeLabel={translate("toast.close")}
+      />
     </>
   );
 }

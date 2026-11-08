@@ -1,5 +1,10 @@
 {
   "skipToContent": "Saltar al contenido",
+  "noScript": "Para enviar el mensaje es necesario activar JavaScript. Mientras tanto, puedes escribirme a {email}, el correo electrónico que aparece al pie de la página.",
+  "toast": {
+    "label": "Notificaciones",
+    "close": "Cerrar notificación"
+  },
   "backHome": "Volver al inicio",
   "brand": "IamHenry",
   "contactCta": "Construyamos algo juntos",

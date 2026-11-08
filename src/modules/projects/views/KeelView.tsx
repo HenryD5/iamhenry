@@ -8,11 +8,10 @@ import { PORTFOLIO_ANCHOR_PATH } from "../routes";
 import { AppContainer } from "@/shared/components/app/AppContainer";
 import { AppIcon } from "@/shared/components/app/AppIcon";
 import type { ContactTriggerRenderer } from "@/shared/types/contact-trigger.types";
-import { getContactHref } from "@/shared/utils/contact";
 
 interface KeelViewProps {
   header: ReactNode;
-  renderContactTrigger?: ContactTriggerRenderer;
+  renderContactTrigger: ContactTriggerRenderer;
 }
 
 export async function KeelView({
@@ -21,7 +20,6 @@ export async function KeelView({
 }: KeelViewProps) {
   const translate = await getTranslations("projects");
   const translateShared = await getTranslations("shared");
-  const contactHref = getContactHref();
 
   return (
     <>
@@ -97,7 +95,7 @@ export async function KeelView({
               <p className="text-body text-fg-muted m-0 mb-10 max-w-[56ch]">
                 {translate("keel.steps.lead")}
               </p>
-              <ol className="m-0 grid list-none grid-cols-5 gap-4 p-0 max-lg:grid-cols-2 max-md:grid-cols-1">
+              <ol className="m-0 grid list-none grid-cols-3 gap-4 p-0 max-lg:grid-cols-2 max-md:grid-cols-1">
                 {keelCaseStudy.steps.map((step, index) => (
                   <li
                     className="border-line bg-surface grid content-start gap-3 rounded-md border p-5"
@@ -183,6 +181,68 @@ export async function KeelView({
 
           <section
             className="py-20 max-md:py-14"
+            aria-labelledby="keel-after-apply"
+          >
+            <AppContainer>
+              <h2 className="text-h3 m-0 mb-4" id="keel-after-apply">
+                {translate("keel.afterApply.title")}
+              </h2>
+              <p className="text-body text-fg-muted m-0 mb-10 max-w-[62ch]">
+                {translate("keel.afterApply.lead")}
+              </p>
+              <ol className="m-0 grid list-none grid-cols-2 gap-[1.4rem] p-0 max-md:grid-cols-1">
+                {keelCaseStudy.afterApply.map((capability, index) => (
+                  <li
+                    className="border-line bg-surface-raised grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 rounded-md border p-6"
+                    key={capability.id}
+                  >
+                    <span
+                      className="text-caption text-fg-muted row-span-2 pt-[.3rem] font-mono"
+                      aria-hidden="true"
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="text-h5 m-0">
+                      {translate(capability.titleKey)}
+                    </h3>
+                    <p className="text-body-sm text-fg-muted m-0">
+                      {translate(capability.textKey)}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+
+              <div className="border-line bg-surface-raised mt-12 rounded-md border p-8 max-md:p-6">
+                <h3 className="text-h4 m-0 mb-3">
+                  {translate("keel.cli.title")}
+                </h3>
+                <p className="text-body text-fg-muted m-0 max-w-[62ch]">
+                  {translate("keel.cli.lead")}
+                </p>
+                <p className="text-body-sm text-fg-muted mt-4 mb-0 max-w-[72ch]">
+                  {translate("keel.cli.availability")}
+                </p>
+                <ul className="m-0 mt-8 grid list-none grid-cols-3 gap-4 p-0 max-lg:grid-cols-1">
+                  {keelCaseStudy.cli.map((capability) => (
+                    <li
+                      className="border-line bg-surface rounded-md border p-5"
+                      key={capability.id}
+                    >
+                      <h4 className="text-h5 m-0 mb-2">
+                        {translate(capability.titleKey)}
+                      </h4>
+                      <p className="text-body-sm text-fg-muted m-0">
+                        {translate(capability.textKey)}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </AppContainer>
+          </section>
+
+          <section
+            className="py-20 max-md:py-14"
             aria-labelledby="keel-privacy"
           >
             <AppContainer>
@@ -250,7 +310,6 @@ export async function KeelView({
           }
           lead={translate("keel.closing.lead")}
           action={translate("keel.closing.action")}
-          contactHref={contactHref}
           renderContactTrigger={renderContactTrigger}
         />
       </main>

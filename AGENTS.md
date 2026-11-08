@@ -65,17 +65,17 @@ Instalados para animación: `motion` 14, `gsap` 3.15.0 (con ScrollTrigger y Spli
 | Server Action de contacto        | `src/modules/contact/actions/`                                                                                               |
 | Estado React de contacto         | `src/modules/contact/hooks/`                                                                                                 |
 | Componente de contacto           | `src/modules/contact/components/`                                                                                            |
-| Vista de contacto                | `src/modules/contact/views/`                                                                                                 |
-| Rutas internas de contacto       | `src/modules/contact/routes.ts`                                                                                              |
-| Ruta pública de contacto         | `src/app/(site)/contacto/`                                                                                                   |
+| Vista de contacto                | `src/modules/contact/views/` (solo cabecera y disparador)                                                                    |
 | Estructura y geometría de la 404 | `src/modules/not-found/content/`                                                                                             |
 | Texto español de la 404          | `src/modules/not-found/locales/es.json`                                                                                      |
 | Componente o vista de la 404     | `src/modules/not-found/components/` y `views/`                                                                               |
 | Ruta de la 404                   | `src/app/not-found.tsx` (delgada, con `SiteLayout`)                                                                          |
 | Caso de estudio del portafolio   | `src/modules/projects/` (content, locales, views); diagrama autónomo en `public/media/` incrustado con `ProjectDiagramFrame` |
 | Ruta de caso de estudio          | `src/app/(site)/portafolio/{slug}/page.tsx` y la constante en `src/modules/projects/routes.ts`                               |
+| Cuestionario oculto de repaso    | preguntas en `src/modules/study/content/quiz-questions.ts` y textos en `src/modules/study/locales/es.json`                   |
+| Ruta del cuestionario de repaso  | `src/app/repaso-contable/page.tsx`, con `noindex`, sin sitemap ni enlaces                                                    |
 
-Wrappers disponibles: `UiTabs`, `UiCarousel`, `UiDrawer`, `UiDialog`, `UiField`. El módulo patrón es `src/modules/home/`, especialmente la cadena de Experiencia: types → content → utils → components. Orden para nuevos módulos: types → content → service/DTO/adapter si aplica → keys → hooks → store si aplica → components → view → ruta delgada.
+Wrappers disponibles: `UiTabs`, `UiCarousel`, `UiDrawer`, `UiDialog`, `UiField`, `UiRadioGroup`, `UiToast`. El módulo patrón es `src/modules/home/`, especialmente la cadena de Experiencia: types → content → utils → components. Orden para nuevos módulos: types → content → service/DTO/adapter si aplica → keys → hooks → store si aplica → components → view → ruta delgada.
 
 ## Calidad y flujo
 

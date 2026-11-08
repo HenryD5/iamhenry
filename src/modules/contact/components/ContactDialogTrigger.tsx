@@ -3,8 +3,6 @@
 import type { ReactNode } from "react";
 import { useState } from "react";
 
-import { getContactHref } from "@/shared/utils/contact";
-
 import { ContactDialog } from "./ContactDialog";
 
 interface ContactDialogTriggerProps {
@@ -24,18 +22,15 @@ export function ContactDialogTrigger({
 
   return (
     <>
-      <a
+      <button
+        type="button"
         className={className}
-        href={getContactHref()}
         aria-label={ariaLabel}
         data-motion-section={dataMotionSection}
-        onClick={(event) => {
-          event.preventDefault();
-          setIsOpen(true);
-        }}
+        onClick={() => setIsOpen(true)}
       >
         {children}
-      </a>
+      </button>
       <ContactDialog isOpen={isOpen} onOpenChange={setIsOpen} />
     </>
   );

@@ -24,7 +24,7 @@ No hay endpoints, DTO, adapter, servicio ni store: el contenido es local y está
 | Experiencia        | rediseñada, en revisión | Drawer   | Tres cifras, cargo actual, trayectoria completa y Educación                                |
 | Portafolio         | construida, en revisión | Carousel | Seis proyectos; sin enlace hasta confirmación                                              |
 | Sobre mí           | construida, en revisión | —        | Sin teléfono, ciudad ni edad                                                               |
-| Cierre             | construida, en revisión | —        | Abre el formulario de contacto; `/contacto` como respaldo sin JavaScript                   |
+| Cierre             | construida, en revisión | —        | Abre el formulario de contacto                                                             |
 
 ## Contrato preparado para animación
 

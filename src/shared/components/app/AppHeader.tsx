@@ -1,6 +1,5 @@
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
-import { getContactHref } from "@/shared/utils/contact";
 import { AppBrandLogo } from "./AppBrandLogo";
 import { AppContainer } from "./AppContainer";
 import { AppMobileMenu } from "./AppMobileMenu";
@@ -9,17 +8,16 @@ import { AppThemeSwitch } from "./AppThemeSwitch";
 
 interface AppHeaderProps {
   surface?: "light";
-  contactTrigger?: ReactNode;
-  mobileContactTrigger?: ReactNode;
+  contactTrigger: ReactNode;
+  mobileContactTrigger: ReactNode;
 }
 
 export async function AppHeader({
   surface,
   contactTrigger,
   mobileContactTrigger,
-}: AppHeaderProps = {}) {
+}: AppHeaderProps) {
   const translate = await getTranslations("shared");
-  const contactHref = getContactHref();
   const items = ["stack", "experience", "portfolio", "about", "blog"].map(
     (key) => ({
       href: translate(
@@ -47,15 +45,7 @@ export async function AppHeader({
             isCompact
             label={translate("theme.night")}
           />
-          {contactTrigger ?? (
-            <a
-              className="btn btn--md focus-visible:text-white max-md:order-1 max-md:shrink min-[768px]:order-2"
-              href={contactHref}
-            >
-              <span className="md:hidden">{translate("contactCtaShort")}</span>
-              <span className="max-md:hidden">{translate("contactCta")}</span>
-            </a>
-          )}
+          {contactTrigger}
           <div className="max-md:order-3 md:hidden">
             <AppMobileMenu
               items={items}
@@ -63,8 +53,6 @@ export async function AppHeader({
               title={translate("menu.title")}
               description={translate("menu.description")}
               closeLabel={translate("menu.close")}
-              contactLabel={translate("contactCta")}
-              contactHref={contactHref}
               contactTrigger={mobileContactTrigger}
               brandLabel={translate("brand")}
               availabilityLabel={translate("footer.availability")}

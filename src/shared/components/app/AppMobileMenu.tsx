@@ -20,9 +20,7 @@ interface AppMobileMenuProps {
   title: string;
   description: string;
   closeLabel: string;
-  contactLabel: string;
-  contactHref: string;
-  contactTrigger?: ReactNode;
+  contactTrigger: ReactNode;
   brandLabel: string;
   availabilityLabel: string;
   linkedInLabel: string;
@@ -34,8 +32,6 @@ export function AppMobileMenu({
   title,
   description,
   closeLabel,
-  contactLabel,
-  contactHref,
   contactTrigger,
   brandLabel,
   availabilityLabel,
@@ -121,15 +117,7 @@ export function AppMobileMenu({
             />
             {availabilityLabel}
           </AppBadge>
-          {contactTrigger ?? (
-            <a
-              className="btn btn--md btn--block focus-visible:text-white"
-              href={contactHref}
-              onClick={handleClose}
-            >
-              {contactLabel}
-            </a>
-          )}
+          {contactTrigger}
           <p
             className="text-fg-muted text-caption m-0 flex flex-wrap items-center gap-x-3 gap-y-1"
             aria-label={contactLinksLabel}
