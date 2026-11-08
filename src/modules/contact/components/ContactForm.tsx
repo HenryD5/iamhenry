@@ -1,6 +1,8 @@
 "use client";
 
+import { LoaderCircle } from "lucide-react";
 import Script from "next/script";
+import { type FormEvent, useState } from "react";
 
 import { UiField } from "@/shared/components/ui/UiField";
 import { env } from "@/shared/utils/env";
@@ -17,6 +19,17 @@ import type {
   ContactFieldErrorKey,
   ContactFieldName,
 } from "../types/contact.types";
+
+const REQUIRED_FIELDS: readonly ContactFieldName[] = [
+  "name",
+  "email",
+  "message",
+];
+
+type ContactFormValues = Partial<Record<ContactFieldName, string>>;
+
+const hasAllRequired = (values: ContactFormValues | undefined): boolean =>
+  REQUIRED_FIELDS.every((field) => (values?.[field] ?? "").trim().length > 0);
 
 interface ContactFormProps {
   onSent?: () => void;
@@ -38,6 +51,27 @@ export function ContactForm({ onSent, onSendingChange }: ContactFormProps) {
     onSendingChange,
   });
 
+  // El botón de enviar se habilita solo cuando los tres campos tienen texto.
+  // Tras un error, el formulario se rellena con los valores enviados.
+  const [isComplete, setIsComplete] = useState(() => hasAllRequired(values));
+  const [previousValues, setPreviousValues] = useState(values);
+
+  if (values !== previousValues) {
+    setPreviousValues(values);
+    setIsComplete(hasAllRequired(values));
+  }
+
+  const handleInput = (event: FormEvent<HTMLFormElement>) => {
+    const formData = new FormData(event.currentTarget);
+    setIsComplete(
+      hasAllRequired({
+        name: String(formData.get("name") ?? ""),
+        email: String(formData.get("email") ?? ""),
+        message: String(formData.get("message") ?? ""),
+      }),
+    );
+  };
+
   const getError = (field: ContactFieldName) => {
     const key: ContactFieldErrorKey | undefined = fieldErrors[field];
     return key ? messages.form.errors[field][key] : undefined;
@@ -48,6 +82,7 @@ export function ContactForm({ onSent, onSendingChange }: ContactFormProps) {
       action={formAction}
       className="grid gap-4"
       aria-busy={isSending}
+      onInput={handleInput}
       noValidate
     >
       <UiField
@@ -119,9 +154,15 @@ export function ContactForm({ onSent, onSendingChange }: ContactFormProps) {
 
       <button
         type="submit"
-        className="btn btn--md text-body mt-2 font-semibold"
-        disabled={isSending || isUnavailable}
+        className="btn btn--md text-body mt-2 inline-flex items-center justify-center gap-2 font-semibold"
+        disabled={isSending || isUnavailable || !isComplete}
       >
+        {isSending ? (
+          <LoaderCircle
+            aria-hidden="true"
+            className="size-4 animate-spin motion-reduce:animate-none"
+          />
+        ) : null}
         {isSending ? messages.form.sending : messages.form.submit}
       </button>
     </form>

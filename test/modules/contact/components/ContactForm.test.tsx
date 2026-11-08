@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ContactForm } from "@/modules/contact/components/ContactForm";
@@ -128,6 +128,39 @@ describe("ContactForm", () => {
     expect(
       screen.getByRole("button", { name: messages.form.sending }),
     ).toBeDisabled();
+  });
+
+  it("enables submission only when every field has text", () => {
+    render(<ContactForm />);
+    const submit = screen.getByRole("button", { name: messages.form.submit });
+    const name = screen.getByRole("textbox", { name: /^nombre/i });
+    const email = screen.getByRole("textbox", { name: /^correo/i });
+    const message = screen.getByRole("textbox", { name: /^mensaje/i });
+
+    expect(submit).toBeDisabled();
+
+    fireEvent.input(name, { target: { value: "Ana" } });
+    fireEvent.input(email, { target: { value: "ana@example.com" } });
+    expect(submit).toBeDisabled();
+
+    fireEvent.input(message, { target: { value: "Hola" } });
+    expect(submit).toBeEnabled();
+
+    fireEvent.input(message, { target: { value: "   " } });
+    expect(submit).toBeDisabled();
+  });
+
+  it("keeps submission enabled when the form is refilled after an error", () => {
+    useContactFormMock.mockReturnValue({
+      ...baseHookResult,
+      status: "challenge_failed",
+      values: { name: "Ana", email: "ana@example.com", message: "Hola" },
+    });
+    render(<ContactForm />);
+
+    expect(
+      screen.getByRole("button", { name: messages.form.submit }),
+    ).toBeEnabled();
   });
 
   it("disables submission without a site key and skips the widget", () => {
